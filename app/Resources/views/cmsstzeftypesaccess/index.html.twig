@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cmsstzeftypesaccesses list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefTypesAccess in cmsStzefTypesAccesses %}
+            <tr>
+                <td><a href="{{ path('types_access_show', { 'id': cmsStzefTypesAccess.id }) }}">{{ cmsStzefTypesAccess.name }}</a></td>
+                <td>{{ cmsStzefTypesAccess.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('types_access_show', { 'id': cmsStzefTypesAccess.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('types_access_edit', { 'id': cmsStzefTypesAccess.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('types_access_new') }}" class="btn btn-success">Nuevo</a>
+        </li>
+    </ul>
+{% endblock %}

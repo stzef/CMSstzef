@@ -1,24 +1,27 @@
-{% extends 'base.html.twig' %} 
+{% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cmsstzefstate</h1>
+    <h1>Cmsstzeftypesaccess</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Nombre</th>
-                <td>{{ cmsStzefState.name }}</td>
+                <th>Name</th>
+                <td>{{ cmsStzefTypesAccess.name }}</td>
             </tr>
             <tr>
                 <th>Id</th>
-                <td>{{ cmsStzefState.id }}</td>
+                <td>{{ cmsStzefTypesAccess.id }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('states_edit', { 'id': cmsStzefState.id }) }}" class="btn btn-info">Editar</a>
+            <a href="{{ path('types_access_index') }}">Listado</a>
+        </li>
+        <li>
+            <a href="{{ path('types_access_edit', { 'id': cmsStzefTypesAccess.id }) }}" class="btn btn-info">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

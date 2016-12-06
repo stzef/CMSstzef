@@ -1,11 +1,9 @@
-{% extends 'base.html.twig' %} 
-{% use "bootstrap_3_layout.html.twig" %}
+{% extends 'base.html.twig' %}
+{% use 'bootstrap_3_layout.html.twig' %}
 {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
 
-
-
 {% block body %}
-    <h1>Editar</h1>
+    <h1>Cmsstzeftypesaccess Editar</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
@@ -14,7 +12,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('states_index') }}">Listado</a>
+            <a href="{{ path('types_access_index') }}">Listado</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

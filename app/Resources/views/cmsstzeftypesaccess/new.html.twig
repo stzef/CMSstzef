@@ -1,10 +1,9 @@
-{% extends 'base.html.twig' %} 
-{% use "bootstrap_3_layout.html.twig" %}
+{% extends 'base.html.twig' %}
+{% use 'bootstrap_3_layout.html.twig' %}
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 
-
 {% block body %}
-    <h1>Nuevo</h1>
+    <h1>Cmsstzeftypesaccess Nuevo</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -13,7 +12,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('states_index') }}">Listado</a>
+            <a href="{{ path('types_access_index') }}">Listado</a>
         </li>
     </ul>
 {% endblock %}
