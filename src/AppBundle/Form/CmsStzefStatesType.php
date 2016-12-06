@@ -13,7 +13,7 @@ class CmsStzefStatesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')        ;
+        $builder->add('name','text', array('label' => 'Nombre', 'attr' => array('class' => 'form-group')))        ;
     }
     
     /**

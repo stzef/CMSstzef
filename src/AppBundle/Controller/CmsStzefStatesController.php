@@ -39,7 +39,7 @@ class CmsStzefStatesController extends Controller
      */
     public function newAction(Request $request)
     {
-        $cmsStzefState = new Cmsstzefstate();
+        $cmsStzefState = new CmsStzefStates();
         $form = $this->createForm('AppBundle\Form\CmsStzefStatesType', $cmsStzefState);
         $form->handleRequest($request);
 
