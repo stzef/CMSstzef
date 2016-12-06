@@ -1,0 +1,97 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CmsStzefMenus
+ *
+ * @ORM\Table(name="cms_stzef_menus", indexes={@ORM\Index(name="fk_CMSstzef_menus_type_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_users1_idx", columns={"creator_user"})})
+ * @ORM\Entity
+ */
+class CmsStzefMenus
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=45, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alias", type="string", length=45, nullable=false)
+     */
+    private $alias;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="link", type="string", length=45, nullable=false)
+     */
+    private $link;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="menu_major", type="string", length=45, nullable=false)
+     */
+    private $menuMajor;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="orden", type="integer", nullable=false)
+     */
+    private $orden;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="target", type="string", nullable=false)
+     */
+    private $target;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefUsers
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="creator_user", referencedColumnName="id")
+     * })
+     */
+    private $creatorUser;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefStatesPublication
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStatesPublication")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_state_publication", referencedColumnName="id")
+     * })
+     */
+    private $idStatePublication;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefTypesAccess
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
+     * })
+     */
+    private $idTypeAccess;
+
+
+}

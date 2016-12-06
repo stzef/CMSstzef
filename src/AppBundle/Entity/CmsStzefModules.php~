@@ -1,0 +1,62 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * CmsStzefModules
+ *
+ * @ORM\Table(name="cms_stzef_modules", indexes={@ORM\Index(name="fk_CMSstzef_modules_CMSstzef_sections1_idx", columns={"id_section_theme"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_types_modules1_idx", columns={"id_type_module"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_states1_idx", columns={"id_state_publication"})})
+ * @ORM\Entity
+ */
+class CmsStzefModules
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefStatesPublication
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStatesPublication")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_state_publication", referencedColumnName="id")
+     * })
+     */
+    private $idStatePublication;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefTypesModules
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesModules")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_module", referencedColumnName="id")
+     * })
+     */
+    private $idTypeModule;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefSections
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefSections")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_section_theme", referencedColumnName="id")
+     * })
+     */
+    private $idSectionTheme;
+
+
+}

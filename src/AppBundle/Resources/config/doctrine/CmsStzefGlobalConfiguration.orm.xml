@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\CmsStzefGlobalConfiguration" table="cms_stzef_global_configuration">
+    <indexes>
+      <index name="fk_CMSstzef_global_configuration_CMSstzef_states1_idx" columns="id_state_publication_default"/>
+      <index name="fk_CMSstzef_global_configuration_CMSstzef_types_access1_idx" columns="id_type_access_default"/>
+      <index name="fk_CMSstzef_global_configuration_CMSstzef_categories1_idx" columns="id_category_default"/>
+      <index name="fk_CMSstzef_global_configuration_CMSstzef_themes1_idx" columns="id_theme"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nameSite" type="string" column="name_site" length="45" nullable="false"/>
+    <field name="offline" type="boolean" column="offline" nullable="false"/>
+    <field name="messageOffline" type="string" column="message_offline" length="200" nullable="false"/>
+    <many-to-one field="idTheme" target-entity="CmsStzefThemes">
+      <join-columns>
+        <join-column name="id_theme" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCategoryDefault" target-entity="CmsStzefCategories">
+      <join-columns>
+        <join-column name="id_category_default" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTypeAccessDefault" target-entity="CmsStzefTypesAccess">
+      <join-columns>
+        <join-column name="id_type_access_default" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idStatePublicationDefault" target-entity="CmsStzefStatesPublication">
+      <join-columns>
+        <join-column name="id_state_publication_default" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefState in cmsStzefStates %}
+            <tr>
+                <td><a href="{{ path('states_show', { 'id': cmsStzefState.id }) }}">{{ cmsStzefState.name }}</a></td>
+                <td>{{ cmsStzefState.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('states_edit', { 'id': cmsStzefState.id }) }}" class="btn btn-info">Editar</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a class="btn btn-success" href="{{ path('states_new') }}" class="btn btn-success">Nuevo</a>
+        </li>
+    </ul>
+{% endblock %}

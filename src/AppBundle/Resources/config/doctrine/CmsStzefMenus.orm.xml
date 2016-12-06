@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\CmsStzefMenus" table="cms_stzef_menus">
+    <indexes>
+      <index name="fk_CMSstzef_menus_type_access1_idx" columns="id_type_access"/>
+      <index name="fk_CMSstzef_menus_CMSstzef_states1_idx" columns="id_state_publication"/>
+      <index name="fk_CMSstzef_menus_CMSstzef_users1_idx" columns="creator_user"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="title" type="string" column="title" length="45" nullable="false"/>
+    <field name="alias" type="string" column="alias" length="45" nullable="false"/>
+    <field name="link" type="string" column="link" length="45" nullable="false"/>
+    <field name="menuMajor" type="string" column="menu_major" length="45" nullable="false"/>
+    <field name="orden" type="integer" column="orden" nullable="false"/>
+    <field name="target" type="string" column="target" nullable="false"/>
+    <many-to-one field="creatorUser" target-entity="CmsStzefUsers">
+      <join-columns>
+        <join-column name="creator_user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idStatePublication" target-entity="CmsStzefStatesPublication">
+      <join-columns>
+        <join-column name="id_state_publication" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTypeAccess" target-entity="CmsStzefTypesAccess">
+      <join-columns>
+        <join-column name="id_type_access" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
