@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Valuetext</th>
+                <th>Valuebool</th>
+                <th>Valueint</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefParameter in cmsStzefParameters %}
+            <tr>
+                <td><a href="{{ path('parameters_show', { 'id': cmsStzefParameter.id }) }}">{{ cmsStzefParameter.name }}</a></td>
+                <td>{{ cmsStzefParameter.valueText }}</td>
+                <td>{% if cmsStzefParameter.valueBool %}Yes{% else %}No{% endif %}</td>
+                <td>{{ cmsStzefParameter.valueInt }}</td>
+                <td>{{ cmsStzefParameter.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('parameters_show', { 'id': cmsStzefParameter.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('parameters_edit', { 'id': cmsStzefParameter.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('parameters_new') }}" class="btn btn-success">Nuevo</a>
+        </li>
+    </ul>
+{% endblock %}

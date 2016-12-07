@@ -1,0 +1,45 @@
+ 
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cmsstzefparameter</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ cmsStzefParameter.name }}</td>
+            </tr>
+            <tr>
+                <th>Valuetext</th>
+                <td>{{ cmsStzefParameter.valueText }}</td>
+            </tr>
+            <tr>
+                <th>Valuebool</th>
+                <td>{% if cmsStzefParameter.valueBool %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Valueint</th>
+                <td>{{ cmsStzefParameter.valueInt }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ cmsStzefParameter.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('parameters_index') }}">Listado</a>
+        </li>
+        <li>
+            <a href="{{ path('parameters_edit', { 'id': cmsStzefParameter.id }) }}" class="btn btn-info">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Borrar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

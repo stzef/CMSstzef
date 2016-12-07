@@ -14,7 +14,10 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            pattern: ^/
+            anonymous: true
+            #anonymous: ~ Valor Inicial
+            
             # activate different ways to authenticate
 
             # http_basic: ~
