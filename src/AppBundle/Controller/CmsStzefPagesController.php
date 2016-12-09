@@ -55,6 +55,9 @@ class CmsStzefPagesController extends Controller
             'cmsStzefPage' => $cmsStzefPage,
             'form' => $form->createView(),
         ));
+
+        //Crear Action en PagesController
+        //Crear Template en pages/
     }
 
     /**
