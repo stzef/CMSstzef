@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Cmsstzefparameter controller.
  *
- * @Route("parameters")
+ * @Route("admstzef/parameters")
  */
 class CmsStzefParametersController extends Controller
 {
     /**
      * Lists all cmsStzefParameter entities.
      *
-     * @Route("/", name="parameters_index")
+     * @Route("/", name="admstzef_parameters_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -34,7 +34,7 @@ class CmsStzefParametersController extends Controller
     /**
      * Creates a new cmsStzefParameter entity.
      *
-     * @Route("/new", name="parameters_new")
+     * @Route("/new", name="admstzef_parameters_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -48,7 +48,7 @@ class CmsStzefParametersController extends Controller
             $em->persist($cmsStzefParameter);
             $em->flush($cmsStzefParameter);
 
-            return $this->redirectToRoute('parameters_show', array('id' => $cmsStzefParameter->getId()));
+            return $this->redirectToRoute('admstzef_parameters_show', array('id' => $cmsStzefParameter->getId()));
         }
 
         return $this->render('cmsstzefparameters/new.html.twig', array(
@@ -60,7 +60,7 @@ class CmsStzefParametersController extends Controller
     /**
      * Finds and displays a cmsStzefParameter entity.
      *
-     * @Route("/{id}", name="parameters_show")
+     * @Route("/{id}", name="admstzef_parameters_show")
      * @Method("GET")
      */
     public function showAction(CmsStzefParameters $cmsStzefParameter)
@@ -76,7 +76,7 @@ class CmsStzefParametersController extends Controller
     /**
      * Displays a form to edit an existing cmsStzefParameter entity.
      *
-     * @Route("/{id}/edit", name="parameters_edit")
+     * @Route("/{id}/edit", name="admstzef_parameters_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, CmsStzefParameters $cmsStzefParameter)
@@ -88,7 +88,7 @@ class CmsStzefParametersController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('parameters_edit', array('id' => $cmsStzefParameter->getId()));
+            return $this->redirectToRoute('admstzef_parameters_edit', array('id' => $cmsStzefParameter->getId()));
         }
 
         return $this->render('cmsstzefparameters/edit.html.twig', array(
@@ -101,7 +101,7 @@ class CmsStzefParametersController extends Controller
     /**
      * Deletes a cmsStzefParameter entity.
      *
-     * @Route("/{id}", name="parameters_delete")
+     * @Route("/{id}", name="admstzef_parameters_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, CmsStzefParameters $cmsStzefParameter)
@@ -115,7 +115,7 @@ class CmsStzefParametersController extends Controller
             $em->flush($cmsStzefParameter);
         }
 
-        return $this->redirectToRoute('parameters_index');
+        return $this->redirectToRoute('admstzef_parameters_index');
     }
 
     /**
@@ -128,7 +128,7 @@ class CmsStzefParametersController extends Controller
     private function createDeleteForm(CmsStzefParameters $cmsStzefParameter)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('parameters_delete', array('id' => $cmsStzefParameter->getId())))
+            ->setAction($this->generateUrl('admstzef_parameters_delete', array('id' => $cmsStzefParameter->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -1,3 +1,4 @@
+ 
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -16,12 +17,12 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="list-unstyled" >
         <li>
-            <a href="{{ path('types_access_index') }}">Listado</a>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_types_access_index') }}">Listado</a>
         </li>
         <li>
-            <a href="{{ path('types_access_edit', { 'id': cmsStzefTypesAccess.id }) }}" class="btn btn-info">Editar</a>
+            <a class="btn btn-info" role="button" href="{{ path('admstzef_types_access_edit', { 'id': cmsStzefTypesAccess.id }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

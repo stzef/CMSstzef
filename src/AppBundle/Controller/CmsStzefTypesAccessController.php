@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Cmsstzeftypesaccess controller.
  *
- * @Route("types_access")
+ * @Route("admstzef/types_access")
  */
 class CmsStzefTypesAccessController extends Controller
 {
     /**
      * Lists all cmsStzefTypesAccess entities.
      *
-     * @Route("/", name="types_access_index")
+     * @Route("/", name="admstzef_types_access_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -34,7 +34,7 @@ class CmsStzefTypesAccessController extends Controller
     /**
      * Creates a new cmsStzefTypesAccess entity.
      *
-     * @Route("/new", name="types_access_new")
+     * @Route("/new", name="admstzef_types_access_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -48,7 +48,7 @@ class CmsStzefTypesAccessController extends Controller
             $em->persist($cmsStzefTypesAccess);
             $em->flush($cmsStzefTypesAccess);
 
-            return $this->redirectToRoute('types_access_show', array('id' => $cmsStzefTypesAccess->getId()));
+            return $this->redirectToRoute('admstzef_types_access_show', array('id' => $cmsStzefTypesAccess->getId()));
         }
 
         return $this->render('cmsstzeftypesaccess/new.html.twig', array(
@@ -60,7 +60,7 @@ class CmsStzefTypesAccessController extends Controller
     /**
      * Finds and displays a cmsStzefTypesAccess entity.
      *
-     * @Route("/{id}", name="types_access_show")
+     * @Route("/{id}", name="admstzef_types_access_show")
      * @Method("GET")
      */
     public function showAction(CmsStzefTypesAccess $cmsStzefTypesAccess)
@@ -76,7 +76,7 @@ class CmsStzefTypesAccessController extends Controller
     /**
      * Displays a form to edit an existing cmsStzefTypesAccess entity.
      *
-     * @Route("/{id}/edit", name="types_access_edit")
+     * @Route("/{id}/edit", name="admstzef_types_access_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, CmsStzefTypesAccess $cmsStzefTypesAccess)
@@ -88,7 +88,7 @@ class CmsStzefTypesAccessController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('types_access_edit', array('id' => $cmsStzefTypesAccess->getId()));
+            return $this->redirectToRoute('admstzef_types_access_edit', array('id' => $cmsStzefTypesAccess->getId()));
         }
 
         return $this->render('cmsstzeftypesaccess/edit.html.twig', array(
@@ -101,7 +101,7 @@ class CmsStzefTypesAccessController extends Controller
     /**
      * Deletes a cmsStzefTypesAccess entity.
      *
-     * @Route("/{id}", name="types_access_delete")
+     * @Route("/{id}", name="admstzef_types_access_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, CmsStzefTypesAccess $cmsStzefTypesAccess)
@@ -115,7 +115,7 @@ class CmsStzefTypesAccessController extends Controller
             $em->flush($cmsStzefTypesAccess);
         }
 
-        return $this->redirectToRoute('types_access_index');
+        return $this->redirectToRoute('admstzef_types_access_index');
     }
 
     /**
@@ -128,7 +128,7 @@ class CmsStzefTypesAccessController extends Controller
     private function createDeleteForm(CmsStzefTypesAccess $cmsStzefTypesAccess)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('types_access_delete', array('id' => $cmsStzefTypesAccess->getId())))
+            ->setAction($this->generateUrl('admstzef_types_access_delete', array('id' => $cmsStzefTypesAccess->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

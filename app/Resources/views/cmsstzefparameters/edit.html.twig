@@ -3,16 +3,16 @@
 {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
 
 {% block body %}
-    <h1>Editar</h1>
+    <h1>Editar Cmsstzefparameter</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input type="submit" class="btn btn-info" value="Editar" />
     {{ form_end(edit_form) }}
 
-    <ul>
+    <ul class="list-unstyled" >
         <li>
-            <a href="{{ path('parameters_index') }}">Listado</a>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_parameters_index') }}">Listado</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

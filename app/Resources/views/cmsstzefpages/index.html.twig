@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado Cmsstzefpages</h1>
+
+    <table class="table" id="CMSstzef_list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefPage in cmsStzefPages %}
+            <tr>
+                <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">{{ cmsStzefPage.name }}</a></td>
+                <td>{{ cmsStzefPage.id }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_edit', { 'id': cmsStzefPage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_pages_new') }}">Nuevo cmsStzefPage</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado</h1>
+    <h1>Listado Cmsstzefparameters</h1>
 
-    <table class="table">
+    <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
                 <th>Name</th>
@@ -17,18 +17,18 @@
         <tbody>
         {% for cmsStzefParameter in cmsStzefParameters %}
             <tr>
-                <td><a href="{{ path('parameters_show', { 'id': cmsStzefParameter.id }) }}">{{ cmsStzefParameter.name }}</a></td>
+                <td><a href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">{{ cmsStzefParameter.name }}</a></td>
                 <td>{{ cmsStzefParameter.valueText }}</td>
                 <td>{% if cmsStzefParameter.valueBool %}Yes{% else %}No{% endif %}</td>
                 <td>{{ cmsStzefParameter.valueInt }}</td>
                 <td>{{ cmsStzefParameter.id }}</td>
                 <td>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li>
-                            <a href="{{ path('parameters_show', { 'id': cmsStzefParameter.id }) }}">show</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('parameters_edit', { 'id': cmsStzefParameter.id }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_parameters_edit', { 'id': cmsStzefParameter.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -37,9 +37,9 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="list-unstyled">
         <li>
-            <a href="{{ path('parameters_new') }}" class="btn btn-success">Nuevo</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_parameters_new') }}">Nuevo cmsStzefParameter</a>
         </li>
     </ul>
 {% endblock %}

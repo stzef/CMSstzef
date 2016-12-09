@@ -29,12 +29,12 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="list-unstyled" >
         <li>
-            <a href="{{ path('parameters_index') }}">Listado</a>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_parameters_index') }}">Listado</a>
         </li>
         <li>
-            <a href="{{ path('parameters_edit', { 'id': cmsStzefParameter.id }) }}" class="btn btn-info">Editar</a>
+            <a class="btn btn-info" role="button" href="{{ path('admstzef_parameters_edit', { 'id': cmsStzefParameter.id }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

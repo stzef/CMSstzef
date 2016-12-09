@@ -10,14 +10,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Cmsstzefstate controller.
  *
- * @Route("states")
+ * @Route("admstzef/states")
  */
 class CmsStzefStatesController extends Controller
 {
     /**
      * Lists all cmsStzefState entities.
      *
-     * @Route("/", name="states_index")
+     * @Route("/", name="admstzef_states_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -34,7 +34,7 @@ class CmsStzefStatesController extends Controller
     /**
      * Creates a new cmsStzefState entity.
      *
-     * @Route("/new", name="states_new")
+     * @Route("/new", name="admstzef_states_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -48,7 +48,7 @@ class CmsStzefStatesController extends Controller
             $em->persist($cmsStzefState);
             $em->flush($cmsStzefState);
 
-            return $this->redirectToRoute('states_show', array('id' => $cmsStzefState->getId()));
+            return $this->redirectToRoute('admstzef_states_show', array('id' => $cmsStzefState->getId()));
         }
 
         return $this->render('cmsstzefstates/new.html.twig', array(
@@ -60,7 +60,7 @@ class CmsStzefStatesController extends Controller
     /**
      * Finds and displays a cmsStzefState entity.
      *
-     * @Route("/{id}", name="states_show")
+     * @Route("/{id}", name="admstzef_states_show")
      * @Method("GET")
      */
     public function showAction(CmsStzefStates $cmsStzefState)
@@ -76,7 +76,7 @@ class CmsStzefStatesController extends Controller
     /**
      * Displays a form to edit an existing cmsStzefState entity.
      *
-     * @Route("/{id}/edit", name="states_edit")
+     * @Route("/{id}/edit", name="admstzef_states_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, CmsStzefStates $cmsStzefState)
@@ -88,7 +88,7 @@ class CmsStzefStatesController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('states_edit', array('id' => $cmsStzefState->getId()));
+            return $this->redirectToRoute('admstzef_states_edit', array('id' => $cmsStzefState->getId()));
         }
 
         return $this->render('cmsstzefstates/edit.html.twig', array(
@@ -101,7 +101,7 @@ class CmsStzefStatesController extends Controller
     /**
      * Deletes a cmsStzefState entity.
      *
-     * @Route("/{id}", name="states_delete")
+     * @Route("/{id}", name="admstzef_states_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, CmsStzefStates $cmsStzefState)
@@ -115,7 +115,7 @@ class CmsStzefStatesController extends Controller
             $em->flush($cmsStzefState);
         }
 
-        return $this->redirectToRoute('states_index');
+        return $this->redirectToRoute('admstzef_states_index');
     }
 
     /**
@@ -128,7 +128,7 @@ class CmsStzefStatesController extends Controller
     private function createDeleteForm(CmsStzefStates $cmsStzefState)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('states_delete', array('id' => $cmsStzefState->getId())))
+            ->setAction($this->generateUrl('admstzef_states_delete', array('id' => $cmsStzefState->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

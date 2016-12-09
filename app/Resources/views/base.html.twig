@@ -20,6 +20,8 @@
   <link rel="stylesheet" href="{{ asset('css/template/skins/_all-skins.min.css') }}">
 
   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+<link rel="stylesheet" href="{{ asset('css/data_table/jquery.dataTables.min.css')}}">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -206,18 +208,6 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small>Control panel</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
-
     <!-- Main content -->
     <section class="content">
             {% block body %}{% endblock %}
@@ -444,6 +434,39 @@
 <!-- AdminLTE App -->
 <script src="{{ asset('js/template/app.min.js') }}"></script>
 
+<script src="{{ asset('js/data_table/jquery.dataTables.min.js') }}"></script>
+<script>
+
+
+$(document).ready(function() {
+    $('#CMSstzef_list').DataTable( {
+       "language": {
+          "sProcessing":     "Procesando...",
+          "sLengthMenu":     "Mostrar _MENU_ registros",
+          "sZeroRecords":    "No se encontraron resultados",
+          "sEmptyTable":     "Ningún dato disponible en esta tabla",
+          "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+          "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+          "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+          "sInfoPostFix":    "",
+          "sSearch":         "Buscar:",
+          "sUrl":            "",
+          "sInfoThousands":  ",",
+          "sLoadingRecords": "Cargando...",
+          "oPaginate": {
+              "sFirst":    "Primero",
+              "sLast":     "Último",
+              "sNext":     "Siguiente",
+              "sPrevious": "Anterior"
+          },
+          "oAria": {
+              "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+              "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+          }
+      }
+    } );
+} );
+</script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

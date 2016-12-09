@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado Cmsstzefmenuses</h1>
+
+    <table class="table" id="CMSstzef_list">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Alias</th>
+                <th>Menumajor</th>
+                <th>Orden</th>
+                <th>Target</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefMenu in cmsStzefMenuses %}
+            <tr>
+                <td><a href="{{ path('admstzef_menus_show', { 'id': cmsStzefMenu.id }) }}">{{ cmsStzefMenu.title }}</a></td>
+                <td>{{ cmsStzefMenu.alias }}</td>
+                <td>{{ cmsStzefMenu.menuMajor }}</td>
+                <td>{{ cmsStzefMenu.orden }}</td>
+                <td>{{ cmsStzefMenu.target }}</td>
+                <td>{{ cmsStzefMenu.id }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_menus_show', { 'id': cmsStzefMenu.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_menus_edit', { 'id': cmsStzefMenu.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_menus_new') }}">Nuevo cmsStzefMenu</a>
+        </li>
+    </ul>
+{% endblock %}

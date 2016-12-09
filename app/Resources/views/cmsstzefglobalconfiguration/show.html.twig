@@ -1,0 +1,41 @@
+ 
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cmsstzefglobalconfiguration</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Namesite</th>
+                <td>{{ cmsStzefGlobalConfiguration.nameSite }}</td>
+            </tr>
+            <tr>
+                <th>Offline</th>
+                <td>{% if cmsStzefGlobalConfiguration.offline %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Messageoffline</th>
+                <td>{{ cmsStzefGlobalConfiguration.messageOffline }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ cmsStzefGlobalConfiguration.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled" >
+        <li>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_global_configuration_index') }}">Listado</a>
+        </li>
+        <li>
+            <a class="btn btn-info" role="button" href="{{ path('admstzef_global_configuration_edit', { 'id': cmsStzefGlobalConfiguration.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Borrar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

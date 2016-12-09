@@ -1,0 +1,33 @@
+ 
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cmsstzefstatespublication</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ cmsStzefStatesPublication.name }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ cmsStzefStatesPublication.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled" >
+        <li>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_states_publication_index') }}">Listado</a>
+        </li>
+        <li>
+            <a class="btn btn-info" role="button" href="{{ path('admstzef_states_publication_edit', { 'id': cmsStzefStatesPublication.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Borrar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

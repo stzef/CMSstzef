@@ -1,0 +1,49 @@
+ 
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cmsstzefmenu</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Title</th>
+                <td>{{ cmsStzefMenu.title }}</td>
+            </tr>
+            <tr>
+                <th>Alias</th>
+                <td>{{ cmsStzefMenu.alias }}</td>
+            </tr>
+            <tr>
+                <th>Menumajor</th>
+                <td>{{ cmsStzefMenu.menuMajor }}</td>
+            </tr>
+            <tr>
+                <th>Orden</th>
+                <td>{{ cmsStzefMenu.orden }}</td>
+            </tr>
+            <tr>
+                <th>Target</th>
+                <td>{{ cmsStzefMenu.target }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ cmsStzefMenu.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled" >
+        <li>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_menus_index') }}">Listado</a>
+        </li>
+        <li>
+            <a class="btn btn-info" role="button" href="{{ path('admstzef_menus_edit', { 'id': cmsStzefMenu.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Borrar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

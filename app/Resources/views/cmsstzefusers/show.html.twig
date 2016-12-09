@@ -1,0 +1,53 @@
+ 
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cmsstzefuser</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ cmsStzefUser.name }}</td>
+            </tr>
+            <tr>
+                <th>Usename</th>
+                <td>{{ cmsStzefUser.usename }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ cmsStzefUser.password }}</td>
+            </tr>
+            <tr>
+                <th>Active</th>
+                <td>{{ cmsStzefUser.active }}</td>
+            </tr>
+            <tr>
+                <th>Resgiterdate</th>
+                <td>{{ cmsStzefUser.resgiterDate }}</td>
+            </tr>
+            <tr>
+                <th>Activation</th>
+                <td>{{ cmsStzefUser.activation }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ cmsStzefUser.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled" >
+        <li>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_users_index') }}">Listado</a>
+        </li>
+        <li>
+            <a class="btn btn-info" role="button" href="{{ path('admstzef_users_edit', { 'id': cmsStzefUser.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Borrar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

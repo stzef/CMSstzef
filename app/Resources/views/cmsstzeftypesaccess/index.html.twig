@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cmsstzeftypesaccesses list</h1>
+    <h1>Listado Cmsstzeftypesaccesses</h1>
 
-    <table class="table">
+    <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
                 <th>Name</th>
@@ -14,15 +14,15 @@
         <tbody>
         {% for cmsStzefTypesAccess in cmsStzefTypesAccesses %}
             <tr>
-                <td><a href="{{ path('types_access_show', { 'id': cmsStzefTypesAccess.id }) }}">{{ cmsStzefTypesAccess.name }}</a></td>
+                <td><a href="{{ path('admstzef_types_access_show', { 'id': cmsStzefTypesAccess.id }) }}">{{ cmsStzefTypesAccess.name }}</a></td>
                 <td>{{ cmsStzefTypesAccess.id }}</td>
                 <td>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li>
-                            <a href="{{ path('types_access_show', { 'id': cmsStzefTypesAccess.id }) }}">show</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_types_access_show', { 'id': cmsStzefTypesAccess.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('types_access_edit', { 'id': cmsStzefTypesAccess.id }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_types_access_edit', { 'id': cmsStzefTypesAccess.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>
@@ -31,9 +31,9 @@
         </tbody>
     </table>
 
-    <ul>
+    <ul class="list-unstyled">
         <li>
-            <a href="{{ path('types_access_new') }}" class="btn btn-success">Nuevo</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_types_access_new') }}">Nuevo cmsStzefTypesAccess</a>
         </li>
     </ul>
 {% endblock %}

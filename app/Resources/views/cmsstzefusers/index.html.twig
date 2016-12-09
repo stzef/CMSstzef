@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado Cmsstzefusers</h1>
+
+    <table class="table" id="CMSstzef_list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Usename</th>
+                <th>Password</th>
+                <th>Active</th>
+                <th>Resgiterdate</th>
+                <th>Activation</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefUser in cmsStzefUsers %}
+            <tr>
+                <td><a href="{{ path('admstzef_users_show', { 'id': cmsStzefUser.id }) }}">{{ cmsStzefUser.name }}</a></td>
+                <td>{{ cmsStzefUser.usename }}</td>
+                <td>{{ cmsStzefUser.password }}</td>
+                <td>{{ cmsStzefUser.active }}</td>
+                <td>{{ cmsStzefUser.resgiterDate }}</td>
+                <td>{{ cmsStzefUser.activation }}</td>
+                <td>{{ cmsStzefUser.id }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_users_show', { 'id': cmsStzefUser.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_users_edit', { 'id': cmsStzefUser.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_users_new') }}">Nuevo cmsStzefUser</a>
+        </li>
+    </ul>
+{% endblock %}

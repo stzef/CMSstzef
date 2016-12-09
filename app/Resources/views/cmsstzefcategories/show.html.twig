@@ -1,0 +1,57 @@
+ 
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cmsstzefcategory</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ cmsStzefCategory.name }}</td>
+            </tr>
+            <tr>
+                <th>Alias</th>
+                <td>{{ cmsStzefCategory.alias }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ cmsStzefCategory.description }}</td>
+            </tr>
+            <tr>
+                <th>Categorymajor</th>
+                <td>{{ cmsStzefCategory.categoryMajor }}</td>
+            </tr>
+            <tr>
+                <th>Idtypeaccess</th>
+                <td>{{ cmsStzefCategory.idTypeAccess }}</td>
+            </tr>
+            <tr>
+                <th>Idstatepublication</th>
+                <td>{{ cmsStzefCategory.idStatePublication }}</td>
+            </tr>
+            <tr>
+                <th>Creatoruser</th>
+                <td>{{ cmsStzefCategory.creatorUser }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ cmsStzefCategory.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled" >
+        <li>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_categories_index') }}">Listado</a>
+        </li>
+        <li>
+            <a class="btn btn-info" role="button" href="{{ path('admstzef_categories_edit', { 'id': cmsStzefCategory.id }) }}">Editar</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" class="btn btn-danger" value="Borrar">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefMenus
  *
- * @ORM\Table(name="cms_stzef_menus", indexes={@ORM\Index(name="fk_CMSstzef_menus_type_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_users1_idx", columns={"creator_user"})})
+ * @ORM\Table(name="cms_stzef_menus", indexes={@ORM\Index(name="fk_CMSstzef_menus_type_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_menus_cms_stzef_pages1_idx", columns={"page_id"})})
  * @ORM\Entity
  */
 class CmsStzefMenus
@@ -25,13 +25,6 @@ class CmsStzefMenus
      * @ORM\Column(name="alias", type="string", length=45, nullable=false)
      */
     private $alias;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="link", type="string", length=45, nullable=false)
-     */
-    private $link;
 
     /**
      * @var string
@@ -62,6 +55,16 @@ class CmsStzefMenus
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefPages
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefPages")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="page_id", referencedColumnName="id")
+     * })
+     */
+    private $page;
 
     /**
      * @var \AppBundle\Entity\CmsStzefUsers
@@ -142,29 +145,6 @@ class CmsStzefMenus
     }
 
     /**
-     * Set link
-     *
-     * @param string $link
-     * @return CmsStzefMenus
-     */
-    public function setLink($link)
-    {
-        $this->link = $link;
-
-        return $this;
-    }
-
-    /**
-     * Get link
-     *
-     * @return string 
-     */
-    public function getLink()
-    {
-        return $this->link;
-    }
-
-    /**
      * Set menuMajor
      *
      * @param string $menuMajor
@@ -241,6 +221,29 @@ class CmsStzefMenus
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set page
+     *
+     * @param \AppBundle\Entity\CmsStzefPages $page
+     * @return CmsStzefMenus
+     */
+    public function setPage(\AppBundle\Entity\CmsStzefPages $page = null)
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return \AppBundle\Entity\CmsStzefPages 
+     */
+    public function getPage()
+    {
+        return $this->page;
     }
 
     /**

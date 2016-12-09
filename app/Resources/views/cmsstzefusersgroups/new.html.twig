@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% use 'bootstrap_3_layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <h1>Nuevo Cmsstzefusersgroup</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" class="btn btn-success" value="Crear" />
+    {{ form_end(form) }}
+
+    <ul class="list-unstyled" >
+        <li>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_users_groups_index') }}">Listado</a>
+        </li>
+    </ul>
+{% endblock %}

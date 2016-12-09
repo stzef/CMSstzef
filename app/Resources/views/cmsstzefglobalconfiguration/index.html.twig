@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado Cmsstzefglobalconfigurations</h1>
+
+    <table class="table" id="CMSstzef_list">
+        <thead>
+            <tr>
+                <th>Namesite</th>
+                <th>Offline</th>
+                <th>Messageoffline</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefGlobalConfiguration in cmsStzefGlobalConfigurations %}
+            <tr>
+                <td><a href="{{ path('admstzef_global_configuration_show', { 'id': cmsStzefGlobalConfiguration.id }) }}">{{ cmsStzefGlobalConfiguration.nameSite }}</a></td>
+                <td>{% if cmsStzefGlobalConfiguration.offline %}Yes{% else %}No{% endif %}</td>
+                <td>{{ cmsStzefGlobalConfiguration.messageOffline }}</td>
+                <td>{{ cmsStzefGlobalConfiguration.id }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_global_configuration_show', { 'id': cmsStzefGlobalConfiguration.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_global_configuration_edit', { 'id': cmsStzefGlobalConfiguration.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_global_configuration_new') }}">Nuevo cmsStzefGlobalConfiguration</a>
+        </li>
+    </ul>
+{% endblock %}

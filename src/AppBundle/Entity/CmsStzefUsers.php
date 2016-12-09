@@ -278,4 +278,9 @@ class CmsStzefUsers
     {
         return $this->idUsersGroup;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
