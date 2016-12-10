@@ -6,15 +6,21 @@
       <index name="fk_CMSstzef_menus_CMSstzef_states1_idx" columns="id_state_publication"/>
       <index name="fk_CMSstzef_menus_CMSstzef_users1_idx" columns="creator_user"/>
       <index name="fk_cms_stzef_menus_cms_stzef_pages1_idx" columns="page_id"/>
+      <index name="fk_cms_stzef_menus_cms_stzef_menus1_idx" columns="top_menu"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="title" type="string" column="title" length="45" nullable="false"/>
+    <field name="name" type="string" column="name" length="45" nullable="false"/>
     <field name="alias" type="string" column="alias" length="45" nullable="false"/>
-    <field name="menuMajor" type="string" column="menu_major" length="45" nullable="false"/>
     <field name="orden" type="integer" column="orden" nullable="false"/>
     <field name="target" type="string" column="target" nullable="false"/>
+    <field name="ifMain" type="boolean" column="if_main" nullable="false"/>
+    <many-to-one field="topMenu" target-entity="CmsStzefMenus">
+      <join-columns>
+        <join-column name="top_menu" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="page" target-entity="CmsStzefPages">
       <join-columns>
         <join-column name="page_id" referenced-column-name="id"/>

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefPages
  *
- * @ORM\Table(name="cms_stzef_pages", indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"type_page_id"})})
+ * @ORM\Table(name="cms_stzef_pages", indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"type_page_id"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"})})
  * @ORM\Entity
  */
 class CmsStzefPages
@@ -20,6 +20,20 @@ class CmsStzefPages
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="name_url", type="string", length=45, nullable=false)
+     */
+    private $nameUrl;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="if_main", type="boolean", nullable=false)
+     */
+    private $ifMain;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -27,6 +41,16 @@ class CmsStzefPages
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefUsers
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="creator_user", referencedColumnName="id")
+     * })
+     */
+    private $creatorUser;
 
     /**
      * @var \AppBundle\Entity\CmsStzefTypesPages
@@ -39,6 +63,11 @@ class CmsStzefPages
     private $typePage;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
 
     /**
      * Set name
@@ -64,6 +93,52 @@ class CmsStzefPages
     }
 
     /**
+     * Set nameUrl
+     *
+     * @param string $nameUrl
+     * @return CmsStzefPages
+     */
+    public function setNameUrl($nameUrl)
+    {
+        $this->nameUrl = $nameUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get nameUrl
+     *
+     * @return string 
+     */
+    public function getNameUrl()
+    {
+        return $this->nameUrl;
+    }
+
+    /**
+     * Set ifMain
+     *
+     * @param boolean $ifMain
+     * @return CmsStzefPages
+     */
+    public function setIfMain($ifMain)
+    {
+        $this->ifMain = $ifMain;
+
+        return $this;
+    }
+
+    /**
+     * Get ifMain
+     *
+     * @return boolean 
+     */
+    public function getIfMain()
+    {
+        return $this->ifMain;
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -71,6 +146,29 @@ class CmsStzefPages
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set creatorUser
+     *
+     * @param \AppBundle\Entity\CmsStzefUsers $creatorUser
+     * @return CmsStzefPages
+     */
+    public function setCreatorUser(\AppBundle\Entity\CmsStzefUsers $creatorUser = null)
+    {
+        $this->creatorUser = $creatorUser;
+
+        return $this;
+    }
+
+    /**
+     * Get creatorUser
+     *
+     * @return \AppBundle\Entity\CmsStzefUsers 
+     */
+    public function getCreatorUser()
+    {
+        return $this->creatorUser;
     }
 
     /**
@@ -94,10 +192,5 @@ class CmsStzefPages
     public function getTypePage()
     {
         return $this->typePage;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
     }
 }

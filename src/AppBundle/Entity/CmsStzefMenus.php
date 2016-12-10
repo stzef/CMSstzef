@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefMenus
  *
- * @ORM\Table(name="cms_stzef_menus", indexes={@ORM\Index(name="fk_CMSstzef_menus_type_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_menus_cms_stzef_pages1_idx", columns={"page_id"})})
+ * @ORM\Table(name="cms_stzef_menus", indexes={@ORM\Index(name="fk_CMSstzef_menus_type_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_menus_cms_stzef_pages1_idx", columns={"page_id"}), @ORM\Index(name="fk_cms_stzef_menus_cms_stzef_menus1_idx", columns={"top_menu"})})
  * @ORM\Entity
  */
 class CmsStzefMenus
@@ -15,9 +15,9 @@ class CmsStzefMenus
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=45, nullable=false)
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
-    private $title;
+    private $name;
 
     /**
      * @var string
@@ -25,13 +25,6 @@ class CmsStzefMenus
      * @ORM\Column(name="alias", type="string", length=45, nullable=false)
      */
     private $alias;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="menu_major", type="string", length=45, nullable=false)
-     */
-    private $menuMajor;
 
     /**
      * @var integer
@@ -48,6 +41,13 @@ class CmsStzefMenus
     private $target;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="if_main", type="boolean", nullable=false)
+     */
+    private $ifMain;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -55,6 +55,16 @@ class CmsStzefMenus
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefMenus
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefMenus")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="top_menu", referencedColumnName="id")
+     * })
+     */
+    private $topMenu;
 
     /**
      * @var \AppBundle\Entity\CmsStzefPages
@@ -98,27 +108,32 @@ class CmsStzefMenus
 
 
 
+public function __toString()
+{
+    return $this->name;
+}
+
     /**
-     * Set title
+     * Set name
      *
-     * @param string $title
+     * @param string $name
      * @return CmsStzefMenus
      */
-    public function setTitle($title)
+    public function setName($name)
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get name
      *
      * @return string 
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
+        return $this->name;
     }
 
     /**
@@ -142,29 +157,6 @@ class CmsStzefMenus
     public function getAlias()
     {
         return $this->alias;
-    }
-
-    /**
-     * Set menuMajor
-     *
-     * @param string $menuMajor
-     * @return CmsStzefMenus
-     */
-    public function setMenuMajor($menuMajor)
-    {
-        $this->menuMajor = $menuMajor;
-
-        return $this;
-    }
-
-    /**
-     * Get menuMajor
-     *
-     * @return string 
-     */
-    public function getMenuMajor()
-    {
-        return $this->menuMajor;
     }
 
     /**
@@ -214,6 +206,29 @@ class CmsStzefMenus
     }
 
     /**
+     * Set ifMain
+     *
+     * @param boolean $ifMain
+     * @return CmsStzefMenus
+     */
+    public function setIfMain($ifMain)
+    {
+        $this->ifMain = $ifMain;
+
+        return $this;
+    }
+
+    /**
+     * Get ifMain
+     *
+     * @return boolean 
+     */
+    public function getIfMain()
+    {
+        return $this->ifMain;
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -221,6 +236,29 @@ class CmsStzefMenus
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set topMenu
+     *
+     * @param \AppBundle\Entity\CmsStzefMenus $topMenu
+     * @return CmsStzefMenus
+     */
+    public function setTopMenu(\AppBundle\Entity\CmsStzefMenus $topMenu = null)
+    {
+        $this->topMenu = $topMenu;
+
+        return $this;
+    }
+
+    /**
+     * Get topMenu
+     *
+     * @return \AppBundle\Entity\CmsStzefMenus 
+     */
+    public function getTopMenu()
+    {
+        return $this->topMenu;
     }
 
     /**

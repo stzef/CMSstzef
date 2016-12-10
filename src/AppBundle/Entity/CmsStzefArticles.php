@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefArticles
  *
- * @ORM\Table(name="cms_stzef_articles", indexes={@ORM\Index(name="fk_CMSstzef_articles_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_CMSstzef_articles_CMSstzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_categories1_idx", columns={"id_category"})})
+ * @ORM\Table(name="cms_stzef_articles", indexes={@ORM\Index(name="fk_CMSstzef_articles_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_CMSstzef_articles_CMSstzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_categories1_idx", columns={"id_category"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_states_publication1_idx", columns={"id_state_publication"})})
  * @ORM\Entity
  */
 class CmsStzefArticles
@@ -43,6 +43,16 @@ class CmsStzefArticles
     private $id;
 
     /**
+     * @var \AppBundle\Entity\CmsStzefStatesPublication
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStatesPublication")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_state_publication", referencedColumnName="id")
+     * })
+     */
+    private $idStatePublication;
+
+    /**
      * @var \AppBundle\Entity\CmsStzefCategories
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefCategories")
@@ -73,6 +83,11 @@ class CmsStzefArticles
     private $creatorUser;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
 
     /**
      * Set name
@@ -151,6 +166,29 @@ class CmsStzefArticles
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set idStatePublication
+     *
+     * @param \AppBundle\Entity\CmsStzefStatesPublication $idStatePublication
+     * @return CmsStzefArticles
+     */
+    public function setIdStatePublication(\AppBundle\Entity\CmsStzefStatesPublication $idStatePublication = null)
+    {
+        $this->idStatePublication = $idStatePublication;
+
+        return $this;
+    }
+
+    /**
+     * Get idStatePublication
+     *
+     * @return \AppBundle\Entity\CmsStzefStatesPublication 
+     */
+    public function getIdStatePublication()
+    {
+        return $this->idStatePublication;
     }
 
     /**

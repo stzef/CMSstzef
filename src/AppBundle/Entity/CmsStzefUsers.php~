@@ -84,4 +84,9 @@ class CmsStzefUsers
     private $idUsersGroup;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
 }

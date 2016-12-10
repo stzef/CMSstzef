@@ -29,4 +29,9 @@ class CmsStzefThemes
     private $id;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
 }

@@ -30,6 +30,11 @@ class CmsStzefStates
 
 
 
+public function __toString()
+{
+    return $this->name;
+}
+
     /**
      * Set name
      *

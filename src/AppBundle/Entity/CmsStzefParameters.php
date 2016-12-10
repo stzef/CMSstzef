@@ -15,7 +15,14 @@ class CmsStzefParameters
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     * @ORM\Column(name="type", type="string", length=45, nullable=false)
+     */
+    private $type;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
     private $name;
 
@@ -41,15 +48,43 @@ class CmsStzefParameters
     private $valueInt;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="string", length=5)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return CmsStzefParameters
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
 
     /**
      * Set name
@@ -146,7 +181,7 @@ class CmsStzefParameters
     /**
      * Get id
      *
-     * @return integer 
+     * @return string 
      */
     public function getId()
     {

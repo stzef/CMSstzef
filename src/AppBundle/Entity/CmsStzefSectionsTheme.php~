@@ -42,4 +42,9 @@ class CmsStzefSectionsTheme
     private $idTheme;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
 }

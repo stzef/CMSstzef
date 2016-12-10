@@ -30,6 +30,11 @@ class CmsStzefTypesModules
 
 
 
+public function __toString()
+{
+    return $this->name;
+}
+
     /**
      * Set name
      *

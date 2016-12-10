@@ -6,11 +6,11 @@
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Title</th>
+                <th>Name</th>
                 <th>Alias</th>
-                <th>Menumajor</th>
                 <th>Orden</th>
                 <th>Target</th>
+                <th>Ifmain</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -18,11 +18,11 @@
         <tbody>
         {% for cmsStzefMenu in cmsStzefMenuses %}
             <tr>
-                <td><a href="{{ path('admstzef_menus_show', { 'id': cmsStzefMenu.id }) }}">{{ cmsStzefMenu.title }}</a></td>
+                <td><a href="{{ path('admstzef_menus_show', { 'id': cmsStzefMenu.id }) }}">{{ cmsStzefMenu.name }}</a></td>
                 <td>{{ cmsStzefMenu.alias }}</td>
-                <td>{{ cmsStzefMenu.menuMajor }}</td>
                 <td>{{ cmsStzefMenu.orden }}</td>
                 <td>{{ cmsStzefMenu.target }}</td>
+                <td>{% if cmsStzefMenu.ifMain %}Yes{% else %}No{% endif %}</td>
                 <td>{{ cmsStzefMenu.id }}</td>
                 <td>
                     <ul class="list-unstyled">

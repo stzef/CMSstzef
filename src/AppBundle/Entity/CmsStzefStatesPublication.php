@@ -30,6 +30,11 @@ class CmsStzefStatesPublication
 
 
 
+public function __toString()
+{
+    return $this->name;
+}
+
     /**
      * Set name
      *
@@ -61,10 +66,5 @@ class CmsStzefStatesPublication
     public function getId()
     {
         return $this->id;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
     }
 }

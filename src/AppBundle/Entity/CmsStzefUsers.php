@@ -85,6 +85,11 @@ class CmsStzefUsers
 
 
 
+public function __toString()
+{
+    return $this->name;
+}
+
     /**
      * Set name
      *
@@ -277,10 +282,5 @@ class CmsStzefUsers
     public function getIdUsersGroup()
     {
         return $this->idUsersGroup;
-    }
-
-    public function __toString()
-    {
-        return $this->name;
     }
 }

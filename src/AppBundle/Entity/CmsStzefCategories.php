@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefCategories
  *
- * @ORM\Table(name="cms_stzef_categories", indexes={@ORM\Index(name="fk_CMSstzef_categories_CMSstzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_CMSstzef_categories_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_CMSstzef_categories_CMSstzef_users1_idx", columns={"creator_user"})})
+ * @ORM\Table(name="cms_stzef_categories", indexes={@ORM\Index(name="fk_CMSstzef_categories_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_categories1_idx", columns={"top_category"})})
  * @ORM\Entity
  */
 class CmsStzefCategories
@@ -34,25 +34,11 @@ class CmsStzefCategories
     private $description;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="category_major", type="string", length=45, nullable=false)
-     */
-    private $categoryMajor;
-
-    /**
      * @var integer
      *
-     * @ORM\Column(name="id_type_access", type="integer", nullable=false)
+     * @ORM\Column(name="top_category", type="integer", nullable=true)
      */
-    private $idTypeAccess;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_state_publication", type="integer", nullable=false)
-     */
-    private $idStatePublication;
+    private $topCategory;
 
     /**
      * @var integer
@@ -71,6 +57,11 @@ class CmsStzefCategories
     private $id;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
 
     /**
      * Set name
@@ -142,72 +133,26 @@ class CmsStzefCategories
     }
 
     /**
-     * Set categoryMajor
+     * Set topCategory
      *
-     * @param string $categoryMajor
+     * @param integer $topCategory
      * @return CmsStzefCategories
      */
-    public function setCategoryMajor($categoryMajor)
+    public function setTopCategory($topCategory)
     {
-        $this->categoryMajor = $categoryMajor;
+        $this->topCategory = $topCategory;
 
         return $this;
     }
 
     /**
-     * Get categoryMajor
-     *
-     * @return string 
-     */
-    public function getCategoryMajor()
-    {
-        return $this->categoryMajor;
-    }
-
-    /**
-     * Set idTypeAccess
-     *
-     * @param integer $idTypeAccess
-     * @return CmsStzefCategories
-     */
-    public function setIdTypeAccess($idTypeAccess)
-    {
-        $this->idTypeAccess = $idTypeAccess;
-
-        return $this;
-    }
-
-    /**
-     * Get idTypeAccess
+     * Get topCategory
      *
      * @return integer 
      */
-    public function getIdTypeAccess()
+    public function getTopCategory()
     {
-        return $this->idTypeAccess;
-    }
-
-    /**
-     * Set idStatePublication
-     *
-     * @param integer $idStatePublication
-     * @return CmsStzefCategories
-     */
-    public function setIdStatePublication($idStatePublication)
-    {
-        $this->idStatePublication = $idStatePublication;
-
-        return $this;
-    }
-
-    /**
-     * Get idStatePublication
-     *
-     * @return integer 
-     */
-    public function getIdStatePublication()
-    {
-        return $this->idStatePublication;
+        return $this->topCategory;
     }
 
     /**

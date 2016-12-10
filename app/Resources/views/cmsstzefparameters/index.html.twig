@@ -6,6 +6,7 @@
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
+                <th>Type</th>
                 <th>Name</th>
                 <th>Valuetext</th>
                 <th>Valuebool</th>
@@ -17,7 +18,8 @@
         <tbody>
         {% for cmsStzefParameter in cmsStzefParameters %}
             <tr>
-                <td><a href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">{{ cmsStzefParameter.name }}</a></td>
+                <td><a href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">{{ cmsStzefParameter.type }}</a></td>
+                <td>{{ cmsStzefParameter.name }}</td>
                 <td>{{ cmsStzefParameter.valueText }}</td>
                 <td>{% if cmsStzefParameter.valueBool %}Yes{% else %}No{% endif %}</td>
                 <td>{{ cmsStzefParameter.valueInt }}</td>

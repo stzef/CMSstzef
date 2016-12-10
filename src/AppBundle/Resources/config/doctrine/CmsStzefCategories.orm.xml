@@ -2,9 +2,8 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="AppBundle\Entity\CmsStzefCategories" table="cms_stzef_categories">
     <indexes>
-      <index name="fk_CMSstzef_categories_CMSstzef_types_access1_idx" columns="id_type_access"/>
-      <index name="fk_CMSstzef_categories_CMSstzef_states1_idx" columns="id_state_publication"/>
       <index name="fk_CMSstzef_categories_CMSstzef_users1_idx" columns="creator_user"/>
+      <index name="fk_cms_stzef_categories_cms_stzef_categories1_idx" columns="top_category"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
@@ -12,9 +11,7 @@
     <field name="name" type="string" column="name" length="45" nullable="false"/>
     <field name="alias" type="string" column="alias" length="45" nullable="false"/>
     <field name="description" type="string" column="description" length="200" nullable="false"/>
-    <field name="categoryMajor" type="string" column="category_major" length="45" nullable="false"/>
-    <field name="idTypeAccess" type="integer" column="id_type_access" nullable="false"/>
-    <field name="idStatePublication" type="integer" column="id_state_publication" nullable="false"/>
+    <field name="topCategory" type="integer" column="top_category" nullable="true"/>
     <field name="creatorUser" type="integer" column="creator_user" nullable="false"/>
   </entity>
 </doctrine-mapping>

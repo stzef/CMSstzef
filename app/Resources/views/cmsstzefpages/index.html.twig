@@ -7,6 +7,8 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Nameurl</th>
+                <th>Ifmain</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -15,6 +17,8 @@
         {% for cmsStzefPage in cmsStzefPages %}
             <tr>
                 <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">{{ cmsStzefPage.name }}</a></td>
+                <td>{{ cmsStzefPage.nameUrl }}</td>
+                <td>{% if cmsStzefPage.ifMain %}Yes{% else %}No{% endif %}</td>
                 <td>{{ cmsStzefPage.id }}</td>
                 <td>
                     <ul class="list-unstyled">

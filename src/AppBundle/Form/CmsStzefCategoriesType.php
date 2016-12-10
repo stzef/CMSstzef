@@ -13,7 +13,7 @@ class CmsStzefCategoriesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('alias')->add('description')->add('categoryMajor')->add('idTypeAccess')->add('idStatePublication')->add('creatorUser')        ;
+        $builder->add('name')->add('alias')->add('description')->add('topCategory')->add('creatorUser')        ;
     }
     
     /**

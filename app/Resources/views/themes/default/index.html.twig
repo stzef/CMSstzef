@@ -9,13 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
-
+    <title>{% block title %}@pagina_nombre{% endblock %}</title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('themes/default/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{{ asset('themes/default/css/shop-homepage.css') }}" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -47,16 +47,38 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="#">Inicio</a>
-        </div>
+        </div> 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Habitaciones <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Servicios</a></li>
-            <li><a href="#">Capilla</a></li>
+
+            {% for itemMenu in cmsStzefMenuses %}
+                {% if itemMenu.subMenus|length == 0 %}
+                    <li><a href="{{ path(itemMenu.page.nameUrl) }}">{{ itemMenu.name }}</a></li>
+                {% else %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ itemMenu.name }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            {% for itemSubMenu in itemMenu.subMenus %}
+                                {% if itemSubMenu.subMenus|length == 0 %}
+                                    <li><a href="{{ path(itemSubMenu.page.nameUrl) }}">{{ itemSubMenu.name }}</a></li>
+                                {% else %}
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">{{ itemSubMenu.name }}<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            {% for itemSubMenu2 in itemSubMenu.subMenus %}
+                                                <li><a tabindex="-1" href="{{ path(itemSubMenu2.page.nameUrl) }}">{{ itemSubMenu2.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
           </ul>
-          
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
@@ -96,6 +118,11 @@
                         </div>
                     </div>
 
+                </div>
+
+                <div class="row">
+                    {% block body %}
+                    {% endblock %}
                 </div>
 
                 <div class="row">
@@ -187,6 +214,8 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('themes/default/js/bootstrap.min.js') }}"></script>
 
+    {% block javascripts %}
+    {% endblock %}
 </body>
 
 </html>

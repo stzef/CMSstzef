@@ -9,6 +9,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" href="{{ asset('css/select2/select2.min.css') }}" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -156,50 +157,108 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
+
         <li class="active treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+            <i class="fa fa-dashboard"></i> <span>Articulos</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+            <li class="active"><a href="{{ path('admstzef_articles_index') }}"><i class="fa fa-circle-o"></i> CmsStzefArticles</a></li>
+            <li class="active"><a href="{{ path('admstzef_categories_index') }}"><i class="fa fa-circle-o"></i> CmsStzefCategories</a></li>
           </ul>
         </li>
-
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-share"></i> <span>Multilevel</span>
+            <i class="fa fa-dashboard"></i> <span>Configuracion</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-            <li>
-              <a href="#"><i class="fa fa-circle-o"></i> Level One
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                <li>
-                  <a href="#"><i class="fa fa-circle-o"></i> Level Two
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+            <li class="active"><a href="{{ path('admstzef_parameters_index') }}"><i class="fa fa-circle-o"></i> CmsStzefParameters</a></li>
           </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Menu</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{ path('admstzef_menus_index') }}"><i class="fa fa-circle-o"></i> CmsStzefMenus</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Paginas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{ path('admstzef_pages_index') }}"><i class="fa fa-circle-o"></i> CmsStzefPages</a></li>
+            <li class="active"><a href="{{ path('admstzef_types_pages_index') }}"><i class="fa fa-circle-o"></i> CmsStzefTypesPages</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Temas</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{ path('admstzef_themes_index') }}"><i class="fa fa-circle-o"></i> CmsStzefThemes</a></li>
+            <li class="active"><a href="{{ path('admstzef_sections_index') }}"><i class="fa fa-circle-o"></i> CmsStzefSections</a></li>
+            <li class="active"><a href="{{ path('admstzef_sections_theme_index') }}"><i class="fa fa-circle-o"></i> CmsStzefSectionsTheme</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Generales</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{ path('admstzef_states_index') }}"><i class="fa fa-circle-o"></i> CmsStzefStates</a></li>
+            <li class="active"><a href="{{ path('admstzef_states_publication_index') }}"><i class="fa fa-circle-o"></i> CmsStzefStatesPublication</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Usuarios</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{ path('admstzef_users_index') }}"><i class="fa fa-circle-o"></i> CmsStzefUsers</a></li>
+            <li class="active"><a href="{{ path('admstzef_users_groups_index') }}"><i class="fa fa-circle-o"></i> CmsStzefUsersGroups</a></li>
+            <li class="active"><a href="{{ path('admstzef_types_access_index') }}"><i class="fa fa-circle-o"></i> CmsStzefTypesAccess</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Modulos</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{ path('admstzef_modules_index') }}"><i class="fa fa-circle-o"></i> CmsStzefModules</a></li>
+            <li class="active"><a href="{{ path('admstzef_types_modules_index') }}"><i class="fa fa-circle-o"></i> CmsStzefTypesModules</a></li>
+            <li class="active"><a href="{{ path('admstzef_types_access_index') }}"><i class="fa fa-circle-o"></i> CmsStzefTypesAccess</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="{{path('page_inicio')}}" target="_blank">
+            <i class="fa fa-dashboard"></i> <span>Ver la Pagina</span>
+          </a>
         </li>
       </ul>
     </section>
@@ -216,9 +275,6 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.7
-    </div>
     <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
     reserved.
   </footer>
@@ -435,6 +491,12 @@
 <script src="{{ asset('js/template/app.min.js') }}"></script>
 
 <script src="{{ asset('js/data_table/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("select").select2();
+  });
+</script>
 <script>
 
 

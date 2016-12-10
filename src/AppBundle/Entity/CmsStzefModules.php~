@@ -59,4 +59,9 @@ class CmsStzefModules
     private $idSectionTheme;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
 }

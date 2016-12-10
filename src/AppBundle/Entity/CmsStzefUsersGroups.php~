@@ -39,4 +39,9 @@ class CmsStzefUsersGroups
     private $idState;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
 }

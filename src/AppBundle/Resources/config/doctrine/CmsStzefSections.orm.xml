@@ -5,5 +5,6 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="name" type="string" column="name" length="45" nullable="false"/>
+    <field name="selectorCss" type="string" column="selector_css" length="45" nullable="false"/>
   </entity>
 </doctrine-mapping>

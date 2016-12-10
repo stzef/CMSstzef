@@ -3,11 +3,19 @@
   <entity name="AppBundle\Entity\CmsStzefPages" table="cms_stzef_pages">
     <indexes>
       <index name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx" columns="type_page_id"/>
+      <index name="fk_cms_stzef_pages_cms_stzef_users1_idx" columns="creator_user"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="name" type="string" column="name" length="45" nullable="true"/>
+    <field name="nameUrl" type="string" column="name_url" length="45" nullable="false"/>
+    <field name="ifMain" type="boolean" column="if_main" nullable="false"/>
+    <many-to-one field="creatorUser" target-entity="CmsStzefUsers">
+      <join-columns>
+        <join-column name="creator_user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="typePage" target-entity="CmsStzefTypesPages">
       <join-columns>
         <join-column name="type_page_id" referenced-column-name="id"/>

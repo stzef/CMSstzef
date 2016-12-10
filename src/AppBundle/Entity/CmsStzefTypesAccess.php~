@@ -29,4 +29,9 @@ class CmsStzefTypesAccess
     private $id;
 
 
+
+public function __toString()
+{
+    return $this->name;
+}
 }
