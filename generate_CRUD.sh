@@ -1,3 +1,9 @@
+php app/console doctrine:mapping:import --force AppBundle xml
+php app/console doctrine:mapping:convert annotation ./src --force
+php app/console doctrine:generate:entities AppBundle
+
+
+
 php app/console generate:doctrine:crud --format=annotation --with-write --overwrite --no-interaction --entity=AppBundle:CmsStzefArticles --route-prefix=admstzef/articles
 php app/console generate:doctrine:crud --format=annotation --with-write --overwrite --no-interaction --entity=AppBundle:CmsStzefCategories --route-prefix=admstzef/categories
 php app/console generate:doctrine:crud --format=annotation --with-write --overwrite --no-interaction --entity=AppBundle:CmsStzefParameters --route-prefix=admstzef/parameters

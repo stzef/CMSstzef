@@ -5,7 +5,7 @@
       <index name="fk_CMSstzef_menus_type_access1_idx" columns="id_type_access"/>
       <index name="fk_CMSstzef_menus_CMSstzef_states1_idx" columns="id_state_publication"/>
       <index name="fk_CMSstzef_menus_CMSstzef_users1_idx" columns="creator_user"/>
-      <index name="fk_cms_stzef_menus_cms_stzef_pages1_idx" columns="page_id"/>
+      <index name="fk_cms_stzef_menus_cms_stzef_pages1_idx" columns="page"/>
       <index name="fk_cms_stzef_menus_cms_stzef_menus1_idx" columns="top_menu"/>
     </indexes>
     <id name="id" type="integer" column="id">
@@ -23,7 +23,7 @@
     </many-to-one>
     <many-to-one field="page" target-entity="CmsStzefPages">
       <join-columns>
-        <join-column name="page_id" referenced-column-name="id"/>
+        <join-column name="page" referenced-column-name="slug"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="creatorUser" target-entity="CmsStzefUsers">

@@ -8,6 +8,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+        /**
+     * @Route("/", name="homepage_admin")
+     */
+    public function indexAdminAction(Request $request)
+    {
+        $cmsStzefMenuses = $this->getMenu();
+        $page_id = $request->get("page_id");
+        dump($page_id);
+
+        return $this->render("pages/inicio.html.twig", array(
+            "cmsStzefMenuses" => $cmsStzefMenuses
+            ));
+    }
     /**
      * @Route("/admstzef", name="homepage")
      */

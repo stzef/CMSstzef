@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefPages
  *
- * @ORM\Table(name="cms_stzef_pages", indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"type_page_id"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"})})
+ * @ORM\Table(name="cms_stzef_pages", indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"type_page_id"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_categories1_idx", columns={"category_to_show"})})
  * @ORM\Entity
  */
 class CmsStzefPages
@@ -20,13 +20,6 @@ class CmsStzefPages
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name_url", type="string", length=45, nullable=false)
-     */
-    private $nameUrl;
-
-    /**
      * @var boolean
      *
      * @ORM\Column(name="if_main", type="boolean", nullable=false)
@@ -34,13 +27,23 @@ class CmsStzefPages
     private $ifMain;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="slug", type="string", length=50)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    private $slug;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefCategories
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefCategories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_to_show", referencedColumnName="id")
+     * })
+     */
+    private $categoryToShow;
 
     /**
      * @var \AppBundle\Entity\CmsStzefUsers
@@ -93,29 +96,6 @@ public function __toString()
     }
 
     /**
-     * Set nameUrl
-     *
-     * @param string $nameUrl
-     * @return CmsStzefPages
-     */
-    public function setNameUrl($nameUrl)
-    {
-        $this->nameUrl = $nameUrl;
-
-        return $this;
-    }
-
-    /**
-     * Get nameUrl
-     *
-     * @return string 
-     */
-    public function getNameUrl()
-    {
-        return $this->nameUrl;
-    }
-
-    /**
      * Set ifMain
      *
      * @param boolean $ifMain
@@ -139,13 +119,36 @@ public function __toString()
     }
 
     /**
-     * Get id
+     * Get slug
      *
-     * @return integer 
+     * @return string 
      */
-    public function getId()
+    public function getSlug()
     {
-        return $this->id;
+        return $this->slug;
+    }
+
+    /**
+     * Set categoryToShow
+     *
+     * @param \AppBundle\Entity\CmsStzefCategories $categoryToShow
+     * @return CmsStzefPages
+     */
+    public function setCategoryToShow(\AppBundle\Entity\CmsStzefCategories $categoryToShow = null)
+    {
+        $this->categoryToShow = $categoryToShow;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryToShow
+     *
+     * @return \AppBundle\Entity\CmsStzefCategories 
+     */
+    public function getCategoryToShow()
+    {
+        return $this->categoryToShow;
     }
 
     /**

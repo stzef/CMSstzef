@@ -36,25 +36,31 @@ class CmsStzefCategories
     /**
      * @var integer
      *
-     * @ORM\Column(name="top_category", type="integer", nullable=true)
-     */
-    private $topCategory;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="creator_user", type="integer", nullable=false)
-     */
-    private $creatorUser;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefCategories
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefCategories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="top_category", referencedColumnName="id")
+     * })
+     */
+    private $topCategory;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefUsers
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="creator_user", referencedColumnName="id")
+     * })
+     */
+    private $creatorUser;
 
 
 

@@ -36,25 +36,31 @@ class CmsStzefCategories
     /**
      * @var integer
      *
-     * @ORM\Column(name="top_category", type="integer", nullable=true)
-     */
-    private $topCategory;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="creator_user", type="integer", nullable=false)
-     */
-    private $creatorUser;
-
-    /**
-     * @var integer
-     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefCategories
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefCategories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="top_category", referencedColumnName="id")
+     * })
+     */
+    private $topCategory;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefUsers
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="creator_user", referencedColumnName="id")
+     * })
+     */
+    private $creatorUser;
 
 
 
@@ -133,12 +139,22 @@ public function __toString()
     }
 
     /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * Set topCategory
      *
-     * @param integer $topCategory
+     * @param \AppBundle\Entity\CmsStzefCategories $topCategory
      * @return CmsStzefCategories
      */
-    public function setTopCategory($topCategory)
+    public function setTopCategory(\AppBundle\Entity\CmsStzefCategories $topCategory = null)
     {
         $this->topCategory = $topCategory;
 
@@ -148,7 +164,7 @@ public function __toString()
     /**
      * Get topCategory
      *
-     * @return integer 
+     * @return \AppBundle\Entity\CmsStzefCategories 
      */
     public function getTopCategory()
     {
@@ -158,10 +174,10 @@ public function __toString()
     /**
      * Set creatorUser
      *
-     * @param integer $creatorUser
+     * @param \AppBundle\Entity\CmsStzefUsers $creatorUser
      * @return CmsStzefCategories
      */
-    public function setCreatorUser($creatorUser)
+    public function setCreatorUser(\AppBundle\Entity\CmsStzefUsers $creatorUser = null)
     {
         $this->creatorUser = $creatorUser;
 
@@ -171,20 +187,10 @@ public function __toString()
     /**
      * Get creatorUser
      *
-     * @return integer 
+     * @return \AppBundle\Entity\CmsStzefUsers 
      */
     public function getCreatorUser()
     {
         return $this->creatorUser;
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 }
