@@ -8,6 +8,22 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
+        public function getMenu(){
+        $em = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefMenus");
+
+        $cmsStzefMenuses = $repository->findByIfMain("1");
+
+        foreach ($cmsStzefMenuses as $cmsStzefMenu) {
+            $subMenus = $repository->findByTopMenu($cmsStzefMenu->getid());
+            $cmsStzefMenu->subMenus = $subMenus;
+            foreach ($subMenus as $subMenu) {
+                $subMenus = $repository->findByTopMenu($subMenu->getid());
+                $subMenu->subMenus = $subMenus;
+            }
+        }
+        return $cmsStzefMenuses;
+    }
         /**
      * @Route("/", name="homepage_admin")
      */

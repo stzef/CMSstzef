@@ -20,6 +20,13 @@ class CmsStzefModules
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="content_html", type="text", length=65535, nullable=true)
+     */
+    private $contentHtml;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -86,6 +93,29 @@ public function __toString()
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set contentHtml
+     *
+     * @param string $contentHtml
+     * @return CmsStzefModules
+     */
+    public function setContentHtml($contentHtml)
+    {
+        $this->contentHtml = $contentHtml;
+
+        return $this;
+    }
+
+    /**
+     * Get contentHtml
+     *
+     * @return string 
+     */
+    public function getContentHtml()
+    {
+        return $this->contentHtml;
     }
 
     /**

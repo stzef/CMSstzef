@@ -13,7 +13,7 @@ class CmsStzefModulesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('idStatePublication')->add('idTypeModule')->add('idSectionTheme')        ;
+        $builder->add('name')->add('contentHtml')->add('idStatePublication')->add('idTypeModule')->add('idSectionTheme')        ;
     }
     
     /**

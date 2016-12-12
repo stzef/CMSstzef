@@ -187,4 +187,16 @@ public function __toString()
     {
         return $this->id;
     }
+
+    public function getValue()
+    {
+        if($this->type == "TEXT"){
+            return $this->valueText;
+        }else if ($this->type == "BOOL") {
+            return $this->valueBool;
+        }else if ($this->type == "INT") {
+            return $this->valueInt;
+        }
+        return null;
+    }
 }

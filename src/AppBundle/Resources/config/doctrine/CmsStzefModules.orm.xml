@@ -10,6 +10,7 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="name" type="string" column="name" length="45" nullable="false"/>
+    <field name="contentHtml" type="text" column="content_html" length="65535" nullable="true"/>
     <many-to-one field="idStatePublication" target-entity="CmsStzefStatesPublication">
       <join-columns>
         <join-column name="id_state_publication" referenced-column-name="id"/>

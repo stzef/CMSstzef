@@ -7,6 +7,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Contenthtml</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -15,6 +16,7 @@
         {% for cmsStzefModule in cmsStzefModules %}
             <tr>
                 <td><a href="{{ path('admstzef_modules_show', { 'id': cmsStzefModule.id }) }}">{{ cmsStzefModule.name }}</a></td>
+                <td>{{ cmsStzefModule.contentHtml }}</td>
                 <td>{{ cmsStzefModule.id }}</td>
                 <td>
                     <ul class="list-unstyled">

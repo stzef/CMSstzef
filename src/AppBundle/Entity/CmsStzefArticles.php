@@ -34,6 +34,20 @@ class CmsStzefArticles
     private $contentHtml;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="image_main", type="string", length=45, nullable=true)
+     */
+    private $imageMain;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation", type="datetime", nullable=false)
+     */
+    private $dateCreation;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -156,6 +170,52 @@ public function __toString()
     public function getContentHtml()
     {
         return $this->contentHtml;
+    }
+
+    /**
+     * Set imageMain
+     *
+     * @param string $imageMain
+     * @return CmsStzefArticles
+     */
+    public function setImageMain($imageMain)
+    {
+        $this->imageMain = $imageMain;
+
+        return $this;
+    }
+
+    /**
+     * Get imageMain
+     *
+     * @return string 
+     */
+    public function getImageMain()
+    {
+        return $this->imageMain;
+    }
+
+    /**
+     * Set dateCreation
+     *
+     * @param \DateTime $dateCreation
+     * @return CmsStzefArticles
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreation
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
     }
 
     /**

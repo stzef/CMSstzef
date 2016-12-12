@@ -9,6 +9,8 @@
                 <th>Name</th>
                 <th>Description</th>
                 <th>Contenthtml</th>
+                <th>Imagemain</th>
+                <th>Datecreation</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -19,6 +21,8 @@
                 <td><a href="{{ path('admstzef_articles_show', { 'id': cmsStzefArticle.id }) }}">{{ cmsStzefArticle.name }}</a></td>
                 <td>{{ cmsStzefArticle.description }}</td>
                 <td>{{ cmsStzefArticle.contentHtml }}</td>
+                <td>{{ cmsStzefArticle.imageMain }}</td>
+                <td>{% if cmsStzefArticle.dateCreation %}{{ cmsStzefArticle.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ cmsStzefArticle.id }}</td>
                 <td>
                     <ul class="list-unstyled">

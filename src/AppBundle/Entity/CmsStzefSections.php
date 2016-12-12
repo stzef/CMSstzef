@@ -20,13 +20,6 @@ class CmsStzefSections
     private $name;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="selector_css", type="string", length=45, nullable=false)
-     */
-    private $selectorCss;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -63,29 +56,6 @@ public function __toString()
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set selectorCss
-     *
-     * @param string $selectorCss
-     * @return CmsStzefSections
-     */
-    public function setSelectorCss($selectorCss)
-    {
-        $this->selectorCss = $selectorCss;
-
-        return $this;
-    }
-
-    /**
-     * Get selectorCss
-     *
-     * @return string 
-     */
-    public function getSelectorCss()
-    {
-        return $this->selectorCss;
     }
 
     /**

@@ -13,7 +13,7 @@ class CmsStzefSectionsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('selectorCss')        ;
+        $builder->add('name')        ;
     }
     
     /**

@@ -13,6 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class CmsStzefSectionsTheme
 {
     /**
+     * @var string
+     *
+     * @ORM\Column(name="selector_css", type="string", length=45, nullable=false)
+     */
+    private $selectorCss;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -47,6 +54,29 @@ public function __toString()
 {
     return $this->name;
 }
+
+    /**
+     * Set selectorCss
+     *
+     * @param string $selectorCss
+     * @return CmsStzefSectionsTheme
+     */
+    public function setSelectorCss($selectorCss)
+    {
+        $this->selectorCss = $selectorCss;
+
+        return $this;
+    }
+
+    /**
+     * Get selectorCss
+     *
+     * @return string 
+     */
+    public function getSelectorCss()
+    {
+        return $this->selectorCss;
+    }
 
     /**
      * Get id
