@@ -559,6 +559,19 @@ $(document).ready(function() {
     ]
    });
 </script>
+<script type="text/javascript">
+  function clear_string(string){
+      return string
+          .toLowerCase()
+          .replace(/ /g,'-')
+          .replace(/[^\w-]+/g,'')
+  }
+  $("input[id*=_slug]").prop("disabled",true)
+    $("input[id*=_name]").change(function (event) {
+        $("input[id*=_alias]").val(clear_string($(this).val()) )
+        $("input[id*=_slug]").val(clear_string($(this).val()) )
+    })
+</script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

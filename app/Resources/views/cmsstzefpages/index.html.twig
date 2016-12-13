@@ -6,25 +6,27 @@
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
+                <th>Slug</th>
                 <th>Name</th>
                 <th>Ifmain</th>
-                <th>Slug</th>
+                <th>Id</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for cmsStzefPage in cmsStzefPages %}
             <tr>
-                <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.slug }) }}">{{ cmsStzefPage.name }}</a></td>
+                <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">{{ cmsStzefPage.slug }}</a></td>
+                <td>{{ cmsStzefPage.name }}</td>
                 <td>{% if cmsStzefPage.ifMain %}Yes{% else %}No{% endif %}</td>
-                <td>{{ cmsStzefPage.slug }}</td>
+                <td>{{ cmsStzefPage.id }}</td>
                 <td>
                     <ul class="list-unstyled">
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.slug }) }}">show</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">show</a>
                         </li>
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_edit', { 'id': cmsStzefPage.slug }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_edit', { 'id': cmsStzefPage.id }) }}">edit</a>
                         </li>
                     </ul>
                 </td>

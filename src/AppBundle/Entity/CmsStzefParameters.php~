@@ -20,6 +20,20 @@ class CmsStzefParameters
     private $cparam;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="cgroup", type="integer", nullable=true)
+     */
+    private $cgroup;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ngroup", type="string", length=45, nullable=true)
+     */
+    private $ngroup;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=45, nullable=false)

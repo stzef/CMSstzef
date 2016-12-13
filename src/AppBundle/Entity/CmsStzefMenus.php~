@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefMenus
  *
- * @ORM\Table(name="cms_stzef_menus", indexes={@ORM\Index(name="fk_CMSstzef_menus_type_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_menus_cms_stzef_pages1_idx", columns={"page"}), @ORM\Index(name="fk_cms_stzef_menus_cms_stzef_menus1_idx", columns={"top_menu"})})
+ * @ORM\Table(name="cms_stzef_menus", indexes={@ORM\Index(name="fk_CMSstzef_menus_type_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_CMSstzef_menus_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_menus_cms_stzef_menus1_idx", columns={"top_menu"}), @ORM\Index(name="fk_cms_stzef_menus_cms_stzef_pages1_idx", columns={"page"})})
  * @ORM\Entity
  */
 class CmsStzefMenus
@@ -61,7 +61,7 @@ class CmsStzefMenus
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefPages")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="page", referencedColumnName="slug")
+     *   @ORM\JoinColumn(name="page", referencedColumnName="id")
      * })
      */
     private $page;

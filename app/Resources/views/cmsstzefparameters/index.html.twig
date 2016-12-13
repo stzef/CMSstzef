@@ -7,6 +7,8 @@
         <thead>
             <tr>
                 <th>Cparam</th>
+                <th>Cgroup</th>
+                <th>Ngroup</th>
                 <th>Type</th>
                 <th>Name</th>
                 <th>Valuetext</th>
@@ -20,6 +22,8 @@
         {% for cmsStzefParameter in cmsStzefParameters %}
             <tr>
                 <td><a href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">{{ cmsStzefParameter.cparam }}</a></td>
+                <td>{{ cmsStzefParameter.cgroup }}</td>
+                <td>{{ cmsStzefParameter.ngroup }}</td>
                 <td>{{ cmsStzefParameter.type }}</td>
                 <td>{{ cmsStzefParameter.name }}</td>
                 <td>{{ cmsStzefParameter.valueText }}</td>

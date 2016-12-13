@@ -7,6 +7,10 @@
     <table class="table">
         <tbody>
             <tr>
+                <th>Slug</th>
+                <td>{{ cmsStzefPage.slug }}</td>
+            </tr>
+            <tr>
                 <th>Name</th>
                 <td>{{ cmsStzefPage.name }}</td>
             </tr>
@@ -15,8 +19,8 @@
                 <td>{% if cmsStzefPage.ifMain %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
-                <th>Slug</th>
-                <td>{{ cmsStzefPage.slug }}</td>
+                <th>Id</th>
+                <td>{{ cmsStzefPage.id }}</td>
             </tr>
         </tbody>
     </table>
@@ -26,7 +30,7 @@
             <a class="btn btn-primary" role="button" href="{{ path('admstzef_pages_index') }}">Listado</a>
         </li>
         <li>
-            <a class="btn btn-info" role="button" href="{{ path('admstzef_pages_edit', { 'id': cmsStzefPage.slug }) }}">Editar</a>
+            <a class="btn btn-info" role="button" href="{{ path('admstzef_pages_edit', { 'id': cmsStzefPage.id }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

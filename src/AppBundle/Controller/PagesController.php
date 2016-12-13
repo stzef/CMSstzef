@@ -19,6 +19,9 @@ class PagesController extends Controller
     }
 
     public function getSectionsTheme(){
+        $twig = new \Twig_Environment(new \Twig_Loader_String());
+
+
         $em = $this->getDoctrine()->getManager();
         $repositorySectionsTheme = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefSectionsTheme");
         $repositoryModules = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefModules");
@@ -28,8 +31,16 @@ class PagesController extends Controller
         foreach ($sectionsTheme as $sectionTheme) {
             $sectionTheme->modulos = $repositoryModules->findByIdSectionTheme($sectionTheme->getIdSectionTheme());
         }
-        dump($sectionsTheme);
 
+        $data = array();
+        $data["parameters"] = $this->getParameters(); 
+        dump($data["parameters"]);
+        foreach ($sectionsTheme as $sectionTheme) {
+            foreach ($sectionTheme->modulos as $modulo) {
+                $modulo->renderContentHtml = $twig->render($modulo->getContentHtml(),$data);
+                dump($modulo->renderContentHtml);
+            }
+        }
         return $sectionsTheme;
     }
 
@@ -58,7 +69,16 @@ class PagesController extends Controller
         $parameters = array();
 
         foreach ($odb_parameters as $odb_parameter) {
-            $parameters[$odb_parameter->getCparam()] = $odb_parameter->getValue();
+            if( $odb_parameter->getCgroup() ){
+                if( !array_key_exists ( $odb_parameter->getNgroup() , $parameters ) ){
+                    $parameters[$odb_parameter->getNgroup()] = array();
+                }
+
+                array_push($parameters[$odb_parameter->getNgroup()], $odb_parameter->getValue());
+                    
+            }else{
+                $parameters[$odb_parameter->getCparam()] = $odb_parameter->getValue();
+            }
         }
         return (object)$parameters;
     }
@@ -76,11 +96,14 @@ class PagesController extends Controller
         $cmsStzefMenuses = $this->getMenu();
         $parameters = $this->getParameters();
         $theme = $this->getTheme();
+        $sectionsTheme = $this->getSectionsTheme();
+        
 
         return $this->render("themes/" . $theme->getSlug() . "/index.html.twig", array(
             "cmsStzefMenuses" => $cmsStzefMenuses,
             "parameters" => $parameters,
             "theme" => $theme,
+            "sectionsTheme" => $sectionsTheme,
             ));
     }
 
@@ -91,6 +114,7 @@ class PagesController extends Controller
     {
         $cmsStzefMenuses = $this->getMenu();
         $parameters = $this->getParameters();
+        $sectionsTheme = $this->getSectionsTheme();
 
         $em = $this->getDoctrine()->getManager();
         $repositoryArticles = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefArticles");
@@ -109,6 +133,7 @@ class PagesController extends Controller
             "cmsStzefMenuses" => $cmsStzefMenuses,
             "current_article" => $current_article,
             "parameters" => $parameters,
+            "sectionsTheme" => $sectionsTheme,
             "theme" => $theme,
         ));
     }
@@ -125,6 +150,7 @@ class PagesController extends Controller
         $parameters = $this->getParameters();
         $theme = $this->getTheme();
 
+        dump($parameters);
 
         $em = $this->getDoctrine()->getManager();
         $repositoryPages = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefPages");

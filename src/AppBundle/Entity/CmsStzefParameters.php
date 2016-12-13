@@ -20,6 +20,20 @@ class CmsStzefParameters
     private $cparam;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="cgroup", type="integer", nullable=true)
+     */
+    private $cgroup;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ngroup", type="string", length=45, nullable=true)
+     */
+    private $ngroup;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=45, nullable=false)
@@ -91,6 +105,52 @@ public function __toString()
     public function getCparam()
     {
         return $this->cparam;
+    }
+
+    /**
+     * Set cgroup
+     *
+     * @param integer $cgroup
+     * @return CmsStzefParameters
+     */
+    public function setCgroup($cgroup)
+    {
+        $this->cgroup = $cgroup;
+
+        return $this;
+    }
+
+    /**
+     * Get cgroup
+     *
+     * @return integer 
+     */
+    public function getCgroup()
+    {
+        return $this->cgroup;
+    }
+
+    /**
+     * Set ngroup
+     *
+     * @param string $ngroup
+     * @return CmsStzefParameters
+     */
+    public function setNgroup($ngroup)
+    {
+        $this->ngroup = $ngroup;
+
+        return $this;
+    }
+
+    /**
+     * Get ngroup
+     *
+     * @return string 
+     */
+    public function getNgroup()
+    {
+        return $this->ngroup;
     }
 
     /**
@@ -226,6 +286,9 @@ public function __toString()
             return $this->valueBool;
         }else if ($this->type == "INT") {
             return $this->valueInt;
+        }else if ($this->type == "JSON") {
+            dump(json_decode($this->valueText));
+            return json_decode($this->valueText);
         }
         return null;
     }

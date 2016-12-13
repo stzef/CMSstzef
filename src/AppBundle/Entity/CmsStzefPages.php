@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefPages
  *
- * @ORM\Table(name="cms_stzef_pages", indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"type_page_id"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_categories1_idx", columns={"category_to_show"})})
+ * @ORM\Table(name="cms_stzef_pages", uniqueConstraints={@ORM\UniqueConstraint(name="slug_UNIQUE", columns={"slug"})}, indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"type_page_id"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_categories1_idx", columns={"category_to_show"})})
  * @ORM\Entity
  */
 class CmsStzefPages
@@ -15,7 +15,14 @@ class CmsStzefPages
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     * @ORM\Column(name="slug", type="string", length=50, nullable=false)
+     */
+    private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
     private $name;
 
@@ -27,13 +34,13 @@ class CmsStzefPages
     private $ifMain;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="slug", type="string", length=50)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $slug;
+    private $id;
 
     /**
      * @var \AppBundle\Entity\CmsStzefUsers
@@ -71,6 +78,29 @@ public function __toString()
 {
     return $this->name;
 }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return CmsStzefPages
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 
     /**
      * Set name
@@ -119,13 +149,13 @@ public function __toString()
     }
 
     /**
-     * Get slug
+     * Get id
      *
-     * @return string 
+     * @return integer 
      */
-    public function getSlug()
+    public function getId()
     {
-        return $this->slug;
+        return $this->id;
     }
 
     /**
