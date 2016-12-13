@@ -3,6 +3,9 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * CmsStzefUsers
@@ -10,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cms_stzef_users", indexes={@ORM\Index(name="fk_CMSstzef_users_CMSstzef_users_groups1_idx", columns={"id_users_group"}), @ORM\Index(name="fk_CMSstzef_users_CMSstzef_states1_idx", columns={"id_state"})})
  * @ORM\Entity
  */
-class CmsStzefUsers
+class CmsStzefUsers implements UserInterface
 {
     /**
      * @var string
@@ -22,9 +25,16 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="usename", type="string", length=45, nullable=false)
+     * @ORM\Column(name="username", type="string", length=45, nullable=false)
      */
-    private $usename;
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=45, nullable=true)
+     */
+    private $email;
 
     /**
      * @var string
@@ -36,9 +46,16 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="active", type="string", length=45, nullable=false)
+     * @ORM\Column(name="plainPassword", type="string", length=45, nullable=true)
      */
-    private $active;
+    private $plainpassword;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isActive", type="string", length=45, nullable=false)
+     */
+    private $isactive;
 
     /**
      * @var string
@@ -114,26 +131,49 @@ public function __toString()
     }
 
     /**
-     * Set usename
+     * Set username
      *
-     * @param string $usename
+     * @param string $username
      * @return CmsStzefUsers
      */
-    public function setUsename($usename)
+    public function setUsername($username)
     {
-        $this->usename = $usename;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get usename
+     * Get username
      *
      * @return string 
      */
-    public function getUsename()
+    public function getUsername()
     {
-        return $this->usename;
+        return $this->username;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return CmsStzefUsers
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
@@ -160,26 +200,49 @@ public function __toString()
     }
 
     /**
-     * Set active
+     * Set plainpassword
      *
-     * @param string $active
+     * @param string $plainpassword
      * @return CmsStzefUsers
      */
-    public function setActive($active)
+    public function setPlainpassword($plainpassword)
     {
-        $this->active = $active;
+        $this->plainpassword = $plainpassword;
 
         return $this;
     }
 
     /**
-     * Get active
+     * Get plainpassword
      *
      * @return string 
      */
-    public function getActive()
+    public function getPlainpassword()
     {
-        return $this->active;
+        return $this->plainpassword;
+    }
+
+    /**
+     * Set isactive
+     *
+     * @param string $isactive
+     * @return CmsStzefUsers
+     */
+    public function setIsactive($isactive)
+    {
+        $this->isactive = $isactive;
+
+        return $this;
+    }
+
+    /**
+     * Get isactive
+     *
+     * @return string 
+     */
+    public function getIsactive()
+    {
+        return $this->isactive;
     }
 
     /**
@@ -282,5 +345,52 @@ public function __toString()
     public function getIdState()
     {
         return $this->idState;
+    }
+
+
+    public function __construct()
+    {
+        $this->isActive = true;
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid(null, true));
+    }
+    public function getSalt()
+    {
+        // The bcrypt algorithm doesn't require a separate salt.
+        // You *may* need a real salt if you choose a different encoder.
+        return null;
+    }
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
     }
 }

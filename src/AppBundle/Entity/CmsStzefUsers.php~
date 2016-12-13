@@ -22,9 +22,16 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="usename", type="string", length=45, nullable=false)
+     * @ORM\Column(name="username", type="string", length=45, nullable=false)
      */
-    private $usename;
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=45, nullable=true)
+     */
+    private $email;
 
     /**
      * @var string
@@ -36,9 +43,16 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="active", type="string", length=45, nullable=false)
+     * @ORM\Column(name="plainPassword", type="string", length=45, nullable=true)
      */
-    private $active;
+    private $plainpassword;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="isActive", type="string", length=45, nullable=false)
+     */
+    private $isactive;
 
     /**
      * @var string
