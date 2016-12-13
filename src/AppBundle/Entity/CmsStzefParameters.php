@@ -7,11 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefParameters
  *
- * @ORM\Table(name="cms_stzef_parameters")
+ * @ORM\Table(name="cms_stzef_parameters", uniqueConstraints={@ORM\UniqueConstraint(name="cparam_UNIQUE", columns={"cparam"})})
  * @ORM\Entity
  */
 class CmsStzefParameters
 {
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cparam", type="string", length=20, nullable=false)
+     */
+    private $cparam;
+
     /**
      * @var string
      *
@@ -62,6 +69,29 @@ public function __toString()
 {
     return $this->name;
 }
+
+    /**
+     * Set cparam
+     *
+     * @param string $cparam
+     * @return CmsStzefParameters
+     */
+    public function setCparam($cparam)
+    {
+        $this->cparam = $cparam;
+
+        return $this;
+    }
+
+    /**
+     * Get cparam
+     *
+     * @return string 
+     */
+    public function getCparam()
+    {
+        return $this->cparam;
+    }
 
     /**
      * Set type

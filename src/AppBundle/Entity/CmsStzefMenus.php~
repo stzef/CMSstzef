@@ -57,6 +57,16 @@ class CmsStzefMenus
     private $id;
 
     /**
+     * @var \AppBundle\Entity\CmsStzefPages
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefPages")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="page", referencedColumnName="slug")
+     * })
+     */
+    private $page;
+
+    /**
      * @var \AppBundle\Entity\CmsStzefMenus
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefMenus")
@@ -67,14 +77,14 @@ class CmsStzefMenus
     private $topMenu;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefPages
+     * @var \AppBundle\Entity\CmsStzefTypesAccess
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefPages")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="page", referencedColumnName="slug")
+     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
      * })
      */
-    private $page;
+    private $idTypeAccess;
 
     /**
      * @var \AppBundle\Entity\CmsStzefUsers
@@ -95,16 +105,6 @@ class CmsStzefMenus
      * })
      */
     private $idStatePublication;
-
-    /**
-     * @var \AppBundle\Entity\CmsStzefTypesAccess
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
-     * })
-     */
-    private $idTypeAccess;
 
 
 

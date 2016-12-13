@@ -7,11 +7,18 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefParameters
  *
- * @ORM\Table(name="cms_stzef_parameters")
+ * @ORM\Table(name="cms_stzef_parameters", uniqueConstraints={@ORM\UniqueConstraint(name="cparam_UNIQUE", columns={"cparam"})})
  * @ORM\Entity
  */
 class CmsStzefParameters
 {
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cparam", type="string", length=20, nullable=false)
+     */
+    private $cparam;
+
     /**
      * @var string
      *

@@ -13,7 +13,7 @@ class CmsStzefSectionsThemeType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('selectorCss')->add('idSectionTheme')->add('idTheme')        ;
+        $builder->add('selectorCss')->add('idTheme')->add('idSectionTheme')        ;
     }
     
     /**

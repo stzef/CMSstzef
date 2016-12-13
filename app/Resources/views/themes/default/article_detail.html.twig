@@ -1,14 +1,14 @@
-{% extends 'themes/default/index.html.twig' %}
+{% extends 'themes/'~ theme.slug ~'/template.html.twig' %}
 
-{% block title %} - - {% endblock %}
+{% block title %} Articulo - {{ current_article.name }}{% endblock %}
 {% block stylesheets %}{% endblock %}
 
 {% block body %}
 
-<div class="row">
+<div class="row panel panel-default">
 
             <!-- Blog Post Content Column -->
-            <div class="col-lg-8">
+            <div class="col-lg-12">
 
                 <!-- Blog Post -->
 
@@ -23,12 +23,12 @@
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posteado en August 24, 2013 at 9:00 PM</p>
 
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                <img class="img-responsive" src="{{ current_article.imageMain }}" alt="">
 
                 <hr>
 

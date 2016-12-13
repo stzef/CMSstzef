@@ -20,6 +20,13 @@ class CmsStzefThemes
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=45, nullable=false)
+     */
+    private $slug;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")

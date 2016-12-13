@@ -36,16 +36,6 @@ class CmsStzefModules
     private $id;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefStatesPublication
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStatesPublication")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_state_publication", referencedColumnName="id")
-     * })
-     */
-    private $idStatePublication;
-
-    /**
      * @var \AppBundle\Entity\CmsStzefTypesModules
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesModules")
@@ -54,6 +44,16 @@ class CmsStzefModules
      * })
      */
     private $idTypeModule;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefStatesPublication
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStatesPublication")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_state_publication", referencedColumnName="id")
+     * })
+     */
+    private $idStatePublication;
 
     /**
      * @var \AppBundle\Entity\CmsStzefSections

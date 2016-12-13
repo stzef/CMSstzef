@@ -9,14 +9,14 @@
       <generator strategy="IDENTITY"/>
     </id>
     <field name="selectorCss" type="string" column="selector_css" length="45" nullable="false"/>
-    <many-to-one field="idSectionTheme" target-entity="CmsStzefSections">
-      <join-columns>
-        <join-column name="id_section_theme" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idTheme" target-entity="CmsStzefThemes">
       <join-columns>
         <join-column name="id_theme" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idSectionTheme" target-entity="CmsStzefSections">
+      <join-columns>
+        <join-column name="id_section_theme" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

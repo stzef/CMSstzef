@@ -77,16 +77,6 @@ class CmsStzefArticles
     private $idCategory;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefTypesAccess
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
-     * })
-     */
-    private $idTypeAccess;
-
-    /**
      * @var \AppBundle\Entity\CmsStzefUsers
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
@@ -95,6 +85,16 @@ class CmsStzefArticles
      * })
      */
     private $creatorUser;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefTypesAccess
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
+     * })
+     */
+    private $idTypeAccess;
 
 
 

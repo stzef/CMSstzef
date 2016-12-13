@@ -64,16 +64,6 @@ class CmsStzefUsers
     private $id;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefStates
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStates")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_state", referencedColumnName="id")
-     * })
-     */
-    private $idState;
-
-    /**
      * @var \AppBundle\Entity\CmsStzefUsersGroups
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsersGroups")
@@ -82,6 +72,16 @@ class CmsStzefUsers
      * })
      */
     private $idUsersGroup;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefStates
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStates")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_state", referencedColumnName="id")
+     * })
+     */
+    private $idState;
 
 
 
@@ -239,29 +239,6 @@ public function __toString()
     }
 
     /**
-     * Set idState
-     *
-     * @param \AppBundle\Entity\CmsStzefStates $idState
-     * @return CmsStzefUsers
-     */
-    public function setIdState(\AppBundle\Entity\CmsStzefStates $idState = null)
-    {
-        $this->idState = $idState;
-
-        return $this;
-    }
-
-    /**
-     * Get idState
-     *
-     * @return \AppBundle\Entity\CmsStzefStates 
-     */
-    public function getIdState()
-    {
-        return $this->idState;
-    }
-
-    /**
      * Set idUsersGroup
      *
      * @param \AppBundle\Entity\CmsStzefUsersGroups $idUsersGroup
@@ -282,5 +259,28 @@ public function __toString()
     public function getIdUsersGroup()
     {
         return $this->idUsersGroup;
+    }
+
+    /**
+     * Set idState
+     *
+     * @param \AppBundle\Entity\CmsStzefStates $idState
+     * @return CmsStzefUsers
+     */
+    public function setIdState(\AppBundle\Entity\CmsStzefStates $idState = null)
+    {
+        $this->idState = $idState;
+
+        return $this;
+    }
+
+    /**
+     * Get idState
+     *
+     * @return \AppBundle\Entity\CmsStzefStates 
+     */
+    public function getIdState()
+    {
+        return $this->idState;
     }
 }

@@ -77,16 +77,6 @@ class CmsStzefArticles
     private $idCategory;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefTypesAccess
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
-     * })
-     */
-    private $idTypeAccess;
-
-    /**
      * @var \AppBundle\Entity\CmsStzefUsers
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
@@ -95,6 +85,16 @@ class CmsStzefArticles
      * })
      */
     private $creatorUser;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefTypesAccess
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
+     * })
+     */
+    private $idTypeAccess;
 
 
 
@@ -275,29 +275,6 @@ public function __toString()
     }
 
     /**
-     * Set idTypeAccess
-     *
-     * @param \AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess
-     * @return CmsStzefArticles
-     */
-    public function setIdTypeAccess(\AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess = null)
-    {
-        $this->idTypeAccess = $idTypeAccess;
-
-        return $this;
-    }
-
-    /**
-     * Get idTypeAccess
-     *
-     * @return \AppBundle\Entity\CmsStzefTypesAccess 
-     */
-    public function getIdTypeAccess()
-    {
-        return $this->idTypeAccess;
-    }
-
-    /**
      * Set creatorUser
      *
      * @param \AppBundle\Entity\CmsStzefUsers $creatorUser
@@ -318,5 +295,28 @@ public function __toString()
     public function getCreatorUser()
     {
         return $this->creatorUser;
+    }
+
+    /**
+     * Set idTypeAccess
+     *
+     * @param \AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess
+     * @return CmsStzefArticles
+     */
+    public function setIdTypeAccess(\AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess = null)
+    {
+        $this->idTypeAccess = $idTypeAccess;
+
+        return $this;
+    }
+
+    /**
+     * Get idTypeAccess
+     *
+     * @return \AppBundle\Entity\CmsStzefTypesAccess 
+     */
+    public function getIdTypeAccess()
+    {
+        return $this->idTypeAccess;
     }
 }

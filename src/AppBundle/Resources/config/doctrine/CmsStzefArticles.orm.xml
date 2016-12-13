@@ -25,14 +25,14 @@
         <join-column name="id_category" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="idTypeAccess" target-entity="CmsStzefTypesAccess">
-      <join-columns>
-        <join-column name="id_type_access" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="creatorUser" target-entity="CmsStzefUsers">
       <join-columns>
         <join-column name="creator_user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTypeAccess" target-entity="CmsStzefTypesAccess">
+      <join-columns>
+        <join-column name="id_type_access" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

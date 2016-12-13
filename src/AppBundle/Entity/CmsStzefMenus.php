@@ -57,6 +57,16 @@ class CmsStzefMenus
     private $id;
 
     /**
+     * @var \AppBundle\Entity\CmsStzefPages
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefPages")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="page", referencedColumnName="slug")
+     * })
+     */
+    private $page;
+
+    /**
      * @var \AppBundle\Entity\CmsStzefMenus
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefMenus")
@@ -67,14 +77,14 @@ class CmsStzefMenus
     private $topMenu;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefPages
+     * @var \AppBundle\Entity\CmsStzefTypesAccess
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefPages")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="page", referencedColumnName="slug")
+     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
      * })
      */
-    private $page;
+    private $idTypeAccess;
 
     /**
      * @var \AppBundle\Entity\CmsStzefUsers
@@ -95,16 +105,6 @@ class CmsStzefMenus
      * })
      */
     private $idStatePublication;
-
-    /**
-     * @var \AppBundle\Entity\CmsStzefTypesAccess
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
-     * })
-     */
-    private $idTypeAccess;
 
 
 
@@ -239,6 +239,29 @@ public function __toString()
     }
 
     /**
+     * Set page
+     *
+     * @param \AppBundle\Entity\CmsStzefPages $page
+     * @return CmsStzefMenus
+     */
+    public function setPage(\AppBundle\Entity\CmsStzefPages $page = null)
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * Get page
+     *
+     * @return \AppBundle\Entity\CmsStzefPages 
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
      * Set topMenu
      *
      * @param \AppBundle\Entity\CmsStzefMenus $topMenu
@@ -262,26 +285,26 @@ public function __toString()
     }
 
     /**
-     * Set page
+     * Set idTypeAccess
      *
-     * @param \AppBundle\Entity\CmsStzefPages $page
+     * @param \AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess
      * @return CmsStzefMenus
      */
-    public function setPage(\AppBundle\Entity\CmsStzefPages $page = null)
+    public function setIdTypeAccess(\AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess = null)
     {
-        $this->page = $page;
+        $this->idTypeAccess = $idTypeAccess;
 
         return $this;
     }
 
     /**
-     * Get page
+     * Get idTypeAccess
      *
-     * @return \AppBundle\Entity\CmsStzefPages 
+     * @return \AppBundle\Entity\CmsStzefTypesAccess 
      */
-    public function getPage()
+    public function getIdTypeAccess()
     {
-        return $this->page;
+        return $this->idTypeAccess;
     }
 
     /**
@@ -328,28 +351,5 @@ public function __toString()
     public function getIdStatePublication()
     {
         return $this->idStatePublication;
-    }
-
-    /**
-     * Set idTypeAccess
-     *
-     * @param \AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess
-     * @return CmsStzefMenus
-     */
-    public function setIdTypeAccess(\AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess = null)
-    {
-        $this->idTypeAccess = $idTypeAccess;
-
-        return $this;
-    }
-
-    /**
-     * Get idTypeAccess
-     *
-     * @return \AppBundle\Entity\CmsStzefTypesAccess 
-     */
-    public function getIdTypeAccess()
-    {
-        return $this->idTypeAccess;
     }
 }

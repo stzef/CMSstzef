@@ -36,16 +36,6 @@ class CmsStzefPages
     private $slug;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefCategories
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefCategories")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_to_show", referencedColumnName="id")
-     * })
-     */
-    private $categoryToShow;
-
-    /**
      * @var \AppBundle\Entity\CmsStzefUsers
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
@@ -64,6 +54,16 @@ class CmsStzefPages
      * })
      */
     private $typePage;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefCategories
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefCategories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_to_show", referencedColumnName="id")
+     * })
+     */
+    private $categoryToShow;
 
 
 

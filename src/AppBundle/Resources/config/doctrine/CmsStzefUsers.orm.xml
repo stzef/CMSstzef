@@ -14,14 +14,14 @@
     <field name="active" type="string" column="active" length="45" nullable="false"/>
     <field name="resgiterDate" type="string" column="resgiter_date" length="45" nullable="false"/>
     <field name="activation" type="string" column="activation" length="45" nullable="false"/>
-    <many-to-one field="idState" target-entity="CmsStzefStates">
-      <join-columns>
-        <join-column name="id_state" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="idUsersGroup" target-entity="CmsStzefUsersGroups">
       <join-columns>
         <join-column name="id_users_group" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idState" target-entity="CmsStzefStates">
+      <join-columns>
+        <join-column name="id_state" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

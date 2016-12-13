@@ -36,16 +36,6 @@ class CmsStzefPages
     private $slug;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefCategories
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefCategories")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="category_to_show", referencedColumnName="id")
-     * })
-     */
-    private $categoryToShow;
-
-    /**
      * @var \AppBundle\Entity\CmsStzefUsers
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
@@ -64,6 +54,16 @@ class CmsStzefPages
      * })
      */
     private $typePage;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefCategories
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefCategories")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_to_show", referencedColumnName="id")
+     * })
+     */
+    private $categoryToShow;
 
 
 
@@ -129,29 +129,6 @@ public function __toString()
     }
 
     /**
-     * Set categoryToShow
-     *
-     * @param \AppBundle\Entity\CmsStzefCategories $categoryToShow
-     * @return CmsStzefPages
-     */
-    public function setCategoryToShow(\AppBundle\Entity\CmsStzefCategories $categoryToShow = null)
-    {
-        $this->categoryToShow = $categoryToShow;
-
-        return $this;
-    }
-
-    /**
-     * Get categoryToShow
-     *
-     * @return \AppBundle\Entity\CmsStzefCategories 
-     */
-    public function getCategoryToShow()
-    {
-        return $this->categoryToShow;
-    }
-
-    /**
      * Set creatorUser
      *
      * @param \AppBundle\Entity\CmsStzefUsers $creatorUser
@@ -195,5 +172,28 @@ public function __toString()
     public function getTypePage()
     {
         return $this->typePage;
+    }
+
+    /**
+     * Set categoryToShow
+     *
+     * @param \AppBundle\Entity\CmsStzefCategories $categoryToShow
+     * @return CmsStzefPages
+     */
+    public function setCategoryToShow(\AppBundle\Entity\CmsStzefCategories $categoryToShow = null)
+    {
+        $this->categoryToShow = $categoryToShow;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryToShow
+     *
+     * @return \AppBundle\Entity\CmsStzefCategories 
+     */
+    public function getCategoryToShow()
+    {
+        return $this->categoryToShow;
     }
 }

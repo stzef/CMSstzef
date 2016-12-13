@@ -29,16 +29,6 @@ class CmsStzefSectionsTheme
     private $id;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefSections
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefSections")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_section_theme", referencedColumnName="id")
-     * })
-     */
-    private $idSectionTheme;
-
-    /**
      * @var \AppBundle\Entity\CmsStzefThemes
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefThemes")
@@ -47,6 +37,16 @@ class CmsStzefSectionsTheme
      * })
      */
     private $idTheme;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefSections
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefSections")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_section_theme", referencedColumnName="id")
+     * })
+     */
+    private $idSectionTheme;
 
 
 
@@ -89,29 +89,6 @@ public function __toString()
     }
 
     /**
-     * Set idSectionTheme
-     *
-     * @param \AppBundle\Entity\CmsStzefSections $idSectionTheme
-     * @return CmsStzefSectionsTheme
-     */
-    public function setIdSectionTheme(\AppBundle\Entity\CmsStzefSections $idSectionTheme = null)
-    {
-        $this->idSectionTheme = $idSectionTheme;
-
-        return $this;
-    }
-
-    /**
-     * Get idSectionTheme
-     *
-     * @return \AppBundle\Entity\CmsStzefSections 
-     */
-    public function getIdSectionTheme()
-    {
-        return $this->idSectionTheme;
-    }
-
-    /**
      * Set idTheme
      *
      * @param \AppBundle\Entity\CmsStzefThemes $idTheme
@@ -132,5 +109,28 @@ public function __toString()
     public function getIdTheme()
     {
         return $this->idTheme;
+    }
+
+    /**
+     * Set idSectionTheme
+     *
+     * @param \AppBundle\Entity\CmsStzefSections $idSectionTheme
+     * @return CmsStzefSectionsTheme
+     */
+    public function setIdSectionTheme(\AppBundle\Entity\CmsStzefSections $idSectionTheme = null)
+    {
+        $this->idSectionTheme = $idSectionTheme;
+
+        return $this;
+    }
+
+    /**
+     * Get idSectionTheme
+     *
+     * @return \AppBundle\Entity\CmsStzefSections 
+     */
+    public function getIdSectionTheme()
+    {
+        return $this->idSectionTheme;
     }
 }

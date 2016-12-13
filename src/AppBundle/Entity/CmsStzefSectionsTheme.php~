@@ -29,16 +29,6 @@ class CmsStzefSectionsTheme
     private $id;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefSections
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefSections")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_section_theme", referencedColumnName="id")
-     * })
-     */
-    private $idSectionTheme;
-
-    /**
      * @var \AppBundle\Entity\CmsStzefThemes
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefThemes")
@@ -47,6 +37,16 @@ class CmsStzefSectionsTheme
      * })
      */
     private $idTheme;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefSections
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefSections")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_section_theme", referencedColumnName="id")
+     * })
+     */
+    private $idSectionTheme;
 
 
 

@@ -16,14 +16,19 @@
     <field name="orden" type="integer" column="orden" nullable="false"/>
     <field name="target" type="string" column="target" nullable="false"/>
     <field name="ifMain" type="boolean" column="if_main" nullable="false"/>
+    <many-to-one field="page" target-entity="CmsStzefPages">
+      <join-columns>
+        <join-column name="page" referenced-column-name="slug"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="topMenu" target-entity="CmsStzefMenus">
       <join-columns>
         <join-column name="top_menu" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="page" target-entity="CmsStzefPages">
+    <many-to-one field="idTypeAccess" target-entity="CmsStzefTypesAccess">
       <join-columns>
-        <join-column name="page" referenced-column-name="slug"/>
+        <join-column name="id_type_access" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="creatorUser" target-entity="CmsStzefUsers">
@@ -34,11 +39,6 @@
     <many-to-one field="idStatePublication" target-entity="CmsStzefStatesPublication">
       <join-columns>
         <join-column name="id_state_publication" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="idTypeAccess" target-entity="CmsStzefTypesAccess">
-      <join-columns>
-        <join-column name="id_type_access" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

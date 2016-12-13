@@ -20,6 +20,13 @@ class CmsStzefThemes
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=45, nullable=false)
+     */
+    private $slug;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -56,6 +63,29 @@ public function __toString()
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return CmsStzefThemes
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

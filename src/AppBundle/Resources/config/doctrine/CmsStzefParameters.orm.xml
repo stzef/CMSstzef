@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="AppBundle\Entity\CmsStzefParameters" table="cms_stzef_parameters">
+    <unique-constraints>
+      <unique-constraint name="cparam_UNIQUE" columns="cparam"/>
+    </unique-constraints>
     <id name="id" type="string" column="id" length="5">
       <generator strategy="IDENTITY"/>
     </id>
+    <field name="cparam" type="string" column="cparam" length="20" nullable="false"/>
     <field name="type" type="string" column="type" length="45" nullable="false"/>
     <field name="name" type="string" column="name" length="45" nullable="false"/>
     <field name="valueText" type="text" column="value_text" length="65535" nullable="true"/>

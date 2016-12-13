@@ -13,7 +13,7 @@ class CmsStzefUsersType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('usename')->add('password')->add('active')->add('resgiterDate')->add('activation')->add('idState')->add('idUsersGroup')        ;
+        $builder->add('name')->add('usename')->add('password')->add('active')->add('resgiterDate')->add('activation')->add('idUsersGroup')->add('idState')        ;
     }
     
     /**

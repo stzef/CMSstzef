@@ -36,16 +36,6 @@ class CmsStzefModules
     private $id;
 
     /**
-     * @var \AppBundle\Entity\CmsStzefStatesPublication
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStatesPublication")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_state_publication", referencedColumnName="id")
-     * })
-     */
-    private $idStatePublication;
-
-    /**
      * @var \AppBundle\Entity\CmsStzefTypesModules
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesModules")
@@ -54,6 +44,16 @@ class CmsStzefModules
      * })
      */
     private $idTypeModule;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefStatesPublication
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStatesPublication")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_state_publication", referencedColumnName="id")
+     * })
+     */
+    private $idStatePublication;
 
     /**
      * @var \AppBundle\Entity\CmsStzefSections
@@ -129,29 +129,6 @@ public function __toString()
     }
 
     /**
-     * Set idStatePublication
-     *
-     * @param \AppBundle\Entity\CmsStzefStatesPublication $idStatePublication
-     * @return CmsStzefModules
-     */
-    public function setIdStatePublication(\AppBundle\Entity\CmsStzefStatesPublication $idStatePublication = null)
-    {
-        $this->idStatePublication = $idStatePublication;
-
-        return $this;
-    }
-
-    /**
-     * Get idStatePublication
-     *
-     * @return \AppBundle\Entity\CmsStzefStatesPublication 
-     */
-    public function getIdStatePublication()
-    {
-        return $this->idStatePublication;
-    }
-
-    /**
      * Set idTypeModule
      *
      * @param \AppBundle\Entity\CmsStzefTypesModules $idTypeModule
@@ -172,6 +149,29 @@ public function __toString()
     public function getIdTypeModule()
     {
         return $this->idTypeModule;
+    }
+
+    /**
+     * Set idStatePublication
+     *
+     * @param \AppBundle\Entity\CmsStzefStatesPublication $idStatePublication
+     * @return CmsStzefModules
+     */
+    public function setIdStatePublication(\AppBundle\Entity\CmsStzefStatesPublication $idStatePublication = null)
+    {
+        $this->idStatePublication = $idStatePublication;
+
+        return $this;
+    }
+
+    /**
+     * Get idStatePublication
+     *
+     * @return \AppBundle\Entity\CmsStzefStatesPublication 
+     */
+    public function getIdStatePublication()
+    {
+        return $this->idStatePublication;
     }
 
     /**
