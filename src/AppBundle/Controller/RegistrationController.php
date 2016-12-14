@@ -13,7 +13,7 @@ class RegistrationController extends Controller
     /**
      * @Route("/admstzef/register", name="user_registration")
      */
-    public function registerAction(Request $request)
+    /*public function registerAction(Request $request)
     {
         // 1) build the form
         $user = new CmsStzefUsers();
@@ -45,5 +45,5 @@ class RegistrationController extends Controller
             'registration/register.html.twig',
             array('form' => $form->createView())
         );
-    }
+    }*/
 }

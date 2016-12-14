@@ -9,9 +9,23 @@ oneup_uploader:
 elfinder:
      resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
-#user_registration:
-    #path:     admstzef/register
-    #defaults: { _controller: AppBundle:Registration:register }
 
-fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /admstzef
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /admstzef/profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /admstzef/register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /admstzef/resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /admstzef/profile

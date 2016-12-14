@@ -10,7 +10,7 @@ class SecurityController extends Controller
     /**
      * @Route("/admstzef/login", name="login")
      */
-public function loginAction(Request $request)
+/*public function loginAction(Request $request)
 {
     $authenticationUtils = $this->get('security.authentication_utils');
     // get the login error if there is one
@@ -24,5 +24,5 @@ public function loginAction(Request $request)
         'last_username' => $lastUsername,
         'error'         => $error,
     ));
-}
+}*/
 }

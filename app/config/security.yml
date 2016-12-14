@@ -19,12 +19,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-
-
-
-
-
-
+        - { path: ^/admstzef/, role: ROLE_USER }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
