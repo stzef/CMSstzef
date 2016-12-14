@@ -41,6 +41,13 @@ class CmsStzefArticles
     private $imageMain;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="if_distinguished", type="boolean", nullable=false)
+     */
+    private $ifDistinguished;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=false)
@@ -193,6 +200,29 @@ public function __toString()
     public function getImageMain()
     {
         return $this->imageMain;
+    }
+
+    /**
+     * Set ifDistinguished
+     *
+     * @param boolean $ifDistinguished
+     * @return CmsStzefArticles
+     */
+    public function setIfDistinguished($ifDistinguished)
+    {
+        $this->ifDistinguished = $ifDistinguished;
+
+        return $this;
+    }
+
+    /**
+     * Get ifDistinguished
+     *
+     * @return boolean 
+     */
+    public function getIfDistinguished()
+    {
+        return $this->ifDistinguished;
     }
 
     /**

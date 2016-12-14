@@ -41,6 +41,13 @@ class CmsStzefArticles
     private $imageMain;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="if_distinguished", type="boolean", nullable=false)
+     */
+    private $ifDistinguished;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetime", nullable=false)

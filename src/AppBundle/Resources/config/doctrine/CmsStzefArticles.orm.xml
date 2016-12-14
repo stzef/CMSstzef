@@ -14,6 +14,7 @@
     <field name="description" type="string" column="description" length="200" nullable="false"/>
     <field name="contentHtml" type="text" column="content_html" length="65535" nullable="false"/>
     <field name="imageMain" type="string" column="image_main" length="45" nullable="true"/>
+    <field name="ifDistinguished" type="boolean" column="if_distinguished" nullable="false"/>
     <field name="dateCreation" type="datetime" column="date_creation" nullable="false"/>
     <many-to-one field="idStatePublication" target-entity="CmsStzefStatesPublication">
       <join-columns>

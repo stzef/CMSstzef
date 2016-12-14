@@ -8,14 +8,14 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * CmsStzefUsers
+ * CmsStzefUsers 
  *
  * @ORM\Table(name="cms_stzef_users", indexes={@ORM\Index(name="fk_CMSstzef_users_CMSstzef_users_groups1_idx", columns={"id_users_group"}), @ORM\Index(name="fk_CMSstzef_users_CMSstzef_states1_idx", columns={"id_state"})})
- * @ORM\Entity
+ * @ORM\Entity 
  */
 class CmsStzefUsers  implements UserInterface 
 {
-    /**
+    /** 
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=false)

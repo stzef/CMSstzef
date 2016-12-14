@@ -8,6 +8,50 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PagesController extends Controller
 {
+    public function getContentPage($page){
+        $valParamStatePublication = 1;
+        $valParamTypeAccess = 1;
+        $em = $this->getDoctrine()->getManager();
+        if($page->getIdTypePage()->getId() == 1){
+
+
+            $queryArticles = $em->createQuery(
+                'SELECT article FROM AppBundle:CmsStzefArticles article
+                WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.idCategory = :paramIdCategory'
+            )->setParameter('paramStatePublication',$valParamStatePublication)
+            ->setParameter('paramTypeAccess',$valParamTypeAccess)
+            ->setParameter('paramIdCategory',$page->getCategoryToShow());
+
+            $contentPage = $queryArticles->getResult();
+        }else if ($page->getIdTypePage()->getId() == 2){
+            $queryArticle = $em->createQuery(
+                'SELECT article FROM AppBundle:CmsStzefArticles article
+                WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.id = :paramIdArticle'
+            )->setParameter('paramStatePublication',$valParamStatePublication)
+            ->setParameter('paramTypeAccess',$valParamTypeAccess)
+            ->setParameter('paramIdArticle',$page->getArticleToShow());
+            $contentPage = $queryArticle->setMaxResults(1)->getOneOrNullResult();
+        }
+        dump($contentPage);
+        return $contentPage;
+    }
+
+    public function getArticlesDistinguished(){
+        $em = $this->getDoctrine()->getManager();
+        $valParamStatePublication = 1;
+        $valParamTypeAccess = 1;
+
+        $queryArticles = $em->createQuery(
+            'SELECT article FROM AppBundle:CmsStzefArticles article
+            WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.ifDistinguished = :paramIfDistinguished'
+        )->setParameter('paramStatePublication',$valParamStatePublication)
+        ->setParameter('paramTypeAccess',$valParamTypeAccess)
+        ->setParameter('paramIfDistinguished',1);
+        $articles = $queryArticles->getResult();
+
+        return $articles;
+    }
+
     public function getTheme(){
         $repositoryParameters = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefParameters");
         $repositoryThemes = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefThemes");
@@ -111,8 +155,7 @@ class PagesController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request)
-    {
+    public function indexAction(Request $request){
         $cmsStzefMenuses = $this->getMenu();
         $parameters = $this->getParameters();
         $theme = $this->getTheme();
@@ -130,8 +173,7 @@ class PagesController extends Controller
     /**
      * @Route("/articles/{id_article}", name="view_article_generic")
      */
-    public function articleAction(Request $request,$id_article)
-    {
+    public function articleAction(Request $request,$id_article){
         $cmsStzefMenuses = $this->getMenu();
         $parameters = $this->getParameters();
         $sectionsTheme = $this->getSectionsTheme();
@@ -168,10 +210,7 @@ class PagesController extends Controller
     /**
      * @Route("/{slug_page}", name="page_generic")
      */
-    public function pageAction(Request $request,$slug_page)
-    {
-        $valParamStatePublication = 1;
-        $valParamTypeAccess = 1;
+    public function pageAction(Request $request,$slug_page){
 
         $slug_page = $this->clean_string($slug_page);
         $cmsStzefMenuses = $this->getMenu();
@@ -193,21 +232,7 @@ class PagesController extends Controller
         $path_template = "themes/" . $theme->getSlug();
         if($current_page){
             $path_template .= "/index.html.twig";
-
-
-
-            $queryArticles = $em->createQuery(
-                'SELECT article FROM AppBundle:CmsStzefArticles article
-                WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.idCategory = :paramIdCategory'
-            )->setParameter('paramStatePublication',$valParamStatePublication)
-            ->setParameter('paramTypeAccess',$valParamTypeAccess)
-            ->setParameter('paramIdCategory',$current_page->getCategoryToShow());
-
-            /*$articles = $repositoryArticles->findByIdCategory($current_page->getCategoryToShow());*/
-            $articles = $queryArticles->getResult();
-
-
-
+            $articles = $this->getContentPage($current_page);
         }else{
             $path_template .= "/404.html.twig";
         }
@@ -225,6 +250,7 @@ class PagesController extends Controller
             "sectionsTheme" => $sectionsTheme,
             "parameters" => $parameters,
             "theme" => $theme,
+            "articles_distinguished" => $this->getArticlesDistinguished(),
         ));
     }
 

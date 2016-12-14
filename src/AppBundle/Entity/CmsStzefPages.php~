@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefPages
  *
- * @ORM\Table(name="cms_stzef_pages", uniqueConstraints={@ORM\UniqueConstraint(name="slug_UNIQUE", columns={"slug"})}, indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"type_page_id"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_categories1_idx", columns={"category_to_show"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_states_publication1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_access1_idx", columns={"id_type_access"})})
+ * @ORM\Table(name="cms_stzef_pages", uniqueConstraints={@ORM\UniqueConstraint(name="slug_UNIQUE", columns={"slug"})}, indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"id_type_page"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_categories1_idx", columns={"category_to_show"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_states_publication1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_articles1_idx", columns={"article_to_show"})})
  * @ORM\Entity
  */
 class CmsStzefPages
@@ -43,6 +43,16 @@ class CmsStzefPages
     private $id;
 
     /**
+     * @var \AppBundle\Entity\CmsStzefTypesPages
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesPages")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_page", referencedColumnName="id")
+     * })
+     */
+    private $idTypePage;
+
+    /**
      * @var \AppBundle\Entity\CmsStzefUsers
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
@@ -51,16 +61,6 @@ class CmsStzefPages
      * })
      */
     private $creatorUser;
-
-    /**
-     * @var \AppBundle\Entity\CmsStzefTypesPages
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesPages")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="type_page_id", referencedColumnName="id")
-     * })
-     */
-    private $typePage;
 
     /**
      * @var \AppBundle\Entity\CmsStzefTypesAccess
@@ -91,6 +91,16 @@ class CmsStzefPages
      * })
      */
     private $categoryToShow;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefArticles
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefArticles")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="article_to_show", referencedColumnName="id")
+     * })
+     */
+    private $articleToShow;
 
 
 

@@ -20,7 +20,7 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{ asset('css/template/skins/_all-skins.min.css') }}">
 
-  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  <link rel="icon" type="image/x-icon" href="{#{{ asset(parameters.favicon_site) }}}#}" />
 <link rel="stylesheet" href="{{ asset('css/data_table/jquery.dataTables.min.css')}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -566,7 +566,7 @@ $(document).ready(function() {
           .replace(/ /g,'-')
           .replace(/[^\w-]+/g,'')
   }
-  $("input[id*=_slug]").prop("disabled",true)
+  $("input[id*=_slug]").prop("readOnly",true)
     $("input[id*=_name]").change(function (event) {
         $("input[id*=_alias]").val(clear_string($(this).val()) )
         $("input[id*=_slug]").val(clear_string($(this).val()) )

@@ -13,7 +13,7 @@ class CmsStzefPagesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('slug')->add('name')->add('ifMain')->add('creatorUser')->add('typePage')->add('idTypeAccess')->add('idStatePublication')->add('categoryToShow')        ;
+        $builder->add('slug')->add('name')->add('ifMain')->add('idTypePage')->add('creatorUser')->add('idTypeAccess')->add('idStatePublication')->add('categoryToShow')->add('articleToShow')        ;
     }
     
     /**

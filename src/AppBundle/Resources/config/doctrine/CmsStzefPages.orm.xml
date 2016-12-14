@@ -2,11 +2,12 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="AppBundle\Entity\CmsStzefPages" table="cms_stzef_pages">
     <indexes>
-      <index name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx" columns="type_page_id"/>
+      <index name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx" columns="id_type_page"/>
       <index name="fk_cms_stzef_pages_cms_stzef_users1_idx" columns="creator_user"/>
       <index name="fk_cms_stzef_pages_cms_stzef_categories1_idx" columns="category_to_show"/>
       <index name="fk_cms_stzef_pages_cms_stzef_states_publication1_idx" columns="id_state_publication"/>
       <index name="fk_cms_stzef_pages_cms_stzef_types_access1_idx" columns="id_type_access"/>
+      <index name="fk_cms_stzef_pages_cms_stzef_articles1_idx" columns="article_to_show"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="slug_UNIQUE" columns="slug"/>
@@ -17,14 +18,14 @@
     <field name="slug" type="string" column="slug" length="50" nullable="false"/>
     <field name="name" type="string" column="name" length="45" nullable="false"/>
     <field name="ifMain" type="boolean" column="if_main" nullable="false"/>
+    <many-to-one field="idTypePage" target-entity="CmsStzefTypesPages">
+      <join-columns>
+        <join-column name="id_type_page" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="creatorUser" target-entity="CmsStzefUsers">
       <join-columns>
         <join-column name="creator_user" referenced-column-name="id"/>
-      </join-columns>
-    </many-to-one>
-    <many-to-one field="typePage" target-entity="CmsStzefTypesPages">
-      <join-columns>
-        <join-column name="type_page_id" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idTypeAccess" target-entity="CmsStzefTypesAccess">
@@ -40,6 +41,11 @@
     <many-to-one field="categoryToShow" target-entity="CmsStzefCategories">
       <join-columns>
         <join-column name="category_to_show" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="articleToShow" target-entity="CmsStzefArticles">
+      <join-columns>
+        <join-column name="article_to_show" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
   </entity>

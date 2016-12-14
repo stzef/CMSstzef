@@ -17,6 +17,7 @@
     <link href="{{ asset('themes/default/css/shop-homepage.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('css/social_buttons/bootstrap-social.css') }}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{ asset(parameters.favicon_site) }}" />
     <style type="text/css">
         .backgrundBody{
             {% if parameters.image_background.ifShow %}
@@ -112,30 +113,72 @@
                     {% if current_page.ifMain %}
                         <div id="section_theme_banner_principal"></div>
                     {% endif %}
+
+                {% endif %}
+                {% if current_page is defined %}
+                    {% if current_page.ifMain %}
+                        <div class="row panel">
+                            <h2>Destacados</h2>
+                            {% if articles_distinguished is defined %}
+                                {% for article_distinguished in articles_distinguished %}
+                                    <div class="col-sm-3 col-lg-4 col-md-4">
+                                        <div class="thumbnail">
+                                            <img src="{{ article_distinguished.imageMain }}" alt="">
+                                            <div class="caption">
+                                                <h4 class="text-center">
+                                                    <a href="{{ path('view_article_generic',{'id_article' : article_distinguished.id }) }}">{{ article_distinguished.name }}</a>
+                                                </h4>
+                                                <h4 class="text-center"></h4>
+                                                <p>{{ article_distinguished.description }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
 
         <div class="row col-md-8 panel">
             {% if articles is defined %}
-                {% if articles|length > 0 %}
-                    {% for article in articles %}
-                        <div class="panel panel-primary col-md-12">
-                            <h2>
-                                <a href="{{ path('view_article_generic',{'id_article' : article.id }) }}">{{ article.name }}</a>
-                            </h2>
-                            <p class="lead">
-                                por <a href="#">{{ article.creatorUser.name }}</a>
-                            </p>
-                            <p><span class="glyphicon glyphicon-time"></span> Posteado en {{ article.dateCreation|date("F jS \\a\\t g:ia","America/Bogota")}}</p>
-                            <hr>
-                            <img class="img-responsive center-block" src="{{ article.imageMain }}" alt="">
-                            <hr>
-                            <p>{{ article.description }}</p>
-                            <a class="btn btn-primary" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">Ver Mas <span class="glyphicon glyphicon-chevron-right"></span></a>
+                {% if current_page.idTypePage.id == 1 %}
+                    {% if articles|length > 0 %}
+                        {% for article in articles %}
+                            <div class="panel panel-primary col-md-12">
+                                <h2>
+                                    <a href="{{ path('view_article_generic',{'id_article' : article.id }) }}">{{ article.name }}</a>
+                                </h2>
+                                <p class="lead">
+                                    por <a href="#">{{ article.creatorUser.name }}</a>
+                                </p>
+                                <p><span class="glyphicon glyphicon-time"></span> Posteado en {{ article.dateCreation|date("F jS \\a\\t g:ia","America/Bogota")}}</p>
+                                <hr>
+                                <img class="img-responsive center-block" src="{{ article.imageMain }}" alt="">
+                                <hr>
+                                <p>{{ article.description }}</p>
+                                <a class="btn btn-primary" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">Ver Mas <span class="glyphicon glyphicon-chevron-right"></span></a>
 
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                {% elseif current_page.idTypePage.id == 2 %}
+                    <div class="col-lg-12 panel panel-primary">
+                        <h1>{{ articles.name }}</h1>
+                        <p class="lead">
+                            by <a href="#">{{ articles.creatorUser }}</a>
+                        </p>
+                        <hr>
+                        <p><span class="glyphicon glyphicon-time"></span> Posteado en August 24, 2013 at 9:00 PM</p>
+                        <hr>
+                        <img class="img-responsive center-block" src="{{ articles.imageMain }}" alt="">
+                        <hr>
+                        <div>
+                            {{ articles.contentHTML|raw }} 
                         </div>
-                    {% endfor %}
+                        <hr>
+                    </div>
                 {% endif %}
             {% endif %}
             

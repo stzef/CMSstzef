@@ -11,12 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  */
 class CmsStzefParameters
-{
+{ 
     /**
      * @var string
      *
      * @ORM\Column(name="cparam", type="string", length=20, nullable=false)
-     */
+     */ 
     private $cparam;
 
     /**
@@ -290,5 +290,5 @@ public function __toString()
             return json_decode($this->valueText);
         }
         return null;
-    } 
+    }  
 }
