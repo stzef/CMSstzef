@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefCategories
  *
- * @ORM\Table(name="cms_stzef_categories", indexes={@ORM\Index(name="fk_CMSstzef_categories_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_categories1_idx", columns={"top_category"})})
+ * @ORM\Table(name="cms_stzef_categories", indexes={@ORM\Index(name="fk_CMSstzef_categories_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_categories1_idx", columns={"top_category"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_states_publication1_idx", columns={"id_state_publication"})})
  * @ORM\Entity
  */
 class CmsStzefCategories
@@ -41,6 +41,26 @@ class CmsStzefCategories
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefTypesAccess
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
+     * })
+     */
+    private $idTypeAccess;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefStatesPublication
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStatesPublication")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_state_publication", referencedColumnName="id")
+     * })
+     */
+    private $idStatePublication;
 
     /**
      * @var \AppBundle\Entity\CmsStzefCategories
@@ -146,6 +166,52 @@ public function __toString()
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set idTypeAccess
+     *
+     * @param \AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess
+     * @return CmsStzefCategories
+     */
+    public function setIdTypeAccess(\AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess = null)
+    {
+        $this->idTypeAccess = $idTypeAccess;
+
+        return $this;
+    }
+
+    /**
+     * Get idTypeAccess
+     *
+     * @return \AppBundle\Entity\CmsStzefTypesAccess 
+     */
+    public function getIdTypeAccess()
+    {
+        return $this->idTypeAccess;
+    }
+
+    /**
+     * Set idStatePublication
+     *
+     * @param \AppBundle\Entity\CmsStzefStatesPublication $idStatePublication
+     * @return CmsStzefCategories
+     */
+    public function setIdStatePublication(\AppBundle\Entity\CmsStzefStatesPublication $idStatePublication = null)
+    {
+        $this->idStatePublication = $idStatePublication;
+
+        return $this;
+    }
+
+    /**
+     * Get idStatePublication
+     *
+     * @return \AppBundle\Entity\CmsStzefStatesPublication 
+     */
+    public function getIdStatePublication()
+    {
+        return $this->idStatePublication;
     }
 
     /**

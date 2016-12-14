@@ -5,6 +5,8 @@
       <index name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx" columns="type_page_id"/>
       <index name="fk_cms_stzef_pages_cms_stzef_users1_idx" columns="creator_user"/>
       <index name="fk_cms_stzef_pages_cms_stzef_categories1_idx" columns="category_to_show"/>
+      <index name="fk_cms_stzef_pages_cms_stzef_states_publication1_idx" columns="id_state_publication"/>
+      <index name="fk_cms_stzef_pages_cms_stzef_types_access1_idx" columns="id_type_access"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="slug_UNIQUE" columns="slug"/>
@@ -23,6 +25,16 @@
     <many-to-one field="typePage" target-entity="CmsStzefTypesPages">
       <join-columns>
         <join-column name="type_page_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idTypeAccess" target-entity="CmsStzefTypesAccess">
+      <join-columns>
+        <join-column name="id_type_access" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idStatePublication" target-entity="CmsStzefStatesPublication">
+      <join-columns>
+        <join-column name="id_state_publication" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="categoryToShow" target-entity="CmsStzefCategories">

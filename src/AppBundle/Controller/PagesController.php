@@ -20,16 +20,25 @@ class PagesController extends Controller
 
     public function getSectionsTheme(){
         $twig = new \Twig_Environment(new \Twig_Loader_String());
-
+        
+        $valParamStatePublication = 1;
+        $valParamTypeAccess = 1;
 
         $em = $this->getDoctrine()->getManager();
         $repositorySectionsTheme = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefSectionsTheme");
-        $repositoryModules = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefModules");
 
         $theme = $this->getTheme();
         $sectionsTheme = $repositorySectionsTheme->findByIdTheme($theme->getId());
         foreach ($sectionsTheme as $sectionTheme) {
-            $sectionTheme->modulos = $repositoryModules->findByIdSectionTheme($sectionTheme->getIdSectionTheme());
+
+            $queryModulos = $em->createQuery(
+                'SELECT modulo FROM AppBundle:CmsStzefModules modulo
+                WHERE modulo.idStatePublication = :paramStatePublication AND modulo.idTypeAccess = :paramTypeAccess AND modulo.idSectionTheme = :paramIdSectionTheme'
+            )->setParameter('paramStatePublication',$valParamStatePublication)
+            ->setParameter('paramTypeAccess',$valParamTypeAccess)
+            ->setParameter('paramIdSectionTheme',$sectionTheme->getIdSectionTheme());
+
+            $sectionTheme->modulos = $queryModulos->getResult();
         }
 
         $data = array();
@@ -44,15 +53,30 @@ class PagesController extends Controller
 
     public function getMenu(){
         $em = $this->getDoctrine()->getManager();
-        $repository = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefMenus");
 
-        $cmsStzefMenuses = $repository->findByIfMain("1");
+        $valParamIfMain = 1;
+        $valParamStatePublication = 1;
+        $valParamTypeAccess = 1;
+
+        $queryMenuMain = $em->createQuery(
+            'SELECT menu FROM AppBundle:CmsStzefMenus menu
+            WHERE menu.ifMain = :paramIfMain AND menu.idStatePublication = :paramStatePublication AND menu.idTypeAccess = :paramTypeAccess
+            ORDER BY menu.orden ASC'
+        )->setParameter('paramIfMain', $valParamIfMain)->setParameter('paramStatePublication',$valParamStatePublication)->setParameter('paramTypeAccess',$valParamTypeAccess);
+
+        $querySubMenu = $em->createQuery(
+            'SELECT menu FROM AppBundle:CmsStzefMenus menu
+            WHERE menu.idStatePublication = :paramStatePublication AND menu.idTypeAccess = :paramTypeAccess AND menu.topMenu = :paramTopMenu
+            ORDER BY menu.orden ASC'
+        )->setParameter('paramStatePublication',$valParamStatePublication)->setParameter('paramTypeAccess',$valParamTypeAccess);
+
+        $cmsStzefMenuses = $queryMenuMain->getResult();
 
         foreach ($cmsStzefMenuses as $cmsStzefMenu) {
-            $subMenus = $repository->findByTopMenu($cmsStzefMenu->getid());
+            $subMenus = $querySubMenu->setParameter('paramTopMenu', $cmsStzefMenu->getid())->getResult();
             $cmsStzefMenu->subMenus = $subMenus;
             foreach ($subMenus as $subMenu) {
-                $subMenus = $repository->findByTopMenu($subMenu->getid());
+                $subMenus = $querySubMenu->setParameter('paramTopMenu', $subMenu->getid())->getResult();
                 $subMenu->subMenus = $subMenus;
             }
         }
@@ -71,9 +95,7 @@ class PagesController extends Controller
                 if( !array_key_exists ( $odb_parameter->getNgroup() , $parameters ) ){
                     $parameters[$odb_parameter->getNgroup()] = array();
                 }
-
                 array_push($parameters[$odb_parameter->getNgroup()], $odb_parameter->getValue());
-                    
             }else{
                 $parameters[$odb_parameter->getCparam()] = $odb_parameter->getValue();
             }
@@ -120,11 +142,18 @@ class PagesController extends Controller
 
         $current_article = $repositoryArticles->find($id_article);
 
+
         $path_template = "themes/" . $theme->getSlug();
         if($current_article){
             $path_template .= "/article_detail.html.twig";
         }else{
             $path_template .= "/404.html.twig";
+        }
+
+        if($current_article->getIdStatePublication()->getId() != 1){
+            $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
+        }else if($current_article->getIdTypeAccess()->getId() != 1){
+            $path_template = "themes/" . $theme->getSlug() . "/sin_permisos.html.twig";
         }
 
         return $this->render($path_template, array(
@@ -141,6 +170,9 @@ class PagesController extends Controller
      */
     public function pageAction(Request $request,$slug_page)
     {
+        $valParamStatePublication = 1;
+        $valParamTypeAccess = 1;
+
         $slug_page = $this->clean_string($slug_page);
         $cmsStzefMenuses = $this->getMenu();
         $sectionsTheme = $this->getSectionsTheme();
@@ -154,15 +186,36 @@ class PagesController extends Controller
         $repositoryArticles = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefArticles");
 
         $current_page = $repositoryPages->findOneBySlug($slug_page);
-        dump($current_page);
+
+
 
         $articles = [];
         $path_template = "themes/" . $theme->getSlug();
         if($current_page){
             $path_template .= "/index.html.twig";
-            $articles = $repositoryArticles->findByIdCategory($current_page->getCategoryToShow());
+
+
+
+            $queryArticles = $em->createQuery(
+                'SELECT article FROM AppBundle:CmsStzefArticles article
+                WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.idCategory = :paramIdCategory'
+            )->setParameter('paramStatePublication',$valParamStatePublication)
+            ->setParameter('paramTypeAccess',$valParamTypeAccess)
+            ->setParameter('paramIdCategory',$current_page->getCategoryToShow());
+
+            /*$articles = $repositoryArticles->findByIdCategory($current_page->getCategoryToShow());*/
+            $articles = $queryArticles->getResult();
+
+
+
         }else{
             $path_template .= "/404.html.twig";
+        }
+
+        if($current_page->getIdStatePublication()->getId() != 1){
+            $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
+        }else if($current_page->getIdTypeAccess()->getId() != 1){
+            $path_template = "themes/" . $theme->getSlug() . "/sin_permisos.html.twig";
         }
 
         return $this->render($path_template, array(

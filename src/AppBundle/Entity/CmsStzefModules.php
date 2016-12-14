@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefModules
  *
- * @ORM\Table(name="cms_stzef_modules", indexes={@ORM\Index(name="fk_CMSstzef_modules_CMSstzef_sections1_idx", columns={"id_section_theme"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_types_modules1_idx", columns={"id_type_module"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_states1_idx", columns={"id_state_publication"})})
+ * @ORM\Table(name="cms_stzef_modules", indexes={@ORM\Index(name="fk_CMSstzef_modules_CMSstzef_sections1_idx", columns={"id_section_theme"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_types_modules1_idx", columns={"id_type_module"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_modules_cms_stzef_types_access1_idx", columns={"id_type_access"})})
  * @ORM\Entity
  */
 class CmsStzefModules
@@ -34,6 +34,16 @@ class CmsStzefModules
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefTypesAccess
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
+     * })
+     */
+    private $idTypeAccess;
 
     /**
      * @var \AppBundle\Entity\CmsStzefTypesModules
@@ -126,6 +136,29 @@ public function __toString()
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set idTypeAccess
+     *
+     * @param \AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess
+     * @return CmsStzefModules
+     */
+    public function setIdTypeAccess(\AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess = null)
+    {
+        $this->idTypeAccess = $idTypeAccess;
+
+        return $this;
+    }
+
+    /**
+     * Get idTypeAccess
+     *
+     * @return \AppBundle\Entity\CmsStzefTypesAccess 
+     */
+    public function getIdTypeAccess()
+    {
+        return $this->idTypeAccess;
     }
 
     /**

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefPages
  *
- * @ORM\Table(name="cms_stzef_pages", uniqueConstraints={@ORM\UniqueConstraint(name="slug_UNIQUE", columns={"slug"})}, indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"type_page_id"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_categories1_idx", columns={"category_to_show"})})
+ * @ORM\Table(name="cms_stzef_pages", uniqueConstraints={@ORM\UniqueConstraint(name="slug_UNIQUE", columns={"slug"})}, indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"type_page_id"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_categories1_idx", columns={"category_to_show"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_states_publication1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_access1_idx", columns={"id_type_access"})})
  * @ORM\Entity
  */
 class CmsStzefPages
@@ -61,6 +61,26 @@ class CmsStzefPages
      * })
      */
     private $typePage;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefTypesAccess
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_type_access", referencedColumnName="id")
+     * })
+     */
+    private $idTypeAccess;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefStatesPublication
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStatesPublication")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_state_publication", referencedColumnName="id")
+     * })
+     */
+    private $idStatePublication;
 
     /**
      * @var \AppBundle\Entity\CmsStzefCategories
@@ -202,6 +222,52 @@ public function __toString()
     public function getTypePage()
     {
         return $this->typePage;
+    }
+
+    /**
+     * Set idTypeAccess
+     *
+     * @param \AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess
+     * @return CmsStzefPages
+     */
+    public function setIdTypeAccess(\AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess = null)
+    {
+        $this->idTypeAccess = $idTypeAccess;
+
+        return $this;
+    }
+
+    /**
+     * Get idTypeAccess
+     *
+     * @return \AppBundle\Entity\CmsStzefTypesAccess 
+     */
+    public function getIdTypeAccess()
+    {
+        return $this->idTypeAccess;
+    }
+
+    /**
+     * Set idStatePublication
+     *
+     * @param \AppBundle\Entity\CmsStzefStatesPublication $idStatePublication
+     * @return CmsStzefPages
+     */
+    public function setIdStatePublication(\AppBundle\Entity\CmsStzefStatesPublication $idStatePublication = null)
+    {
+        $this->idStatePublication = $idStatePublication;
+
+        return $this;
+    }
+
+    /**
+     * Get idStatePublication
+     *
+     * @return \AppBundle\Entity\CmsStzefStatesPublication 
+     */
+    public function getIdStatePublication()
+    {
+        return $this->idStatePublication;
     }
 
     /**

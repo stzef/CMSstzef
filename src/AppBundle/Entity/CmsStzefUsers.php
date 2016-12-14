@@ -362,5 +362,5 @@ public function __toString()
             // see section on salt below
             // $this->salt
         ) = unserialize($serialized);
-    }
+    } 
 }
