@@ -12,3 +12,6 @@ elfinder:
 #user_registration:
     #path:     admstzef/register
     #defaults: { _controller: AppBundle:Registration:register }
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
