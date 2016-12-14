@@ -21,49 +21,43 @@ class CmsStzefUsers extends BaseUser
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
-    private $name;
+    protected $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=45, nullable=false)
-     */
-    private $username;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=45, nullable=false)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=100, nullable=false)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="plain_password", type="string", length=45, nullable=false)
      */
-    private $plainPassword;
+    protected $plainPassword;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="is_active", type="boolean", nullable=false)
      */
-    private $isActive;
+    protected $isActive;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="resgiter_date", type="datetime", nullable=false)
      */
-    private $resgiterDate;
+    protected $resgiterDate;
 
     /**
      * @var integer
@@ -72,7 +66,7 @@ class CmsStzefUsers extends BaseUser
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \AppBundle\Entity\CmsStzefUsersGroups
@@ -82,7 +76,7 @@ class CmsStzefUsers extends BaseUser
      *   @ORM\JoinColumn(name="id_users_group", referencedColumnName="id")
      * })
      */
-    private $idUsersGroup;
+    protected $idUsersGroup;
 
     /**
      * @var \AppBundle\Entity\CmsStzefStates
@@ -92,7 +86,7 @@ class CmsStzefUsers extends BaseUser
      *   @ORM\JoinColumn(name="id_state", referencedColumnName="id")
      * })
      */
-    private $idState;
+    protected $idState;
 
 
 
@@ -124,28 +118,7 @@ public function __toString()
         return $this->name;
     }
 
-    /**
-     * Set username
-     *
-     * @param string $username
-     * @return CmsStzefUsers
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
 
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string 
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
 
     /**
      * Set email

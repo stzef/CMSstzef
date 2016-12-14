@@ -208,7 +208,7 @@ class PagesController extends Controller
     }
 
     /**
-     * @Route("/{slug_page}", name="page_generic")
+     * @Route("/page/{slug_page}", name="page_generic")
      */
     public function pageAction(Request $request,$slug_page){
 
