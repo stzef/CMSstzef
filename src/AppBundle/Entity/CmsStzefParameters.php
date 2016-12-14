@@ -290,5 +290,5 @@ public function __toString()
             return json_decode($this->valueText);
         }
         return null;
-    }  
+    }   
 }

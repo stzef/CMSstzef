@@ -8,13 +8,26 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="45" nullable="false"/>
+    <field name="name" type="string" column="name" length="45" nullable="true"/>
     <!--<field name="username" type="string" column="username" length="45" nullable="false"/>-->
     <!--<field name="email" type="string" column="email" length="45" nullable="false"/>-->
     <!--<field name="password" type="string" column="password" length="100" nullable="false"/>-->
-    <field name="plainPassword" type="string" column="plain_password" length="45" nullable="false"/>
+    <!--<field name="plainPassword" type="string" column="plain_password" length="45" nullable="false"/>-->
     <field name="isActive" type="boolean" column="is_active" nullable="false"/>
     <field name="resgiterDate" type="datetime" column="resgiter_date" nullable="false"/>
+    <!--<field name="usernameCanonical" type="string" column="username_canonical" length="45" nullable="true"/>-->
+    <!--<field name="emailCanonical" type="string" column="email_canonical" length="45" nullable="true"/>-->
+    <!--<field name="enabled" type="boolean" column="enabled" nullable="true"/>-->
+    <!--<field name="salt" type="string" column="salt" length="45" nullable="true"/>-->
+    <!--<field name="lastLogin" type="datetime" column="last_login" nullable="true"/>-->
+    <!--<field name="expired" type="boolean" column="expired" nullable="true"/>-->
+    <!--<field name="expiresAt" type="datetime" column="expires_at" nullable="true"/>-->
+    <!--<field name="confirmationToken" type="string" column="confirmation_token" length="45" nullable="true"/>-->
+    <!--<field name="passwordRequestedAt" type="datetime" column="password_requested_at" nullable="true"/>-->
+    <!--<field name="credentialsExpired" type="boolean" column="credentials_expired" nullable="true"/>-->
+    <!--<field name="locked" type="boolean" column="locked" nullable="true"/>-->
+    <!--<field name="roles" type="string" column="roles" length="45" nullable="true"/>-->
+    <!--<field name="credentialsExpireAt" type="datetime" column="credentials_expire_at" nullable="true"/>-->
     <many-to-one field="idUsersGroup" target-entity="CmsStzefUsersGroups">
       <join-columns>
         <join-column name="id_users_group" referenced-column-name="id"/>
