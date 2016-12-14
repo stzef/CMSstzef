@@ -18,6 +18,7 @@ class CmsStzefUsersType extends AbstractType
         public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('name')
             ->add('email', EmailType::class)
             ->add('username', TextType::class)
             ->add('plainPassword', RepeatedType::class, array(

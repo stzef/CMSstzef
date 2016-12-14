@@ -9,6 +9,6 @@ oneup_uploader:
 elfinder:
      resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
-user_registration:
-    path:     admstzef/register
-    defaults: { _controller: AppBundle:Registration:register }
+#user_registration:
+    #path:     admstzef/register
+    #defaults: { _controller: AppBundle:Registration:register }

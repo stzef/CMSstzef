@@ -21,7 +21,11 @@ security:
 
         main:
             pattern: ^/
-            anonymous: true
+            anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
+            #anonymous: true
             #anonymous: ~ Valor Inicial
             
             # activate different ways to authenticate

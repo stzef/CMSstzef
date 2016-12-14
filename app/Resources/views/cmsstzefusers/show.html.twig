@@ -24,19 +24,15 @@
             </tr>
             <tr>
                 <th>Plainpassword</th>
-                <td>{{ cmsStzefUser.plainpassword }}</td>
+                <td>{{ cmsStzefUser.plainPassword }}</td>
             </tr>
             <tr>
                 <th>Isactive</th>
-                <td>{{ cmsStzefUser.isactive }}</td>
+                <td>{% if cmsStzefUser.isActive %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Resgiterdate</th>
-                <td>{{ cmsStzefUser.resgiterDate }}</td>
-            </tr>
-            <tr>
-                <th>Activation</th>
-                <td>{{ cmsStzefUser.activation }}</td>
+                <td>{% if cmsStzefUser.resgiterDate %}{{ cmsStzefUser.resgiterDate|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Id</th>

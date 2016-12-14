@@ -10,12 +10,11 @@
     </id>
     <field name="name" type="string" column="name" length="45" nullable="false"/>
     <field name="username" type="string" column="username" length="45" nullable="false"/>
-    <field name="email" type="string" column="email" length="45" nullable="true"/>
+    <field name="email" type="string" column="email" length="45" nullable="false"/>
     <field name="password" type="string" column="password" length="100" nullable="false"/>
-    <field name="plainpassword" type="string" column="plainPassword" length="45" nullable="true"/>
-    <field name="isactive" type="string" column="isActive" length="45" nullable="false"/>
-    <field name="resgiterDate" type="string" column="resgiter_date" length="45" nullable="false"/>
-    <field name="activation" type="string" column="activation" length="45" nullable="false"/>
+    <field name="plainPassword" type="string" column="plain_password" length="45" nullable="false"/>
+    <field name="isActive" type="boolean" column="is_active" nullable="false"/>
+    <field name="resgiterDate" type="datetime" column="resgiter_date" nullable="false"/>
     <many-to-one field="idUsersGroup" target-entity="CmsStzefUsersGroups">
       <join-columns>
         <join-column name="id_users_group" referenced-column-name="id"/>

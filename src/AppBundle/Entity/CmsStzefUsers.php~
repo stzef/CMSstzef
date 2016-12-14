@@ -29,7 +29,7 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=45, nullable=true)
+     * @ORM\Column(name="email", type="string", length=45, nullable=false)
      */
     private $email;
 
@@ -43,30 +43,23 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="plainPassword", type="string", length=45, nullable=true)
+     * @ORM\Column(name="plain_password", type="string", length=45, nullable=false)
      */
-    private $plainpassword;
+    private $plainPassword;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="isActive", type="string", length=45, nullable=false)
+     * @ORM\Column(name="is_active", type="boolean", nullable=false)
      */
-    private $isactive;
+    private $isActive;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="resgiter_date", type="string", length=45, nullable=false)
+     * @ORM\Column(name="resgiter_date", type="datetime", nullable=false)
      */
     private $resgiterDate;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="activation", type="string", length=45, nullable=false)
-     */
-    private $activation;
 
     /**
      * @var integer

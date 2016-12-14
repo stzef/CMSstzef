@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Table(name="cms_stzef_users", indexes={@ORM\Index(name="fk_CMSstzef_users_CMSstzef_users_groups1_idx", columns={"id_users_group"}), @ORM\Index(name="fk_CMSstzef_users_CMSstzef_states1_idx", columns={"id_state"})})
  * @ORM\Entity
  */
-class CmsStzefUsers implements UserInterface
+class CmsStzefUsers  implements UserInterface 
 {
     /**
      * @var string
@@ -32,7 +32,7 @@ class CmsStzefUsers implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=45, nullable=true)
+     * @ORM\Column(name="email", type="string", length=45, nullable=false)
      */
     private $email;
 
@@ -46,30 +46,23 @@ class CmsStzefUsers implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="plainPassword", type="string", length=45, nullable=true)
+     * @ORM\Column(name="plain_password", type="string", length=45, nullable=false)
      */
-    private $plainpassword;
+    private $plainPassword;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="isActive", type="string", length=45, nullable=false)
+     * @ORM\Column(name="is_active", type="boolean", nullable=false)
      */
-    private $isactive;
+    private $isActive;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="resgiter_date", type="string", length=45, nullable=false)
+     * @ORM\Column(name="resgiter_date", type="datetime", nullable=false)
      */
     private $resgiterDate;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="activation", type="string", length=45, nullable=false)
-     */
-    private $activation;
 
     /**
      * @var integer
@@ -200,55 +193,55 @@ public function __toString()
     }
 
     /**
-     * Set plainpassword
+     * Set plainPassword
      *
-     * @param string $plainpassword
+     * @param string $plainPassword
      * @return CmsStzefUsers
      */
-    public function setPlainpassword($plainpassword)
+    public function setPlainPassword($plainPassword)
     {
-        $this->plainpassword = $plainpassword;
+        $this->plainPassword = $plainPassword;
 
         return $this;
     }
 
     /**
-     * Get plainpassword
+     * Get plainPassword
      *
      * @return string 
      */
-    public function getPlainpassword()
+    public function getPlainPassword()
     {
-        return $this->plainpassword;
+        return $this->plainPassword;
     }
 
     /**
-     * Set isactive
+     * Set isActive
      *
-     * @param string $isactive
+     * @param boolean $isActive
      * @return CmsStzefUsers
      */
-    public function setIsactive($isactive)
+    public function setIsActive($isActive)
     {
-        $this->isactive = $isactive;
+        $this->isActive = $isActive;
 
         return $this;
     }
 
     /**
-     * Get isactive
+     * Get isActive
      *
-     * @return string 
+     * @return boolean 
      */
-    public function getIsactive()
+    public function getIsActive()
     {
-        return $this->isactive;
+        return $this->isActive;
     }
 
     /**
      * Set resgiterDate
      *
-     * @param string $resgiterDate
+     * @param \DateTime $resgiterDate
      * @return CmsStzefUsers
      */
     public function setResgiterDate($resgiterDate)
@@ -261,34 +254,11 @@ public function __toString()
     /**
      * Get resgiterDate
      *
-     * @return string 
+     * @return \DateTime 
      */
     public function getResgiterDate()
     {
         return $this->resgiterDate;
-    }
-
-    /**
-     * Set activation
-     *
-     * @param string $activation
-     * @return CmsStzefUsers
-     */
-    public function setActivation($activation)
-    {
-        $this->activation = $activation;
-
-        return $this;
-    }
-
-    /**
-     * Get activation
-     *
-     * @return string 
-     */
-    public function getActivation()
-    {
-        return $this->activation;
     }
 
     /**

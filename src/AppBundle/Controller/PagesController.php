@@ -34,11 +34,9 @@ class PagesController extends Controller
 
         $data = array();
         $data["parameters"] = $this->getParameters(); 
-        dump($data["parameters"]);
         foreach ($sectionsTheme as $sectionTheme) {
             foreach ($sectionTheme->modulos as $modulo) {
                 $modulo->renderContentHtml = $twig->render($modulo->getContentHtml(),$data);
-                dump($modulo->renderContentHtml);
             }
         }
         return $sectionsTheme;
@@ -150,21 +148,21 @@ class PagesController extends Controller
         $parameters = $this->getParameters();
         $theme = $this->getTheme();
 
-        dump($parameters);
 
         $em = $this->getDoctrine()->getManager();
         $repositoryPages = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefPages");
         $repositoryArticles = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefArticles");
 
-        $current_page = $repositoryPages->find($slug_page);
+        $current_page = $repositoryPages->findOneBySlug($slug_page);
+        dump($current_page);
 
+        $articles = [];
         $path_template = "themes/" . $theme->getSlug();
         if($current_page){
             $path_template .= "/index.html.twig";
             $articles = $repositoryArticles->findByIdCategory($current_page->getCategoryToShow());
         }else{
             $path_template .= "/404.html.twig";
-            $articles = [];
         }
 
         return $this->render($path_template, array(

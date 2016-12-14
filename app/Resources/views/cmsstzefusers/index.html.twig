@@ -13,7 +13,6 @@
                 <th>Plainpassword</th>
                 <th>Isactive</th>
                 <th>Resgiterdate</th>
-                <th>Activation</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -25,10 +24,9 @@
                 <td>{{ cmsStzefUser.username }}</td>
                 <td>{{ cmsStzefUser.email }}</td>
                 <td>{{ cmsStzefUser.password }}</td>
-                <td>{{ cmsStzefUser.plainpassword }}</td>
-                <td>{{ cmsStzefUser.isactive }}</td>
-                <td>{{ cmsStzefUser.resgiterDate }}</td>
-                <td>{{ cmsStzefUser.activation }}</td>
+                <td>{{ cmsStzefUser.plainPassword }}</td>
+                <td>{% if cmsStzefUser.isActive %}Yes{% else %}No{% endif %}</td>
+                <td>{% if cmsStzefUser.resgiterDate %}{{ cmsStzefUser.resgiterDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ cmsStzefUser.id }}</td>
                 <td>
                     <ul class="list-unstyled">

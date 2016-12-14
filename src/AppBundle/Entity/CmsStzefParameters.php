@@ -287,7 +287,6 @@ public function __toString()
         }else if ($this->type == "INT") {
             return $this->valueInt;
         }else if ($this->type == "JSON") {
-            dump(json_decode($this->valueText));
             return json_decode($this->valueText);
         }
         return null;
