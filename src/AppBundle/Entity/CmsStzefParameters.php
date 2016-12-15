@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\EntityExtend\CmsStzefParametersExtend;
 
 /**
  * CmsStzefParameters
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cms_stzef_parameters", uniqueConstraints={@ORM\UniqueConstraint(name="cparam_UNIQUE", columns={"cparam"})})
  * @ORM\Entity
  */
-class CmsStzefParameters
+class CmsStzefParameters extends CmsStzefParametersExtend
 { 
     /**
      * @var string
@@ -38,7 +39,7 @@ class CmsStzefParameters
      *
      * @ORM\Column(name="type", type="string", length=45, nullable=false)
      */
-    private $type;
+    protected $type;
 
     /**
      * @var string
@@ -52,21 +53,21 @@ class CmsStzefParameters
      *
      * @ORM\Column(name="value_text", type="text", length=65535, nullable=true)
      */
-    private $valueText;
+    protected $valueText;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="value_bool", type="boolean", nullable=true)
      */
-    private $valueBool;
+    protected $valueBool;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="value_int", type="integer", nullable=true)
      */
-    private $valueInt;
+    protected $valueInt;
 
     /**
      * @var string
@@ -278,17 +279,4 @@ public function __toString()
         return $this->id;
     }
 
-    public function getValue()
-    {
-        if($this->type == "TEXT"){
-            return $this->valueText;
-        }else if ($this->type == "BOOL") {
-            return $this->valueBool;
-        }else if ($this->type == "INT") {
-            return $this->valueInt;
-        }else if ($this->type == "JSON") {
-            return json_decode($this->valueText);
-        }
-        return null;
-    }   
 }

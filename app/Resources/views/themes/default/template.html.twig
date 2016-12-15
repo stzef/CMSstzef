@@ -15,9 +15,13 @@
 
     <!-- Custom CSS -->
     <link href="{{ asset('themes/default/css/shop-homepage.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
+
     <link href="{{ asset('css/social_buttons/bootstrap-social.css') }}" rel="stylesheet">
+
     <link rel="icon" type="image/x-icon" href="{{ asset(parameters.favicon_site) }}" />
+
     <style type="text/css">
         .backgrundBody{
             {% if parameters.image_background.ifShow %}
@@ -255,7 +259,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="{{ asset('themes/default/js/bootstrap.min.js') }}"></script>
 
-
     <script type="text/javascript">
         var template = $("template")[0]
         var clone_template = template.content.cloneNode(true)
@@ -277,10 +280,10 @@
         });
       }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKSeKDQqN8p8bZfQJL98WqTtNrAHZumcg&callback=initMap"async defer></script>
-    {% block javascripts %}
 
-    {% endblock %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKSeKDQqN8p8bZfQJL98WqTtNrAHZumcg&callback=initMap"async defer></script>
+
+    {% block javascripts %}{% endblock %}
 </body>
 
 </html>
