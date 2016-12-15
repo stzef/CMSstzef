@@ -46,6 +46,16 @@
 
     <div class="container">
 
+        <div class="col-md-5 text-right" >
+            {% if app.user %}
+                <a role="button" class="btn btn-primary" href="{{ path('homepage_admin') }}">Ir a Administracion</a>
+                <a role="button" class="btn btn-danger"  href="{{ path('fos_user_security_logout') }}"> Salir </a>
+            {% else %}
+                <a role="button" class="btn btn-success" href="{{ path('fos_user_security_login') }}"> Iniciar Sesión</a>
+                <a role="button" class="btn btn-info" href="{{ path('fos_user_registration_register') }}"> Registrarse </a>
+            {% endif %}
+        </div>
+
         <div class="row">
             <div class="col-md-7"><img src="{{ parameters.logo_site }}" alt="" width="10%" height="10%" /></div>
             <div class="col-md-5 text-right" id="section_theme_header_mini">
