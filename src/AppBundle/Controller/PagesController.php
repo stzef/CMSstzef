@@ -188,15 +188,16 @@ class PagesController extends Controller
         $path_template = "themes/" . $theme->getSlug();
         if($current_article){
             $path_template .= "/article_detail.html.twig";
+
+            if($current_article->getIdStatePublication()->getId() != 1){
+                $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
+            }else if($current_article->getIdTypeAccess()->getId() != 1){
+                $path_template = "themes/" . $theme->getSlug() . "/sin_permisos.html.twig";
+            }
         }else{
             $path_template .= "/404.html.twig";
         }
 
-        if($current_article->getIdStatePublication()->getId() != 1){
-            $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
-        }else if($current_article->getIdTypeAccess()->getId() != 1){
-            $path_template = "themes/" . $theme->getSlug() . "/sin_permisos.html.twig";
-        }
 
         return $this->render($path_template, array(
             "cmsStzefMenuses" => $cmsStzefMenuses,
@@ -208,7 +209,7 @@ class PagesController extends Controller
     }
 
     /**
-     * @Route("/page/{slug_page}", name="page_generic")
+     * @Route("/{slug_page}", name="page_generic")
      */
     public function pageAction(Request $request,$slug_page){
 
@@ -233,15 +234,17 @@ class PagesController extends Controller
         if($current_page){
             $path_template .= "/index.html.twig";
             $articles = $this->getContentPage($current_page);
+
+            if($current_page->getIdStatePublication()->getId() != 1){
+                $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
+            }else if($current_page->getIdTypeAccess()->getId() != 1){
+                $path_template = "themes/" . $theme->getSlug() . "/sin_permisos.html.twig";
+            }
+
         }else{
             $path_template .= "/404.html.twig";
         }
 
-        if($current_page->getIdStatePublication()->getId() != 1){
-            $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
-        }else if($current_page->getIdTypeAccess()->getId() != 1){
-            $path_template = "themes/" . $theme->getSlug() . "/sin_permisos.html.twig";
-        }
 
         return $this->render($path_template, array(
             "cmsStzefMenuses" => $cmsStzefMenuses,

@@ -6,19 +6,55 @@
 {% if error %}
     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 {% endif %}
+	<div id="login-overlay" class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel"> Iniciar Sesión </h4>
+			</div>
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-    <label for="username">{{ 'security.login.username'|trans }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-
-    <label for="password">{{ 'security.login.password'|trans }}</label>
-    <input type="password" id="password" name="_password" required="required" />
-
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
-</form>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-xs-8">
+						<div class="well">
+							<form id="loginForm" action="{{ path("fos_user_security_check") }}" method="post" novalidate="novalidate">
+								<input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+								<div class="form-group">
+									<label class="col-sm-4 control-label" for="username" class="control-label">Usuario</label>
+									<div class="col-sm-8">
+										<input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+									</div>
+									<span class="help-block"></span>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-4 control-label" for="password" class="control-label">Contraseña</label>
+									<div class="col-sm-8">
+										<input class="form-control" type="password" id="password" name="_password" required="required" />
+									</div>
+									<span class="help-block"></span>
+								</div>
+								<div id="loginErrorMsg" class="alert alert-error hide">Wrong username og password</div>
+								<div class="checkbox">
+									<label>
+									<input type="checkbox" id="remember_me" name="_remember_me" value="on" /> Recorda Inicio de Sesión
+									</label>
+									<p class="help-block">(si confia el lugar desde el cual accede es confiable)</p>
+								</div>
+								<input type="submit" class="btn btn-success btn-block" id="_submit" name="_submit" value="Iniciar Sesión" />
+							</form>
+						</div>
+					</div>
+					<div class="col-xs-4">
+						<p class="lead">No tengo <span class="text-success">Cuenta</span></p>
+						<p><a href="{{ path('fos_user_registration_register') }}" class="btn btn-info btn-block">Registrarme</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock fos_user_content %}
+
+
+
+
+
+
