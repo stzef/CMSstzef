@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * CmsStzefUsers
@@ -10,147 +11,41 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cms_stzef_users")
  * @ORM\Entity
  */
-class CmsStzefUsers
+class CmsStzefUsers extends BaseUser
 {
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+        $this->activation = false;
+    }
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=true)
      */
-    private $name;
+    protected $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="username", type="string", length=255, nullable=false)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255, nullable=false)
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=100, nullable=false)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="plain_password", type="string", length=255, nullable=false)
-     */
-    private $plainPassword;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="activation", type="boolean", nullable=false)
      */
-    private $activation;
+    protected $activation;
 
     /**
      * @var \DateTime
      *
      * @ORM\Column(name="resgiter_date", type="datetime", nullable=false)
      */
-    private $resgiterDate;
+    protected $resgiterDate;
 
     /**
      * @var string
      *
      * @ORM\Column(name="username_canonical", type="string", length=255, nullable=true)
      */
-    private $usernameCanonical;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email_canonical", type="string", length=255, nullable=true)
-     */
-    private $emailCanonical;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="enabled", type="boolean", nullable=true)
-     */
-    private $enabled;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
-     */
-    private $salt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="last_login", type="datetime", nullable=true)
-     */
-    private $lastLogin;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="expired", type="boolean", nullable=true)
-     */
-    private $expired;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="expires_at", type="datetime", nullable=true)
-     */
-    private $expiresAt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="confirmation_token", type="string", length=255, nullable=true)
-     */
-    private $confirmationToken;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="password_requested_at", type="datetime", nullable=true)
-     */
-    private $passwordRequestedAt;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="credentials_expired", type="boolean", nullable=true)
-     */
-    private $credentialsExpired;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="credentials_expire_at", type="datetime", nullable=true)
-     */
-    private $credentialsExpireAt;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="locked", type="boolean", nullable=true)
-     */
-    private $locked;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="roles", type="text", nullable=true)
-     */
-    private $roles;
 
     /**
      * @var integer
@@ -159,12 +54,106 @@ class CmsStzefUsers
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
 
 
 public function __toString()
 {
-    return $this->name;
+    return $this->username;
 }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return CmsStzefUsers
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+
+    /**
+     * Set plainPassword
+     *
+     * @param string $plainPassword
+     * @return CmsStzefUsers
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    /**
+     * Get plainPassword
+     *
+     * @return string 
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * Set activation
+     *
+     * @param boolean $activation
+     * @return CmsStzefUsers
+     */
+    public function setActivation($activation)
+    {
+        $this->activation = $activation;
+
+        return $this;
+    }
+
+    /**
+     * Get activation
+     *
+     * @return boolean 
+     */
+    public function getActivation()
+    {
+        return $this->activation;
+    }
+
+    /**
+     * Set resgiterDate
+     *
+     * @param \DateTime $resgiterDate
+     * @return CmsStzefUsers
+     */
+    public function setResgiterDate($resgiterDate)
+    {
+        $this->resgiterDate = $resgiterDate;
+
+        return $this;
+    }
+
+    /**
+     * Get resgiterDate
+     *
+     * @return \DateTime 
+     */
+    public function getResgiterDate()
+    {
+        return $this->resgiterDate;
+    }
+
 }
