@@ -27,6 +27,18 @@
                 <td>{% if cmsStzefMenu.ifMain %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
+                <th>Datecreation</th>
+                <td>{% if cmsStzefMenu.dateCreation %}{{ cmsStzefMenu.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modified</th>
+                <td>{% if cmsStzefMenu.modified %}{{ cmsStzefMenu.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Params</th>
+                <td>{{ cmsStzefMenu.params }}</td>
+            </tr>
+            <tr>
                 <th>Id</th>
                 <td>{{ cmsStzefMenu.id }}</td>
             </tr>

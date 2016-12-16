@@ -31,6 +31,14 @@
                 <td>{% if cmsStzefArticle.dateCreation %}{{ cmsStzefArticle.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
+                <th>Modified</th>
+                <td>{% if cmsStzefArticle.modified %}{{ cmsStzefArticle.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Params</th>
+                <td>{{ cmsStzefArticle.params }}</td>
+            </tr>
+            <tr>
                 <th>Id</th>
                 <td>{{ cmsStzefArticle.id }}</td>
             </tr>

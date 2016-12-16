@@ -15,6 +15,18 @@
                 <td>{{ cmsStzefModule.contentHtml }}</td>
             </tr>
             <tr>
+                <th>Datecreation</th>
+                <td>{% if cmsStzefModule.dateCreation %}{{ cmsStzefModule.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modified</th>
+                <td>{% if cmsStzefModule.modified %}{{ cmsStzefModule.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Params</th>
+                <td>{{ cmsStzefModule.params }}</td>
+            </tr>
+            <tr>
                 <th>Id</th>
                 <td>{{ cmsStzefModule.id }}</td>
             </tr>

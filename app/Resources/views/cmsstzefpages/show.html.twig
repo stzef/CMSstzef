@@ -19,6 +19,18 @@
                 <td>{% if cmsStzefPage.ifMain %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
+                <th>Datecreation</th>
+                <td>{% if cmsStzefPage.dateCreation %}{{ cmsStzefPage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modified</th>
+                <td>{% if cmsStzefPage.modified %}{{ cmsStzefPage.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Params</th>
+                <td>{{ cmsStzefPage.params }}</td>
+            </tr>
+            <tr>
                 <th>Id</th>
                 <td>{{ cmsStzefPage.id }}</td>
             </tr>

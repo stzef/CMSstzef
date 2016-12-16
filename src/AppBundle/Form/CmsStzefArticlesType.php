@@ -13,7 +13,7 @@ class CmsStzefArticlesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('description')->add('contentHtml')->add('imageMain')->add('ifDistinguished')->add('dateCreation')->add('idStatePublication')->add('idCategory')->add('creatorUser')->add('idTypeAccess')        ;
+        $builder->add('name')->add('description')->add('contentHtml')->add('imageMain')->add('ifDistinguished')->add('dateCreation')->add('modified')->add('params')->add('idStatePublication')->add('idDisplayType')->add('idCategory')->add('creatorUser')->add('idTypeAccess')        ;
     }
     
     /**

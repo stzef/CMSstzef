@@ -48,6 +48,27 @@ class CmsStzefMenus
     private $ifMain;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation", type="datetime", nullable=false)
+     */
+    private $dateCreation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modified", type="datetime", nullable=true)
+     */
+    private $modified;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="params", type="string", length=200, nullable=true)
+     */
+    private $params;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -226,6 +247,75 @@ public function __toString()
     public function getIfMain()
     {
         return $this->ifMain;
+    }
+
+    /**
+     * Set dateCreation
+     *
+     * @param \DateTime $dateCreation
+     * @return CmsStzefMenus
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreation
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param \DateTime $modified
+     * @return CmsStzefMenus
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return \DateTime 
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * Set params
+     *
+     * @param string $params
+     * @return CmsStzefMenus
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
+
+        return $this;
+    }
+
+    /**
+     * Get params
+     *
+     * @return string 
+     */
+    public function getParams()
+    {
+        return $this->params;
     }
 
     /**

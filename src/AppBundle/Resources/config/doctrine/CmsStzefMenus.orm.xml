@@ -16,6 +16,9 @@
     <field name="orden" type="integer" column="orden" nullable="false"/>
     <field name="target" type="string" column="target" nullable="false"/>
     <field name="ifMain" type="boolean" column="if_main" nullable="false"/>
+    <field name="dateCreation" type="datetime" column="date_creation" nullable="false"/>
+    <field name="modified" type="datetime" column="modified" nullable="true"/>
+    <field name="params" type="string" column="params" length="200" nullable="true"/>
     <many-to-one field="page" target-entity="CmsStzefPages">
       <join-columns>
         <join-column name="page" referenced-column-name="id"/>

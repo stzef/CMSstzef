@@ -8,6 +8,9 @@
             <tr>
                 <th>Name</th>
                 <th>Contenthtml</th>
+                <th>Datecreation</th>
+                <th>Modified</th>
+                <th>Params</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -17,6 +20,9 @@
             <tr>
                 <td><a href="{{ path('admstzef_modules_show', { 'id': cmsStzefModule.id }) }}">{{ cmsStzefModule.name }}</a></td>
                 <td>{{ cmsStzefModule.contentHtml }}</td>
+                <td>{% if cmsStzefModule.dateCreation %}{{ cmsStzefModule.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cmsStzefModule.modified %}{{ cmsStzefModule.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ cmsStzefModule.params }}</td>
                 <td>{{ cmsStzefModule.id }}</td>
                 <td>
                     <ul class="list-unstyled">

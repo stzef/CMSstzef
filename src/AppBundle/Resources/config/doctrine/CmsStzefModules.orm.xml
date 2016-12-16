@@ -6,12 +6,21 @@
       <index name="fk_CMSstzef_modules_CMSstzef_types_modules1_idx" columns="id_type_module"/>
       <index name="fk_CMSstzef_modules_CMSstzef_states1_idx" columns="id_state_publication"/>
       <index name="fk_cms_stzef_modules_cms_stzef_types_access1_idx" columns="id_type_access"/>
+      <index name="fk_cms_stzef_modules_cms_stzef_users1_idx" columns="creator_user"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="name" type="string" column="name" length="45" nullable="false"/>
     <field name="contentHtml" type="text" column="content_html" length="65535" nullable="true"/>
+    <field name="dateCreation" type="datetime" column="date_creation" nullable="false"/>
+    <field name="modified" type="datetime" column="modified" nullable="true"/>
+    <field name="params" type="string" column="params" length="200" nullable="true"/>
+    <many-to-one field="creatorUser" target-entity="CmsStzefUsers">
+      <join-columns>
+        <join-column name="creator_user" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
     <many-to-one field="idTypeAccess" target-entity="CmsStzefTypesAccess">
       <join-columns>
         <join-column name="id_type_access" referenced-column-name="id"/>

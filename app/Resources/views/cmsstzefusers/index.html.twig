@@ -11,7 +11,7 @@
                 <th>Email</th>
                 <th>Password</th>
                 <th>Plainpassword</th>
-                <th>Isactive</th>
+                <th>Activation</th>
                 <th>Resgiterdate</th>
                 <th>Usernamecanonical</th>
                 <th>Emailcanonical</th>
@@ -23,9 +23,9 @@
                 <th>Confirmationtoken</th>
                 <th>Passwordrequestedat</th>
                 <th>Credentialsexpired</th>
+                <th>Credentialsexpireat</th>
                 <th>Locked</th>
                 <th>Roles</th>
-                <th>Credentialsexpireat</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -38,7 +38,7 @@
                 <td>{{ cmsStzefUser.email }}</td>
                 <td>{{ cmsStzefUser.password }}</td>
                 <td>{{ cmsStzefUser.plainPassword }}</td>
-                <td>{% if cmsStzefUser.isActive %}Yes{% else %}No{% endif %}</td>
+                <td>{% if cmsStzefUser.activation %}Yes{% else %}No{% endif %}</td>
                 <td>{% if cmsStzefUser.resgiterDate %}{{ cmsStzefUser.resgiterDate|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ cmsStzefUser.usernameCanonical }}</td>
                 <td>{{ cmsStzefUser.emailCanonical }}</td>
@@ -50,9 +50,9 @@
                 <td>{{ cmsStzefUser.confirmationToken }}</td>
                 <td>{% if cmsStzefUser.passwordRequestedAt %}{{ cmsStzefUser.passwordRequestedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if cmsStzefUser.credentialsExpired %}Yes{% else %}No{% endif %}</td>
+                <td>{% if cmsStzefUser.credentialsExpireAt %}{{ cmsStzefUser.credentialsExpireAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if cmsStzefUser.locked %}Yes{% else %}No{% endif %}</td>
                 <td>{{ cmsStzefUser.roles }}</td>
-                <td>{% if cmsStzefUser.credentialsExpireAt %}{{ cmsStzefUser.credentialsExpireAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{{ cmsStzefUser.id }}</td>
                 <td>
                     <ul class="list-unstyled">

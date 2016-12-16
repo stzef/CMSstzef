@@ -9,6 +9,9 @@
                 <th>Slug</th>
                 <th>Name</th>
                 <th>Ifmain</th>
+                <th>Datecreation</th>
+                <th>Modified</th>
+                <th>Params</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -19,6 +22,9 @@
                 <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">{{ cmsStzefPage.slug }}</a></td>
                 <td>{{ cmsStzefPage.name }}</td>
                 <td>{% if cmsStzefPage.ifMain %}Yes{% else %}No{% endif %}</td>
+                <td>{% if cmsStzefPage.dateCreation %}{{ cmsStzefPage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cmsStzefPage.modified %}{{ cmsStzefPage.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ cmsStzefPage.params }}</td>
                 <td>{{ cmsStzefPage.id }}</td>
                 <td>
                     <ul class="list-unstyled">

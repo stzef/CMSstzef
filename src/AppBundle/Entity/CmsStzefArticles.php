@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefArticles
  *
- * @ORM\Table(name="cms_stzef_articles", indexes={@ORM\Index(name="fk_CMSstzef_articles_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_CMSstzef_articles_CMSstzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_categories1_idx", columns={"id_category"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_states_publication1_idx", columns={"id_state_publication"})})
+ * @ORM\Table(name="cms_stzef_articles", indexes={@ORM\Index(name="fk_CMSstzef_articles_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_CMSstzef_articles_CMSstzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_categories1_idx", columns={"id_category"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_states_publication1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_display_types1_idx", columns={"id_display_type"})})
  * @ORM\Entity
  */
 class CmsStzefArticles
@@ -55,6 +55,20 @@ class CmsStzefArticles
     private $dateCreation;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modified", type="datetime", nullable=true)
+     */
+    private $modified;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="params", type="string", length=200, nullable=true)
+     */
+    private $params;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -72,6 +86,16 @@ class CmsStzefArticles
      * })
      */
     private $idStatePublication;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefDisplayTypes
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefDisplayTypes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_display_type", referencedColumnName="id")
+     * })
+     */
+    private $idDisplayType;
 
     /**
      * @var \AppBundle\Entity\CmsStzefCategories
@@ -249,6 +273,52 @@ public function __toString()
     }
 
     /**
+     * Set modified
+     *
+     * @param \DateTime $modified
+     * @return CmsStzefArticles
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return \DateTime 
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * Set params
+     *
+     * @param string $params
+     * @return CmsStzefArticles
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
+
+        return $this;
+    }
+
+    /**
+     * Get params
+     *
+     * @return string 
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -279,6 +349,29 @@ public function __toString()
     public function getIdStatePublication()
     {
         return $this->idStatePublication;
+    }
+
+    /**
+     * Set idDisplayType
+     *
+     * @param \AppBundle\Entity\CmsStzefDisplayTypes $idDisplayType
+     * @return CmsStzefArticles
+     */
+    public function setIdDisplayType(\AppBundle\Entity\CmsStzefDisplayTypes $idDisplayType = null)
+    {
+        $this->idDisplayType = $idDisplayType;
+
+        return $this;
+    }
+
+    /**
+     * Get idDisplayType
+     *
+     * @return \AppBundle\Entity\CmsStzefDisplayTypes 
+     */
+    public function getIdDisplayType()
+    {
+        return $this->idDisplayType;
     }
 
     /**

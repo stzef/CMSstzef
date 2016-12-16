@@ -9,6 +9,9 @@
                 <th>Name</th>
                 <th>Alias</th>
                 <th>Description</th>
+                <th>Datecreation</th>
+                <th>Modified</th>
+                <th>Params</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -19,6 +22,9 @@
                 <td><a href="{{ path('admstzef_categories_show', { 'id': cmsStzefCategory.id }) }}">{{ cmsStzefCategory.name }}</a></td>
                 <td>{{ cmsStzefCategory.alias }}</td>
                 <td>{{ cmsStzefCategory.description }}</td>
+                <td>{% if cmsStzefCategory.dateCreation %}{{ cmsStzefCategory.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cmsStzefCategory.modified %}{{ cmsStzefCategory.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ cmsStzefCategory.params }}</td>
                 <td>{{ cmsStzefCategory.id }}</td>
                 <td>
                     <ul class="list-unstyled">

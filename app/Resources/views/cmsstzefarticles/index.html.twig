@@ -12,6 +12,8 @@
                 <th>Imagemain</th>
                 <th>Ifdistinguished</th>
                 <th>Datecreation</th>
+                <th>Modified</th>
+                <th>Params</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -25,6 +27,8 @@
                 <td>{{ cmsStzefArticle.imageMain }}</td>
                 <td>{% if cmsStzefArticle.ifDistinguished %}Yes{% else %}No{% endif %}</td>
                 <td>{% if cmsStzefArticle.dateCreation %}{{ cmsStzefArticle.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cmsStzefArticle.modified %}{{ cmsStzefArticle.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ cmsStzefArticle.params }}</td>
                 <td>{{ cmsStzefArticle.id }}</td>
                 <td>
                     <ul class="list-unstyled">

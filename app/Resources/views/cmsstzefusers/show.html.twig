@@ -27,8 +27,8 @@
                 <td>{{ cmsStzefUser.plainPassword }}</td>
             </tr>
             <tr>
-                <th>Isactive</th>
-                <td>{% if cmsStzefUser.isActive %}Yes{% else %}No{% endif %}</td>
+                <th>Activation</th>
+                <td>{% if cmsStzefUser.activation %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Resgiterdate</th>
@@ -75,16 +75,16 @@
                 <td>{% if cmsStzefUser.credentialsExpired %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
+                <th>Credentialsexpireat</th>
+                <td>{% if cmsStzefUser.credentialsExpireAt %}{{ cmsStzefUser.credentialsExpireAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
                 <th>Locked</th>
                 <td>{% if cmsStzefUser.locked %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Roles</th>
                 <td>{{ cmsStzefUser.roles }}</td>
-            </tr>
-            <tr>
-                <th>Credentialsexpireat</th>
-                <td>{% if cmsStzefUser.credentialsExpireAt %}{{ cmsStzefUser.credentialsExpireAt|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Id</th>

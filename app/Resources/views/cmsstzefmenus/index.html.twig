@@ -11,6 +11,9 @@
                 <th>Orden</th>
                 <th>Target</th>
                 <th>Ifmain</th>
+                <th>Datecreation</th>
+                <th>Modified</th>
+                <th>Params</th>
                 <th>Id</th>
                 <th>Acciones</th>
             </tr>
@@ -23,6 +26,9 @@
                 <td>{{ cmsStzefMenu.orden }}</td>
                 <td>{{ cmsStzefMenu.target }}</td>
                 <td>{% if cmsStzefMenu.ifMain %}Yes{% else %}No{% endif %}</td>
+                <td>{% if cmsStzefMenu.dateCreation %}{{ cmsStzefMenu.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cmsStzefMenu.modified %}{{ cmsStzefMenu.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ cmsStzefMenu.params }}</td>
                 <td>{{ cmsStzefMenu.id }}</td>
                 <td>
                     <ul class="list-unstyled">

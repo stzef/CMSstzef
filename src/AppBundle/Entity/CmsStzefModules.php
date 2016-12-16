@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefModules
  *
- * @ORM\Table(name="cms_stzef_modules", indexes={@ORM\Index(name="fk_CMSstzef_modules_CMSstzef_sections1_idx", columns={"id_section_theme"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_types_modules1_idx", columns={"id_type_module"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_modules_cms_stzef_types_access1_idx", columns={"id_type_access"})})
+ * @ORM\Table(name="cms_stzef_modules", indexes={@ORM\Index(name="fk_CMSstzef_modules_CMSstzef_sections1_idx", columns={"id_section_theme"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_types_modules1_idx", columns={"id_type_module"}), @ORM\Index(name="fk_CMSstzef_modules_CMSstzef_states1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_modules_cms_stzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_modules_cms_stzef_users1_idx", columns={"creator_user"})})
  * @ORM\Entity
  */
 class CmsStzefModules
@@ -27,6 +27,27 @@ class CmsStzefModules
     private $contentHtml;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation", type="datetime", nullable=false)
+     */
+    private $dateCreation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modified", type="datetime", nullable=true)
+     */
+    private $modified;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="params", type="string", length=200, nullable=true)
+     */
+    private $params;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -34,6 +55,16 @@ class CmsStzefModules
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefUsers
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="creator_user", referencedColumnName="id")
+     * })
+     */
+    private $creatorUser;
 
     /**
      * @var \AppBundle\Entity\CmsStzefTypesAccess
@@ -129,6 +160,75 @@ public function __toString()
     }
 
     /**
+     * Set dateCreation
+     *
+     * @param \DateTime $dateCreation
+     * @return CmsStzefModules
+     */
+    public function setDateCreation($dateCreation)
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCreation
+     *
+     * @return \DateTime 
+     */
+    public function getDateCreation()
+    {
+        return $this->dateCreation;
+    }
+
+    /**
+     * Set modified
+     *
+     * @param \DateTime $modified
+     * @return CmsStzefModules
+     */
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+
+        return $this;
+    }
+
+    /**
+     * Get modified
+     *
+     * @return \DateTime 
+     */
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    /**
+     * Set params
+     *
+     * @param string $params
+     * @return CmsStzefModules
+     */
+    public function setParams($params)
+    {
+        $this->params = $params;
+
+        return $this;
+    }
+
+    /**
+     * Get params
+     *
+     * @return string 
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    /**
      * Get id
      *
      * @return integer 
@@ -136,6 +236,29 @@ public function __toString()
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set creatorUser
+     *
+     * @param \AppBundle\Entity\CmsStzefUsers $creatorUser
+     * @return CmsStzefModules
+     */
+    public function setCreatorUser(\AppBundle\Entity\CmsStzefUsers $creatorUser = null)
+    {
+        $this->creatorUser = $creatorUser;
+
+        return $this;
+    }
+
+    /**
+     * Get creatorUser
+     *
+     * @return \AppBundle\Entity\CmsStzefUsers 
+     */
+    public function getCreatorUser()
+    {
+        return $this->creatorUser;
     }
 
     /**

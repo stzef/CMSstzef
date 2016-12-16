@@ -48,6 +48,27 @@ class CmsStzefMenus
     private $ifMain;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_creation", type="datetime", nullable=false)
+     */
+    private $dateCreation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modified", type="datetime", nullable=true)
+     */
+    private $modified;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="params", type="string", length=200, nullable=true)
+     */
+    private $params;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")

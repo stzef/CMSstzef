@@ -6,6 +6,7 @@
       <index name="fk_CMSstzef_articles_CMSstzef_types_access1_idx" columns="id_type_access"/>
       <index name="fk_cms_stzef_articles_cms_stzef_categories1_idx" columns="id_category"/>
       <index name="fk_cms_stzef_articles_cms_stzef_states_publication1_idx" columns="id_state_publication"/>
+      <index name="fk_cms_stzef_articles_cms_stzef_display_types1_idx" columns="id_display_type"/>
     </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
@@ -16,9 +17,16 @@
     <field name="imageMain" type="string" column="image_main" length="45" nullable="true"/>
     <field name="ifDistinguished" type="boolean" column="if_distinguished" nullable="false"/>
     <field name="dateCreation" type="datetime" column="date_creation" nullable="false"/>
+    <field name="modified" type="datetime" column="modified" nullable="true"/>
+    <field name="params" type="string" column="params" length="200" nullable="true"/>
     <many-to-one field="idStatePublication" target-entity="CmsStzefStatesPublication">
       <join-columns>
         <join-column name="id_state_publication" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDisplayType" target-entity="CmsStzefDisplayTypes">
+      <join-columns>
+        <join-column name="id_display_type" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="idCategory" target-entity="CmsStzefCategories">

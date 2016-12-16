@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefUsers
  *
- * @ORM\Table(name="cms_stzef_users", indexes={@ORM\Index(name="fk_CMSstzef_users_CMSstzef_users_groups1_idx", columns={"id_users_group"}), @ORM\Index(name="fk_CMSstzef_users_CMSstzef_states1_idx", columns={"id_state"})})
+ * @ORM\Table(name="cms_stzef_users")
  * @ORM\Entity
  */
 class CmsStzefUsers
@@ -22,14 +22,14 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=45, nullable=false)
+     * @ORM\Column(name="username", type="string", length=255, nullable=false)
      */
     private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=45, nullable=false)
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
      */
     private $email;
 
@@ -43,16 +43,16 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="plain_password", type="string", length=45, nullable=false)
+     * @ORM\Column(name="plain_password", type="string", length=255, nullable=false)
      */
     private $plainPassword;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_active", type="boolean", nullable=false)
+     * @ORM\Column(name="activation", type="boolean", nullable=false)
      */
-    private $isActive;
+    private $activation;
 
     /**
      * @var \DateTime
@@ -64,14 +64,14 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="username_canonical", type="string", length=45, nullable=true)
+     * @ORM\Column(name="username_canonical", type="string", length=255, nullable=true)
      */
     private $usernameCanonical;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email_canonical", type="string", length=45, nullable=true)
+     * @ORM\Column(name="email_canonical", type="string", length=255, nullable=true)
      */
     private $emailCanonical;
 
@@ -85,7 +85,7 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="salt", type="string", length=45, nullable=true)
+     * @ORM\Column(name="salt", type="string", length=255, nullable=true)
      */
     private $salt;
 
@@ -113,7 +113,7 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="confirmation_token", type="string", length=45, nullable=true)
+     * @ORM\Column(name="confirmation_token", type="string", length=255, nullable=true)
      */
     private $confirmationToken;
 
@@ -132,6 +132,13 @@ class CmsStzefUsers
     private $credentialsExpired;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="credentials_expire_at", type="datetime", nullable=true)
+     */
+    private $credentialsExpireAt;
+
+    /**
      * @var boolean
      *
      * @ORM\Column(name="locked", type="boolean", nullable=true)
@@ -141,16 +148,9 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="roles", type="string", length=45, nullable=true)
+     * @ORM\Column(name="roles", type="text", nullable=true)
      */
     private $roles;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="credentials_expire_at", type="datetime", nullable=true)
-     */
-    private $credentialsExpireAt;
 
     /**
      * @var integer
@@ -160,26 +160,6 @@ class CmsStzefUsers
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
-
-    /**
-     * @var \AppBundle\Entity\CmsStzefUsersGroups
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsersGroups")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_users_group", referencedColumnName="id")
-     * })
-     */
-    private $idUsersGroup;
-
-    /**
-     * @var \AppBundle\Entity\CmsStzefStates
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefStates")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_state", referencedColumnName="id")
-     * })
-     */
-    private $idState;
 
 
 

@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use AppBundle\EntityExtend\CmsStzefParametersExtend;
 
+
 /**
  * CmsStzefParameters
  *
@@ -12,27 +13,27 @@ use AppBundle\EntityExtend\CmsStzefParametersExtend;
  * @ORM\Entity
  */
 class CmsStzefParameters extends CmsStzefParametersExtend
-{ 
+{
     /**
      * @var string
      *
      * @ORM\Column(name="cparam", type="string", length=20, nullable=false)
-     */ 
-    private $cparam;
+     */
+    protected $cparam;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="cgroup", type="integer", nullable=true)
      */
-    private $cgroup;
+    protected $cgroup;
 
     /**
      * @var string
      *
      * @ORM\Column(name="ngroup", type="string", length=45, nullable=true)
      */
-    private $ngroup;
+    protected $ngroup;
 
     /**
      * @var string
@@ -46,7 +47,7 @@ class CmsStzefParameters extends CmsStzefParametersExtend
      *
      * @ORM\Column(name="name", type="string", length=45, nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -76,7 +77,7 @@ class CmsStzefParameters extends CmsStzefParametersExtend
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
-    private $id;
+    protected $id;
 
 
 
@@ -278,5 +279,4 @@ public function __toString()
     {
         return $this->id;
     }
-
 }

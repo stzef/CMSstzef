@@ -13,7 +13,7 @@ class CmsStzefMenusType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('alias')->add('orden')->add('target')->add('ifMain')->add('page')->add('topMenu')->add('idTypeAccess')->add('creatorUser')->add('idStatePublication')        ;
+        $builder->add('name')->add('alias')->add('orden')->add('target')->add('ifMain')->add('dateCreation')->add('modified')->add('params')->add('page')->add('topMenu')->add('idTypeAccess')->add('creatorUser')->add('idStatePublication')        ;
     }
     
     /**

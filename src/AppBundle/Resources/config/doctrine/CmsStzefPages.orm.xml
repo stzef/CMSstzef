@@ -18,6 +18,9 @@
     <field name="slug" type="string" column="slug" length="50" nullable="false"/>
     <field name="name" type="string" column="name" length="45" nullable="false"/>
     <field name="ifMain" type="boolean" column="if_main" nullable="false"/>
+    <field name="dateCreation" type="datetime" column="date_creation" nullable="false"/>
+    <field name="modified" type="datetime" column="modified" nullable="true"/>
+    <field name="params" type="string" column="params" length="200" nullable="true"/>
     <many-to-one field="idTypePage" target-entity="CmsStzefTypesPages">
       <join-columns>
         <join-column name="id_type_page" referenced-column-name="id"/>
