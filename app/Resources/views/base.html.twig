@@ -164,7 +164,7 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
 
-            <li class="active treeview">
+            <li class="treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Articulos</span>
                 <span class="pull-right-container">
@@ -172,8 +172,8 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ path('admstzef_articles_index') }}"><i class="fa fa-circle-o"></i> CmsStzefArticles</a></li>
-                <li class="active"><a href="{{ path('admstzef_categories_index') }}"><i class="fa fa-circle-o"></i> CmsStzefCategories</a></li>
+                <li class=""><a href="{{ path('admstzef_articles_index') }}"><i class="fa fa-circle-o"></i> Articulos</a></li>
+                <li class=""><a href="{{ path('admstzef_categories_index') }}"><i class="fa fa-circle-o"></i> Categorias</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -184,7 +184,7 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ path('admstzef_parameters_index') }}"><i class="fa fa-circle-o"></i> CmsStzefParameters</a></li>
+                <li class=""><a href="{{ path('admstzef_parameters_index') }}"><i class="fa fa-circle-o"></i> Parametros</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -195,7 +195,7 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ path('admstzef_menus_index') }}"><i class="fa fa-circle-o"></i> CmsStzefMenus</a></li>
+                <li class=""><a href="{{ path('admstzef_menus_index') }}"><i class="fa fa-circle-o"></i> Menu</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -206,8 +206,8 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ path('admstzef_pages_index') }}"><i class="fa fa-circle-o"></i> CmsStzefPages</a></li>
-                <li class="active"><a href="{{ path('admstzef_types_pages_index') }}"><i class="fa fa-circle-o"></i> CmsStzefTypesPages</a></li>
+                <li class=""><a href="{{ path('admstzef_pages_index') }}"><i class="fa fa-circle-o"></i> Paginas</a></li>
+                <li class=""><a href="{{ path('admstzef_types_pages_index') }}"><i class="fa fa-circle-o"></i> Tipos de Paginas</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -218,9 +218,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ path('admstzef_themes_index') }}"><i class="fa fa-circle-o"></i> CmsStzefThemes</a></li>
-                <li class="active"><a href="{{ path('admstzef_sections_index') }}"><i class="fa fa-circle-o"></i> CmsStzefSections</a></li>
-                <li class="active"><a href="{{ path('admstzef_sections_theme_index') }}"><i class="fa fa-circle-o"></i> CmsStzefSectionsTheme</a></li>
+                <li class=""><a href="{{ path('admstzef_themes_index') }}"><i class="fa fa-circle-o"></i> Temas </a></li>
+                <li class=""><a href="{{ path('admstzef_sections_index') }}"><i class="fa fa-circle-o"></i> Secciones </a></li>
+                <li class=""><a href="{{ path('admstzef_sections_theme_index') }}"><i class="fa fa-circle-o"></i> Secciones de Temas</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -231,8 +231,8 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ path('admstzef_states_index') }}"><i class="fa fa-circle-o"></i> CmsStzefStates</a></li>
-                <li class="active"><a href="{{ path('admstzef_states_publication_index') }}"><i class="fa fa-circle-o"></i> CmsStzefStatesPublication</a></li>
+                <li class=""><a href="{{ path('admstzef_states_index') }}"><i class="fa fa-circle-o"></i> Estados </a></li>
+                <li class=""><a href="{{ path('admstzef_states_publication_index') }}"><i class="fa fa-circle-o"></i> Estados de Publicación </a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -243,9 +243,9 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ path('admstzef_users_index') }}"><i class="fa fa-circle-o"></i> CmsStzefUsers</a></li>
-                <li class="active"><a href="{{ path('admstzef_users_groups_index') }}"><i class="fa fa-circle-o"></i> CmsStzefUsersGroups</a></li>
-                <li class="active"><a href="{{ path('admstzef_types_access_index') }}"><i class="fa fa-circle-o"></i> CmsStzefTypesAccess</a></li>
+                <li class=""><a href="{{ path('admstzef_users_index') }}"><i class="fa fa-circle-o"></i> Usuarios </a></li>
+                <li class=""><a href="{{ path('admstzef_users_groups_index') }}"><i class="fa fa-circle-o"></i> Grupos </a></li>
+                <li class=""><a href="{{ path('admstzef_types_access_index') }}"><i class="fa fa-circle-o"></i> Tipos de Acceso </a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -256,14 +256,18 @@
                 </span>
               </a>
               <ul class="treeview-menu">
-                <li class="active"><a href="{{ path('admstzef_modules_index') }}"><i class="fa fa-circle-o"></i> CmsStzefModules</a></li>
-                <li class="active"><a href="{{ path('admstzef_types_modules_index') }}"><i class="fa fa-circle-o"></i> CmsStzefTypesModules</a></li>
-                <li class="active"><a href="{{ path('admstzef_types_access_index') }}"><i class="fa fa-circle-o"></i> CmsStzefTypesAccess</a></li>
+                <li class=""><a href="{{ path('admstzef_modules_index') }}"><i class="fa fa-circle-o"></i> Modulos </a></li>
+                <li class=""><a href="{{ path('admstzef_types_modules_index') }}"><i class="fa fa-circle-o"></i> Tipos de Modulos</a></li>
               </ul>
             </li>
             <li class="treeview">
               <a href="{{path('homepage')}}" target="_blank">
                 <i class="fa fa-dashboard"></i> <span>Ver la Pagina</span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="{{ path('fos_user_security_logout') }}">
+                <i class="fa fa-dashboard"></i> <span>Salir</span>
               </a>
             </li>
           </ul>
