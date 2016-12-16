@@ -7,7 +7,6 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Id</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -15,7 +14,6 @@
         {% for cmsStzefStatesPublication in cmsStzefStatesPublications %}
             <tr>
                 <td><a href="{{ path('admstzef_states_publication_show', { 'id': cmsStzefStatesPublication.id }) }}">{{ cmsStzefStatesPublication.name }}</a></td>
-                <td>{{ cmsStzefStatesPublication.id }}</td>
                 <td>
                     <ul class="list-unstyled">
                         <li>

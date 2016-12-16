@@ -6,12 +6,12 @@
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Contenthtml</th>
-                <th>Datecreation</th>
-                <th>Modified</th>
-                <th>Params</th>
-                <th>Id</th>
+                <th>Nombre</th>
+                <th>Creado por</th>
+                <th>Estado</th>
+                <th>Acceso</th>
+                <th>Tipo</th>
+                <th>Seccion Tema</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -19,11 +19,11 @@
         {% for cmsStzefModule in cmsStzefModules %}
             <tr>
                 <td><a href="{{ path('admstzef_modules_show', { 'id': cmsStzefModule.id }) }}">{{ cmsStzefModule.name }}</a></td>
-                <td>{{ cmsStzefModule.contentHtml }}</td>
-                <td>{% if cmsStzefModule.dateCreation %}{{ cmsStzefModule.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if cmsStzefModule.modified %}{{ cmsStzefModule.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ cmsStzefModule.params }}</td>
-                <td>{{ cmsStzefModule.id }}</td>
+                <td>{{ cmsStzefModule.creatorUser.username }}</td>
+                <td>{{ cmsStzefModule.idStatePublication.name }}</td>
+                <td>{{ cmsStzefModule.idTypeAccess.name }}</td>
+                <td>{{ cmsStzefModule.idTypeModule.name }}</td>
+                <td>{{ cmsStzefModule.idSectionTheme.name }}</td>
                 <td>
                     <ul class="list-unstyled">
                         <li>

@@ -1,35 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefarticles</h1>
+    <h1>Listado Articulos</h1>
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_articles_new') }}">Nuevo Articulos</a>
+        </li>
+    </ul>
 
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Contenthtml</th>
-                <th>Imagemain</th>
-                <th>Ifdistinguished</th>
-                <th>Datecreation</th>
-                <th>Modified</th>
-                <th>Params</th>
-                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+                <th>Destacado</th>
+                <th>Creado por</th>
+                <th>Categoria</th>
+                <th>Estado</th>
+                <th>Acceso</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
+
         {% for cmsStzefArticle in cmsStzefArticles %}
             <tr>
                 <td><a href="{{ path('admstzef_articles_show', { 'id': cmsStzefArticle.id }) }}">{{ cmsStzefArticle.name }}</a></td>
                 <td>{{ cmsStzefArticle.description }}</td>
-                <td>{{ cmsStzefArticle.contentHtml }}</td>
-                <td>{{ cmsStzefArticle.imageMain }}</td>
-                <td>{% if cmsStzefArticle.ifDistinguished %}Yes{% else %}No{% endif %}</td>
-                <td>{% if cmsStzefArticle.dateCreation %}{{ cmsStzefArticle.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if cmsStzefArticle.modified %}{{ cmsStzefArticle.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ cmsStzefArticle.params }}</td>
-                <td>{{ cmsStzefArticle.id }}</td>
+                <td>{% if cmsStzefArticle.imageMain != null %} <img class="img-responsive" src="{{ cmsStzefArticle.imageMain }}"> {% endif %}</td>
+                <td>{% if cmsStzefArticle.ifDistinguished %}Si{% else %}No{% endif %}</td>
+                <td>{{ cmsStzefArticle.creatorUser.username }}</td>
+                <td> <a href="{{ path('admstzef_categories_show', { 'id': cmsStzefArticle.idCategory.id }) }}" target="_blank">{{ cmsStzefArticle.idCategory.name }}</a> </td>
+                <td>{{ cmsStzefArticle.idStatePublication.name }}</td>
+                <td>{{ cmsStzefArticle.idTypeAccess.name }}</td>
                 <td>
                     <ul class="list-unstyled">
                         <li>
@@ -45,9 +49,4 @@
         </tbody>
     </table>
 
-    <ul class="list-unstyled">
-        <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_articles_new') }}">Nuevo cmsStzefArticle</a>
-        </li>
-    </ul>
 {% endblock %}

@@ -2,17 +2,20 @@
 
 {% block body %}
     <h1>Listado Cmsstzefcategories</h1>
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_categories_new') }}">Nueva Categoria</a>
+        </li>
+    </ul>
 
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Alias</th>
-                <th>Description</th>
-                <th>Datecreation</th>
-                <th>Modified</th>
-                <th>Params</th>
-                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Creado por</th>
+                <th>Estado</th>
+                <th>Acceso</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -20,12 +23,10 @@
         {% for cmsStzefCategory in cmsStzefCategories %}
             <tr>
                 <td><a href="{{ path('admstzef_categories_show', { 'id': cmsStzefCategory.id }) }}">{{ cmsStzefCategory.name }}</a></td>
-                <td>{{ cmsStzefCategory.alias }}</td>
                 <td>{{ cmsStzefCategory.description }}</td>
-                <td>{% if cmsStzefCategory.dateCreation %}{{ cmsStzefCategory.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if cmsStzefCategory.modified %}{{ cmsStzefCategory.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ cmsStzefCategory.params }}</td>
-                <td>{{ cmsStzefCategory.id }}</td>
+                <td>{{ cmsStzefCategory.creatorUser.username }}</td>
+                <td>{{ cmsStzefCategory.idStatePublication.name }}</td>
+                <td>{{ cmsStzefCategory.idTypeAccess.name }}</td>
                 <td>
                     <ul class="list-unstyled">
                         <li>
@@ -41,9 +42,4 @@
         </tbody>
     </table>
 
-    <ul class="list-unstyled">
-        <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_categories_new') }}">Nuevo cmsStzefCategory</a>
-        </li>
-    </ul>
 {% endblock %}

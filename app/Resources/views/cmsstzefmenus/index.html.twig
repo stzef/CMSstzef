@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefmenuses</h1>
+    <h1>Listado Menus</h1>
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_menus_new') }}">Nuevo Menu</a>
+        </li>
+    </ul>
 
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Alias</th>
-                <th>Orden</th>
-                <th>Target</th>
-                <th>Ifmain</th>
-                <th>Datecreation</th>
-                <th>Modified</th>
-                <th>Params</th>
-                <th>Id</th>
+                <th>Nombre</th>
+                <th>Principal</th>
+                <th>Pagina</th>
+                <th>Creado por</th>
+                <th>Estado</th>
+                <th>Acceso</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -22,14 +24,11 @@
         {% for cmsStzefMenu in cmsStzefMenuses %}
             <tr>
                 <td><a href="{{ path('admstzef_menus_show', { 'id': cmsStzefMenu.id }) }}">{{ cmsStzefMenu.name }}</a></td>
-                <td>{{ cmsStzefMenu.alias }}</td>
-                <td>{{ cmsStzefMenu.orden }}</td>
-                <td>{{ cmsStzefMenu.target }}</td>
                 <td>{% if cmsStzefMenu.ifMain %}Yes{% else %}No{% endif %}</td>
-                <td>{% if cmsStzefMenu.dateCreation %}{{ cmsStzefMenu.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if cmsStzefMenu.modified %}{{ cmsStzefMenu.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ cmsStzefMenu.params }}</td>
-                <td>{{ cmsStzefMenu.id }}</td>
+                <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefMenu.page.id }) }}">{{ cmsStzefMenu.page.name }}</a></td>
+                <td>{{ cmsStzefMenu.creatorUser.username }}</td>
+                <td>{{ cmsStzefMenu.idStatePublication.name }}</td>
+                <td>{{ cmsStzefMenu.idTypeAccess.name }}</td>
                 <td>
                     <ul class="list-unstyled">
                         <li>
@@ -45,9 +44,4 @@
         </tbody>
     </table>
 
-    <ul class="list-unstyled">
-        <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_menus_new') }}">Nuevo cmsStzefMenu</a>
-        </li>
-    </ul>
 {% endblock %}
