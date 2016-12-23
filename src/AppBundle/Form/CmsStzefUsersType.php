@@ -13,7 +13,7 @@ class CmsStzefUsersType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('username')->add('email')->add('password')->add('plainPassword')->add('activation')->add('resgiterDate')->add('usernameCanonical')->add('emailCanonical')->add('enabled')->add('salt')->add('lastLogin')->add('expired')->add('expiresAt')->add('confirmationToken')->add('passwordRequestedAt')->add('credentialsExpired')->add('credentialsExpireAt')->add('locked')->add('roles')        ;
+        $builder->add('name')->add('photo')->add('username')->add('email')->add('password')->add('plainPassword')->add('activation')->add('resgiterDate')->add('usernameCanonical')->add('emailCanonical')->add('enabled')->add('salt')->add('lastLogin')->add('expired')->add('expiresAt')->add('confirmationToken')->add('passwordRequestedAt')->add('credentialsExpired')->add('credentialsExpireAt')->add('locked')->add('roles')        ;
     }
     
     /**

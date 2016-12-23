@@ -15,9 +15,16 @@ class CmsStzefUsers
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=45, nullable=true)
+     * @ORM\Column(name="name", type="string", length=200, nullable=true)
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string", length=200, nullable=true)
+     */
+    private $photo;
 
     /**
      * @var string

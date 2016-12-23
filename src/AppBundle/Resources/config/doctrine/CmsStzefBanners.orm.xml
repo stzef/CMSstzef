@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-  <entity name="AppBundle\Entity\CmsStzefTypesPages" table="cms_stzef_types_pages">
+  <entity name="AppBundle\Entity\CmsStzefBanners" table="cms_stzef_banners">
+    <indexes>
+      <index name="fk_cms_stzef_banners_cms_stzef_sections1_idx" columns="id_section_theme"/>
+    </indexes>
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="name" type="string" column="name" length="45" nullable="false"/>
+    <field name="ifMain" type="boolean" column="if_main" nullable="false"/>
+    <many-to-one field="idSectionTheme" target-entity="CmsStzefSections">
+      <join-columns>
+        <join-column name="id_section_theme" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
   </entity>
 </doctrine-mapping>

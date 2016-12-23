@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado Cmsstzefbanners</h1>
+
+    <table class="table" id="CMSstzef_list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Ifmain</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefBanner in cmsStzefBanners %}
+            <tr>
+                <td><a href="{{ path('admstzef_banners_show', { 'id': cmsStzefBanner.id }) }}">{{ cmsStzefBanner.name }}</a></td>
+                <td>{% if cmsStzefBanner.ifMain %}Yes{% else %}No{% endif %}</td>
+                <td>{{ cmsStzefBanner.id }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_banners_show', { 'id': cmsStzefBanner.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_banners_edit', { 'id': cmsStzefBanner.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_banners_new') }}">Nuevo cmsStzefBanner</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefCategories
  *
- * @ORM\Table(name="cms_stzef_categories", indexes={@ORM\Index(name="fk_CMSstzef_categories_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_categories1_idx", columns={"top_category"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_states_publication1_idx", columns={"id_state_publication"})})
+ * @ORM\Table(name="cms_stzef_categories", indexes={@ORM\Index(name="fk_cms_stzef_categories_cms_stzef_categories1_idx", columns={"top_category"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_states_publication1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_categories_cms_stzef_users1_idx", columns={"creator_user"})})
  * @ORM\Entity
  */
 class CmsStzefCategories
@@ -64,6 +64,16 @@ class CmsStzefCategories
     private $id;
 
     /**
+     * @var \AppBundle\Entity\CmsStzefUsers
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="creator_user", referencedColumnName="id")
+     * })
+     */
+    private $creatorUser;
+
+    /**
      * @var \AppBundle\Entity\CmsStzefTypesAccess
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefTypesAccess")
@@ -92,16 +102,6 @@ class CmsStzefCategories
      * })
      */
     private $topCategory;
-
-    /**
-     * @var \AppBundle\Entity\CmsStzefUsers
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefUsers")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="creator_user", referencedColumnName="id")
-     * })
-     */
-    private $creatorUser;
 
 
 
@@ -259,6 +259,29 @@ public function __toString()
     }
 
     /**
+     * Set creatorUser
+     *
+     * @param \AppBundle\Entity\CmsStzefUsers $creatorUser
+     * @return CmsStzefCategories
+     */
+    public function setCreatorUser(\AppBundle\Entity\CmsStzefUsers $creatorUser = null)
+    {
+        $this->creatorUser = $creatorUser;
+
+        return $this;
+    }
+
+    /**
+     * Get creatorUser
+     *
+     * @return \AppBundle\Entity\CmsStzefUsers 
+     */
+    public function getCreatorUser()
+    {
+        return $this->creatorUser;
+    }
+
+    /**
      * Set idTypeAccess
      *
      * @param \AppBundle\Entity\CmsStzefTypesAccess $idTypeAccess
@@ -325,28 +348,5 @@ public function __toString()
     public function getTopCategory()
     {
         return $this->topCategory;
-    }
-
-    /**
-     * Set creatorUser
-     *
-     * @param \AppBundle\Entity\CmsStzefUsers $creatorUser
-     * @return CmsStzefCategories
-     */
-    public function setCreatorUser(\AppBundle\Entity\CmsStzefUsers $creatorUser = null)
-    {
-        $this->creatorUser = $creatorUser;
-
-        return $this;
-    }
-
-    /**
-     * Get creatorUser
-     *
-     * @return \AppBundle\Entity\CmsStzefUsers 
-     */
-    public function getCreatorUser()
-    {
-        return $this->creatorUser;
     }
 }

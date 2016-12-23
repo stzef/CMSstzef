@@ -11,12 +11,24 @@
                 <td>{{ cmsStzefUser.name }}</td>
             </tr>
             <tr>
+                <th>Photo</th>
+                <td>{{ cmsStzefUser.photo }}</td>
+            </tr>
+            <tr>
                 <th>Username</th>
                 <td>{{ cmsStzefUser.username }}</td>
             </tr>
             <tr>
                 <th>Email</th>
                 <td>{{ cmsStzefUser.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ cmsStzefUser.password }}</td>
+            </tr>
+            <tr>
+                <th>Plainpassword</th>
+                <td>{{ cmsStzefUser.plainPassword }}</td>
             </tr>
             <tr>
                 <th>Activation</th>
@@ -26,23 +38,57 @@
                 <th>Resgiterdate</th>
                 <td>{% if cmsStzefUser.resgiterDate %}{{ cmsStzefUser.resgiterDate|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
-
+            <tr>
+                <th>Usernamecanonical</th>
+                <td>{{ cmsStzefUser.usernameCanonical }}</td>
+            </tr>
+            <tr>
+                <th>Emailcanonical</th>
+                <td>{{ cmsStzefUser.emailCanonical }}</td>
+            </tr>
             <tr>
                 <th>Enabled</th>
                 <td>{% if cmsStzefUser.enabled %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
+                <th>Salt</th>
+                <td>{{ cmsStzefUser.salt }}</td>
+            </tr>
+            <tr>
                 <th>Lastlogin</th>
                 <td>{% if cmsStzefUser.lastLogin %}{{ cmsStzefUser.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
-
+            <tr>
+                <th>Expired</th>
+                <td>{% if cmsStzefUser.expired %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Expiresat</th>
+                <td>{% if cmsStzefUser.expiresAt %}{{ cmsStzefUser.expiresAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Confirmationtoken</th>
+                <td>{{ cmsStzefUser.confirmationToken }}</td>
+            </tr>
+            <tr>
+                <th>Passwordrequestedat</th>
+                <td>{% if cmsStzefUser.passwordRequestedAt %}{{ cmsStzefUser.passwordRequestedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Credentialsexpired</th>
+                <td>{% if cmsStzefUser.credentialsExpired %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Credentialsexpireat</th>
+                <td>{% if cmsStzefUser.credentialsExpireAt %}{{ cmsStzefUser.credentialsExpireAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
             <tr>
                 <th>Locked</th>
                 <td>{% if cmsStzefUser.locked %}Yes{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Roles</th>
-                <td><ul>  {% for rol in cmsStzefUser.roles %} <li> {{ rol }}</li>{% endfor %} </ul></td>
+                <td>{{ cmsStzefUser.roles }}</td>
             </tr>
             <tr>
                 <th>Id</th>

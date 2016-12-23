@@ -4,12 +4,13 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="45" nullable="true"/>
+    <field name="name" type="string" column="name" length="200" nullable="true"/>
+    <field name="photo" type="string" column="photo" length="200" nullable="true"/>
     <!--<field name="username" type="string" column="username" length="255" nullable="false"/>-->
     <!--<field name="email" type="string" column="email" length="255" nullable="false"/>-->
     <!--<field name="password" type="string" column="password" length="100" nullable="false"/>-->
     <!--<field name="plainPassword" type="string" column="plain_password" length="255" nullable="false"/>-->
-    <field name="activation" type="boolean" column="activation" nullable="false"/>
+    <!--<field name="activation" type="boolean" column="activation" nullable="false"/>-->
     <!--<field name="resgiterDate" type="datetime" column="resgiter_date" nullable="false"/>-->
     <!--<field name="usernameCanonical" type="string" column="username_canonical" length="255" nullable="true"/>-->
     <!--<field name="emailCanonical" type="string" column="email_canonical" length="255" nullable="true"/>-->

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado Cmsstzefbannerdetas</h1>
+
+    <table class="table" id="CMSstzef_list">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Contenthtml</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefBannerDetum in cmsStzefBannerDetas %}
+            <tr>
+                <td><a href="{{ path('admstzef_banner_deta_show', { 'id': cmsStzefBannerDetum.id }) }}">{{ cmsStzefBannerDetum.image }}</a></td>
+                <td>{{ cmsStzefBannerDetum.contentHtml }}</td>
+                <td>{{ cmsStzefBannerDetum.id }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_banner_deta_show', { 'id': cmsStzefBannerDetum.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_banner_deta_edit', { 'id': cmsStzefBannerDetum.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_banner_deta_new') }}">Nuevo cmsStzefBannerDetum</a>
+        </li>
+    </ul>
+{% endblock %}
