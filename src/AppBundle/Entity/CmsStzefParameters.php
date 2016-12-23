@@ -13,7 +13,7 @@ use AppBundle\EntityExtend\CmsStzefParametersExtend;
  * @ORM\Entity
  */
 class CmsStzefParameters extends CmsStzefParametersExtend
-{
+{ 
     /**
      * @var string
      *

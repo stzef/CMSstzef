@@ -131,7 +131,7 @@
                 {% endif %}
                 {% if current_page is defined %}
                     {% if current_page.ifMain %}
-                        <div class="row panel">
+                        <div class="row panel {{ current_page.idDisplayType.cssClass }}">
                             <h2>Destacados</h2>
                             {% if articles_distinguished is defined %}
                                 {% for article_distinguished in articles_distinguished %}
@@ -155,27 +155,29 @@
             </div>
         </div>
 
-        <div class="row col-md-8 panel">
+        <div class="row col-md-8 panel ">
             {% if articles is defined %}
                 {% if current_page.idTypePage.id == 1 %}
                     {% if articles|length > 0 %}
-                        {% for article in articles %}
-                            <div class="panel panel-primary col-md-12">
-                                <h2>
-                                    <a href="{{ path('view_article_generic',{'id_article' : article.id }) }}">{{ article.name }}</a>
-                                </h2>
-                                <p class="lead">
-                                    por <a href="#">{{ article.creatorUser.name }}</a>
-                                </p>
-                                <p><span class="glyphicon glyphicon-time"></span> Posteado en {{ article.dateCreation|date("F jS \\a\\t g:ia","America/Bogota")}}</p>
-                                <hr>
-                                <img class="img-responsive center-block" src="{{ article.imageMain }}" alt="">
-                                <hr>
-                                <p>{{ article.description }}</p>
-                                <a class="btn btn-primary" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">Ver Mas <span class="glyphicon glyphicon-chevron-right"></span></a>
+                        <div class="{{ current_page.idDisplayType.cssClass }}">
+                            {% for article in articles %}
+                                <div class="panel panel-primary col-md-12">
+                                    <h2>
+                                        <a href="{{ path('view_article_generic',{'id_article' : article.id }) }}">{{ article.name }}</a>
+                                    </h2>
+                                    <p class="lead">
+                                        por <a href="#">{{ article.creatorUser.name }}</a>
+                                    </p>
+                                    <p><span class="glyphicon glyphicon-time"></span> Posteado en {{ article.dateCreation|date("F jS \\a\\t g:ia","America/Bogota")}}</p>
+                                    <hr>
+                                    <img class="img-responsive center-block" src="{{ article.imageMain }}" alt="">
+                                    <hr>
+                                    <p>{{ article.description }}</p>
+                                    <a class="btn btn-primary" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">Ver Mas <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                            </div>
-                        {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
                     {% endif %}
                 {% elseif current_page.idTypePage.id == 2 %}
                     <div class="col-lg-12 panel panel-primary">

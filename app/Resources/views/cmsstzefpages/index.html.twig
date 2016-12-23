@@ -7,12 +7,12 @@
         <thead>
             <tr>
                 <th>Slug</th>
-                <th>Nombre</th>
-                <th>Principal</th>
-                <th>Tipo</th>
-                <th>Creado por</th>
-                <th>Estado</th>
-                <th>Acceso</th>
+                <th>Name</th>
+                <th>Ifmain</th>
+                <th>Datecreation</th>
+                <th>Modified</th>
+                <th>Params</th>
+                <th>Id</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -22,10 +22,10 @@
                 <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">{{ cmsStzefPage.slug }}</a></td>
                 <td>{{ cmsStzefPage.name }}</td>
                 <td>{% if cmsStzefPage.ifMain %}Yes{% else %}No{% endif %}</td>
-                <td>{{ cmsStzefPage.idTypePage.name }}</td>
-                <td>{{ cmsStzefPage.creatorUser.username }}</td>
-                <td>{{ cmsStzefPage.idStatePublication.name }}</td>
-                <td>{{ cmsStzefPage.idTypeAccess.name }}</td>
+                <td>{% if cmsStzefPage.dateCreation %}{{ cmsStzefPage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if cmsStzefPage.modified %}{{ cmsStzefPage.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ cmsStzefPage.params }}</td>
+                <td>{{ cmsStzefPage.id }}</td>
                 <td>
                     <ul class="list-unstyled">
                         <li>

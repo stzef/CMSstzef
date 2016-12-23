@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefArticles
  *
- * @ORM\Table(name="cms_stzef_articles", indexes={@ORM\Index(name="fk_CMSstzef_articles_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_CMSstzef_articles_CMSstzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_categories1_idx", columns={"id_category"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_states_publication1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_display_types1_idx", columns={"id_display_type"})})
+ * @ORM\Table(name="cms_stzef_articles", indexes={@ORM\Index(name="fk_CMSstzef_articles_CMSstzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_CMSstzef_articles_CMSstzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_categories1_idx", columns={"id_category"}), @ORM\Index(name="fk_cms_stzef_articles_cms_stzef_states_publication1_idx", columns={"id_state_publication"})})
  * @ORM\Entity
  */
 class CmsStzefArticles
@@ -86,16 +86,6 @@ class CmsStzefArticles
      * })
      */
     private $idStatePublication;
-
-    /**
-     * @var \AppBundle\Entity\CmsStzefDisplayTypes
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefDisplayTypes")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_display_type", referencedColumnName="id")
-     * })
-     */
-    private $idDisplayType;
 
     /**
      * @var \AppBundle\Entity\CmsStzefCategories
@@ -349,29 +339,6 @@ public function __toString()
     public function getIdStatePublication()
     {
         return $this->idStatePublication;
-    }
-
-    /**
-     * Set idDisplayType
-     *
-     * @param \AppBundle\Entity\CmsStzefDisplayTypes $idDisplayType
-     * @return CmsStzefArticles
-     */
-    public function setIdDisplayType(\AppBundle\Entity\CmsStzefDisplayTypes $idDisplayType = null)
-    {
-        $this->idDisplayType = $idDisplayType;
-
-        return $this;
-    }
-
-    /**
-     * Get idDisplayType
-     *
-     * @return \AppBundle\Entity\CmsStzefDisplayTypes 
-     */
-    public function getIdDisplayType()
-    {
-        return $this->idDisplayType;
     }
 
     /**

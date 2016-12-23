@@ -39,12 +39,8 @@ class CmsStzefArticlesController extends Controller
      */
     public function newAction(Request $request)
     {
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-        dump($user);
-
         $cmsStzefArticle = new CmsStzefArticles();
         $form = $this->createForm('AppBundle\Form\CmsStzefArticlesType', $cmsStzefArticle);
-        $cmsStzefArticle->setCreatorUser($user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

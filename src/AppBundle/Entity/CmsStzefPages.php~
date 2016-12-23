@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CmsStzefPages
  *
- * @ORM\Table(name="cms_stzef_pages", uniqueConstraints={@ORM\UniqueConstraint(name="slug_UNIQUE", columns={"slug"})}, indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"id_type_page"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_categories1_idx", columns={"category_to_show"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_states_publication1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_articles1_idx", columns={"article_to_show"})})
+ * @ORM\Table(name="cms_stzef_pages", uniqueConstraints={@ORM\UniqueConstraint(name="slug_UNIQUE", columns={"slug"})}, indexes={@ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_pages1_idx", columns={"id_type_page"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_users1_idx", columns={"creator_user"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_categories1_idx", columns={"category_to_show"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_states_publication1_idx", columns={"id_state_publication"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_types_access1_idx", columns={"id_type_access"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_articles1_idx", columns={"article_to_show"}), @ORM\Index(name="fk_cms_stzef_pages_cms_stzef_display_types1_idx", columns={"id_display_type"})})
  * @ORM\Entity
  */
 class CmsStzefPages
@@ -112,6 +112,16 @@ class CmsStzefPages
      * })
      */
     private $categoryToShow;
+
+    /**
+     * @var \AppBundle\Entity\CmsStzefDisplayTypes
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\CmsStzefDisplayTypes")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_display_type", referencedColumnName="id")
+     * })
+     */
+    private $idDisplayType;
 
     /**
      * @var \AppBundle\Entity\CmsStzefArticles

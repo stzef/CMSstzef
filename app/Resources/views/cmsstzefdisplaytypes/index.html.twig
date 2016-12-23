@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado Cmsstzefdisplaytypes</h1>
+
+    <table class="table" id="CMSstzef_list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Cssclass</th>
+                <th>Id</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cmsStzefDisplayType in cmsStzefDisplayTypes %}
+            <tr>
+                <td><a href="{{ path('admstzef_display_types_show', { 'id': cmsStzefDisplayType.id }) }}">{{ cmsStzefDisplayType.name }}</a></td>
+                <td>{{ cmsStzefDisplayType.cssClass }}</td>
+                <td>{{ cmsStzefDisplayType.id }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_display_types_show', { 'id': cmsStzefDisplayType.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_display_types_edit', { 'id': cmsStzefDisplayType.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_display_types_new') }}">Nuevo cmsStzefDisplayType</a>
+        </li>
+    </ul>
+{% endblock %}

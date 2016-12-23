@@ -6,14 +6,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CmsStzefPagesType extends AbstractType
+class CmsStzefDisplayTypesType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('slug')->add('name')->add('ifMain')->add('dateCreation')->add('modified')->add('params')->add('idTypePage')->add('creatorUser')->add('idTypeAccess')->add('idStatePublication')->add('categoryToShow')->add('idDisplayType')->add('articleToShow')        ;
+        $builder->add('name')->add('cssClass')        ;
     }
     
     /**
@@ -22,7 +22,7 @@ class CmsStzefPagesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\CmsStzefPages'
+            'data_class' => 'AppBundle\Entity\CmsStzefDisplayTypes'
         ));
     }
 
@@ -31,7 +31,7 @@ class CmsStzefPagesType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_cmsstzefpages';
+        return 'appbundle_cmsstzefdisplaytypes';
     }
 
 

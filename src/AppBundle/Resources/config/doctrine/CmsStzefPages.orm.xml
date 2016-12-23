@@ -8,6 +8,7 @@
       <index name="fk_cms_stzef_pages_cms_stzef_states_publication1_idx" columns="id_state_publication"/>
       <index name="fk_cms_stzef_pages_cms_stzef_types_access1_idx" columns="id_type_access"/>
       <index name="fk_cms_stzef_pages_cms_stzef_articles1_idx" columns="article_to_show"/>
+      <index name="fk_cms_stzef_pages_cms_stzef_display_types1_idx" columns="id_display_type"/>
     </indexes>
     <unique-constraints>
       <unique-constraint name="slug_UNIQUE" columns="slug"/>
@@ -44,6 +45,11 @@
     <many-to-one field="categoryToShow" target-entity="CmsStzefCategories">
       <join-columns>
         <join-column name="category_to_show" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idDisplayType" target-entity="CmsStzefDisplayTypes">
+      <join-columns>
+        <join-column name="id_display_type" referenced-column-name="id"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="articleToShow" target-entity="CmsStzefArticles">
