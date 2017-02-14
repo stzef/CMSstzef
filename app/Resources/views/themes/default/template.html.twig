@@ -19,7 +19,7 @@
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/social_buttons/bootstrap-social.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/default/css/container_content_html_tinymce.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset(parameters.favicon_site) }}" />
 
     <style type="text/css">
@@ -63,7 +63,7 @@
                 {% endif %}
             </div>
             <div class="col-md-5 text-right" id="section_theme_header_mini">
-                
+
             </div>
         </div>
 
@@ -79,7 +79,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href="{{ path('homepage') }}">{{ parameters.name_site }}</a>
-        </div> 
+        </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -190,14 +190,14 @@
                         <hr>
                         <img class="img-responsive center-block" src="{{ articles.imageMain }}" alt="">
                         <hr>
-                        <div>
-                            {{ articles.contentHTML|raw }} 
+                        <div class="container-content-html-tinymce">
+                            {{ articles.contentHTML|raw }}
                         </div>
                         <hr>
                     </div>
                 {% endif %}
             {% endif %}
-            
+
             {% block body %}
             {% endblock %}
         </div>
@@ -248,9 +248,9 @@
                         <div>
                             {{ modulo.renderContentHtml|raw }}
                         </div>
-                    {% endfor %} 
+                    {% endfor %}
                 </section>
-            {% endfor %} 
+            {% endfor %}
         {% endif %}
     </template>
     <!-- /.container -->

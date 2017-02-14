@@ -48,7 +48,6 @@ class CmsStzefArticlesController extends Controller
         $user= $this->get('security.context')->getToken()->getUser();
         $cmsStzefArticle->setCreatorUser($user);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($cmsStzefArticle);

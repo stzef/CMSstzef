@@ -28,7 +28,7 @@ class CmsStzefPagesType extends AbstractType
         //->add('modified')
         //->add('params')
         ->add('idTypePage',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesPages','label' => 'Tipo Pagina'))
-        ->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
+        //->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
         ->add('idTypeAccess',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
         ->add('idStatePublication',EntityType::class,array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))
         ->add('categoryToShow',EntityType::class,array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))

@@ -6,6 +6,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 class CmsStzefCategoriesType extends AbstractType
 {
     /**
@@ -13,9 +20,22 @@ class CmsStzefCategoriesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('alias')->add('description')->add('dateCreation')->add('modified')->add('params')->add('idTypeAccess')->add('idStatePublication')->add('topCategory')->add('creatorUser')        ;
+        $builder
+        ->add('name',TextType::class,array('label' => 'Descripción'))
+        ->add('alias',TextType::class,array('label' => 'Alias'))
+        ->add('description',TextType::class,array('label' => 'Descripción'))
+        //->add('dateCreation')
+        //->add('modified')
+        //->add('params')
+        ->add('idTypeAccess',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
+        ->add('idStatePublication',EntityType::class,array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))
+        //->add('creatorUser')
+        ->add('topCategory',EntityType::class,array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))
+        ;
     }
-    
+
+
+
     /**
      * {@inheritdoc}
      */

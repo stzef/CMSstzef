@@ -79,7 +79,7 @@ public function __toString()
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -103,7 +103,7 @@ public function __toString()
     /**
      * Get plainPassword
      *
-     * @return string 
+     * @return string
      */
     public function getPlainPassword()
     {
@@ -126,7 +126,7 @@ public function __toString()
     /**
      * Get activation
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getActivation()
     {
@@ -149,7 +149,7 @@ public function __toString()
     /**
      * Get resgiterDate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getResgiterDate()
     {
@@ -178,7 +178,7 @@ public function __toString()
     /**
      * Get photo
      *
-     * @return string 
+     * @return string
      */
     public function getPhoto()
     {
@@ -188,7 +188,7 @@ public function __toString()
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -211,7 +211,7 @@ public function __toString()
     /**
      * Get expired
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getExpired()
     {
@@ -221,7 +221,7 @@ public function __toString()
     /**
      * Get expiresAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpiresAt()
     {
@@ -231,7 +231,7 @@ public function __toString()
     /**
      * Get credentialsExpired
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getCredentialsExpired()
     {
@@ -241,7 +241,7 @@ public function __toString()
     /**
      * Get credentialsExpireAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCredentialsExpireAt()
     {
@@ -251,7 +251,7 @@ public function __toString()
     /**
      * Get locked
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getLocked()
     {

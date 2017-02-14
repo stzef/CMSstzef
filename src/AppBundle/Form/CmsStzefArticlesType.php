@@ -30,7 +30,7 @@ class CmsStzefArticlesType extends AbstractType
         ->add('ifDistinguished',CheckboxType::class,array('label' => 'Destacado',"required"=>false))
         ->add('idStatePublication',EntityType::class,array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))
         ->add('idCategory',EntityType::class,array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))
-        ->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
+        //->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
         ->add('idTypeAccess',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'));
     }
 

@@ -45,7 +45,9 @@
                                 <hr>
                                 <img class="img-responsive" src="{{ current_article.imageMain }}" alt="">
                                 <hr>
-                                <p>{{ current_article.contentHTML|raw }}</p>
+                                <div class="container-content-html-tinymce" >
+                                    {{ current_article.contentHTML|raw }}
+                                </div>
 
                                 <hr>
 

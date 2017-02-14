@@ -22,6 +22,9 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/pw_col_1/css/style.css') }}">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/pw_col_1/css/grid_12.css') }}">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/pw_col_1/css/slider.css') }}">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/pw_col_1/css/container_content_html_tinymce.css') }}">
+
     <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
 
     <script src="{{ asset('themes/pw_col_1/js/jquery.js') }}"></script>
@@ -247,7 +250,7 @@
                         <hr>
                         <img class="img-responsive center-block" src="{{ articles.imageMain }}" alt="">
                         <hr>
-                        <div>
+                        <div class="container-content-html-tinymce">
                             {{ articles.contentHTML|raw }}
                         </div>
                         <hr>

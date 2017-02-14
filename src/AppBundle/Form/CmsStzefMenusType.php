@@ -32,7 +32,7 @@ class CmsStzefMenusType extends AbstractType
         ->add('page',EntityType::class,array('class' => 'AppBundle:CmsStzefPages','label' => 'Pagina' ))
         ->add('topMenu',EntityType::class,array('class' => 'AppBundle:CmsStzefMenus','label' => 'Menu Mayor' ))
         ->add('idTypeAccess',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
-        ->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
+        //->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
         ->add('idStatePublication',EntityType::class,array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))        ;
     }
 

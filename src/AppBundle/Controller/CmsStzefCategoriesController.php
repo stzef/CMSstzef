@@ -43,6 +43,9 @@ class CmsStzefCategoriesController extends Controller
         $form = $this->createForm('AppBundle\Form\CmsStzefCategoriesType', $cmsStzefCategory);
         $form->handleRequest($request);
 
+        $user= $this->get('security.context')->getToken()->getUser();
+        $cmsStzefCategory->setCreatorUser($user);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($cmsStzefCategory);
