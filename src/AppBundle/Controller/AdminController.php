@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
-	
+
     /**
      * @Route("/admstzef", name="homepage_admin")
      */
@@ -42,7 +42,7 @@ class AdminController extends Controller
         */
     ;
     $this->get('mailer')->send($message);
-    dump($message);
+    //dump($message);
 
 
 

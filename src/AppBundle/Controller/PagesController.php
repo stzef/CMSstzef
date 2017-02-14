@@ -32,7 +32,7 @@ class PagesController extends Controller
             ->setParameter('paramIdArticle',$page->getArticleToShow());
             $contentPage = $queryArticle->setMaxResults(1)->getOneOrNullResult();
         }
-        dump($contentPage);
+        //dump($contentPage);
         return $contentPage;
     }
 
@@ -64,7 +64,7 @@ class PagesController extends Controller
 
     public function getSectionsTheme(){
         $twig = new \Twig_Environment(new \Twig_Loader_String());
-        
+
         $valParamStatePublication = 1;
         $valParamTypeAccess = 1;
 
@@ -86,7 +86,7 @@ class PagesController extends Controller
         }
 
         $data = array();
-        $data["parameters"] = $this->getParameters(); 
+        $data["parameters"] = $this->getParameters();
         foreach ($sectionsTheme as $sectionTheme) {
             foreach ($sectionTheme->modulos as $modulo) {
                 $modulo->renderContentHtml = $twig->render($modulo->getContentHtml(),$data);
@@ -160,7 +160,7 @@ class PagesController extends Controller
         $parameters = $this->getParameters();
         $theme = $this->getTheme();
         $sectionsTheme = $this->getSectionsTheme();
-        
+
 
         return $this->render("themes/" . $theme->getSlug() . "/index.html.twig", array(
             "cmsStzefMenuses" => $cmsStzefMenuses,
