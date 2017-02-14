@@ -1,20 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefarticles</h1>
+    <h1>Listado Articulos</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Contenthtml</th>
-                <th>Imagemain</th>
-                <th>Ifdistinguished</th>
-                <th>Datecreation</th>
-                <th>Modified</th>
-                <th>Params</th>
-                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Creado por</th>
+                <th>Destacado</th>
+                <th>Estado</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -23,20 +20,18 @@
             <tr>
                 <td><a href="{{ path('admstzef_articles_show', { 'id': cmsStzefArticle.id }) }}">{{ cmsStzefArticle.name }}</a></td>
                 <td>{{ cmsStzefArticle.description }}</td>
-                <td>{{ cmsStzefArticle.contentHtml }}</td>
-                <td>{{ cmsStzefArticle.imageMain }}</td>
+                <td>{{ cmsStzefArticle.creatorUser.username }}</td>
                 <td>{% if cmsStzefArticle.ifDistinguished %}Yes{% else %}No{% endif %}</td>
-                <td>{% if cmsStzefArticle.dateCreation %}{{ cmsStzefArticle.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if cmsStzefArticle.modified %}{{ cmsStzefArticle.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ cmsStzefArticle.params }}</td>
-                <td>{{ cmsStzefArticle.id }}</td>
+                <td>{{ cmsStzefArticle.idStatePublication.name }}</td>
+                <td><img width="150px" class="img-responsive" src="{{ cmsStzefArticle.imageMain }}" alt=""></td>
+
                 <td>
                     <ul class="list-unstyled">
+                        <!--<li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_articles_show', { 'id': cmsStzefArticle.id }) }}">Mostrar</a>
+                        </li>-->
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_articles_show', { 'id': cmsStzefArticle.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_articles_edit', { 'id': cmsStzefArticle.id }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_articles_edit', { 'id': cmsStzefArticle.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -47,7 +42,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_articles_new') }}">Nuevo cmsStzefArticle</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_articles_new') }}">Nuevo Articulo</a>
         </li>
     </ul>
 {% endblock %}

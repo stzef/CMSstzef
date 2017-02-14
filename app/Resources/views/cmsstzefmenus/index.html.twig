@@ -2,11 +2,6 @@
 
 {% block body %}
     <h1>Listado Menus</h1>
-    <ul class="list-unstyled">
-        <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_menus_new') }}">Nuevo Menu</a>
-        </li>
-    </ul>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -31,11 +26,11 @@
                 <td>{{ cmsStzefMenu.idTypeAccess.name }}</td>
                 <td>
                     <ul class="list-unstyled">
+                        <!--<li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_menus_show', { 'id': cmsStzefMenu.id }) }}">Mostrar</a>
+                        </li>-->
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_menus_show', { 'id': cmsStzefMenu.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_menus_edit', { 'id': cmsStzefMenu.id }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_menus_edit', { 'id': cmsStzefMenu.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -43,5 +38,10 @@
         {% endfor %}
         </tbody>
     </table>
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_menus_new') }}">Nuevo Menu</a>
+        </li>
+    </ul>
 
 {% endblock %}

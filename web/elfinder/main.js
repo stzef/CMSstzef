@@ -9,7 +9,7 @@
 	var // jQuery and jQueryUI version
 		jqver = '3.1.1',
 		uiver = '1.12.1',
-		
+
 		// Detect language (optional)
 		lang = (function() {
 			var locq = window.location.search,
@@ -28,7 +28,7 @@
 			else if (lang === 'zh') lang = (fullLang.substr(0,5) === 'zh-tw')? 'zh_TW' : 'zh_CN';
 			return lang;
 		})(),
-		
+
 		// elFinder options (REQUIRED)
 		// Documentation for client options:
 		// https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
@@ -36,12 +36,12 @@
 			url : 'php/connector.minimal.php', // connector URL (REQUIRED)
 			lang: lang                         // auto detected language (optional)
 		},
-		
+
 		// Start elFinder (REQUIRED)
 		start = function(elFinder) {
 			// load jQueryUI CSS
 			elFinder.prototype.loadCss('//cdnjs.cloudflare.com/ajax/libs/jqueryui/'+uiver+'/themes/smoothness/jquery-ui.css');
-			
+
 			$(function() {
 				// Optional for Japanese decoder "extras/encoding-japanese.min"
 				if (window.Encoding && Encoding.convert) {
@@ -53,7 +53,7 @@
 				$('#elfinder').elfinder(opts);
 			});
 		},
-		
+
 		// JavaScript loader (REQUIRED)
 		load = function() {
 			require(
@@ -69,7 +69,7 @@
 				}
 			);
 		},
-		
+
 		// is IE8? for determine the jQuery version to use (optional)
 		ie8 = (typeof window.addEventListener === 'undefined' && typeof document.getElementsByClassName === 'undefined');
 

@@ -1,38 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefpages</h1>
+    <h1>Listado Paginas</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Slug</th>
-                <th>Name</th>
-                <th>Ifmain</th>
-                <th>Datecreation</th>
-                <th>Modified</th>
-                <th>Params</th>
-                <th>Id</th>
+                <th>Nombre</th>
+                <th>Principal</th>
+                <th>Creado por</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for cmsStzefPage in cmsStzefPages %}
             <tr>
-                <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">{{ cmsStzefPage.slug }}</a></td>
-                <td>{{ cmsStzefPage.name }}</td>
+                <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">{{ cmsStzefPage.name }}</a></td>
                 <td>{% if cmsStzefPage.ifMain %}Yes{% else %}No{% endif %}</td>
-                <td>{% if cmsStzefPage.dateCreation %}{{ cmsStzefPage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if cmsStzefPage.modified %}{{ cmsStzefPage.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ cmsStzefPage.params }}</td>
-                <td>{{ cmsStzefPage.id }}</td>
+                <td>{{ cmsStzefPage.creatorUser.username }}</td>
                 <td>
                     <ul class="list-unstyled">
+                        <!--<li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">Mostar</a>
+                        </li>-->
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_edit', { 'id': cmsStzefPage.id }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_pages_edit', { 'id': cmsStzefPage.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -43,7 +35,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_pages_new') }}">Nuevo cmsStzefPage</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_pages_new') }}">Nuevo Pagina</a>
         </li>
     </ul>
 {% endblock %}

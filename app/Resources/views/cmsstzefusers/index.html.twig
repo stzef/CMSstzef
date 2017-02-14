@@ -1,33 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefusers</h1>
+    <h1>Listado Usuarios</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Photo</th>
-                <th>Username</th>
+                <th>Nombre</th>
+                <th>Foto</th>
+                <th>Usuario</th>
                 <th>Email</th>
-                <th>Password</th>
-                <th>Plainpassword</th>
-                <th>Activation</th>
-                <th>Resgiterdate</th>
-                <th>Usernamecanonical</th>
-                <th>Emailcanonical</th>
                 <th>Enabled</th>
-                <th>Salt</th>
                 <th>Lastlogin</th>
-                <th>Expired</th>
-                <th>Expiresat</th>
-                <th>Confirmationtoken</th>
-                <th>Passwordrequestedat</th>
-                <th>Credentialsexpired</th>
-                <th>Credentialsexpireat</th>
-                <th>Locked</th>
                 <th>Roles</th>
-                <th>Id</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -35,34 +20,19 @@
         {% for cmsStzefUser in cmsStzefUsers %}
             <tr>
                 <td><a href="{{ path('admstzef_users_show', { 'id': cmsStzefUser.id }) }}">{{ cmsStzefUser.name }}</a></td>
-                <td>{{ cmsStzefUser.photo }}</td>
+                <td><img width="150px" class="img-responsive" src="{{ cmsStzefUser.photo }}" alt=""></td>
                 <td>{{ cmsStzefUser.username }}</td>
                 <td>{{ cmsStzefUser.email }}</td>
-                <td>{{ cmsStzefUser.password }}</td>
-                <td>{{ cmsStzefUser.plainPassword }}</td>
-                <td>{% if cmsStzefUser.activation %}Yes{% else %}No{% endif %}</td>
-                <td>{% if cmsStzefUser.resgiterDate %}{{ cmsStzefUser.resgiterDate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ cmsStzefUser.usernameCanonical }}</td>
-                <td>{{ cmsStzefUser.emailCanonical }}</td>
                 <td>{% if cmsStzefUser.enabled %}Yes{% else %}No{% endif %}</td>
-                <td>{{ cmsStzefUser.salt }}</td>
                 <td>{% if cmsStzefUser.lastLogin %}{{ cmsStzefUser.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if cmsStzefUser.expired %}Yes{% else %}No{% endif %}</td>
-                <td>{% if cmsStzefUser.expiresAt %}{{ cmsStzefUser.expiresAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ cmsStzefUser.confirmationToken }}</td>
-                <td>{% if cmsStzefUser.passwordRequestedAt %}{{ cmsStzefUser.passwordRequestedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if cmsStzefUser.credentialsExpired %}Yes{% else %}No{% endif %}</td>
-                <td>{% if cmsStzefUser.credentialsExpireAt %}{{ cmsStzefUser.credentialsExpireAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% if cmsStzefUser.locked %}Yes{% else %}No{% endif %}</td>
-                <td>{{ cmsStzefUser.roles }}</td>
-                <td>{{ cmsStzefUser.id }}</td>
+                <td>{% for rol in cmsStzefUser.roles %} {{rol}} {% endfor %}</td>
                 <td>
                     <ul class="list-unstyled">
+                        <!--<li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_users_show', { 'id': cmsStzefUser.id }) }}">Mostrar</a>
+                        </li>-->
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_users_show', { 'id': cmsStzefUser.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_users_edit', { 'id': cmsStzefUser.id }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_users_edit', { 'id': cmsStzefUser.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -73,7 +43,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_users_new') }}">Nuevo cmsStzefUser</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_users_new') }}">Nuevo Usuario</a>
         </li>
     </ul>
 {% endblock %}

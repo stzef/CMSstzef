@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefusersgroups</h1>
+    <h1>Listado Grupos de Usuarios</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -18,9 +18,9 @@
                 <td>{{ cmsStzefUsersGroup.id }}</td>
                 <td>
                     <ul class="list-unstyled">
-                        <li>
+                        <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_users_groups_show', { 'id': cmsStzefUsersGroup.id }) }}">show</a>
-                        </li>
+                        </li>-->
                         <li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_users_groups_edit', { 'id': cmsStzefUsersGroup.id }) }}">edit</a>
                         </li>
@@ -33,7 +33,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_users_groups_new') }}">Nuevo cmsStzefUsersGroup</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_users_groups_new') }}">Nuevo Usuario</a>
         </li>
     </ul>
 {% endblock %}

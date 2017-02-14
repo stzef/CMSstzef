@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 {% use 'bootstrap_3_layout.html.twig' %}
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
+    {% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    {% endblock %}
 
 {% block body %}
-    <h1>Nuevo Cmsstzefarticle</h1>
+    <h1>Nuevo Articulo</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
@@ -15,4 +18,44 @@
             <a class="btn btn-primary" role="button" href="{{ path('admstzef_articles_index') }}">Listado</a>
         </li>
     </ul>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="{{ asset('elfinder/js/elfinder.min.js') }}"></script>
+    <script>
+        var $_1_11_3 = $.noConflict(true);
+        $("form[name=appbundle_cmsstzefarticles]").submit(function(){
+            tinyMCE.triggerSave();
+        })
+    </script>
+    <script>
+        $_1_11_3("#appbundle_cmsstzefarticles_imageMain").click(function(){
+
+
+        $_1_11_3("<div></div>").elfinder({
+            url : "{{ asset('elfinder/php/connector.minimal.php') }}",
+            dialog : {
+                modal: true,
+                width: 700,
+                height: 450,
+                title: "Select your file",
+                zIndex: 99999,
+                resizable: true,
+            },
+            commandsOptions: {
+              getfile: {
+                oncomplete: 'destroy'
+              }
+            },
+            getFileCallback: function(file) {
+                console.log(file)
+                document.getElementById('#'+updateID).value = file.url;
+                jQuery('a.ui-dialog-titlebar-close[role="button"]').click();
+            }
+        }).elfinder('instance');
+        })
+
+    </script>
 {% endblock %}

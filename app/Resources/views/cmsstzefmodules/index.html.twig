@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefmodules</h1>
+    <h1>Listado Modulos</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -26,9 +26,9 @@
                 <td>{{ cmsStzefModule.idSectionTheme.name }}</td>
                 <td>
                     <ul class="list-unstyled">
-                        <li>
+                        <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_modules_show', { 'id': cmsStzefModule.id }) }}">show</a>
-                        </li>
+                        </li>-->
                         <li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_modules_edit', { 'id': cmsStzefModule.id }) }}">edit</a>
                         </li>
@@ -41,7 +41,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_modules_new') }}">Nuevo cmsStzefModule</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_modules_new') }}">Nuevo Modulo</a>
         </li>
     </ul>
 {% endblock %}

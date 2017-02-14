@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefstatespublications</h1>
+    <h1>Listado Estados de Publicacion</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -16,9 +16,9 @@
                 <td><a href="{{ path('admstzef_states_publication_show', { 'id': cmsStzefStatesPublication.id }) }}">{{ cmsStzefStatesPublication.name }}</a></td>
                 <td>
                     <ul class="list-unstyled">
-                        <li>
+                        <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_states_publication_show', { 'id': cmsStzefStatesPublication.id }) }}">show</a>
-                        </li>
+                        </li>-->
                         <li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_states_publication_edit', { 'id': cmsStzefStatesPublication.id }) }}">edit</a>
                         </li>
@@ -31,7 +31,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_states_publication_new') }}">Nuevo cmsStzefStatesPublication</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_states_publication_new') }}">Nuevo Estado de Publicación</a>
         </li>
     </ul>
 {% endblock %}

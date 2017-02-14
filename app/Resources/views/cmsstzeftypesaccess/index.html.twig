@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzeftypesaccesses</h1>
+    <h1>Listado Tipos de Acceso</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -18,9 +18,9 @@
                 <td>{{ cmsStzefTypesAccess.id }}</td>
                 <td>
                     <ul class="list-unstyled">
-                        <li>
+                        <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_types_access_show', { 'id': cmsStzefTypesAccess.id }) }}">show</a>
-                        </li>
+                        </li>-->
                         <li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_types_access_edit', { 'id': cmsStzefTypesAccess.id }) }}">edit</a>
                         </li>
@@ -33,7 +33,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_types_access_new') }}">Nuevo cmsStzefTypesAccess</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_types_access_new') }}">Nuevo Tipo de Acceso</a>
         </li>
     </ul>
 {% endblock %}

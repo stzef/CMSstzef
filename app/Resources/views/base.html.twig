@@ -160,17 +160,7 @@
                 <li class=""><a href="{{ path('admstzef_categories_index') }}"><i class="fa fa-circle-o"></i> Categorias</a></li>
               </ul>
             </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-dashboard"></i> <span>Configuracion</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="{{ path('admstzef_parameters_index') }}"><i class="fa fa-circle-o"></i> Parametros</a></li>
-              </ul>
-            </li>
+
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Menu</span>
@@ -191,10 +181,10 @@
               </a>
               <ul class="treeview-menu">
                 <li class=""><a href="{{ path('admstzef_pages_index') }}"><i class="fa fa-circle-o"></i> Paginas</a></li>
-                <li class=""><a href="{{ path('admstzef_types_pages_index') }}"><i class="fa fa-circle-o"></i> Tipos de Paginas</a></li>
+                <!--<li class=""><a href="{{ path('admstzef_types_pages_index') }}"><i class="fa fa-circle-o"></i> Tipos de Paginas</a></li>-->
               </ul>
             </li>
-            <li class="treeview">
+            <!--<li class="treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Temas</span>
                 <span class="pull-right-container">
@@ -206,8 +196,8 @@
                 <li class=""><a href="{{ path('admstzef_sections_index') }}"><i class="fa fa-circle-o"></i> Secciones </a></li>
                 <li class=""><a href="{{ path('admstzef_sections_theme_index') }}"><i class="fa fa-circle-o"></i> Secciones de Temas</a></li>
               </ul>
-            </li>
-            <li class="treeview">
+            </li>-->
+            <!--<li class="treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Generales</span>
                 <span class="pull-right-container">
@@ -217,7 +207,7 @@
               <ul class="treeview-menu">
                 <li class=""><a href="{{ path('admstzef_states_publication_index') }}"><i class="fa fa-circle-o"></i> Estados de Publicación </a></li>
               </ul>
-            </li>
+            </li>-->
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-dashboard"></i> <span>Usuarios</span>
@@ -228,7 +218,7 @@
               <ul class="treeview-menu">
                 <li class=""><a href="{{ path('admstzef_users_index') }}"><i class="fa fa-circle-o"></i> Usuarios </a></li>
                 <li class=""><a href="{{ path('admstzef_users_groups_index') }}"><i class="fa fa-circle-o"></i> Grupos </a></li>
-                <li class=""><a href="{{ path('admstzef_types_access_index') }}"><i class="fa fa-circle-o"></i> Tipos de Acceso </a></li>
+                <!--<li class=""><a href="{{ path('admstzef_types_access_index') }}"><i class="fa fa-circle-o"></i> Tipos de Acceso </a></li>-->
               </ul>
             </li>
             <li class="treeview">
@@ -240,7 +230,18 @@
               </a>
               <ul class="treeview-menu">
                 <li class=""><a href="{{ path('admstzef_modules_index') }}"><i class="fa fa-circle-o"></i> Modulos </a></li>
-                <li class=""><a href="{{ path('admstzef_types_modules_index') }}"><i class="fa fa-circle-o"></i> Tipos de Modulos</a></li>
+                <!--<li class=""><a href="{{ path('admstzef_types_modules_index') }}"><i class="fa fa-circle-o"></i> Tipos de Modulos</a></li>-->
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-dashboard"></i> <span>Configuracion</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li class=""><a href="{{ path('admstzef_parameters_index') }}"><i class="fa fa-circle-o"></i> Parametros</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -488,7 +489,7 @@
     <script src="{{ asset('js/select2/select2.full.min.js') }}"></script>
 
     <script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
-    
+
     <script src="{{ asset('js/tinymce/langs/es.js') }}"></script>
 
     <script>
@@ -530,7 +531,7 @@
         tinymce.activeEditor.windowManager.open({
           file: '/elfinder/elfinder.html',// use an absolute path!
           title: 'elFinder 2.0',
-          width: 900,  
+          width: 900,
           height: 450,
           resizable: 'yes'
         }, {

@@ -1,0 +1,80 @@
+{% extends 'themes/' ~ theme.slug ~ '/template.html.twig' %}
+
+{% block title %} Articulo - {{ current_article.name }}{% endblock %}
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+
+    <!--<div class="col-lg-12 panel panel-primary">
+        <h1>{{ current_article.name }}</h1>
+        <p class="lead">
+            by <a href="#">{{ current_article.creatorUser }}</a>
+        </p>
+        <hr>
+        <p><span class="glyphicon glyphicon-time"></span> Posteado en August 24, 2013 at 9:00 PM</p>
+        <hr>
+        <img class="img-responsive center-block" src="{{ current_article.imageMain }}" alt="">
+        <hr>
+        <div>
+            {{ current_article.contentHTML|raw }}
+        </div>
+        <hr>
+    </div>-->
+
+
+
+
+
+
+  <div class="container">
+        <div class="row">
+            <section id="content"><div class="ic"></div>
+                <div class="container_12">
+                  <div class="grid_11">
+                    <div class="block-1">
+                        <div class="block-1-shadow">
+
+                                <!-- First Blog Post -->
+                                <h2>
+                                    <a href="#">{{ current_article.name }}</a>
+                                </h2>
+                                <p class="lead">
+                                    Por <a href="index.php">{{ current_article.creatorUser }}</a>
+                                </p>
+                                <!--<p><span class="glyphicon glyphicon-time"></span> Posteado on August 28, 2013 at 10:00 PM</p>-->
+                                <hr>
+                                <img class="img-responsive" src="{{ current_article.imageMain }}" alt="">
+                                <hr>
+                                <p>{{ current_article.contentHTML|raw }}</p>
+
+                                <hr>
+
+
+                            <div class="pad-2">
+                                <ul class="pager">
+                                    <li class="previous">
+                                        <a href="#">&larr; Older</a>
+                                    </li>
+                                    <li class="next">
+                                        <a href="#">Newer &rarr;</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                  </div>
+                  <div class="clear"></div>
+            </section>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

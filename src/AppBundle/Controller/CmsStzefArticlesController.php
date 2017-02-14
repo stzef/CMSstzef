@@ -22,6 +22,7 @@ class CmsStzefArticlesController extends Controller
      */
     public function indexAction()
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $cmsStzefArticles = $em->getRepository('AppBundle:CmsStzefArticles')->findAll();
@@ -41,7 +42,12 @@ class CmsStzefArticlesController extends Controller
     {
         $cmsStzefArticle = new CmsStzefArticles();
         $form = $this->createForm('AppBundle\Form\CmsStzefArticlesType', $cmsStzefArticle);
+
         $form->handleRequest($request);
+
+        $user= $this->get('security.context')->getToken()->getUser();
+        $cmsStzefArticle->setCreatorUser($user);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();

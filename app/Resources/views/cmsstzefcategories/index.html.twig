@@ -1,12 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefcategories</h1>
-    <ul class="list-unstyled">
-        <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_categories_new') }}">Nueva Categoria</a>
-        </li>
-    </ul>
+    <h1>Listado Categorias</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -29,11 +24,11 @@
                 <td>{{ cmsStzefCategory.idTypeAccess.name }}</td>
                 <td>
                     <ul class="list-unstyled">
+                        <!--<li>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_categories_show', { 'id': cmsStzefCategory.id }) }}">Mostar</a>
+                        </li>-->
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_categories_show', { 'id': cmsStzefCategory.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_categories_edit', { 'id': cmsStzefCategory.id }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_categories_edit', { 'id': cmsStzefCategory.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -41,5 +36,10 @@
         {% endfor %}
         </tbody>
     </table>
+    <ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_categories_new') }}">Nueva Categoria</a>
+        </li>
+    </ul>
 
 {% endblock %}

@@ -43,6 +43,9 @@ class CmsStzefMenusController extends Controller
         $form = $this->createForm('AppBundle\Form\CmsStzefMenusType', $cmsStzefMenu);
         $form->handleRequest($request);
 
+        $user= $this->get('security.context')->getToken()->getUser();
+        $cmsStzefMenu->setCreatorUser($user);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($cmsStzefMenu);

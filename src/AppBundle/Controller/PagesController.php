@@ -127,6 +127,16 @@ class PagesController extends Controller
         return $cmsStzefMenuses;
     }
 
+    public function getMainBanner(){
+        $repositoryBanners = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefBanners");
+        $repositoryBannerDeta = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefBannerDeta");
+
+        $banner = $repositoryBanners->findOneByIfMain(1);
+        $banner->deta = $repositoryBannerDeta->findByCmsStzefBanners($banner->getId());
+        dump($banner);
+        return $banner;
+    }
+
     public function getParameters(){
         $em = $this->getDoctrine()->getManager();
         $repositoryParameters = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefParameters");
@@ -227,6 +237,7 @@ class PagesController extends Controller
 
         $current_page = $repositoryPages->findOneBySlug($slug_page);
 
+        $main_banner = $this->getMainBanner();
 
 
         $articles = [];
@@ -254,6 +265,7 @@ class PagesController extends Controller
             "parameters" => $parameters,
             "theme" => $theme,
             "articles_distinguished" => $this->getArticlesDistinguished(),
+            "main_banner" => $main_banner,
         ));
     }
 

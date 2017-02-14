@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefparameters</h1>
+    <h1>Listado Parametros</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -32,9 +32,9 @@
                 <td>{{ cmsStzefParameter.id }}</td>
                 <td>
                     <ul class="list-unstyled">
-                        <li>
+                        <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">show</a>
-                        </li>
+                        </li>-->
                         <li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_parameters_edit', { 'id': cmsStzefParameter.id }) }}">edit</a>
                         </li>
@@ -47,7 +47,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_parameters_new') }}">Nuevo cmsStzefParameter</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_parameters_new') }}">Nuevo Parametro</a>
         </li>
     </ul>
 {% endblock %}

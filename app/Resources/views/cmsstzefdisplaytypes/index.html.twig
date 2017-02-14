@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefdisplaytypes</h1>
+    <h1>Listado Tipos de Visualización</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -20,9 +20,9 @@
                 <td>{{ cmsStzefDisplayType.id }}</td>
                 <td>
                     <ul class="list-unstyled">
-                        <li>
+                        <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_display_types_show', { 'id': cmsStzefDisplayType.id }) }}">show</a>
-                        </li>
+                        </li>-->
                         <li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_display_types_edit', { 'id': cmsStzefDisplayType.id }) }}">edit</a>
                         </li>
@@ -35,7 +35,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_display_types_new') }}">Nuevo cmsStzefDisplayType</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_display_types_new') }}">Nuevo Tipo de Visualización</a>
         </li>
     </ul>
 {% endblock %}

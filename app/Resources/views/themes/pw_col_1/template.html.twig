@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> {{ parameters.name_site }} - {% block title %} {% endblock %}</title>
+
+
+
+
+
+
+
+    <link href="{{ asset('themes/pw_col_1/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/pw_col_1/css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/pw_col_1/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/pw_col_1/css/grid_12.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/pw_col_1/css/slider.css') }}">
+    <link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
+
+    <script src="{{ asset('themes/pw_col_1/js/jquery.js') }}"></script>
+    <script src="{{ asset('themes/pw_col_1/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('themes/pw_col_1/js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('themes/pw_col_1/js/tms-0.4.1.js') }}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.slider')._TMS({
+                show:0,
+                pauseOnHover:true,
+                prevBu:'.prev',
+                nextBu:'.nextt',
+                playBu:false,
+                duration:800,
+                preset:'fade',
+                pagination:true,
+                pagNums:false,
+                slideshow:7000,
+                numStatus:false,
+                banners:false,
+                waitBannerAnimation:false,
+                progressBar:false
+            })
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <link rel="icon" type="image/x-icon" href="{{ asset(parameters.favicon_site) }}" />
+
+    <style type="text/css">
+        .backgrundBody{
+            {% if parameters.image_background.ifShow %}
+                background-image : url('{{ parameters.image_background.path }}') ;
+            {% endif %}
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }
+        #map {
+            height: 300px;
+          }
+    </style>
+
+    {% block stylesheets %}{% endblock %}
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body class="backgrundBody">
+
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-4"><img src="{{ parameters.logo_site }}" alt="" width="10%" height="10%" /></div>
+            <div class="col-md-3" >
+                {% if app.user %}
+                    <a role="button" class="btn btn-primary" href="{{ path('homepage_admin') }}">Ir a Administracion</a>
+                    <a role="button" class="btn btn-danger"  href="{{ path('fos_user_security_logout') }}"> Salir </a>
+                {% else %}
+                    <a role="button" class="btn btn-success" href="{{ path('fos_user_security_login') }}"> Iniciar Sesión</a>
+                    <a role="button" class="btn btn-info" href="{{ path('fos_user_registration_register') }}"> Registrarse </a>
+                {% endif %}
+            </div>
+            <div class="col-md-5 text-right" id="section_theme_header_mini">
+
+            </div>
+        </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ path('homepage') }}">{{ parameters.name_site }}</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+
+            {% for itemMenu in cmsStzefMenuses %}
+                {% if itemMenu.subMenus|length == 0 %}
+                    <li><a href="{{ path('page_generic',{'slug_page' : itemMenu.page.slug }) }} ">{{ itemMenu.name }}</a></li>
+                {% else %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ itemMenu.name }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            {% for itemSubMenu in itemMenu.subMenus %}
+                                {% if itemSubMenu.subMenus|length == 0 %}
+                                    <li><a href="{{ path('page_generic',{'slug_page' : itemSubMenu.page.slug }) }} ">{{ itemSubMenu.name }}</a></li>
+                                {% else %}
+                                    <li class="dropdown-submenu">
+                                        <a tabindex="-1" href="#">{{ itemSubMenu.name }}<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            {% for itemSubMenu2 in itemSubMenu.subMenus %}
+                                                <li><a tabindex="-1" href="{{ path('page_generic',{'slug_page' : itemSubMenu2.page.slug }) }} ">{{ itemSubMenu2.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+                 {% if current_page is defined %}
+                    {# {% if current_page.ifMain %} #}
+
+                        <div id="slide">
+                            <div class="slider">
+                                <ul class="items">
+                                   {% for image in main_banner.deta %}
+                                        <li><img src="{{ image.image }}" alt="" /></li>
+                                   {% endfor %}
+                                </ul>
+                            </div>
+                            <a href="#" class="prev"></a><a href="#" class="nextt"></a>
+                        </div>
+                    <!--<div id="section_theme_banner_principal"></div>-->
+                    {# {% endif %} #}
+                {% endif %}
+    </nav>
+
+    <!-- Page Content -->
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="panel" id="section_theme_header"></div>
+
+                {% if current_page is defined %}
+
+                {% endif %}
+                {% if current_page is defined %}
+                    {% if current_page.ifMain %}
+                        <div class="row panel {{ current_page.idDisplayType.cssClass }}">
+                            <h2>Destacados</h2>
+                            {% if articles_distinguished is defined %}
+                                {% for article_distinguished in articles_distinguished %}
+                                    <div class="col-sm-3 col-lg-4 col-md-4">
+                                        <div class="thumbnail">
+                                            <img src="{{ article_distinguished.imageMain }}" alt="">
+                                            <div class="caption">
+                                                <h4 class="text-center">
+                                                    <a href="{{ path('view_article_generic',{'id_article' : article_distinguished.id }) }}">{{ article_distinguished.name }}</a>
+                                                </h4>
+                                                <h4 class="text-center"></h4>
+                                                <p>{{ article_distinguished.description }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row col-md-8 panel ">
+            {% if articles is defined %}
+                {% if current_page.idTypePage.id == 1 %}
+                    {% if articles|length > 0 %}
+                        <div class="{{ current_page.idDisplayType.cssClass }}">
+                            {% for article in articles %}
+                                <div class="panel panel-primary col-md-12">
+                                    <h2>
+                                        <a href="{{ path('view_article_generic',{'id_article' : article.id }) }}">{{ article.name }}</a>
+                                    </h2>
+                                    <p class="lead">
+                                        por <a href="#">{{ article.creatorUser.name }}</a>
+                                    </p>
+                                    <p><span class="glyphicon glyphicon-time"></span> Posteado en {{ article.dateCreation|date("F jS \\a\\t g:ia","America/Bogota")}}</p>
+                                    <hr>
+                                    <img class="img-responsive center-block" src="{{ article.imageMain }}" alt="">
+                                    <hr>
+                                    <p>{{ article.description }}</p>
+                                    <a class="btn btn-primary" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">Ver Mas <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% elseif current_page.idTypePage.id == 2 %}
+                    <div class="col-lg-12 panel panel-primary">
+                        <h1>{{ articles.name }}</h1>
+                        <p class="lead">
+                            by <a href="#">{{ articles.creatorUser }}</a>
+                        </p>
+                        <hr>
+                        <p><span class="glyphicon glyphicon-time"></span> Posteado en August 24, 2013 at 9:00 PM</p>
+                        <hr>
+                        <img class="img-responsive center-block" src="{{ articles.imageMain }}" alt="">
+                        <hr>
+                        <div>
+                            {{ articles.contentHTML|raw }}
+                        </div>
+                        <hr>
+                    </div>
+                {% endif %}
+            {% endif %}
+
+            {% block body %}
+            {% endblock %}
+        </div>
+
+        <aside class="panel panel-default col-md-4">
+            <div class="col-md-11 col-sm-6">
+                <div>
+                    <iframe src="https://calendar.google.com/calendar/embed?src=es.co%23holiday%40group.v.calendar.google.com&ctz=America/Bogota" style="border: 0" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+
+            <div class="col-md-11 col-sm-6">
+                <div id="map">
+                    <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127306.38529661586!2d-74.88660420051349!3d4.35007576222727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28eb1616af2b%3A0x1d71759ce9e2c519!2sGirardot%2C+Cundinamarca%2C+Colombia!5e0!3m2!1ses!2ses!4v1479765177545" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>-->
+                </div>
+            </div>
+        </aside>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-md-4" id="section_theme_footer_a"></div>
+                <div class="col-md-4" id="section_theme_footer_b"></div>
+                <div class="col-md-4" id="section_theme_social_network"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>Copyright &copy; Diseñado por: <a href="{{parameters.design_developed.link}}" target="_blank">{{ parameters.design_developed.name }}</a> </p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <template>
+        {% if sectionsTheme is defined %}
+            {% for sectionTheme in sectionsTheme %}
+                <section data-to-section="{{ sectionTheme.selectorCss }}" >
+                    {% for modulo in sectionTheme.modulos %}
+                        <div>
+                            {{ modulo.renderContentHtml|raw }}
+                        </div>
+                    {% endfor %}
+                </section>
+            {% endfor %}
+        {% endif %}
+    </template>
+    <!-- /.container -->
+
+    <script type="text/javascript">
+        var template = $("template")[0]
+        var clone_template = template.content.cloneNode(true)
+        var section = clone_template.querySelectorAll("[data-to-section]")
+
+        section.forEach(section => {
+            var selector = "#" + $(section).data("to-section")
+            $(selector).html($(section).html())
+        })
+    </script>
+
+    <script>
+      function initMap() {
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: {{ parameters.config_gmap.center.lat }}, lng: {{ parameters.config_gmap.center.lng }}},
+          scrollwheel: {{ (parameters.config_gmap.scrollwheel) ? 'true' : 'false' }},
+          zoom: {{ parameters.config_gmap.zoom }}
+        });
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKSeKDQqN8p8bZfQJL98WqTtNrAHZumcg&callback=initMap"async defer></script>
+
+    {% block javascripts %}{% endblock %}
+</body>
+
+</html>
+
+

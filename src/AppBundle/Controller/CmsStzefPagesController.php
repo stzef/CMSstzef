@@ -43,6 +43,9 @@ class CmsStzefPagesController extends Controller
         $form = $this->createForm('AppBundle\Form\CmsStzefPagesType', $cmsStzefPage);
         $form->handleRequest($request);
 
+        $user= $this->get('security.context')->getToken()->getUser();
+        $cmsStzefPage->setCreatorUser($user);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($cmsStzefPage);

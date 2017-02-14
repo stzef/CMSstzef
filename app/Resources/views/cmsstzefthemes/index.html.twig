@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefthemes</h1>
+    <h1>Listado Temas</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -20,11 +20,11 @@
                 <td>{{ cmsStzefTheme.id }}</td>
                 <td>
                     <ul class="list-unstyled">
-                        <li>
+                        <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_themes_show', { 'id': cmsStzefTheme.id }) }}">show</a>
-                        </li>
+                        </li>-->
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_themes_edit', { 'id': cmsStzefTheme.id }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_themes_edit', { 'id': cmsStzefTheme.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +35,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_themes_new') }}">Nuevo cmsStzefTheme</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_themes_new') }}">Nuevo Tema</a>
         </li>
     </ul>
 {% endblock %}

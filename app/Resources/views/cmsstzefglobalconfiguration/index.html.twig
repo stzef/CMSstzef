@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Cmsstzefglobalconfigurations</h1>
+    <h1>Listado Configuraciones</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
@@ -22,9 +22,9 @@
                 <td>{{ cmsStzefGlobalConfiguration.id }}</td>
                 <td>
                     <ul class="list-unstyled">
-                        <li>
+                        <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_global_configuration_show', { 'id': cmsStzefGlobalConfiguration.id }) }}">show</a>
-                        </li>
+                        </li>-->
                         <li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_global_configuration_edit', { 'id': cmsStzefGlobalConfiguration.id }) }}">edit</a>
                         </li>
@@ -37,7 +37,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_global_configuration_new') }}">Nuevo cmsStzefGlobalConfiguration</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_global_configuration_new') }}">Nuevo Configuracion</a>
         </li>
     </ul>
 {% endblock %}
