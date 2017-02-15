@@ -43,25 +43,11 @@
                                 </p>
                                 <!--<p><span class="glyphicon glyphicon-time"></span> Posteado on August 28, 2013 at 10:00 PM</p>-->
                                 <hr>
-                                <img class="img-responsive" src="{{ current_article.imageMain }}" alt="">
+                                <img class="img-responsive center-block" src="{{ asset(current_article.imageMain) }}" alt="">
                                 <hr>
                                 <div class="container-content-html-tinymce" >
                                     {{ current_article.contentHTML|raw }}
                                 </div>
-
-                                <hr>
-
-
-                            <div class="pad-2">
-                                <ul class="pager">
-                                    <li class="previous">
-                                        <a href="#">&larr; Older</a>
-                                    </li>
-                                    <li class="next">
-                                        <a href="#">Newer &rarr;</a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
 

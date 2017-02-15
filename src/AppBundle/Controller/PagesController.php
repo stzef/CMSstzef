@@ -171,13 +171,41 @@ class PagesController extends Controller
         $theme = $this->getTheme();
         $sectionsTheme = $this->getSectionsTheme();
 
+        $repositoryPages = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefPages");
+
+        $repositoryArticles = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefArticles");
+
+
+        $current_page = $repositoryPages->findOneByIfMain(1);
+        $path_template = "themes/" . $theme->getSlug();
+
+        $articles = [];
+        if($current_page){
+            $path_template .= "/index.html.twig";
+            $articles = $this->getContentPage($current_page);
+
+            if($current_page->getIdStatePublication()->getId() != 1){
+                $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
+            }else if($current_page->getIdTypeAccess()->getId() != 1){
+                $path_template = "themes/" . $theme->getSlug() . "/sin_permisos.html.twig";
+            }
+        }else{
+            $path_template .= "/404.html.twig";
+        }
 
         return $this->render("themes/" . $theme->getSlug() . "/index.html.twig", array(
             "cmsStzefMenuses" => $cmsStzefMenuses,
             "parameters" => $parameters,
             "theme" => $theme,
             "sectionsTheme" => $sectionsTheme,
+            "articles_distinguished" => $this->getArticlesDistinguished(),
+            "current_page" => $current_page,
+            "articles" => $articles,
+            "main_banner" => $this->getMainBanner(),
+
             ));
+
+
     }
 
     /**
