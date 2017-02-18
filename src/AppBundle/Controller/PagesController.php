@@ -133,7 +133,7 @@ class PagesController extends Controller
 
         $banner = $repositoryBanners->findOneByIfMain(1);
         $banner->deta = $repositoryBannerDeta->findByCmsStzefBanners($banner->getId());
-        dump($banner);
+        //dump($banner);
         return $banner;
     }
 
