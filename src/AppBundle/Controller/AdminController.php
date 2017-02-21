@@ -20,7 +20,7 @@ class AdminController extends Controller
         // replace this example code with whatever you need
     $message = \Swift_Message::newInstance()
         ->setSubject('Hello Email')
-        ->setFrom('carlosturnerbenites@gmail.com')
+        ->setFrom('info@colegiomontecarmelo.edu.co')
         ->setTo('sistematizaref.programador5@gmail.com')
         ->setBody(
             $this->renderView(
