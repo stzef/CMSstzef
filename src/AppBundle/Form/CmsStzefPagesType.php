@@ -21,19 +21,19 @@ class CmsStzefPagesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('slug',TextType::class,array('label' => 'Slug'))
-        ->add('name',TextType::class,array('label' => 'Nombre'))
-        ->add('ifMain',CheckboxType::class,array('label' => 'Principal',"required"=>false))
+        ->add('slug',"text",array('label' => 'Slug'))
+        ->add('name',"text",array('label' => 'Nombre'))
+        ->add('ifMain',"checkbox",array('label' => 'Principal',"required"=>false))
         //->add('dateCreation')
         //->add('modified')
         //->add('params')
-        ->add('idTypePage',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesPages','label' => 'Tipo Pagina'))
+        ->add('idTypePage',"entity",array('class' => 'AppBundle:CmsStzefTypesPages','label' => 'Tipo Pagina'))
         //->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
-        ->add('idTypeAccess',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
-        ->add('idStatePublication',EntityType::class,array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))
-        ->add('categoryToShow',EntityType::class,array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))
-        ->add('idDisplayType',EntityType::class,array('class' => 'AppBundle:CmsStzefDisplayTypes','label' => 'Visualizacion'))
-        ->add('articleToShow',EntityType::class,array('class' => 'AppBundle:CmsStzefArticles','label' => "Articulo"));
+        ->add('idTypeAccess',"entity",array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
+        ->add('idStatePublication',"entity",array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))
+        ->add('categoryToShow',"entity",array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))
+        ->add('idDisplayType',"entity",array('class' => 'AppBundle:CmsStzefDisplayTypes','label' => 'Visualizacion'))
+        ->add('articleToShow',"entity",array('class' => 'AppBundle:CmsStzefArticles','label' => "Articulo"));
     }
 
     /**

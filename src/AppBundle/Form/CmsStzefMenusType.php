@@ -21,19 +21,19 @@ class CmsStzefMenusType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('name',TextType::class,array('label' => 'Nombre'))
-        ->add('alias',TextType::class,array('label' => 'Alias'))
+        ->add('name',"text",array('label' => 'Nombre'))
+        ->add('alias',"text",array('label' => 'Alias'))
         ->add('orden')
         ->add('target')
-        ->add('ifMain',CheckboxType::class,array('label' => 'Principal',"required"=>false))
+        ->add('ifMain',"checkbox",array('label' => 'Principal',"required"=>false))
         //->add('dateCreation')
         //->add('modified')
         //->add('params')
-        ->add('page',EntityType::class,array('class' => 'AppBundle:CmsStzefPages','label' => 'Pagina' ))
-        ->add('topMenu',EntityType::class,array('class' => 'AppBundle:CmsStzefMenus','label' => 'Menu Mayor' ))
-        ->add('idTypeAccess',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
+        ->add('page',"entity",array('class' => 'AppBundle:CmsStzefPages','label' => 'Pagina' ))
+        ->add('topMenu',"entity",array('class' => 'AppBundle:CmsStzefMenus','label' => 'Menu Mayor' ))
+        ->add('idTypeAccess',"entity",array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
         //->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
-        ->add('idStatePublication',EntityType::class,array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))        ;
+        ->add('idStatePublication',"entity",array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))        ;
     }
 
 

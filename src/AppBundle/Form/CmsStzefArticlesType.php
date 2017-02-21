@@ -25,15 +25,15 @@ class CmsStzefArticlesType extends AbstractType
     {
         //$builder->add('name')->add('description')->add('contentHtml')->add('imageMain')->add('ifDistinguished')->add('dateCreation')->add('modified')->add('params')->add('idStatePublication')->add('idCategory')->add('creatorUser')->add('idTypeAccess')        ;
         $builder
-        ->add('name',TextType::class,array('label' => 'Nombre'))
-        ->add('description',TextType::class,array('label' => 'Descripción'))
-        ->add('contentHtml',TextareaType::class,array('label' => 'Contenido'))
-        ->add('ifDistinguished',CheckboxType::class,array('label' => 'Destacado',"required"=>false))
-        ->add('idStatePublication',EntityType::class,array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))
-        ->add('idCategory',EntityType::class,array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))
+        ->add('name',"text",array('label' => 'Nombre'))
+        ->add('description',"text",array('label' => 'Descripción'))
+        ->add('contentHtml',"textarea",array('label' => 'Contenido'))
+        ->add('ifDistinguished',"checkbox",array('label' => 'Destacado',"required"=>false))
+        ->add('idStatePublication',"entity",array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))
+        ->add('idCategory',"entity",array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))
         //->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
-        ->add('idTypeAccess',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
-        ->add('imageMain',ElFinderType::class,array('instance'=>'form', 'enable'=>true,'attr' =>  array('readonly' => true,'class' => 'form-control')));
+        ->add('idTypeAccess',"entity",array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
+        ->add('imageMain',"elfinder",array('instance'=>'form', 'enable'=>true,'attr' =>  array('readonly' => true,'class' => 'form-control')));
     }
 
     /**

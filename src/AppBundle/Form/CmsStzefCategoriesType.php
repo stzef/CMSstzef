@@ -21,16 +21,16 @@ class CmsStzefCategoriesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('name',TextType::class,array('label' => 'Descripción'))
-        ->add('alias',TextType::class,array('label' => 'Alias'))
-        ->add('description',TextType::class,array('label' => 'Descripción'))
+        ->add('name',"text",array('label' => 'Descripción'))
+        ->add('alias',"text",array('label' => 'Alias'))
+        ->add('description',"text",array('label' => 'Descripción'))
         //->add('dateCreation')
         //->add('modified')
         //->add('params')
-        ->add('idTypeAccess',EntityType::class,array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
-        ->add('idStatePublication',EntityType::class,array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))
+        ->add('idTypeAccess',"entity",array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
+        ->add('idStatePublication',"entity",array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))
         //->add('creatorUser')
-        ->add('topCategory',EntityType::class,array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))
+        ->add('topCategory',"entity",array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))
         ;
     }
 
