@@ -15,7 +15,8 @@
         <tbody>
         {% for cmsStzefPage in cmsStzefPages %}
             <tr>
-                <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">{{ cmsStzefPage.name }}</a></td>
+                <!--<td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefPage.id }) }}">{{ cmsStzefPage.name }}</a></td>-->
+                <td>{{ cmsStzefPage.name }}</td>
                 <td>{% if cmsStzefPage.ifMain %}Yes{% else %}No{% endif %}</td>
                 <td>{{ cmsStzefPage.creatorUser.username }}</td>
                 <td>

@@ -18,8 +18,9 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        #- { path: ^/admin/, role: ROLE_ADMIN }
         #- { path: ^/admstzef/, role: ROLE_USER }
+        - { path: ^/admstzef/, role: ROLE_USER }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -32,8 +33,8 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
-                login_path:             fos_user_security_login 
-                check_path:             fos_user_security_check                
+                login_path:             fos_user_security_login
+                check_path:             fos_user_security_check
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
 

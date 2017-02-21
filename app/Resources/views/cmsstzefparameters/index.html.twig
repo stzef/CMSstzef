@@ -6,37 +6,40 @@
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Cparam</th>
-                <th>Cgroup</th>
-                <th>Ngroup</th>
-                <th>Type</th>
-                <th>Name</th>
-                <th>Valuetext</th>
-                <th>Valuebool</th>
-                <th>Valueint</th>
+                <th>Codigo</th>
                 <th>Id</th>
+                <!--<th>Cgroup</th>-->
+                <!--<th>Ngroup</th>-->
+                <th>Nombre</th>
+                <th>Valor</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for cmsStzefParameter in cmsStzefParameters %}
             <tr>
-                <td><a href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">{{ cmsStzefParameter.cparam }}</a></td>
-                <td>{{ cmsStzefParameter.cgroup }}</td>
-                <td>{{ cmsStzefParameter.ngroup }}</td>
-                <td>{{ cmsStzefParameter.type }}</td>
-                <td>{{ cmsStzefParameter.name }}</td>
-                <td>{{ cmsStzefParameter.valueText }}</td>
-                <td>{% if cmsStzefParameter.valueBool %}Yes{% else %}No{% endif %}</td>
-                <td>{{ cmsStzefParameter.valueInt }}</td>
+                <!--<td><a href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">{{ cmsStzefParameter.cparam }}</a></td>-->
+                <td>{{ cmsStzefParameter.cparam }}</td>
                 <td>{{ cmsStzefParameter.id }}</td>
+                <!--<td>{{ cmsStzefParameter.cgroup }}</td>-->
+                <!--<td>{{ cmsStzefParameter.ngroup }}</td>-->
+                <td>{{ cmsStzefParameter.name }}</td>
+                {% if cmsStzefParameter.type == "INT" %}
+                    <td>{{ cmsStzefParameter.valueInt }}</td>
+                {% elseif cmsStzefParameter.type == "TEXT" %}
+                    <td>{{ cmsStzefParameter.valueText }}</td>
+                {% elseif cmsStzefParameter.type == "JSON" %}
+                    <td>{{ cmsStzefParameter.valueText }}</td>
+                {% elseif cmsStzefParameter.type == "BOOL" %}
+                    <td>{% if cmsStzefParameter.valueBool %}Yes{% else %}No{% endif %}</td>
+                {% endif %}
                 <td>
                     <ul class="list-unstyled">
                         <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">show</a>
                         </li>-->
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_parameters_edit', { 'id': cmsStzefParameter.id }) }}">edit</a>
+                            <!--<a class="btn btn-" role="button" href="{{ path('admstzef_parameters_edit', { 'id': cmsStzefParameter.id }) }}">Editar</a>-->
                         </li>
                     </ul>
                 </td>

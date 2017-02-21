@@ -19,7 +19,7 @@
         {% for cmsStzefMenu in cmsStzefMenuses %}
             <tr>
                 <td><a href="{{ path('admstzef_menus_show', { 'id': cmsStzefMenu.id }) }}">{{ cmsStzefMenu.name }}</a></td>
-                <td>{% if cmsStzefMenu.ifMain %}Yes{% else %}No{% endif %}</td>
+                <td>{% if cmsStzefMenu.ifMain %}Si{% else %}No{% endif %}</td>
                 <td><a href="{{ path('admstzef_pages_show', { 'id': cmsStzefMenu.page.id }) }}">{{ cmsStzefMenu.page.name }}</a></td>
                 <td>{{ cmsStzefMenu.creatorUser.username }}</td>
                 <td>{{ cmsStzefMenu.idStatePublication.name }}</td>

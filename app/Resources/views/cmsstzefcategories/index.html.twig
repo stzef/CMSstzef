@@ -17,7 +17,8 @@
         <tbody>
         {% for cmsStzefCategory in cmsStzefCategories %}
             <tr>
-                <td><a href="{{ path('admstzef_categories_show', { 'id': cmsStzefCategory.id }) }}">{{ cmsStzefCategory.name }}</a></td>
+                <!--<td><a href="{{ path('admstzef_categories_show', { 'id': cmsStzefCategory.id }) }}">{{ cmsStzefCategory.name }}</a></td>-->
+                <td>{{ cmsStzefCategory.name }}</td>
                 <td>{{ cmsStzefCategory.description }}</td>
                 <td>{{ cmsStzefCategory.creatorUser.username }}</td>
                 <td>{{ cmsStzefCategory.idStatePublication.name }}</td>
