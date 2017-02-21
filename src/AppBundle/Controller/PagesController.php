@@ -32,7 +32,6 @@ class PagesController extends Controller
             ->setParameter('paramIdArticle',$page->getArticleToShow());
             $contentPage = $queryArticle->setMaxResults(1)->getOneOrNullResult();
         }
-        //dump($contentPage);
         return $contentPage;
     }
 
@@ -133,7 +132,6 @@ class PagesController extends Controller
 
         $banner = $repositoryBanners->findOneByIfMain(1);
         $banner->deta = $repositoryBannerDeta->findByCmsStzefBanners($banner->getId());
-        //dump($banner);
         return $banner;
     }
 

@@ -42,11 +42,6 @@ class AdminController extends Controller
         */
     ;
     $this->get('mailer')->send($message);
-    //dump($message);
-
-
-
-
 
 
 

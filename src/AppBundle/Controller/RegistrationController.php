@@ -19,7 +19,6 @@ class RegistrationController extends Controller
         $user = new CmsStzefUsers();
         $form = $this->createForm(CmsStzefUsersType::class, $user);
 
-        dump($user);
 
         // 2) handle the submit (will only happen on POST)
         $form->handleRequest($request);
