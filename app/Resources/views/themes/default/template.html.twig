@@ -11,15 +11,15 @@
 
     <title> {{ parameters.name_site }} - {% block title %} {% endblock %}</title>
     <!-- Bootstrap Core CSS -->
-    <link href="{{ asset('themes/default/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/' ~ theme.slug ~ '/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{{ asset('themes/default/css/shop-homepage.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/' ~ theme.slug ~ '/css/shop-homepage.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
 
     <link href="{{ asset('css/social_buttons/bootstrap-social.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/default/css/container_content_html_tinymce.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('themes/' ~ theme.slug ~ '/css/container_content_html_tinymce.css') }}">
     <link rel="icon" type="image/x-icon" href="{{ asset(parameters.favicon_site) }}" />
 
     <style type="text/css">
@@ -256,10 +256,10 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="{{ asset('themes/default/js/jquery.js') }}"></script>
+    <script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.js') }}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('themes/default/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('themes/' ~ theme.slug ~ '/js/bootstrap.min.js') }}"></script>
 
     <script type="text/javascript">
         var template = $("template")[0]
