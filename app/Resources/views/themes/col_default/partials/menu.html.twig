@@ -1,0 +1,29 @@
+<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	<ul class="nav navbar-nav">
+		{% for itemMenu in cmsStzefMenuses %}
+			{% if itemMenu.subMenus|length == 0 %}
+				<li class="active"><a href="{{ path('page_generic',{'slug_page' : itemMenu.page.slug }) }}">{{ itemMenu.name }} <span class="sr-only">(current)</span></a></li>
+			{% else %}
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ itemMenu.name }} <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						{% for itemSubMenu in itemMenu.subMenus %}
+							{% if itemSubMenu.subMenus|length == 0 %}
+								<li><a href="{{ path('page_generic',{'slug_page' : itemSubMenu.page.slug }) }}">{{ itemSubMenu.name }}</a></li>
+							{% else %}
+								<li class="dropdown-submenu">
+									<a tabindex="-1" href="#">{{ itemSubMenu.name }} <span class="caret"></span></a>
+									<ul class="dropdown-menu">
+										{% for itemSubMenu2 in itemSubMenu.subMenus %}
+											<li><a tabindex="-1" href="{{ path('page_generic',{'slug_page' : itemSubMenu2.page.slug }) }}">{{ itemSubMenu2.name }}</a></li>
+										{% endfor %}
+									</ul>
+								</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</li>
+			{% endif %}
+		{% endfor %}
+	</ul>
+</div>

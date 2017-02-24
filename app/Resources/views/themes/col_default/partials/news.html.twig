@@ -1,0 +1,24 @@
+{% if articles is defined %}
+    {% if current_page.idTypePage.id == 1 %}
+        {% if articles|length > 0 %}
+            <div class="block-1 {{ current_page.idDisplayType.cssClass }}">
+                {% for article in articles %}
+                    <div class="col-sm-12 col-lg-12 col-md-12">
+                        <div class="col-sm-3 col-lg-4 col-md-4">
+                            <img class="img-responsive" src="{{ article.imageMain }}" alt="">
+                        </div>
+                        <div class="col-sm-9 col-lg-8 col-md-8 box-noticia">
+                            <h4 class="text-center"><a href="{{ path('view_article_generic',{'id_article' : article.id }) }}">{{ article.name }}</a>
+                            </h4>
+                            <p>{{ article.description }}</p>
+                            <a class="btn btn-primary pull-right" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">Ver más</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h2>No hay Articulos </h2>
+        {% endif %}
+    {% elseif current_page.idTypePage.id == 2 %}
+    {% endif %}
+{% endif %}

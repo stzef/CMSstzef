@@ -88,6 +88,8 @@ class PagesController extends Controller
         $data["parameters"] = $this->getParameters();
         foreach ($sectionsTheme as $sectionTheme) {
             foreach ($sectionTheme->modulos as $modulo) {
+                $data["parametersModule"] = json_decode($modulo->getParams());
+                dump($data["parametersModule"]);
                 $modulo->renderContentHtml = $twig->render($modulo->getContentHtml(),$data);
             }
         }
