@@ -3,234 +3,208 @@
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-    <title> {{ parameters.name_site }} - {% block title %} {% endblock %}</title>
+	<title> {{ parameters.name_site }} - {% block title %} {% endblock %}</title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="{{ asset('themes/' ~ theme.slug ~ '/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('themes/' ~ theme.slug ~ '/css/font-awesome.min.css') }}" rel="stylesheet">
+	<!-- Bootstrap Core CSS -->
+	<link href="{{ asset('themes/' ~ theme.slug ~ '/css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('themes/' ~ theme.slug ~ '/css/font-awesome.min.css') }}" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="{{ asset('themes/' ~ theme.slug ~ '/css/shop-homepage.css') }}" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link href="{{ asset('themes/' ~ theme.slug ~ '/css/shop-homepage.css') }}" rel="stylesheet">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
 
-    <link rel="icon" type="image/x-icon" href="{{ asset(parameters.favicon_site) }}" />
+	<link rel="icon" type="image/x-icon" href="{{ asset(parameters.favicon_site) }}" />
 
-    <style type="text/css">
-        .backgrundBody{
-            {% if parameters.image_background.ifShow %}
-                background-image : url('{{ parameters.image_background.path }}') ;
-            {% endif %}
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 100%;
-        }
-        #map {
-            height: 300px;
-          }
-    </style>
+	<style type="text/css">
+		.backgrundBody{
+			{% if parameters.image_background.ifShow %}
+				background-image : url('{{ parameters.image_background.path }}') ;
+			{% endif %}
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: 100% 100%;
+		}
+		#mapa {
+			height: 300px;
+		}
+	</style>
 
-    {% block stylesheets %}{% endblock %}
+	{% block stylesheets %}{% endblock %}
 
 </head>
 
 <body>
-
-
-    <div class="row" style="background-color: #fff;padding-right: 15px;padding-left: 15px;">
-
-        <div class="col-md-5">
-            <div class="" id="section_theme_social_network"></div>
-        </div>
-        <div class="col-md-7">
-            <div class="text-right" style="margin-top: 10px;font-size: 16px;">
-                <div class="text-right" id="section_theme_header_mini"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-12 pie-top"></div>
-
-    <div class="col-md-3">
-        <center><img class="img-responsive" src="{{ asset(parameters.logo_site) }}" alt="" /></center>
-
-    </div>
-    <!-- Navigation -->
-    <div class="col-md-7">
-    <div class="col-md-12 text-center box-mensaje">
-        <p>Mensaje Institucional</p>
-    </div>
-    <br><br><br>
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#"></a>
-        </div>
-
-
-
-
-
-
-        {% include 'themes/' ~ theme.slug ~ '/partials/menu.html.twig' with {'cmsStzefMenuses': cmsStzefMenuses} %}
-
-
-
-
-
-      </div><!-- /.container-fluid -->
-    </nav>
-    </div>
-
-    <div class="col-md-2 text-center" style="font-size: 20px;">
-        <div class="" id="section_school_notes"></div>
-    </div>
-    <!-- Page Content -->
-
-        <div class="row">
-
-            <div class="col-md-12 col-lg-12" style="padding-right: 0px;padding-left: 0px;">
-
-                <div class="row carousel-holder" style="padding-left: 40px;padding-right: 40px;">
-
-
-
-
-
-
-
-
-        {% include 'themes/' ~ theme.slug ~ '/partials/banner_main.html.twig' with {'cmsStzefMenuses': cmsStzefMenuses} %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-                </div>
-
-                <div class="row">
-
-                <div id="noticia" class="col-md-12 col-lg-12">
-                    {% include 'themes/' ~ theme.slug ~ '/partials/news.html.twig' with {'articles': articles,'current_page': current_page} %}
-
-                </div>
-                {% block body %}
-                {% endblock %}
-
-                <div id="convenio-cronologia" class="col-md-12 col-lg-12">
-
-                    <div class="col-sm-7 col-lg-7 col-md-7">
-                        <section id="section_agreements"></section>
-                    </div>
-                    <div class="col-sm-5 col-lg-5 col-md-5">
-                        <h4 class="subtitulos">Cronograma</h4>
-                            <div>
-                                <iframe src="https://calendar.google.com/calendar/embed?src={{parameters.email_googlecalendar}}&ctz=America/Bogota" style="border: 0" width="100%" height="200" frameborder="0" scrolling="no"></iframe>
-
-                            </div>
-                            <hr>
-                            <h4 class="texto-blanco">Lista de Actividades</h4>
-                            <p class="texto-blanco"></p>
-                    </div>
-                </div>
-
-                <div id="mapa" class="col-md-12 col-lg-12">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127306.38529661586!2d-74.88660420051349!3d4.35007576222727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28eb1616af2b%3A0x1d71759ce9e2c519!2sGirardot%2C+Cundinamarca%2C+Colombia!5e0!3m2!1ses!2ses!4v1479765177545" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-    <!-- /.container -->
-
-
-    <template>
-        {% if sectionsTheme is defined %}
-            {% for sectionTheme in sectionsTheme %}
-                <section data-to-section="{{ sectionTheme.selectorCss }}" >
-                    {% for modulo in sectionTheme.modulos %}
-                        <div>
-                            {{ modulo.renderContentHtml|raw }}
-                        </div>
-                    {% endfor %}
-                </section>
-            {% endfor %}
-        {% endif %}
-    </template>
-    <!-- /.container -->
-
-
-    <div id="pie" class="container">
-
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>Copyright &copy; Diseñado por: <strong>SistematizarEF Ltda</strong></p>
-                </div>
-            </div>
-        </footer>
-
-    <!-- jQuery -->
-    <script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.js') }}"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('themes/' ~ theme.slug ~ '/js/bootstrap.min.js') }}"></script>
-
-    <script type="text/javascript">
-        var template = $("template")[0]
-        var clone_template = template.content.cloneNode(true)
-        var section = clone_template.querySelectorAll("[data-to-section]")
-
-        section.forEach(section => {
-            var selector = "#" + $(section).data("to-section")
-            $(selector).html($(section).html())
-        })
-    </script>
-
-    <script>
-      function initMap() {
-        // Create a map object and specify the DOM element for display.
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: {{ parameters.config_gmap.center.lat }}, lng: {{ parameters.config_gmap.center.lng }}},
-          scrollwheel: {{ (parameters.config_gmap.scrollwheel) ? 'true' : 'false' }},
-          zoom: {{ parameters.config_gmap.zoom }}
-        });
-      }
-    </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKSeKDQqN8p8bZfQJL98WqTtNrAHZumcg&callback=initMap"async defer></script>
-
-    {% block javascripts %}{% endblock %}
+	<div class="row" style="background-color: #fff;padding-right: 15px;padding-left: 15px;">
+		<div class="col-md-5">
+			<div class="" id="section_theme_social_network"></div>
+		</div>
+		<div class="col-md-7">
+			<div class="text-right" style="margin-top: 10px;font-size: 16px;">
+				<div class="text-right" id="section_theme_header_mini"></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-12 pie-top"></div>
+	<div class="container">
+
+
+		<div class="col-md-3">
+			<center><img class="img-responsive" src="{{ asset(parameters.logo_site) }}" alt="" width="50%" /></center>
+		</div>
+			<!-- Navigation -->
+		<div class="col-md-6">
+			<div class="col-md-12 text-center box-mensaje">
+				<p>Mensaje Institucional</p>
+			</div>
+		<br><br><br>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"></a>
+				</div>
+				{% include 'themes/' ~ theme.slug ~ '/partials/menu.html.twig' with {'cmsStzefMenuses': cmsStzefMenuses} %}
+			</div>
+		</nav>
+		</div>
+
+		<div class="col-md-3 text-center" style="font-size: 20px;">
+			<div class="" id="section_school_notes"></div>
+		</div>
+		<!-- Page Content -->
+
+			<div class="row">
+
+				<div class="col-md-12 col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+
+					<div class="row carousel-holder" style="padding-left: 40px;padding-right: 40px;">
+						{% include 'themes/' ~ theme.slug ~ '/partials/banner_main.html.twig' with {'cmsStzefMenuses': cmsStzefMenuses} %}
+					</div>
+
+					<div class="row">
+
+						<div id="noticia" class="col-md-12 col-lg-12">
+							{% include 'themes/' ~ theme.slug ~ '/partials/news.html.twig' with {'articles': articles,'current_page': current_page} %}
+						</div>
+
+						{% block body %}
+						{% endblock %}
+
+						<div id="convenio-cronologia" class="col-md-12 col-lg-12">
+
+							<div class="col-sm-7 col-lg-7 col-md-7">
+								<section id="section_agreements"></section>
+							</div>
+							<div class="col-sm-5 col-lg-5 col-md-5">
+								<h4 class="subtitulos">Cronograma</h4>
+									<div>
+										<iframe src="https://calendar.google.com/calendar/embed?src={{parameters.email_googlecalendar}}&ctz=America/Bogota" style="border: 0" width="100%" height="200" frameborder="0" scrolling="no"></iframe>
+
+									</div>
+									<hr>
+									<!--<h4 class="texto-blanco">Lista de Actividades</h4>
+									<p class="texto-blanco"></p>-->
+							</div>
+						</div>
+
+						<div id="mapa" class="col-md-12 col-lg-12"></div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		<!-- /.container -->
+
+
+		<template>
+			{% if sectionsTheme is defined %}
+				{% for sectionTheme in sectionsTheme %}
+					<section data-to-section="{{ sectionTheme.selectorCss }}" >
+						{% for modulo in sectionTheme.modulos %}
+							<div>
+								{{ modulo.renderContentHtml|raw }}
+							</div>
+						{% endfor %}
+					</section>
+				{% endfor %}
+			{% endif %}
+		</template>
+		<!-- /.container -->
+
+
+		<div id="pie" class="container">
+
+			<!-- Footer -->
+			<footer>
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<p>Copyright &copy; Diseñado por: <a href="{{parameters.design_developed.link}}" target="_blank">{{ parameters.design_developed.name }}</a> </p>
+					</div>
+				</div>
+			</footer>
+	</div>
+
+	<!-- jQuery -->
+	<script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.js') }}"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="{{ asset('themes/' ~ theme.slug ~ '/js/bootstrap.min.js') }}"></script>
+
+	<script type="text/javascript">
+		var template = $("template")[0]
+		var clone_template = template.content.cloneNode(true)
+		var section = clone_template.querySelectorAll("[data-to-section]")
+
+		section.forEach(section => {
+			var selector = "#" + $(section).data("to-section")
+			$(selector).html($(section).html())
+		})
+	</script>
+
+	<script>
+		function initMap() {
+			// Create a map object and specify the DOM element for display.
+			var pos = {lat: {{ parameters.config_gmap.center.lat }}, lng: {{ parameters.config_gmap.center.lng }}}
+			var map = new google.maps.Map(document.getElementById('mapa'), {
+				center: pos,
+				scrollwheel: {{ (parameters.config_gmap.scrollwheel) ? 'true' : 'false' }},
+				zoom: {{ parameters.config_gmap.zoom }}
+			});
+
+			var marker = new google.maps.Marker({
+				position: pos,
+				map: map,
+				title: ''
+			});
+
+		}
+	</script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKSeKDQqN8p8bZfQJL98WqTtNrAHZumcg&callback=initMap"async defer></script>
+
+	{% block javascripts %}{% endblock %}
 </body>
 
 </html>

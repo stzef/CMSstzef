@@ -84,7 +84,7 @@ body{
 }
 
 footer {
-    margin: 50px 0;
+    margin: 20px 0;
 }
 
 .is-center {
@@ -121,10 +121,10 @@ footer {
   background-image: url(../img/texture.png);
   background-color: #272526;
   padding-top: 20px;
-  padding-bottom: 20px; 
+  padding-bottom: 20px;
 }
 
-.subtitulos{ 
+.subtitulos{
   font-size: 27px;
   color: #fff;
 }

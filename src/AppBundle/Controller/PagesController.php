@@ -120,8 +120,10 @@ class PagesController extends Controller
         foreach ($cmsStzefMenuses as $cmsStzefMenu) {
             $subMenus = $querySubMenu->setParameter('paramTopMenu', $cmsStzefMenu->getid())->getResult();
             $cmsStzefMenu->subMenus = $subMenus;
+            $cmsStzefMenu->getPage()->parameters = json_decode($cmsStzefMenu->getPage()->getParams());
             foreach ($subMenus as $subMenu) {
                 $subMenus = $querySubMenu->setParameter('paramTopMenu', $subMenu->getid())->getResult();
+                $subMenu->getPage()->parameters = json_decode($subMenu->getPage()->getParams());
                 $subMenu->subMenus = $subMenus;
             }
         }
@@ -177,6 +179,9 @@ class PagesController extends Controller
 
 
         $current_page = $repositoryPages->findOneByIfMain(1);
+        $params = $current_page->getParams();
+        $current_page->parameters = json_encode($params);
+
         $path_template = "themes/" . $theme->getSlug();
 
         $articles = [];
@@ -264,6 +269,8 @@ class PagesController extends Controller
         $repositoryArticles = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefArticles");
 
         $current_page = $repositoryPages->findOneBySlug($slug_page);
+        $params = $current_page->getParams();
+        $current_page->parameters = json_encode($params);
 
         $main_banner = $this->getMainBanner();
 
