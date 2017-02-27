@@ -19,6 +19,10 @@ class AdminController extends Controller
      * @Route("/mails/send_form", name="url_send_form")
      */
     public function sendFormAction(Request $request){
+        $em = $this->getDoctrine()->getManager();
+
+        $parameters = $this->get('app.fns')->getParameters($em);
+
 
         $name = $request->request->get('name', '');
         $email = $request->request->get('email', '');
@@ -27,8 +31,8 @@ class AdminController extends Controller
         // replace this example code with whatever you need
         $message = \Swift_Message::newInstance()
             ->setSubject('Mensaje Pagina Web')
-            ->setFrom('info@colegiomontecarmelo.edu.co')
-            ->setTo('sistematizaref.programador5@gmail.com')
+            ->setFrom($parameters->mailer_user)
+            ->setTo($parameters->email_site)
             ->setBody(
                 $this->renderView(
                     // app/Resources/views/Emails/registration.html.twig

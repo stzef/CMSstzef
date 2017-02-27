@@ -8,176 +8,21 @@ use Symfony\Component\HttpFoundation\Request;
 
 class PagesController extends Controller
 {
-    public function getContentPage($page){
-        $valParamStatePublication = 1;
-        $valParamTypeAccess = 1;
-        $em = $this->getDoctrine()->getManager();
-        $contentPage = array();
-        if($page->getIdTypePage()->getId() == 1){
-
-
-            $queryArticles = $em->createQuery(
-                'SELECT article FROM AppBundle:CmsStzefArticles article
-                WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.idCategory = :paramIdCategory'
-            )->setParameter('paramStatePublication',$valParamStatePublication)
-            ->setParameter('paramTypeAccess',$valParamTypeAccess)
-            ->setParameter('paramIdCategory',$page->getCategoryToShow());
-
-            $contentPage = $queryArticles->getResult();
-        }else if ($page->getIdTypePage()->getId() == 2){
-            $queryArticle = $em->createQuery(
-                'SELECT article FROM AppBundle:CmsStzefArticles article
-                WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.id = :paramIdArticle'
-            )->setParameter('paramStatePublication',$valParamStatePublication)
-            ->setParameter('paramTypeAccess',$valParamTypeAccess)
-            ->setParameter('paramIdArticle',$page->getArticleToShow());
-            $contentPage = $queryArticle->setMaxResults(1)->getOneOrNullResult();
-        }
-        return $contentPage;
-    }
-
-    public function getArticlesDistinguished(){
-        $em = $this->getDoctrine()->getManager();
-        $valParamStatePublication = 1;
-        $valParamTypeAccess = 1;
-
-        $queryArticles = $em->createQuery(
-            'SELECT article FROM AppBundle:CmsStzefArticles article
-            WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.ifDistinguished = :paramIfDistinguished'
-        )->setParameter('paramStatePublication',$valParamStatePublication)
-        ->setParameter('paramTypeAccess',$valParamTypeAccess)
-        ->setParameter('paramIfDistinguished',1);
-        $articles = $queryArticles->getResult();
-
-        return $articles;
-    }
-
-    public function getTheme(){
-        $repositoryParameters = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefParameters");
-        $repositoryThemes = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefThemes");
-
-        $id_theme = $repositoryParameters->find(7)->getValue();
-        $theme = $repositoryThemes->find($id_theme);
-
-        return $theme;
-    }
-
-    public function getSectionsTheme(){
-        $twig = new \Twig_Environment(new \Twig_Loader_String());
-
-        $valParamStatePublication = 1;
-        $valParamTypeAccess = 1;
-
-        $em = $this->getDoctrine()->getManager();
-        $repositorySectionsTheme = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefSectionsTheme");
-
-        $theme = $this->getTheme();
-        $sectionsTheme = $repositorySectionsTheme->findByIdTheme($theme->getId());
-        foreach ($sectionsTheme as $sectionTheme) {
-
-            $queryModulos = $em->createQuery(
-                'SELECT modulo FROM AppBundle:CmsStzefModules modulo
-                WHERE modulo.idStatePublication = :paramStatePublication AND modulo.idTypeAccess = :paramTypeAccess AND modulo.idSectionTheme = :paramIdSectionTheme'
-            )->setParameter('paramStatePublication',$valParamStatePublication)
-            ->setParameter('paramTypeAccess',$valParamTypeAccess)
-            ->setParameter('paramIdSectionTheme',$sectionTheme->getIdSectionTheme());
-
-            $sectionTheme->modulos = $queryModulos->getResult();
-        }
-
-        $data = array();
-        $data["parameters"] = $this->getParameters();
-        foreach ($sectionsTheme as $sectionTheme) {
-            foreach ($sectionTheme->modulos as $modulo) {
-                $data["parametersModule"] = json_decode($modulo->getParams());
-                $modulo->renderContentHtml = $twig->render($modulo->getContentHtml(),$data);
-            }
-        }
-        return $sectionsTheme;
-    }
-
-    public function getMenu(){
-        $em = $this->getDoctrine()->getManager();
-
-        $valParamIfMain = 1;
-        $valParamStatePublication = 1;
-        $valParamTypeAccess = 1;
-
-        $queryMenuMain = $em->createQuery(
-            'SELECT menu FROM AppBundle:CmsStzefMenus menu
-            WHERE menu.ifMain = :paramIfMain AND menu.idStatePublication = :paramStatePublication AND menu.idTypeAccess = :paramTypeAccess
-            ORDER BY menu.orden ASC'
-        )->setParameter('paramIfMain', $valParamIfMain)->setParameter('paramStatePublication',$valParamStatePublication)->setParameter('paramTypeAccess',$valParamTypeAccess);
-
-        $querySubMenu = $em->createQuery(
-            'SELECT menu FROM AppBundle:CmsStzefMenus menu
-            WHERE menu.idStatePublication = :paramStatePublication AND menu.idTypeAccess = :paramTypeAccess AND menu.topMenu = :paramTopMenu
-            ORDER BY menu.orden ASC'
-        )->setParameter('paramStatePublication',$valParamStatePublication)->setParameter('paramTypeAccess',$valParamTypeAccess);
-
-        $cmsStzefMenuses = $queryMenuMain->getResult();
-
-        foreach ($cmsStzefMenuses as $cmsStzefMenu) {
-            $subMenus = $querySubMenu->setParameter('paramTopMenu', $cmsStzefMenu->getid())->getResult();
-            $cmsStzefMenu->subMenus = $subMenus;
-            $cmsStzefMenu->getPage()->parameters = json_decode($cmsStzefMenu->getPage()->getParams());
-            foreach ($subMenus as $subMenu) {
-                $subMenus = $querySubMenu->setParameter('paramTopMenu', $subMenu->getid())->getResult();
-                $subMenu->getPage()->parameters = json_decode($subMenu->getPage()->getParams());
-                $subMenu->subMenus = $subMenus;
-            }
-        }
-        return $cmsStzefMenuses;
-    }
-
-    public function getMainBanner(){
-        $repositoryBanners = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefBanners");
-        $repositoryBannerDeta = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefBannerDeta");
-
-        $banner = $repositoryBanners->findOneByIfMain(1);
-        $banner->deta = $repositoryBannerDeta->findByCmsStzefBanners($banner->getId());
-        return $banner;
-    }
-
-    public function getParameters(){
-        $em = $this->getDoctrine()->getManager();
-        $repositoryParameters = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefParameters");
-
-        $odb_parameters = $repositoryParameters->findAll();
-        $parameters = array();
-
-        foreach ($odb_parameters as $odb_parameter) {
-            if( $odb_parameter->getCgroup() ){
-                if( !array_key_exists ( $odb_parameter->getNgroup() , $parameters ) ){
-                    $parameters[$odb_parameter->getNgroup()] = array();
-                }
-                array_push($parameters[$odb_parameter->getNgroup()], $odb_parameter->getValue());
-            }else{
-                $parameters[$odb_parameter->getCparam()] = $odb_parameter->getValue();
-            }
-        }
-        return (object)$parameters;
-    }
-
-    public function clean_string($string) {
-       $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
-       return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
-    }
 
     /**
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request){
-
+        $em = $this->getDoctrine()->getManager();
         $messages = array();
         if (array_key_exists("messages", $_GET)){
             $messages = $_GET["messages"];
         }
 
-        $cmsStzefMenuses = $this->getMenu();
-        $parameters = $this->getParameters();
-        $theme = $this->getTheme();
-        $sectionsTheme = $this->getSectionsTheme();
+        $cmsStzefMenuses = $this->get('app.fns')->getMenu($em);
+        $parameters = $this->get('app.fns')->getParameters($em);
+        $theme = $this->get('app.fns')->getTheme($em);
+        $sectionsTheme = $this->get('app.fns')->getSectionsTheme($em);
 
         $repositoryPages = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefPages");
 
@@ -193,7 +38,7 @@ class PagesController extends Controller
         $articles = [];
         if($current_page){
             $path_template .= "/index.html.twig";
-            $articles = $this->getContentPage($current_page);
+            $articles = $this->get('app.fns')->getContentPage($current_page,$em);
 
             if($current_page->getIdStatePublication()->getId() != 1){
                 $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
@@ -203,16 +48,16 @@ class PagesController extends Controller
         }else{
             $path_template .= "/404.html.twig";
         }
-
+        dump($parameters);
         return $this->render("themes/" . $theme->getSlug() . "/index.html.twig", array(
             "cmsStzefMenuses" => $cmsStzefMenuses,
             "parameters" => $parameters,
             "theme" => $theme,
             "sectionsTheme" => $sectionsTheme,
-            "articles_distinguished" => $this->getArticlesDistinguished(),
+            "articles_distinguished" => $this->get('app.fns')->getArticlesDistinguished($em),
             "current_page" => $current_page,
             "articles" => $articles,
-            "main_banner" => $this->getMainBanner(),
+            "main_banner" => $this->get('app.fns')->getMainBanner($em),
             "messages" => $messages,
             ));
 
@@ -223,13 +68,14 @@ class PagesController extends Controller
      * @Route("/articles/{id_article}", name="view_article_generic")
      */
     public function articleAction(Request $request,$id_article){
-        $cmsStzefMenuses = $this->getMenu();
-        $parameters = $this->getParameters();
-        $sectionsTheme = $this->getSectionsTheme();
-
         $em = $this->getDoctrine()->getManager();
+
+        $cmsStzefMenuses = $this->get('app.fns')->getMenu($em);
+        $parameters = $this->get('app.fns')->getParameters($em);
+        $sectionsTheme = $this->get('app.fns')->getSectionsTheme($em);
+
         $repositoryArticles = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefArticles");
-        $theme = $this->getTheme();
+        $theme = $this->get('app.fns')->getTheme($em);
 
         $current_article = $repositoryArticles->find($id_article);
 
@@ -261,16 +107,16 @@ class PagesController extends Controller
      * @Route("/{slug_page}", name="page_generic")
      */
     public function pageAction(Request $request,$slug_page){
-
-        $slug_page = $this->clean_string($slug_page);
-        $cmsStzefMenuses = $this->getMenu();
-        $sectionsTheme = $this->getSectionsTheme();
-
-        $parameters = $this->getParameters();
-        $theme = $this->getTheme();
-
-
         $em = $this->getDoctrine()->getManager();
+
+        $slug_page = $this->get('app.fns')->clean_string($slug_page);
+        $cmsStzefMenuses = $this->get('app.fns')->getMenu($em);
+        $sectionsTheme = $this->get('app.fns')->getSectionsTheme($em);
+
+        $parameters = $this->get('app.fns')->getParameters($em);
+        $theme = $this->get('app.fns')->getTheme($em);
+
+
         $repositoryPages = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefPages");
         $repositoryArticles = $this->getDoctrine()->getManager()->getRepository("AppBundle:CmsStzefArticles");
 
@@ -278,14 +124,14 @@ class PagesController extends Controller
         $params = $current_page->getParams();
         $current_page->parameters = json_encode($params);
 
-        $main_banner = $this->getMainBanner();
+        $main_banner = $this->get('app.fns')->getMainBanner($em);
 
 
         $articles = [];
         $path_template = "themes/" . $theme->getSlug();
         if($current_page){
             $path_template .= "/index.html.twig";
-            $articles = $this->getContentPage($current_page);
+            $articles = $this->get('app.fns')->getContentPage($current_page,$em);
 
             if($current_page->getIdStatePublication()->getId() != 1){
                 $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
@@ -305,7 +151,7 @@ class PagesController extends Controller
             "sectionsTheme" => $sectionsTheme,
             "parameters" => $parameters,
             "theme" => $theme,
-            "articles_distinguished" => $this->getArticlesDistinguished(),
+            "articles_distinguished" => $this->get('app.fns')->getArticlesDistinguished($em),
             "main_banner" => $main_banner,
         ));
     }

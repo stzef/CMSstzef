@@ -9,5 +9,9 @@ services:
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 
 services:
-    Utils:
-        class: CMSstzef\AppBundle\Utils\Utils\Utilities
+    # keep your service names short
+    app.fns:
+        class: AppBundle\Utils\Functions
+#services:
+#    Utils:
+#        class: CMSstzef\AppBundle\Utils\Utils\Utilities
