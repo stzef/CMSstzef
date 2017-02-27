@@ -12,6 +12,7 @@ class PagesController extends Controller
         $valParamStatePublication = 1;
         $valParamTypeAccess = 1;
         $em = $this->getDoctrine()->getManager();
+        $contentPage = array();
         if($page->getIdTypePage()->getId() == 1){
 
 
@@ -89,7 +90,6 @@ class PagesController extends Controller
         foreach ($sectionsTheme as $sectionTheme) {
             foreach ($sectionTheme->modulos as $modulo) {
                 $data["parametersModule"] = json_decode($modulo->getParams());
-                dump($data["parametersModule"]);
                 $modulo->renderContentHtml = $twig->render($modulo->getContentHtml(),$data);
             }
         }
@@ -168,6 +168,12 @@ class PagesController extends Controller
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request){
+
+        $messages = array();
+        if (array_key_exists("messages", $_GET)){
+            $messages = $_GET["messages"];
+        }
+
         $cmsStzefMenuses = $this->getMenu();
         $parameters = $this->getParameters();
         $theme = $this->getTheme();
@@ -207,7 +213,7 @@ class PagesController extends Controller
             "current_page" => $current_page,
             "articles" => $articles,
             "main_banner" => $this->getMainBanner(),
-
+            "messages" => $messages,
             ));
 
 

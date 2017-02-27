@@ -87,9 +87,11 @@
 		</nav>
 		</div>
 
+
 		<div class="col-md-3 text-center" style="font-size: 20px;">
 			<div class="" id="section_school_notes"></div>
 		</div>
+
 		<!-- Page Content -->
 
 			<div class="row">
@@ -100,10 +102,29 @@
 						{% include 'themes/' ~ theme.slug ~ '/partials/banner_main.html.twig' with {'cmsStzefMenuses': cmsStzefMenuses} %}
 					</div>
 
+					{% if messages is defined %}
+						<div class="row">
+							{% for message in messages %}
+								<div class="alert alert-{{message.type}}">
+									<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+									{{message.text}}.
+								</div>
+							{% endfor %}
+						</div>
+					{% endif %}
+
 					<div class="row">
 
 						<div id="noticia" class="col-md-12 col-lg-12">
-							{% include 'themes/' ~ theme.slug ~ '/partials/news.html.twig' with {'articles': articles,'current_page': current_page} %}
+							{% if articles is defined %}
+								{% if current_page.idTypePage.id == 1 %}
+									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/1_for_category.html.twig' with {'articles': articles,'current_page': current_page} %}
+								{% elseif current_page.idTypePage.id == 2 %}
+									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/2_one_article.html.twig' with {'articles': articles,'current_page': current_page} %}
+								{% elseif current_page.idTypePage.id == 5 %}
+									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/5_form_contact.html.twig' %}
+								{% endif %}
+							{% endif %}
 						</div>
 
 						{% block body %}
