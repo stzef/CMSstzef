@@ -136,6 +136,16 @@ class Functions
         return $banner;
     }
 
+    public function getBanner($em,$idBanner){
+        #$em = $this->getDoctrine()->getManager();
+        $repositoryBanners = $em->getRepository("AppBundle:CmsStzefBanners");
+        $repositoryBannerDeta = $em->getRepository("AppBundle:CmsStzefBannerDeta");
+
+        $banner = $repositoryBanners->findOneById($idBanner);
+        $banner->deta = $repositoryBannerDeta->findByCmsStzefBanners($banner->getId());
+        return $banner;
+    }
+
     public function getParameters($em){
         #$em = $this->getDoctrine()->getManager();
         $repositoryParameters = $em->getRepository("AppBundle:CmsStzefParameters");
@@ -148,7 +158,9 @@ class Functions
                 if( !array_key_exists ( $odb_parameter->getNgroup() , $parameters ) ){
                     $parameters[$odb_parameter->getNgroup()] = array();
                 }
-                array_push($parameters[$odb_parameter->getNgroup()], $odb_parameter->getValue());
+                if( $odb_parameter->getValue() != "" ){
+                    array_push($parameters[$odb_parameter->getNgroup()], $odb_parameter->getValue());
+                }
             }else{
                 $parameters[$odb_parameter->getCparam()] = $odb_parameter->getValue();
             }

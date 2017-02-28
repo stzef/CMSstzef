@@ -31,7 +31,7 @@ class PagesController extends Controller
 
         $current_page = $repositoryPages->findOneByIfMain(1);
         $params = $current_page->getParams();
-        $current_page->parameters = json_encode($params);
+        $current_page->parameters = json_decode($params);
 
         $path_template = "themes/" . $theme->getSlug();
 
@@ -108,7 +108,7 @@ class PagesController extends Controller
      */
     public function pageAction(Request $request,$slug_page){
         $em = $this->getDoctrine()->getManager();
-
+        $gallery = null;
         $slug_page = $this->get('app.fns')->clean_string($slug_page);
         $cmsStzefMenuses = $this->get('app.fns')->getMenu($em);
         $sectionsTheme = $this->get('app.fns')->getSectionsTheme($em);
@@ -122,7 +122,7 @@ class PagesController extends Controller
 
         $current_page = $repositoryPages->findOneBySlug($slug_page);
         $params = $current_page->getParams();
-        $current_page->parameters = json_encode($params);
+        $current_page->parameters = json_decode($params);
 
         $main_banner = $this->get('app.fns')->getMainBanner($em);
 
@@ -133,6 +133,10 @@ class PagesController extends Controller
             $path_template .= "/index.html.twig";
             $articles = $this->get('app.fns')->getContentPage($current_page,$em);
 
+            if($current_page->getIdTypePage()->getId() == 4){
+                $gallery = $this->get('app.fns')->getBanner($em,$current_page->parameters->idBanner);
+                dump($gallery);
+            }
             if($current_page->getIdStatePublication()->getId() != 1){
                 $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
             }else if($current_page->getIdTypeAccess()->getId() != 1){
@@ -151,6 +155,7 @@ class PagesController extends Controller
             "sectionsTheme" => $sectionsTheme,
             "parameters" => $parameters,
             "theme" => $theme,
+            "gallery" => $gallery,
             "articles_distinguished" => $this->get('app.fns')->getArticlesDistinguished($em),
             "main_banner" => $main_banner,
         ));

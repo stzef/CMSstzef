@@ -1,0 +1,30 @@
+<h2>{{gallery.name}}</h2>
+<div class="col-md-12 col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+
+	<div class="row carousel-holder" style="padding-left: 40px;padding-right: 40px;">
+		<div class="col-md-12 col-lg-12">
+		    <div id="carousel-gallery" class="carousel slide" data-ride="carousel">
+		        <ol class="carousel-indicators">
+		           {% for image in gallery.deta %}
+
+
+		                <li data-target="#carousel-gallery" data-slide-to="0" class="{% if loop.first %}active{% endif %}"></li>
+		           {% endfor %}
+		        </ol>
+		        <div class="carousel-inner">
+		           {% for image in gallery.deta %}
+		                <div class="item {% if loop.first %}active{% endif %}">
+		                    <img class="slide-image" src="{{ image.image }}" alt="">
+		                </div>
+		           {% endfor %}
+		        </div>
+		        <a class="left carousel-control" href="#carousel-gallery" data-slide="prev">
+		            <span class="glyphicon glyphicon-chevron-left"></span>
+		        </a>
+		        <a class="right carousel-control" href="#carousel-gallery" data-slide="next">
+		            <span class="glyphicon glyphicon-chevron-right"></span>
+		        </a>
+		    </div>
+		</div>
+	</div>
+</div>

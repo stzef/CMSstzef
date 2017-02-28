@@ -58,41 +58,40 @@
 	</div>
 
 	<div class="col-md-12 pie-top"></div>
-	<div class="container">
+		<div class="container">
 
-
-		<div class="col-md-3">
-			<center><img class="img-responsive" src="{{ asset(parameters.logo_site) }}" alt="" width="50%" /></center>
-		</div>
-			<!-- Navigation -->
-		<div class="col-md-6">
-			<div class="col-md-12 text-center box-mensaje">
-				<p>Mensaje Institucional</p>
-			</div>
-		<br><br><br>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="#"></a>
+			<div>
+				<div class="col-md-3">
+					<center><img class="img-responsive" src="{{ asset(parameters.logo_site) }}" alt="" width="50%" /></center>
 				</div>
-				{% include 'themes/' ~ theme.slug ~ '/partials/menu.html.twig' with {'cmsStzefMenuses': cmsStzefMenuses} %}
+				<!-- Navigation -->
+				<div class="col-md-6">
+					<div class="col-md-12 text-center box-mensaje">
+						<p>Mensaje Institucional</p>
+					</div>
+					<nav class="navbar navbar-default">
+						<div class="container-fluid">
+							<!-- Brand and toggle get grouped for better mobile display -->
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="#"></a>
+							</div>
+							{% include 'themes/' ~ theme.slug ~ '/partials/menu.html.twig' with {'cmsStzefMenuses': cmsStzefMenuses} %}
+						</div>
+					</nav>
+				</div>
+
+				<div class="col-md-3 text-center" style="font-size: 20px;">
+					<div class="" id="section_school_notes"></div>
+				</div>
 			</div>
-		</nav>
-		</div>
 
-
-		<div class="col-md-3 text-center" style="font-size: 20px;">
-			<div class="" id="section_school_notes"></div>
-		</div>
-
-		<!-- Page Content -->
+			<!-- Page Content -->
 
 			<div class="row">
 
@@ -121,6 +120,8 @@
 									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/1_for_category.html.twig' with {'articles': articles,'current_page': current_page} %}
 								{% elseif current_page.idTypePage.id == 2 %}
 									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/2_one_article.html.twig' with {'articles': articles,'current_page': current_page} %}
+								{% elseif current_page.idTypePage.id == 4 %}
+									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/4_gallery.html.twig' with {'articles': articles,'current_page': current_page} %}
 								{% elseif current_page.idTypePage.id == 5 %}
 									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/5_form_contact.html.twig' %}
 								{% endif %}
@@ -139,10 +140,10 @@
 								<h4 class="subtitulos">Cronograma</h4>
 									<div>
 										<iframe src="https://calendar.google.com/calendar/embed?src={{parameters.email_googlecalendar}}&ctz=America/Bogota" style="border: 0" width="100%" height="200" frameborder="0" scrolling="no"></iframe>
-
 									</div>
+									<!--
 									<hr>
-									<!--<h4 class="texto-blanco">Lista de Actividades</h4>
+									<h4 class="texto-blanco">Lista de Actividades</h4>
 									<p class="texto-blanco"></p>-->
 							</div>
 						</div>
@@ -194,45 +195,45 @@
 					</div>
 				</div>
 			</footer>
-	</div>
+		</div>
 
-	<!-- jQuery -->
-	<script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.js') }}"></script>
+		<!-- jQuery -->
+		<script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.js') }}"></script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="{{ asset('themes/' ~ theme.slug ~ '/js/bootstrap.min.js') }}"></script>
+		<!-- Bootstrap Core JavaScript -->
+		<script src="{{ asset('themes/' ~ theme.slug ~ '/js/bootstrap.min.js') }}"></script>
 
-	<script type="text/javascript">
-		var template = $("template")[0]
-		var clone_template = template.content.cloneNode(true)
-		var section = clone_template.querySelectorAll("[data-to-section]")
+		<script type="text/javascript">
+			var template = $("template")[0]
+			var clone_template = template.content.cloneNode(true)
+			var section = clone_template.querySelectorAll("[data-to-section]")
 
-		section.forEach(section => {
-			var selector = "#" + $(section).data("to-section")
-			$(selector).html($(section).html())
-		})
-	</script>
+			section.forEach(section => {
+				var selector = "#" + $(section).data("to-section")
+				$(selector).html($(section).html())
+			})
+		</script>
 
-	<script>
-		function initMap() {
-			// Create a map object and specify the DOM element for display.
-			var pos = {lat: {{ parameters.config_gmap.center.lat }}, lng: {{ parameters.config_gmap.center.lng }}}
-			var map = new google.maps.Map(document.getElementById('mapa'), {
-				center: pos,
-				scrollwheel: {{ (parameters.config_gmap.scrollwheel) ? 'true' : 'false' }},
-				zoom: {{ parameters.config_gmap.zoom }}
-			});
+		<script>
+			function initMap() {
+				// Create a map object and specify the DOM element for display.
+				var pos = {lat: {{ parameters.config_gmap.center.lat }}, lng: {{ parameters.config_gmap.center.lng }}}
+				var map = new google.maps.Map(document.getElementById('mapa'), {
+					center: pos,
+					scrollwheel: {{ (parameters.config_gmap.scrollwheel) ? 'true' : 'false' }},
+					zoom: {{ parameters.config_gmap.zoom }}
+				});
 
-			var marker = new google.maps.Marker({
-				position: pos,
-				map: map,
-				title: ''
-			});
+				var marker = new google.maps.Marker({
+					position: pos,
+					map: map,
+					title: ''
+				});
 
-		}
-	</script>
+			}
+		</script>
 
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKSeKDQqN8p8bZfQJL98WqTtNrAHZumcg&callback=initMap"async defer></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBKSeKDQqN8p8bZfQJL98WqTtNrAHZumcg&callback=initMap"async defer></script>
 
 	{% block javascripts %}{% endblock %}
 </body>
