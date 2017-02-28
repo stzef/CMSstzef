@@ -119,7 +119,7 @@ footer {
 
 #convenio-cronologia{
   background-image: url(../img/texture.png);
-  background-color: #272526;
+  background-color: #A9EB58;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -131,6 +131,10 @@ footer {
 
 .texto-blanco{
   color: #fff;
+}
+
+.content-mapa{
+  background-image: url(../img/background-map.jpg);
 }
 
 #mapa{
