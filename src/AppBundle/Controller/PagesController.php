@@ -48,7 +48,6 @@ class PagesController extends Controller
         }else{
             $path_template .= "/404.html.twig";
         }
-        dump($parameters);
         return $this->render("themes/" . $theme->getSlug() . "/index.html.twig", array(
             "cmsStzefMenuses" => $cmsStzefMenuses,
             "parameters" => $parameters,
@@ -135,7 +134,6 @@ class PagesController extends Controller
 
             if($current_page->getIdTypePage()->getId() == 4){
                 $gallery = $this->get('app.fns')->getBanner($em,$current_page->parameters->idBanner);
-                dump($gallery);
             }
             if($current_page->getIdStatePublication()->getId() != 1){
                 $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
