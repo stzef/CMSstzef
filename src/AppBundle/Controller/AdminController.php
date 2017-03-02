@@ -10,10 +10,11 @@ class AdminController extends Controller
 {
 
     /**
-     * @Route("/admstzef", name="homepage_admin")
+     * @Route("/admstzef/", name="homepage_admin")
      */
     public function indexAdminAction(Request $request)
     {
+        return $this->render("base.html.twig", array());
     }
     /**
      * @Route("/mails/send_form", name="url_send_form")
