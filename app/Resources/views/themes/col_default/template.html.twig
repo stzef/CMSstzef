@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title> {{ parameters.name_site }} - {% block title %} {% endblock %}</title>
+	<title> {{ parameters.name_site }} {% block title %} {% endblock %}</title>
 
 	<!-- Bootstrap Core CSS -->
 	<link href="{{ asset('themes/' ~ theme.slug ~ '/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -40,6 +40,11 @@
 			height: 150px;
 			margin-bottom: 15px;
 		}
+		h1,h2,h3,h4,h5,h6{
+			font-weight: bold;
+			color: {{parameters.colors[0]}} {{"!important"}};
+
+		}
 	</style>
 
 	{% block stylesheets %}{% endblock %}
@@ -48,10 +53,13 @@
 
 <body>
 	<div class="row" style="background-color: #fff;padding-right: 15px;padding-left: 15px;">
-		<div class="col-md-5">
+		<div class="col-md-3">
 			<div class="" id="section_theme_social_network"></div>
 		</div>
-		<div class="col-md-7">
+		<div class="col-md-5 text-center">
+			<h2>{{ parameters.name_site }}</h2>
+		</div>
+		<div class="col-md-4">
 			<div class="text-right" style="margin-top: 10px;font-size: 16px;">
 				<div class="text-right" id="section_theme_header_mini"></div>
 			</div>
@@ -195,8 +203,8 @@
 		<!-- /.container -->
 
 
-		<div id="pie" class="container">
-
+		<div id="pie" class="">
+			<div class="col-md-12 pie-down"></div>
 			<!-- Footer -->
 			<footer>
 				<div class="row">

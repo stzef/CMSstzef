@@ -8,6 +8,11 @@
   padding: 0;
 }
 
+.navbar-default{
+  background: initial;
+  border: initial;
+}
+
 body{
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
@@ -24,6 +29,11 @@ body{
   background-image: url(../img/barra.png);
   height: 52px;
 }
+.pie-down{
+  background-image: url(../img/barra-v.png);
+  height: 52px;
+}
+
 .slide-image {
     width: 100%;
 }
@@ -101,8 +111,8 @@ footer {
 
 #noticia{
   margin-top: 18px;
-  /*background-image: url(../img/paper.png);*/
-  background-color: #98cee6;
+  background-image: url(../img/paper.png);
+  /*background-color: #98cee6;*/
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 10px 10px 0px 0px;
@@ -119,7 +129,7 @@ footer {
 
 #convenio-cronologia{
   background-image: url(../img/texture.png);
-  background-color: #A9EB58;
+  background-color: #63b934;
   padding-top: 20px;
   padding-bottom: 20px;
 }

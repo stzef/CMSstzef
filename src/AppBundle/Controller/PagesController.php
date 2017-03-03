@@ -14,6 +14,9 @@ class PagesController extends Controller
      */
     public function indexAction(Request $request){
         $em = $this->getDoctrine()->getManager();
+
+        $this->get('app.fns')->newVisitPage($em);
+
         $messages = array();
         if (array_key_exists("messages", $_GET)){
             $messages = $_GET["messages"];
@@ -67,7 +70,10 @@ class PagesController extends Controller
      * @Route("/articles/{id_article}", name="view_article_generic")
      */
     public function articleAction(Request $request,$id_article){
+
         $em = $this->getDoctrine()->getManager();
+
+        $this->get('app.fns')->newVisitPage($em);
 
         $cmsStzefMenuses = $this->get('app.fns')->getMenu($em);
         $parameters = $this->get('app.fns')->getParameters($em);
@@ -107,6 +113,9 @@ class PagesController extends Controller
      */
     public function pageAction(Request $request,$slug_page){
         $em = $this->getDoctrine()->getManager();
+
+        $this->get('app.fns')->newVisitPage($em);
+
         $gallery = null;
         $slug_page = $this->get('app.fns')->clean_string($slug_page);
         $cmsStzefMenuses = $this->get('app.fns')->getMenu($em);
@@ -124,7 +133,6 @@ class PagesController extends Controller
         $current_page->parameters = json_decode($params);
 
         $main_banner = $this->get('app.fns')->getMainBanner($em);
-
 
         $articles = [];
         $path_template = "themes/" . $theme->getSlug();

@@ -31,6 +31,15 @@ class Functions
         return $contentPage;
     }
 
+    public function newVisitPage($em){
+        $repositoryParameters = $em->getRepository("AppBundle:CmsStzefParameters");
+
+        $numberVisits = $repositoryParameters->findOneByCparam("number_visit");
+        $numberVisits->setValueInt( $numberVisits->getValueInt() + 1 );
+        $em->persist($numberVisits);
+        $em->flush($numberVisits);
+        dump($numberVisits);
+    }
     public function getArticlesDistinguished($em){
         #$em = $this->getDoctrine()->getManager();
         $valParamStatePublication = 1;
