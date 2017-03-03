@@ -38,7 +38,6 @@ class Functions
         $numberVisits->setValueInt( $numberVisits->getValueInt() + 1 );
         $em->persist($numberVisits);
         $em->flush($numberVisits);
-        dump($numberVisits);
     }
     public function getArticlesDistinguished($em){
         #$em = $this->getDoctrine()->getManager();
