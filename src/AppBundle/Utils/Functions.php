@@ -70,6 +70,9 @@ class Functions
         #$em = $this->getDoctrine()->getManager();
         $twig = new \Twig_Environment(new \Twig_Loader_String());
 
+        $loader = new \Twig_Loader_Filesystem('../app/Resources/views/');
+        $twig_files = new \Twig_Environment($loader);
+
         $valParamStatePublication = 1;
         $valParamTypeAccess = 1;
 
@@ -94,7 +97,17 @@ class Functions
         foreach ($sectionsTheme as $sectionTheme) {
             foreach ($sectionTheme->modulos as $modulo) {
                 $data["parametersModule"] = json_decode($modulo->getParams());
-                $modulo->renderContentHtml = $twig->render($modulo->getContentHtml(),$data);
+                if ( $modulo->getIdTypeModule()->getId() == 1 ){
+                    $modulo->renderContentHtml = $twig->render($modulo->getContentHtml(),$data);
+                }
+                if ( $modulo->getIdTypeModule()->getId() == 2 ){
+                    $repositoryCategories = $em->getRepository("AppBundle:CmsStzefCategories");
+                    $repositoryArticles = $em->getRepository("AppBundle:CmsStzefArticles");
+                    $category = $repositoryCategories->find($data["parametersModule"]->category);
+                    $category->articles = $repositoryArticles->findByIdCategory($category,array(),$data["parametersModule"]->limit);
+                    $template = $twig_files->load("/themes/" . $theme->getSlug() . "/partials/types_modules/2_category.html.twig");
+                    $modulo->renderContentHtml = $template->render(array("category"=>$category));
+                }
             }
         }
         return $sectionsTheme;

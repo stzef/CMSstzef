@@ -1,0 +1,11 @@
+<h4 class="subtitulos">{{ category.name }}</h4>
+
+<div>
+	{% for article in category.articles %}
+		<div class="well col-md-3">
+			<h4 class="text-center"><a href="articles/{{article.id}}">{{ article.name }}</a>
+			<img class="img-responsive" src="{{ article.imageMain }}" alt="">
+			<p>{{ article.description }}</p>
+		</div>
+	{% endfor %}
+</div>

@@ -24,14 +24,15 @@
 {% endblock %}
 {% block javascripts %}
     <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="{{ asset('elfinder/js/elfinder.min.js') }}"></script>
-    <!--<script>
-        var $_1_11_3 = $.noConflict(true);
+    <script>
         $("form[name=appbundle_cmsstzefarticles]").submit(function(){
             tinyMCE.triggerSave();
         })
     </script>
+    <!--
+        var $_1_11_3 = $.noConflict(true);
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="{{ asset('elfinder/js/elfinder.min.js') }}"></script>
     <script>
         $_1_11_3("#appbundle_cmsstzefarticles_imageMain").click(function(){
 
