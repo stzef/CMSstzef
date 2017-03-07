@@ -1,13 +1,13 @@
- 
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cmsstzefmenu</h1>
+    <h1>Menu <b>{{ cmsStzefMenu.name }}</b></h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Name</th>
+                <th>Nombre</th>
                 <td>{{ cmsStzefMenu.name }}</td>
             </tr>
             <tr>
@@ -19,24 +19,8 @@
                 <td>{{ cmsStzefMenu.orden }}</td>
             </tr>
             <tr>
-                <th>Target</th>
-                <td>{{ cmsStzefMenu.target }}</td>
-            </tr>
-            <tr>
-                <th>Ifmain</th>
-                <td>{% if cmsStzefMenu.ifMain %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datecreation</th>
-                <td>{% if cmsStzefMenu.dateCreation %}{{ cmsStzefMenu.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Modified</th>
-                <td>{% if cmsStzefMenu.modified %}{{ cmsStzefMenu.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Params</th>
-                <td>{{ cmsStzefMenu.params }}</td>
+                <th>Principa</th>
+                <td>{% if cmsStzefMenu.ifMain %}Si{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Id</th>

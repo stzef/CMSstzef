@@ -31,7 +31,7 @@
                 {% elseif cmsStzefParameter.type == "JSON" %}
                     <td>{{ cmsStzefParameter.valueText }}</td>
                 {% elseif cmsStzefParameter.type == "BOOL" %}
-                    <td>{% if cmsStzefParameter.valueBool %}Yes{% else %}No{% endif %}</td>
+                    <td>{% if cmsStzefParameter.valueBool %} <b>Si</b> {% else %}No{% endif %}</td>
                 {% endif %}
                 <td>
                     <ul class="list-unstyled">

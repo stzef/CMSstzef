@@ -7,6 +7,22 @@
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
+
+        <div class="form-group">
+            <label for="" class="control-label">
+                {{ form_label(form_generic.idBanner) }}
+            </label>
+            {{ form_errors(form_generic.idBanner) }}
+            {{ form_widget(form_generic.idBanner) }}
+        </div>
+        <div class="form-group">
+            <label for="" class="control-label">
+                {{ form_label(form_generic.urlFile) }}
+            </label>
+            {{ form_errors(form_generic.urlFile) }}
+            {{ form_widget(form_generic.urlFile) }}
+        </div>
+
         <input type="submit" class="btn btn-info" value="Editar" />
     {{ form_end(edit_form) }}
 
@@ -20,4 +36,7 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/cruds/pages.js') }}"></script>
 {% endblock %}

@@ -1,34 +1,18 @@
- 
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cmsstzefpage</h1>
+    <h1>Pagina <b>{{ cmsStzefPage.name }}</b></h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Slug</th>
-                <td>{{ cmsStzefPage.slug }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
+                <th>Nombre</th>
                 <td>{{ cmsStzefPage.name }}</td>
             </tr>
             <tr>
-                <th>Ifmain</th>
+                <th>Principal</th>
                 <td>{% if cmsStzefPage.ifMain %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datecreation</th>
-                <td>{% if cmsStzefPage.dateCreation %}{{ cmsStzefPage.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Modified</th>
-                <td>{% if cmsStzefPage.modified %}{{ cmsStzefPage.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Params</th>
-                <td>{{ cmsStzefPage.params }}</td>
             </tr>
             <tr>
                 <th>Id</th>

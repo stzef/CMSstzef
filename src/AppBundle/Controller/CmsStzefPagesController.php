@@ -39,12 +39,24 @@ class CmsStzefPagesController extends Controller
      */
     public function newAction(Request $request)
     {
+
         $cmsStzefPage = new CmsStzefPages();
         $form = $this->createForm('AppBundle\Form\CmsStzefPagesType', $cmsStzefPage);
         $form->handleRequest($request);
 
+
+        $form_generic = $this->createFormBuilder()
+        ->add('idBanner',"entity",array('class' => 'AppBundle:CmsStzefBanners','label' => "Banner",'attr' => array()))
+        ->add('urlFile',"elfinder",array('instance'=>'form', 'enable'=>true,'attr' =>  array('readonly' => true,'class' => 'form-control')))
+        ->getForm();
+
+
         $user= $this->get('security.context')->getToken()->getUser();
         $cmsStzefPage->setCreatorUser($user);
+
+        (object)$params = $request->request->get('form') != null ? $request->request->get('form') : array() ;
+
+        $cmsStzefPage->setParams(json_encode($params));
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -57,6 +69,7 @@ class CmsStzefPagesController extends Controller
         return $this->render('cmsstzefpages/new.html.twig', array(
             'cmsStzefPage' => $cmsStzefPage,
             'form' => $form->createView(),
+            'form_generic' => $form_generic->createView(),
         ));
     }
 
@@ -88,6 +101,20 @@ class CmsStzefPagesController extends Controller
         $editForm = $this->createForm('AppBundle\Form\CmsStzefPagesType', $cmsStzefPage);
         $editForm->handleRequest($request);
 
+        $form_generic = $this->createFormBuilder()
+        ->add('idBanner',"entity",array('class' => 'AppBundle:CmsStzefBanners','label' => "Banner",'attr' => array()))
+        ->add('urlFile',"elfinder",array('instance'=>'form', 'enable'=>true,'attr' =>  array('readonly' => true,'class' => 'form-control')))
+        ->getForm();
+        $params = json_decode($cmsStzefPage->getParams());
+        if ( $cmsStzefPage->getIdTypePage()->getId() == 3 ){
+            /*Archivo*/
+            $form_generic->get('urlFile')->setData($params->urlFile);
+        }
+        if ( $cmsStzefPage->getIdTypePage()->getId() == 4 ){
+            /*Galeria*/
+            $form_generic->get('idBanner')->setData($params->idBanner);
+        }
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
@@ -98,6 +125,7 @@ class CmsStzefPagesController extends Controller
             'cmsStzefPage' => $cmsStzefPage,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'form_generic' => $form_generic->createView(),
         ));
     }
 

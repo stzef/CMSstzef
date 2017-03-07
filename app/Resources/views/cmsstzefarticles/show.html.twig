@@ -1,42 +1,30 @@
- 
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cmsstzefarticle</h1>
+    <h1>Articulo <b>{{ cmsStzefArticle.name }}</b></h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Name</th>
+                <th>Nombre</th>
                 <td>{{ cmsStzefArticle.name }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Descripcion</th>
                 <td>{{ cmsStzefArticle.description }}</td>
             </tr>
             <tr>
-                <th>Contenthtml</th>
-                <td>{{ cmsStzefArticle.contentHtml }}</td>
+                <th>Contenido</th>
+                <td>{{ cmsStzefArticle.contentHtml|raw }}</td>
             </tr>
             <tr>
-                <th>Imagemain</th>
-                <td>{{ cmsStzefArticle.imageMain }}</td>
+                <th>Imagen</th>
+                <th><img width="150px" class="img-responsive" src="{{ cmsStzefArticle.imageMain }}" alt=""></th>
             </tr>
             <tr>
-                <th>Ifdistinguished</th>
-                <td>{% if cmsStzefArticle.ifDistinguished %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datecreation</th>
-                <td>{% if cmsStzefArticle.dateCreation %}{{ cmsStzefArticle.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Modified</th>
-                <td>{% if cmsStzefArticle.modified %}{{ cmsStzefArticle.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Params</th>
-                <td>{{ cmsStzefArticle.params }}</td>
+                <th>Destacado</th>
+                <td>{% if cmsStzefArticle.ifDistinguished %} <b>Si</b>{% else %}No{% endif %}</td>
             </tr>
             <tr>
                 <th>Id</th>

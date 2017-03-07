@@ -7,12 +7,10 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Foto</th>
+                <!--<th>Foto</th>-->
                 <th>Usuario</th>
                 <th>Email</th>
-                <th>Enabled</th>
-                <th>Lastlogin</th>
-                <th>Roles</th>
+                <th>Activo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -20,19 +18,21 @@
         {% for cmsStzefUser in cmsStzefUsers %}
             <tr>
                 <td><a href="{{ path('admstzef_users_show', { 'id': cmsStzefUser.id }) }}">{{ cmsStzefUser.name }}</a></td>
-                <td><img width="150px" class="img-responsive" src="{{ cmsStzefUser.photo }}" alt=""></td>
+                <!--<td><img width="150px" class="img-responsive" src="{{ cmsStzefUser.photo }}" alt=""></td>-->
                 <td>{{ cmsStzefUser.username }}</td>
                 <td>{{ cmsStzefUser.email }}</td>
-                <td>{% if cmsStzefUser.enabled %}Yes{% else %}No{% endif %}</td>
-                <td>{% if cmsStzefUser.lastLogin %}{{ cmsStzefUser.lastLogin|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{% for rol in cmsStzefUser.roles %} {{rol}} {% endfor %}</td>
+                <td>{% if cmsStzefUser.enabled %} <b>Si</b>{% else %}No{% endif %}</td>
                 <td>
                     <ul class="list-unstyled">
                         <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_users_show', { 'id': cmsStzefUser.id }) }}">Mostrar</a>
                         </li>-->
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_users_edit', { 'id': cmsStzefUser.id }) }}">Editar</a>
+                            {% if cmsStzefUser.enabled %}
+                                <a class="btn btn-" role="button" href="{{ path('change_estate_user', { 'id': cmsStzefUser.id }) }}">Desactivar</a>
+                            {% else %}
+                                <a class="btn btn-" role="button" href="{{ path('change_estate_user', { 'id': cmsStzefUser.id }) }}">Activar</a>
+                            {% endif %}
                         </li>
                     </ul>
                 </td>
@@ -41,9 +41,9 @@
         </tbody>
     </table>
 
-    <ul class="list-unstyled">
+    <!--<ul class="list-unstyled">
         <li>
             <a class="btn btn-success" role="button" href="{{ path('admstzef_users_new') }}">Nuevo Usuario</a>
         </li>
-    </ul>
+    </ul>-->
 {% endblock %}

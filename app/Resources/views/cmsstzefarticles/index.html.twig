@@ -18,8 +18,8 @@
         <tbody>
         {% for cmsStzefArticle in cmsStzefArticles %}
             <tr>
-                <!--<td><a href="{{ path('admstzef_articles_show', { 'id': cmsStzefArticle.id }) }}">{{ cmsStzefArticle.name }}</a></td>-->
-                <td>{{ cmsStzefArticle.name }}</td>
+                <td><a href="{{ path('admstzef_articles_show', { 'id': cmsStzefArticle.id }) }}">{{ cmsStzefArticle.name }}</a></td>
+                <!--<td>{{ cmsStzefArticle.name }}</td>-->
                 <td>{{ cmsStzefArticle.description }}</td>
                 <td>{{ cmsStzefArticle.creatorUser.username }}</td>
                 <td>{% if cmsStzefArticle.ifDistinguished %}Yes{% else %}No{% endif %}</td>

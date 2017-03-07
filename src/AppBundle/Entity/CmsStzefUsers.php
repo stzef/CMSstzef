@@ -18,6 +18,7 @@ class CmsStzefUsers extends BaseUser
         parent::__construct();
         // your own logic
         $this->activation = false;
+        $this->enabled = false;
     }
     /**
      * @var string

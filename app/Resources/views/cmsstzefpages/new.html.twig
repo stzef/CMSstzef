@@ -7,12 +7,32 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
+
+        <div class="form-group">
+            <label for="" class="control-label">
+                {{ form_label(form_generic.idBanner) }}
+            </label>
+            {{ form_errors(form_generic.idBanner) }}
+            {{ form_widget(form_generic.idBanner) }}
+        </div>
+        <div class="form-group">
+            <label for="" class="control-label">
+                {{ form_label(form_generic.urlFile) }}
+            </label>
+            {{ form_errors(form_generic.urlFile) }}
+            {{ form_widget(form_generic.urlFile) }}
+        </div>
+
         <input type="submit" class="btn btn-success" value="Crear" />
     {{ form_end(form) }}
+
 
     <ul class="list-unstyled" >
         <li>
             <a class="btn btn-primary" role="button" href="{{ path('admstzef_pages_index') }}">Listado</a>
         </li>
     </ul>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/cruds/pages.js') }}"></script>
 {% endblock %}

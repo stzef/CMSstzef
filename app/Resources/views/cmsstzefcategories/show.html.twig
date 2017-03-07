@@ -1,13 +1,13 @@
- 
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cmsstzefcategory</h1>
+    <h1>Categoria <b>{{ cmsStzefCategory.name }}</b></h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Name</th>
+                <th>Nombre</th>
                 <td>{{ cmsStzefCategory.name }}</td>
             </tr>
             <tr>
@@ -15,20 +15,8 @@
                 <td>{{ cmsStzefCategory.alias }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Descripcion</th>
                 <td>{{ cmsStzefCategory.description }}</td>
-            </tr>
-            <tr>
-                <th>Datecreation</th>
-                <td>{% if cmsStzefCategory.dateCreation %}{{ cmsStzefCategory.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Modified</th>
-                <td>{% if cmsStzefCategory.modified %}{{ cmsStzefCategory.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Params</th>
-                <td>{{ cmsStzefCategory.params }}</td>
             </tr>
             <tr>
                 <th>Id</th>
