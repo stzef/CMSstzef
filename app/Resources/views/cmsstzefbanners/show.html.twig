@@ -1,22 +1,18 @@
- 
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cmsstzefbanner</h1>
+    <h1>Galeria <b>{{ cmsStzefBanner.name }}</b></h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Name</th>
+                <th>Nombre</th>
                 <td>{{ cmsStzefBanner.name }}</td>
             </tr>
             <tr>
-                <th>Ifmain</th>
-                <td>{% if cmsStzefBanner.ifMain %}Yes{% else %}No{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ cmsStzefBanner.id }}</td>
+                <th>Principal</th>
+                <td>{% if cmsStzefBanner.ifMain %} <b>Si</b> {% else %}No{% endif %}</td>
             </tr>
         </tbody>
     </table>

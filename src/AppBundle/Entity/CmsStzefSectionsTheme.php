@@ -52,7 +52,7 @@ class CmsStzefSectionsTheme
 
 public function __toString()
 {
-    return $this->name;
+    return $this->idSectionTheme->getName();
 }
 
     /**
@@ -71,7 +71,7 @@ public function __toString()
     /**
      * Get selectorCss
      *
-     * @return string 
+     * @return string
      */
     public function getSelectorCss()
     {
@@ -81,7 +81,7 @@ public function __toString()
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -104,7 +104,7 @@ public function __toString()
     /**
      * Get idTheme
      *
-     * @return \AppBundle\Entity\CmsStzefThemes 
+     * @return \AppBundle\Entity\CmsStzefThemes
      */
     public function getIdTheme()
     {
@@ -127,7 +127,7 @@ public function __toString()
     /**
      * Get idSectionTheme
      *
-     * @return \AppBundle\Entity\CmsStzefSections 
+     * @return \AppBundle\Entity\CmsStzefSections
      */
     public function getIdSectionTheme()
     {

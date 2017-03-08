@@ -1,14 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Listado Banner</h1>
+    <h1>Listado Galerias</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Ifmain</th>
-                <th>Id</th>
+                <th>Nombre</th>
+                <th>Principal</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -16,15 +15,14 @@
         {% for cmsStzefBanner in cmsStzefBanners %}
             <tr>
                 <td><a href="{{ path('admstzef_banners_show', { 'id': cmsStzefBanner.id }) }}">{{ cmsStzefBanner.name }}</a></td>
-                <td>{% if cmsStzefBanner.ifMain %}Yes{% else %}No{% endif %}</td>
-                <td>{{ cmsStzefBanner.id }}</td>
+                <td>{% if cmsStzefBanner.ifMain %} <b>Si</b>{% else %}No{% endif %}</td>
                 <td>
                     <ul class="list-unstyled">
                         <!--<li>
                             <a class="btn btn-" role="button" href="{{ path('admstzef_banners_show', { 'id': cmsStzefBanner.id }) }}">show</a>
                         </li>-->
                         <li>
-                            <a class="btn btn-" role="button" href="{{ path('admstzef_banners_edit', { 'id': cmsStzefBanner.id }) }}">edit</a>
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_banners_edit', { 'id': cmsStzefBanner.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +33,7 @@
 
     <ul class="list-unstyled">
         <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_banners_new') }}">Nuevo Banner</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_banners_new') }}">Nueva Galeria</a>
         </li>
     </ul>
 {% endblock %}

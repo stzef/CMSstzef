@@ -221,7 +221,7 @@
                 <li class=""><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i> Registrar </a></li>
               </ul>
             </li>
-            <li class="treeview">
+            <!--<li class="treeview">
               <a href="#">
                 <i class="fa fa-archive"></i> <span>Modulos</span>
                 <span class="pull-right-container">
@@ -230,7 +230,19 @@
               </a>
               <ul class="treeview-menu">
                 <li class=""><a href="{{ path('admstzef_modules_index') }}"><i class="fa fa-archive"></i> Modulos </a></li>
-                <!--<li class=""><a href="{{ path('admstzef_types_modules_index') }}"><i class="fa fa-circle-o"></i> Tipos de Modulos</a></li>-->
+                {#<li class=""><a href="{{ path('admstzef_types_modules_index') }}"><i class="fa fa-circle-o"></i> Tipos de Modulos</a></li>#}
+              </ul>
+            </li>-->
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-folder-open"></i> <span>Galerias</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li class=""><a href="{{ path('admstzef_banners_index') }}"><i class="fa fa-folder-open"></i> Galerias </a></li>
+                <li class=""><a href="{{ path('admstzef_banner_deta_index') }}"><i class="fa fa-image"></i> Imagenes </a></li>
               </ul>
             </li>
             <li class="treeview">

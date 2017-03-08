@@ -68,7 +68,7 @@ public function __toString()
     /**
      * Get image
      *
-     * @return string 
+     * @return string
      */
     public function getImage()
     {
@@ -91,7 +91,7 @@ public function __toString()
     /**
      * Get contentHtml
      *
-     * @return string 
+     * @return string
      */
     public function getContentHtml()
     {
@@ -101,7 +101,7 @@ public function __toString()
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -124,7 +124,7 @@ public function __toString()
     /**
      * Get cmsStzefBanners
      *
-     * @return \AppBundle\Entity\CmsStzefBanners 
+     * @return \AppBundle\Entity\CmsStzefBanners
      */
     public function getCmsStzefBanners()
     {
