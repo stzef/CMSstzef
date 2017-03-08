@@ -21,6 +21,7 @@ security:
         #- { path: ^/admin/, role: ROLE_ADMIN }
         #- { path: ^/admstzef/, role: ROLE_USER }
         - { path: ^/admstzef/, role: ROLE_USER }
+        - { path: ^/users/register, role: ROLE_USER }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs

@@ -28,11 +28,9 @@
                             <a class="btn btn-" role="button" href="{{ path('admstzef_users_show', { 'id': cmsStzefUser.id }) }}">Mostrar</a>
                         </li>-->
                         <li>
-                            {% if cmsStzefUser.enabled %}
-                                <a class="btn btn-" role="button" href="{{ path('change_estate_user', { 'id': cmsStzefUser.id }) }}">Desactivar</a>
-                            {% else %}
-                                <a class="btn btn-" role="button" href="{{ path('change_estate_user', { 'id': cmsStzefUser.id }) }}">Activar</a>
-                            {% endif %}
+                            <a class="btn btn-" role="button" href="{{ path('change_estate_user', { 'id': cmsStzefUser.id }) }}">
+                                {% if cmsStzefUser.enabled %}Desactivar{% else %}Activar{% endif %}
+                            </a>
                         </li>
                     </ul>
                 </td>
