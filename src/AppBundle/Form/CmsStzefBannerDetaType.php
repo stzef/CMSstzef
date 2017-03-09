@@ -16,7 +16,7 @@ class CmsStzefBannerDetaType extends AbstractType
         $builder
         //->add('image')
         ->add('cmsStzefBanners',"entity",array('class' => 'AppBundle:CmsStzefBanners','label' => 'Galeria'))
-        ->add('image',"elfinder",array('label' => 'Imagen','instance'=>'form', 'enable'=>true,'attr' =>  array('readonly' => true,'class' => 'form-control')))
+        ->add('image',"elfinder",array('label' => 'Imagen','instance'=>'form', 'enable'=>true,'attr' =>  array('placeholder' => 'Click para seleccionar Archivo','readonly' => true,'class' => 'form-control')))
         ->add('contentHtml',"textarea",array('label' => 'Contenido'));
 
     }
