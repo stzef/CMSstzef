@@ -80,7 +80,7 @@ fm_elfinder:
     #assets_path: / # default is /assets, this is where css/js elfinder files are
     instances:
         default:
-            locale: %locale% # defaults to current request locale
+            locale: es # defaults to current request locale
             editor: tinymce4 # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
             #editor_template: custom template for your editor # default null
             #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
@@ -96,13 +96,13 @@ fm_elfinder:
                         driver: LocalFileSystem
                         path: uploads
                         url: uploads
-                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg','application/pdf']
                         upload_deny: ['all']
                         upload_max_size: 2M # also file upload sizes restricted in php.ini
                         #attributes: example of setting attributes permission
                         #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
         form:
-            locale: %locale% # defaults to current request locale
+            locale: es # defaults to current request locale
             editor: form # other choices are tinymce or simple, and form
             #show_hidden: false # defaults to false
             fullscreen: true # defaults true, applies to simple and ckeditor editors
@@ -113,7 +113,7 @@ fm_elfinder:
                     uploads:
                         driver: LocalFileSystem
                         path: uploads
-                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg','application/pdf']
                         upload_deny: ['all']
                         upload_max_size: 2M
 
