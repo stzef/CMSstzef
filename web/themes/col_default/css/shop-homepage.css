@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'English Towne' ;
+  src: url('../fonts/ENGLISHTOWNE.TTF') format('truetype');
+}
+
 /*!
  * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
  * Copyright 2013-2016 Start Bootstrap
