@@ -32,6 +32,7 @@ public function changeRolUserAction(Request $request)
 {
 
         $em = $this->getDoctrine()->getManager();
+        dump($request->request->get("rol"));
         $user = $em->getRepository('AppBundle:CmsStzefUsers')->find($request->request->get("user"));
 
         $userManager = $this->get('fos_user.user_manager');
@@ -47,8 +48,8 @@ public function changeRolUserAction(Request $request)
 
 
    $response = array("ok" => true );
-  //you can return result as JSON
-  return new Response(json_encode($response));
+  return $this->redirectToRoute('admstzef_users_index');
+  //return new Response(json_encode($response));
 
 }
     /**

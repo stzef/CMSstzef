@@ -19,7 +19,6 @@
         {% for cmsStzefUser in cmsStzefUsers %}
             <tr>
                 <td>
-                    <input type="hidden" value="{{cmsStzefUser.id}}" name="iduser" id="iduser">
                     <a href="{{ path('admstzef_users_show', { 'id': cmsStzefUser.id }) }}">{{ cmsStzefUser.name }}</a>
                 </td>
                 <!--<td><img width="150px" class="img-responsive" src="{{ cmsStzefUser.photo }}" alt=""></td>-->
@@ -28,16 +27,20 @@
                 <td>{% if cmsStzefUser.enabled %} <b>Si</b>{% else %}No{% endif %}</td>
                 <td>
                     <p>{% for rol in cmsStzefUser.roles %} {{ rol }} {% if not loop.last %} - {% endif %} {% endfor %}</p>
-                    <div class="input-group">
-                        <select name="rol" id="rol" class="form-control">
-                            <option value="ROLE_ADMIN"> ROLE_ADMIN </option>
-                            <option value="ROLE_USER"> ROLE_USER </option>
-                            <option value="ROLE_AUTOR"> ROLE_AUTOR </option>
-                        </select>
-                        <span class="input-group-btn">
-                            <button class="btn btn-success btn-change-rol"> Cambiar</button>
-                        </span>
-                    </div>
+                    <form action="{{ path('change_rol_user') }}" method="POST">
+
+                        <input type="hidden" value="{{cmsStzefUser.id}}" name="user" id="user">
+                        <div class="input-group">
+                            <select name="rol" id="rol" class="form-control">
+                                <option value="ROLE_ADMIN"> ROLE_ADMIN </option>
+                                <option value="ROLE_USER"> ROLE_USER </option>
+                                <option value="ROLE_AUTOR"> ROLE_AUTOR </option>
+                            </select>
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="submit"> Cambiar</button>
+                            </span>
+                        </div>
+                    </form>
 
 
                 </td>
@@ -65,17 +68,4 @@
             <a class="btn btn-success" role="button" href="{{ path('admstzef_users_new') }}">Nuevo Usuario</a>
         </li>
     </ul>-->
-{% endblock %}
-{% block javascripts %}
-    <script>
-        $(".btn-change-rol").click(function (event) {
-            var ref = $(this).closest("tr")
-            console.log(ref)
-            $.ajax({
-                url : "{{ path('change_rol_user') }}",
-                type : "POST",
-                data : {user:ref.find("#iduser").val(),rol:ref.find("#rol").val()}
-            })
-        })
-    </script>
 {% endblock %}
