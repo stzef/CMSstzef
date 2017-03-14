@@ -33,7 +33,7 @@ class CmsStzefArticlesType extends AbstractType
         ->add('idCategory',"entity",array('class' => 'AppBundle:CmsStzefCategories','label' => 'Categoria' ))
         //->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
         ->add('idTypeAccess',"entity",array('class' => 'AppBundle:CmsStzefTypesAccess','label' => 'Tipo Acceso'))
-        ->add('imageMain',"elfinder",array('label' => 'Imagen','instance'=>'form', 'enable'=>true,'attr' =>  array('placeholder' => 'Click para seleccionar Archivo','readonly' => true,'class' => 'form-control')));
+        ->add('imageMain',"elfinder",array('label' => 'Imagen','instance'=>'form', 'enable'=>true,'attr' =>  array('placeholder' => 'Doble click para seleccionar Archivo','class' => 'form-control')));
     }
 
     /**
