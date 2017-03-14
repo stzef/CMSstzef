@@ -4,3 +4,5 @@ Tener en cuenta al crear
 
 cambiar el evento click por doble clikc
 
+ojo
+/vendor/helios-ag/fm-elfinder-bundle/Resources/views/Elfinder/elfinder_type.html.twig
