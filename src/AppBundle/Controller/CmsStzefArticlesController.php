@@ -45,6 +45,9 @@ class CmsStzefArticlesController extends Controller
 
         $form->handleRequest($request);
 
+        //$form->get('imageMain')->setData('/uploads/CMS_stzef/logos/sin_imagen.jpg');
+
+
         $user= $this->get('security.context')->getToken()->getUser();
         $cmsStzefArticle->setCreatorUser($user);
 

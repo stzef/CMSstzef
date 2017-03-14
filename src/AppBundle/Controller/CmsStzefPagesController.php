@@ -115,6 +115,10 @@ class CmsStzefPagesController extends Controller
             $form_generic->get('idBanner')->setData($params->idBanner);
         }
 
+        (object)$params_modified = $request->request->get('form') != null ? $request->request->get('form') : array() ;
+
+        $cmsStzefPage->setParams(json_encode($params_modified));
+
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 

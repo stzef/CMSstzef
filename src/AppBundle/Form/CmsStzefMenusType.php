@@ -24,7 +24,7 @@ class CmsStzefMenusType extends AbstractType
         ->add('name',"text",array('label' => 'Nombre'))
         ->add('alias',"text",array('label' => 'Alias'))
         ->add('orden')
-        ->add('target')
+        ->add('target',"choice", array('data'=>'_blank','choices'  => array('-----' => null,'Nuevo' => "_blank",'Actual' => "_self")))
         ->add('ifMain',"checkbox",array('label' => 'Principal',"required"=>false))
         //->add('dateCreation')
         //->add('modified')
@@ -35,6 +35,7 @@ class CmsStzefMenusType extends AbstractType
         //->add('creatorUser',HiddenType::class,array('label' => 'Usuario'))
         ->add('idStatePublication',"entity",array('class' => 'AppBundle:CmsStzefStatesPublication','label' => 'Estado Publicacion' ))        ;
     }
+
 
 
     /**

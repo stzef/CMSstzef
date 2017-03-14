@@ -11,7 +11,6 @@
                 <th>Creado por</th>
                 <th>Destacado</th>
                 <th>Estado</th>
-                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -24,7 +23,6 @@
                 <td>{{ cmsStzefArticle.creatorUser.username }}</td>
                 <td>{% if cmsStzefArticle.ifDistinguished %}Yes{% else %}No{% endif %}</td>
                 <td>{{ cmsStzefArticle.idStatePublication.name }}</td>
-                <td><img width="150px" class="img-responsive" src="{{ cmsStzefArticle.imageMain }}" alt=""></td>
 
                 <td>
                     <ul class="list-unstyled">

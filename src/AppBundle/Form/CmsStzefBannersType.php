@@ -16,7 +16,7 @@ class CmsStzefBannersType extends AbstractType
         $builder
         ->add('name',"text",array('label' => 'Nombre'))
         ->add('ifMain',"checkbox",array('label' => 'Principal',"required"=>false))
-        ->add('idSectionTheme',"entity",array('class' => 'AppBundle:CmsStzefSectionsTheme','label' => 'Ubicacion' ));
+        ->add('idSectionTheme',"entity",array('class' => 'AppBundle:CmsStzefSections','label' => 'Ubicacion' ));
     }
 
     /**
