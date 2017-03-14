@@ -123,4 +123,4 @@ fos_user:
     user_class: AppBundle\Entity\CmsStzefUsers
     registration:
         confirmation:
-            enabled: false
+            enabled: true

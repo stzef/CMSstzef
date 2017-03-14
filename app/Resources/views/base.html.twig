@@ -209,18 +209,21 @@
                 <li class=""><a href="{{ path('admstzef_states_publication_index') }}"><i class="fa fa-circle-o"></i> Estados de Publicación </a></li>
               </ul>
             </li>-->
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-users"></i> <span>Usuarios</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="{{ path('admstzef_users_index') }}"><i class="fa fa-users"></i> Usuarios </a></li>
-                <li class=""><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i> Registrar </a></li>
-              </ul>
-            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-users"></i> <span>Usuarios</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li class=""><a href="{{ path('admstzef_users_index') }}"><i class="fa fa-users"></i> Usuarios </a></li>
+                  <li class=""><a href="{{ path('fos_user_registration_register') }}"><i class="fa fa-user-plus"></i> Registrar </a></li>
+                </ul>
+              </li>
+            {% endif %}
             <!--<li class="treeview">
               <a href="#">
                 <i class="fa fa-archive"></i> <span>Modulos</span>
