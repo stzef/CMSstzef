@@ -14,7 +14,10 @@ class AdminController extends Controller
      */
     public function indexAdminAction(Request $request)
     {
-        return $this->render("base.html.twig", array());
+        $em = $this->getDoctrine()->getManager();
+        $parameters = $this->get('app.fns')->getParameters($em);
+
+        return $this->render("base.html.twig", array("parameters" => $parameters));
     }
     /**
      * @Route("/mails/send_form", name="url_send_form")
