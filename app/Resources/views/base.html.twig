@@ -248,17 +248,19 @@
                 <li class=""><a href="{{ path('admstzef_banner_deta_index') }}"><i class="fa fa-image"></i> Imagenes </a></li>
               </ul>
             </li>
-            <!--<li class="treeview">
-              <a href="#">
-                <i class="fa fa-cog"></i> <span>Configuracion</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="{{ path('admstzef_parameters_index') }}"><i class="fa fa-cog"></i> Parametros</a></li>
-              </ul>
-            </li>-->
+            {% if is_granted('ROLE_ADMIN') %}
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-cog"></i> <span>Configuracion</span>
+                  <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </span>
+                </a>
+                <ul class="treeview-menu">
+                  <li class=""><a href="{{ path('admstzef_parameters_index') }}"><i class="fa fa-cog"></i> Parametros</a></li>
+                </ul>
+              </li>
+            {% endif %}
             <li class="treeview">
               <a href="{{path('homepage')}}" target="_blank">
                 <i class="fa fa-link"></i> <span>Ver la Pagina</span>
@@ -298,7 +300,59 @@
         <div class="tab-content">
           <!-- Home tab content -->
           <div class="tab-pane active" id="control-sidebar-home-tab">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum vero cum fugit delectus, totam rem sed numquam, libero recusandae voluptas corporis neque eveniet sunt facere hic repudiandae, dolorum adipisci in!
+            {#<div class="form-group">
+              <input type="text" class="form-group" name="parameter[name_site]" value="{{ parameters.name_site }}">
+            </div>
+            <div class="form-group">
+              <fieldset>
+                {% for phone in parameters.phones %}
+                  <input type="text" class="form-group" value="{{ phone }}">
+                {% endfor %}
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <fieldset>
+                {% for cellphone in parameters.cellphones %}
+                  <input type="text" class="form-group" value="{{ cellphone }}">
+                {% endfor %}
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <fieldset>
+                {% for social_network in parameters.social_networks %}
+                  <input type="text" class="form-group" value="{{ social_network }}">
+                {% endfor %}
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-group" name="parameter[email_site]" value="{{ parameters.email_site }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-group" name="parameter[favicon_site]" value="{{ parameters.favicon_site }}">
+            </div>
+            <div class="form-group">
+              <fieldset>
+                {% for color in parameters.colors %}
+                  <input type="text" class="form-group" value="{{ color }}">
+                {% endfor %}
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <fieldset>
+                {% for font in parameters.fonts %}
+                  <input type="text" class="form-group" value="{{ font }}">
+                {% endfor %}
+              </fieldset>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-group" name="parameter[msgoffline]" value="{{ parameters.msgoffline }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-group" name="parameter[generic_message]" value="{{ parameters.generic_message }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-group" name="parameter[logo_site]" value="{{ parameters.logo_site }}">
+            </div>#}
           </div>
           <!-- /.tab-pane -->
           <!-- Stats tab content -->

@@ -15,7 +15,8 @@ class AdminController extends Controller
     public function indexAdminAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $parameters = $this->get('app.fns')->getParameters($em);
+        $parameters = $this->get('app.fns')->getParameters($em,true);
+//        dump($parameters);
 
         return $this->render("base.html.twig", array("parameters" => $parameters));
     }
@@ -60,7 +61,7 @@ class AdminController extends Controller
         }else{
             $context = array("messages"=>array(array("type"=>"danger","text"=>"El Mensaje No se pudo enviar")));
         }
-        dump($context);
+        //dump($context);
         return $this->redirect($this->generateUrl('homepage',$context));
         //return $this->render('index.html.twig', $context);
     }

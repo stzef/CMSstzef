@@ -13,9 +13,18 @@ class CmsStzefParametersType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('cparam')->add('cgroup')->add('ngroup')->add('type')->add('name')->add('valueText')->add('valueBool')->add('valueInt')        ;
+        dump($this);
+        $builder
+        //->add('cparam')
+        //->add('cgroup')
+        //->add('ngroup')
+        //->add('type')
+        //->add('name')
+        ->add('valueText',"text",array ("label"=>"Valor") )
+        ->add('valueBool',"checkbox",array ("label"=>"Valor") )
+        ->add('valueInt',"text",array ("label"=>"Valor") )        ;
     }
-    
+
     /**
      * {@inheritdoc}
      */

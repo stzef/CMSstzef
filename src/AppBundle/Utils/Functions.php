@@ -167,11 +167,26 @@ class Functions
         return $banner;
     }
 
-    public function getParameters($em){
+    public function getParameters($em,$only_editable=false){
         #$em = $this->getDoctrine()->getManager();
         $repositoryParameters = $em->getRepository("AppBundle:CmsStzefParameters");
 
-        $odb_parameters = $repositoryParameters->findAll();
+        if( $only_editable ){
+            $parameter_editables = $repositoryParameters->find(777);
+            //dump($odb_parameters->getValue());
+
+            $qb = $em->createQueryBuilder();
+            $qb->select('parameter');
+            $qb->from('AppBundle:CmsStzefParameters', 'parameter');
+            $qb->where($qb->expr()->in('parameter.id', $parameter_editables->getValue() ));
+
+            //ArrayCollection
+            $odb_parameters = $qb->getQuery()->getResult();
+            //dump($odb_parameters);
+
+        }else{
+            $odb_parameters = $repositoryParameters->findAll();
+        }
         $parameters = array();
 
         foreach ($odb_parameters as $odb_parameter) {

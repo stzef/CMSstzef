@@ -1,4 +1,4 @@
- 
+
 {% extends 'base.html.twig' %}
 
 {% block body %}
@@ -51,11 +51,6 @@
         </li>
         <li>
             <a class="btn btn-info" role="button" href="{{ path('admstzef_parameters_edit', { 'id': cmsStzefParameter.id }) }}">Editar</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" class="btn btn-danger" value="Borrar">
-            {{ form_end(delete_form) }}
         </li>
     </ul>
 {% endblock %}

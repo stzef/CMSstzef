@@ -3,21 +3,30 @@
 {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
 
 {% block body %}
-    <h1>Editar Cmsstzefparameter</h1>
+    <h1>Editar Parametro</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
+    {# {{ form_start(edit_form) }} #}
+    <form name="appbundle_cmsstzefparameters" method="post">
+        {{ form_widget(edit_form._token) }}
+
+        {#{{ form_widget(edit_form) }}#}
+        {% if cmsStzefParameter.type == "INT" %}
+            {{ form_row(edit_form.valueInt) }}
+        {% elseif cmsStzefParameter.type == "TEXT" %}
+            {{ form_row(edit_form.valueText) }}
+        {% elseif cmsStzefParameter.type == "JSON" %}
+            {{ form_row(edit_form.valueText) }}
+        {% elseif cmsStzefParameter.type == "BOOL" %}
+            {{ form_row(edit_form.valueBool) }}
+        {% endif %}
+
         <input type="submit" class="btn btn-info" value="Editar" />
-    {{ form_end(edit_form) }}
+    </form>
+    {# {{ form_end(edit_form) }} #}
 
     <ul class="list-unstyled" >
         <li>
             <a class="btn btn-primary" role="button" href="{{ path('admstzef_parameters_index') }}">Listado</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" class="btn btn-danger" value="Borrar">
-            {{ form_end(delete_form) }}
         </li>
     </ul>
 {% endblock %}

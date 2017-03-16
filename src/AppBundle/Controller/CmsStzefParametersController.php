@@ -23,8 +23,20 @@ class CmsStzefParametersController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $repositoryParameters = $em->getRepository("AppBundle:CmsStzefParameters");
 
-        $cmsStzefParameters = $em->getRepository('AppBundle:CmsStzefParameters')->findAll();
+        $parameters_editables = $repositoryParameters->find(777);
+        //dump($odb_parameters->getValue());
+
+        $qb = $em->createQueryBuilder();
+        $qb->select('parameter');
+        $qb->from('AppBundle:CmsStzefParameters', 'parameter');
+        $qb->where($qb->expr()->in('parameter.id', $parameters_editables->getValue() ));
+
+        //ArrayCollection
+        $cmsStzefParameters = $qb->getQuery()->getResult();
+
+        //$cmsStzefParameters = $em->getRepository('AppBundle:CmsStzefParameters')->findAll();
 
         return $this->render('cmsstzefparameters/index.html.twig', array(
             'cmsStzefParameters' => $cmsStzefParameters,

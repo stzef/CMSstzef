@@ -6,8 +6,8 @@
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
-                <th>Codigo</th>
-                <th>Id</th>
+                <!--<th>Codigo</th>-->
+                <!--<th>Id</th>-->
                 <!--<th>Cgroup</th>-->
                 <!--<th>Ngroup</th>-->
                 <th>Nombre</th>
@@ -19,8 +19,8 @@
         {% for cmsStzefParameter in cmsStzefParameters %}
             <tr>
                 <!--<td><a href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">{{ cmsStzefParameter.cparam }}</a></td>-->
-                <td>{{ cmsStzefParameter.cparam }}</td>
-                <td>{{ cmsStzefParameter.id }}</td>
+                <!--<td>{{ cmsStzefParameter.cparam }}</td>-->
+                <!--<td>{{ cmsStzefParameter.id }}</td>-->
                 <!--<td>{{ cmsStzefParameter.cgroup }}</td>-->
                 <!--<td>{{ cmsStzefParameter.ngroup }}</td>-->
                 <td>{{ cmsStzefParameter.name }}</td>
@@ -39,7 +39,7 @@
                             <a class="btn btn-" role="button" href="{{ path('admstzef_parameters_show', { 'id': cmsStzefParameter.id }) }}">show</a>
                         </li>-->
                         <li>
-                            <!--<a class="btn btn-" role="button" href="{{ path('admstzef_parameters_edit', { 'id': cmsStzefParameter.id }) }}">Editar</a>-->
+                            <a class="btn btn-" role="button" href="{{ path('admstzef_parameters_edit', { 'id': cmsStzefParameter.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -48,9 +48,4 @@
         </tbody>
     </table>
 
-    <!--<ul class="list-unstyled">
-        <li>
-            <a class="btn btn-success" role="button" href="{{ path('admstzef_parameters_new') }}">Nuevo Parametro</a>
-        </li>
-    </ul>-->
 {% endblock %}
