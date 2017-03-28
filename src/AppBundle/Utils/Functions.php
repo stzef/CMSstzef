@@ -128,9 +128,9 @@ class Functions
 
         $querySubMenu = $em->createQuery(
             'SELECT menu FROM AppBundle:CmsStzefMenus menu
-            WHERE menu.idStatePublication = :paramStatePublication AND menu.idTypeAccess = :paramTypeAccess AND menu.topMenu = :paramTopMenu
+            WHERE menu.ifMain != :paramIfMain AND menu.idStatePublication = :paramStatePublication AND menu.idTypeAccess = :paramTypeAccess AND menu.topMenu = :paramTopMenu
             ORDER BY menu.orden ASC'
-        )->setParameter('paramStatePublication',$valParamStatePublication)->setParameter('paramTypeAccess',$valParamTypeAccess);
+        )->setParameter('paramIfMain', $valParamIfMain)->setParameter('paramStatePublication',$valParamStatePublication)->setParameter('paramTypeAccess',$valParamTypeAccess);
 
         $cmsStzefMenuses = $queryMenuMain->getResult();
 
