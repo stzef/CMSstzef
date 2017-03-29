@@ -13,7 +13,6 @@ class CmsStzefParametersType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        dump($this);
         $builder
         //->add('cparam')
         //->add('cgroup')

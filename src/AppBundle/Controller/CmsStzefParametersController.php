@@ -26,7 +26,6 @@ class CmsStzefParametersController extends Controller
         $repositoryParameters = $em->getRepository("AppBundle:CmsStzefParameters");
 
         $parameters_editables = $repositoryParameters->find(777);
-        //dump($odb_parameters->getValue());
 
         $qb = $em->createQueryBuilder();
         $qb->select('parameter');

@@ -32,7 +32,6 @@ public function changeRolUserAction(Request $request)
 {
 
         $em = $this->getDoctrine()->getManager();
-        //dump($request->request->get("rol"));
         $user = $em->getRepository('AppBundle:CmsStzefUsers')->find($request->request->get("user"));
 
         $userManager = $this->get('fos_user.user_manager');
