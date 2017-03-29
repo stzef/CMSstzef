@@ -96,7 +96,7 @@ fm_elfinder:
                         driver: LocalFileSystem
                         path: uploads
                         url: uploads
-                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg','application/pdf']
+                        upload_allow: ['application/msword','application/vnd.ms-word','application/vnd.ms-excel','application/vnd.ms-powerpoint','application/vnd.ms-powerpoint','application/vnd.oasis.opendocument.text','application/zip','application/x-rar','application/x-tar','application/x-7z-compressed','application/pdf','image', 'text/plain']
                         upload_deny: ['all']
                         upload_max_size: 2M # also file upload sizes restricted in php.ini
                         #attributes: example of setting attributes permission
@@ -107,13 +107,15 @@ fm_elfinder:
             #show_hidden: false # defaults to false
             fullscreen: true # defaults true, applies to simple and ckeditor editors
             include_assets: true # disable if you want to handle loading of the javascript and css assets yourself
+            relative_path: true
             connector:
                 debug: false # defaults to false
                 roots:       # at least one root must be defined
                     uploads:
                         driver: LocalFileSystem
                         path: uploads
-                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg','application/pdf']
+                        url: uploads
+                        upload_allow: ['application/msword','application/vnd.ms-word','application/vnd.ms-excel','application/vnd.ms-powerpoint','application/vnd.ms-powerpoint','application/vnd.oasis.opendocument.text','application/zip','application/x-rar','application/x-tar','application/x-7z-compressed','application/pdf','image', 'text/plain']
                         upload_deny: ['all']
                         upload_max_size: 2M
 
