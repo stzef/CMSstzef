@@ -24,7 +24,7 @@ class CmsStzefMenusType extends AbstractType
         ->add('name',"text",array('label' => 'Nombre'))
         ->add('alias',"text",array('label' => 'Alias'))
         ->add('orden')
-        ->add('target',"choice", array('data'=>'_blank','choices'  => array('-----' => null,'Nuevo' => "_blank",'Actual' => "_self")))
+        ->add('target',"choice", array('data'=>'_blank','choices'  => array('_blank' => "Nueva Ventana",'_self' => "Ventana Actual")))
         ->add('ifMain',"checkbox",array('label' => 'Principal',"required"=>false))
         //->add('dateCreation')
         //->add('modified')

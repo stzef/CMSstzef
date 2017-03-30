@@ -13,7 +13,11 @@
         {% if cmsStzefParameter.type == "INT" %}
             {{ form_row(edit_form.valueInt) }}
         {% elseif cmsStzefParameter.type == "TEXT" %}
-            {{ form_row(edit_form.valueText) }}
+            {% if cmsStzefParameter.cparam == "generic_message" %}
+                <textarea name="appbundle_cmsstzefparameters[{{edit_form.valueText.vars.name}}]" id="{{edit_form.valueText.vars.id}}" cols="30" rows="10" required="required" class="form-control" >{{cmsStzefParameter.valueText}}</textarea>
+            {% else %}
+                {{ form_row(edit_form.valueText) }}
+            {% endif %}
         {% elseif cmsStzefParameter.type == "JSON" %}
             {{ form_row(edit_form.valueText) }}
         {% elseif cmsStzefParameter.type == "BOOL" %}

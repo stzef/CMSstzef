@@ -6,6 +6,7 @@
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
+                <th>Galeria</th>
                 <th>Imagen</th>
                 <th>Contenido</th>
                 <th>Acciones</th>
@@ -14,6 +15,7 @@
         <tbody>
         {% for cmsStzefBannerDetum in cmsStzefBannerDetas %}
             <tr>
+                <td>{{ cmsStzefBannerDetum.cmsStzefBanners.name }}</td>
                 <td><img width="150px" class="img-responsive" src="{{ cmsStzefBannerDetum.image }}" alt=""></td>
                 <td>{{ cmsStzefBannerDetum.contentHtml|raw }}</td>
                 <td>

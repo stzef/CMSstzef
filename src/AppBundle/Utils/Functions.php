@@ -104,7 +104,7 @@ class Functions
                     $repositoryCategories = $em->getRepository("AppBundle:CmsStzefCategories");
                     $repositoryArticles = $em->getRepository("AppBundle:CmsStzefArticles");
                     $category = $repositoryCategories->find($data["parametersModule"]->category);
-                    $category->articles = $repositoryArticles->findByIdCategory($category,array(),$data["parametersModule"]->limit);
+                    $category->articles = $repositoryArticles->findByIdCategory($category,array($data["parametersModule"]->order->field => $data["parametersModule"]->order->order),$data["parametersModule"]->limit);
                     $template = $twig_files->load("/themes/" . $theme->getSlug() . "/partials/types_modules/2_category.html.twig");
                     $modulo->renderContentHtml = $template->render(array("category"=>$category));
                 }
