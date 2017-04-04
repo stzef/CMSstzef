@@ -8,9 +8,7 @@ class Functions
         $valParamStatePublication = 1;
         $valParamTypeAccess = 1;
         $contentPage = array();
-        if($page->getIdTypePage()->getId() == 1){
-
-
+        if($page->getIdTypePage()->getId() == 1 or $page->getIdTypePage()->getId() == 6){
             $queryArticles = $em->createQuery(
                 'SELECT article FROM AppBundle:CmsStzefArticles article
                 WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.idCategory = :paramIdCategory'
@@ -27,6 +25,21 @@ class Functions
             ->setParameter('paramTypeAccess',$valParamTypeAccess)
             ->setParameter('paramIdArticle',$page->getArticleToShow());
             $contentPage = $queryArticle->setMaxResults(1)->getOneOrNullResult();
+        }
+        if($page->getIdTypePage()->getId() == 7){
+            $repositoryCategories = $em->getRepository("AppBundle:CmsStzefCategories");
+            $contentPage = $repositoryCategories->findByTopCategory($page->getCategoryToShow());
+
+            foreach ($contentPage as $grupo) {
+                $grupo->tareas = $em->createQuery(
+                'SELECT article FROM AppBundle:CmsStzefArticles article
+                WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.idCategory = :paramIdCategory'
+            )->setParameter('paramStatePublication',$valParamStatePublication)
+            ->setParameter('paramTypeAccess',$valParamTypeAccess)
+            ->setParameter('paramIdCategory',$grupo->getId())->getResult();
+            }
+
+            //dump($contentPage);exit();
         }
         return $contentPage;
     }
@@ -208,4 +221,15 @@ class Functions
        $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
        return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
     }
+
+    public $CTE_CMS_STZEF = array(
+        "TYPE_PAGES" => array(
+            "CATEGORY"=> 1 ,
+            "ARTICLE"=> 2 ,
+            "FILE"=> 3 ,
+            "GALERY"=> 4 ,
+            "FORM_CONTACT"=> 5 ,
+            "STAFF"=> 6 ,
+        )
+    );
 }

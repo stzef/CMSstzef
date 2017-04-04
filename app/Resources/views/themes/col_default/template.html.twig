@@ -98,6 +98,8 @@
 
 				<div class="col-md-2 text-center" style="font-size: 20px;">
 					<div class="" id="section_school_notes"></div>
+					<div class="" id="section_homework">
+					</div>
 				</div>
 			</div>
 
@@ -122,7 +124,7 @@
 						</div>
 					{% endif %}
 
-					<div class="row">
+					<div class="row row-background">
 
 						<div id="noticia" class="col-md-12 col-lg-12">
 							{% if articles is defined %}
@@ -134,6 +136,10 @@
 									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/4_gallery.html.twig' with {'articles': articles,'current_page': current_page} %}
 								{% elseif current_page.idTypePage.id == 5 %}
 									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/5_form_contact.html.twig' %}
+								{% elseif current_page.idTypePage.id == 6 %}
+									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/6_staff.html.twig' %}
+								{% elseif current_page.idTypePage.id == 7 %}
+									{% include 'themes/' ~ theme.slug ~ '/partials/type_pages/7_homework.html.twig' %}
 								{% endif %}
 							{% endif %}
 						</div>

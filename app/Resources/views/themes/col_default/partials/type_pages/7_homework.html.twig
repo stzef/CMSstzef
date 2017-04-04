@@ -1,0 +1,40 @@
+{% if articles|length > 0 %}
+    <div class="block-1 {{ current_page.idDisplayType.cssClass }}">
+
+            <div class="container">
+                <h2>Tareas</h2>
+                <p><strong>Bienvenido</strong> Selecciona tu grupo y mira tus tareas </p>
+                <div class="panel-group" id="accordion">
+                    {% for grupos in articles %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">{{ grupos.name }}</a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse in">
+                                {% for grupos in articles %}
+                                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {# <div class="col-sm-6 col-lg-6 col-md-6">
+                            <div class="col-sm-12 col-lg-12 col-md-12 box-noticia">
+                                <h4 class="text-center">{{ article.name }}</h4>
+                                <p>{{ article.contentHTML|raw }}</p>
+                            </div>
+                        </div> #}
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+
+
+    </div>
+{% else %}
+    <h2>No hay Articulos Hola</h2>
+{% endif %}
