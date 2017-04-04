@@ -113,13 +113,43 @@ footer {
   border-radius: 5px;
 }
 
+.article{
+  padding: 2px;
+  margin: 1px;
+  border-bottom: 1px solid gray;
+}
+.article:hover{
+  background: rgba(0,0,0,0.1);
+}
+  .article-simple{}
+  .article-notice{}
+  .article-detail{}
+  .article-staff{}
+
+.row-background{
+  background-image: url("/uploads/CMS_stzef/backgrounds/school.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
 #noticia{
   margin-top: 18px;
-  background-image: url(../img/paper.png);
+  background: rgba(255,255,255,0.5);
+  /*background-image: url(../img/paper.png);*/
   /*background-color: #98cee6;*/
   padding-top: 20px;
   padding-bottom: 20px;
   border-radius: 10px 10px 0px 0px;
+}
+#convenio-cronologia{
+  background: rgba(255,255,255,0.5);
+  /*background-image: url(../img/texture.png);
+  background-color: #63b934;*/
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.content-mapa{
+  background: rgba(255,255,255,0.5);
+  /*background-image: url(../img/background-map.jpg);*/
 }
 
 .box-noticia{
@@ -131,13 +161,6 @@ footer {
   box-shadow: 2px 2px 1px rgba(136, 136, 136, 0.42);
 }
 
-#convenio-cronologia{
-  background-image: url(../img/texture.png);
-  background-color: #63b934;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
 .subtitulos{
   font-size: 27px;
   color: #fff;
@@ -147,9 +170,7 @@ footer {
   color: #fff;
 }
 
-.content-mapa{
-  background-image: url(../img/background-map.jpg);
-}
+
 
 #mapa{
   padding-right: 0px;

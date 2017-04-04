@@ -31,12 +31,15 @@ class Functions
             $contentPage = $repositoryCategories->findByTopCategory($page->getCategoryToShow());
 
             foreach ($contentPage as $grupo) {
-                $grupo->tareas = $em->createQuery(
-                'SELECT article FROM AppBundle:CmsStzefArticles article
-                WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.idCategory = :paramIdCategory'
-            )->setParameter('paramStatePublication',$valParamStatePublication)
-            ->setParameter('paramTypeAccess',$valParamTypeAccess)
-            ->setParameter('paramIdCategory',$grupo->getId())->getResult();
+                $grupo->materias = $repositoryCategories->findByTopCategory($grupo->getId());
+                foreach ($grupo->materias as $materia) {
+                    $materia->tareas = $em->createQuery(
+                        'SELECT article FROM AppBundle:CmsStzefArticles article
+                        WHERE article.idStatePublication = :paramStatePublication AND article.idTypeAccess = :paramTypeAccess AND article.idCategory = :paramIdCategory'
+                    )->setParameter('paramStatePublication',$valParamStatePublication)
+                    ->setParameter('paramTypeAccess',$valParamTypeAccess)
+                    ->setParameter('paramIdCategory',$materia->getId())->getResult();
+                }
             }
 
             //dump($contentPage);exit();

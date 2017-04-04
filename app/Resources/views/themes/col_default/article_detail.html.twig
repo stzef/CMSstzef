@@ -4,83 +4,36 @@
 {% block stylesheets %}{% endblock %}
 
 {% block body %}
-        <div class="row">
+        <div class="row article-detail">
             <div class="col-md-12 col-lg-12" style="padding-right: 0px;padding-left: 0px;">
                 <div class="row">
 
-                <div id="articulo" class="col-md-12 col-lg-12">
+                    <div class="col-md-12 col-lg-12">
 
-            <!-- Blog Post Content Column -->
-            <div class="col-lg-8 col-md-8">
+                        <div class="col-lg-8 col-md-8">
+                            <h1>{{ current_article.name }}</h1>
+                            <p class="lead">Por <a href="#">{{ current_article.creatorUser }}</a></p>
 
-                <!-- Blog Post -->
+                            <!--
+                            <hr>
+                            <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                            <hr>
+                            -->
 
-                <!-- Title -->
-                <h1>{{ current_article.name }}</h1>
+                            <!--
+                            <center><img class="img-responsive center-block" src="{{ asset(current_article.imageMain) }}" alt=""></center>
+                            -->
+                            <hr>
 
-                <!-- Author -->
-                <p class="lead">
-                    Por <a href="#">{{ current_article.creatorUser }}</a>
-                </p>
+                            <div class="container-content-html-tinymce" >
+                                {{ current_article.contentHTML|raw }}
+                            </div>
 
-                <hr>
-
-                <!-- Date/Time -->
-<!--                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
-
-                <hr>-->
-
-                <!-- Preview Image -->
-                <center><img class="img-responsive center-block" src="{{ asset(current_article.imageMain) }}" alt=""></center>
-
-
-                <hr>
-
-                <!-- Post Content -->
-                <div class="container-content-html-tinymce" >
-                    {{ current_article.contentHTML|raw }}
-                </div>
-
-                <hr>
-            </div>
-
-                <!-- Blog Comments -->
-
-            <!-- Blog Sidebar Widgets Column -->
-            <!--<div class="col-md-3 pull-right">
-
-                <div class="well">
-                    <h4>CAtegorias</h4>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                            <ul class="list-unstyled">
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                            </ul>
+                            <hr>
                         </div>
                     </div>
-                </div>
 
-                <div class="well">
-                    <h4>Columna de Notas</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                </div>
-
-            </div>-->
-
-
-                </div>
-
-                <div id="convenio-cronologia" class="col-md-12 col-lg-12">
-
-
-                </div>
+                    <!--<div id="convenio-cronologia" class="col-md-12 col-lg-12"></div>-->
 
                 </div>
 
