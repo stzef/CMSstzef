@@ -26,6 +26,7 @@ class CmsStzefArticlesController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $cmsStzefArticles = $em->getRepository('AppBundle:CmsStzefArticles')->findAll();
+        dump($cmsStzefArticles);exit();
 
         return $this->render('cmsstzefarticles/index.html.twig', array(
             'cmsStzefArticles' => $cmsStzefArticles,
