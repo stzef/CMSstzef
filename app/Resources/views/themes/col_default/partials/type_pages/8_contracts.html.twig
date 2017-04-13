@@ -16,13 +16,13 @@
         <tbody>
         {% for articulo in articles%}
             <tr>
-                <td>{{ articulo.contrato.proceso}}</td>
-                <td>{{ articulo.contrato.descripcion|raw }}</td>
-                <td>{{ articulo.contrato.objeto }}</td>
-                <td>{% if articulo.contrato.apertura %}{{ articulo.contrato.apertura|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if articulo.contrato.aclaracion %}{{ articulo.contrato.aclaracion|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if articulo.contrato.cierre %}{{ articulo.contrato.cierre|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if articulo.contrato.adjudicion %}{{ articulo.contrato.adjudicion|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ articulo.contrato.proccess}}</td>
+                <td>{{ articulo.contrato.description|raw }}</td>
+                <td><a href="{{ articulo.contrato.path }}"><img src="" alt=""></a></td>
+                <td>{% if articulo.contrato.dateApertura %}{{ articulo.contrato.dateApertura|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if articulo.contrato.dateAclaracion %}{{ articulo.contrato.dateAclaracion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if articulo.contrato.dateCierre %}{{ articulo.contrato.dateCierre|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if articulo.contrato.dateAdjudicion %}{{ articulo.contrato.dateAdjudicion|date('Y-m-d') }}{% endif %}</td>
                  <!--<td>{#{{ articulo_contract.id }}#}</td>
                 <td>
                     <ul class="list-unstyled">

@@ -1,37 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Contrataciones</h1>
+    <h1>Cmsstzefcontract</h1>
 
-    <table class="table">
+    <table>
         <tbody>
             <tr>
-                <th>Proceso</th>
-                <td>{{ cmsStzefContract.proceso|raw}}</td>
+                <th>Proccess</th>
+                <td>{{ cmsStzefContract.proccess }}</td>
             </tr>
             <tr>
-                <th>Descripcion</th>
-                <td>{{ cmsStzefContract.descripcion }}</td>
+                <th>Description</th>
+                <td>{{ cmsStzefContract.description }}</td>
             </tr>
             <tr>
-                <th>Objeto</th>
-                <td>{{ cmsStzefContract.objeto }}</td>
+                <th>Path</th>
+                <td>{{ cmsStzefContract.path }}</td>
             </tr>
             <tr>
-                <th>Apertura</th>
-                <td>{% if cmsStzefContract.apertura %}{{ cmsStzefContract.apertura|date('Y-m-d') }}{% endif %}</td>
+                <th>Dateapertura</th>
+                <td>{% if cmsStzefContract.dateApertura %}{{ cmsStzefContract.dateApertura|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Aclaracion</th>
-                <td>{% if cmsStzefContract.aclaracion %}{{ cmsStzefContract.aclaracion|date('Y-m-d') }}{% endif %}</td>
+                <th>Dateaclaracion</th>
+                <td>{% if cmsStzefContract.dateAclaracion %}{{ cmsStzefContract.dateAclaracion|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Cierre</th>
-                <td>{% if cmsStzefContract.cierre %}{{ cmsStzefContract.cierre|date('Y-m-d') }}{% endif %}</td>
+                <th>Datecierre</th>
+                <td>{% if cmsStzefContract.dateCierre %}{{ cmsStzefContract.dateCierre|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Adjudicion</th>
-                <td>{% if cmsStzefContract.adjudicion %}{{ cmsStzefContract.adjudicion|date('Y-m-d') }}{% endif %}</td>
+                <th>Dateadjudicion</th>
+                <td>{% if cmsStzefContract.dateAdjudicion %}{{ cmsStzefContract.dateAdjudicion|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Id</th>
@@ -40,16 +40,16 @@
         </tbody>
     </table>
 
-    <ul class="list-unstyled" >
+    <ul>
         <li>
-            <a class="btn btn-primary" role="button" href="{{ path('admstzef_contratcs_index') }}">Listado</a>
+            <a href="{{ path('admstzef_contracts_index') }}">Back to the list</a>
         </li>
         <li>
-            <a class="btn btn-info" role="button" href="{{ path('admstzef_contratcs_edit', { 'id': cmsStzefContract.id }) }}">Editar</a>
+            <a href="{{ path('admstzef_contracts_edit', { 'id': cmsStzefContract.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" class="btn btn-danger" value="Borrar">
+                <input type="submit" value="Delete">
             {{ form_end(delete_form) }}
         </li>
     </ul>

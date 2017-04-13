@@ -4,12 +4,12 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="proceso" type="string" column="proceso" length="45" nullable="false"/>
-    <field name="descripcion" type="text" column="descripcion" length="65535" nullable="true"/>
-    <field name="objeto" type="integer" column="objeto" nullable="false"/>
-    <field name="apertura" type="date" column="apertura" nullable="false"/>
-    <field name="aclaracion" type="date" column="aclaracion" nullable="false"/>
-    <field name="cierre" type="date" column="cierre" nullable="false"/>
-    <field name="adjudicion" type="date" column="adjudicion" nullable="false"/>
+    <field name="proccess" type="string" column="proccess" length="255" nullable="false"/>
+    <field name="description" type="text" column="description" length="65535" nullable="true"/>
+    <field name="path" type="string" column="path" length="500" nullable="false"/>
+    <field name="dateApertura" type="date" column="date_apertura" nullable="false"/>
+    <field name="dateAclaracion" type="date" column="date_aclaracion" nullable="false"/>
+    <field name="dateCierre" type="date" column="date_cierre" nullable="false"/>
+    <field name="dateAdjudicion" type="date" column="date_adjudicion" nullable="false"/>
   </entity>
 </doctrine-mapping>

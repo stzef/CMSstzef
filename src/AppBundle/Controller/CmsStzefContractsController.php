@@ -7,17 +7,18 @@ use AppBundle\Entity\CmsStzefArticles;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+
 /**
  * Cmsstzefcontract controller.
  *
- * @Route("admstzef/contratcs")
+ * @Route("admstzef/contracts")
  */
 class CmsStzefContractsController extends Controller
 {
     /**
      * Lists all cmsStzefContract entities.
      *
-     * @Route("/", name="admstzef_contratcs_index")
+     * @Route("/", name="admstzef_contracts_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -34,7 +35,7 @@ class CmsStzefContractsController extends Controller
     /**
      * Creates a new cmsStzefContract entity.
      *
-     * @Route("/new", name="admstzef_contratcs_new")
+     * @Route("/new", name="admstzef_contracts_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -59,15 +60,9 @@ class CmsStzefContractsController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($cmsStzefContract);
             $em->flush($cmsStzefContract);
-
-
-
                 $user= $this->get('security.context')->getToken()->getUser();
-
-
                 $form = $this->createForm('AppBundle\Form\CmsStzefArticlesType', $cmsStzefArticle);
-
-                $cmsStzefArticle->setName($cmsStzefContract->getProceso());
+                $cmsStzefArticle->setName($cmsStzefContract->getProccess());
                 $cmsStzefArticle->setDescription("'{$cmsStzefContract->getDescripcion()}'");
                 $cmsStzefArticle->setContentHtml("");
                 $cmsStzefArticle->setImageMain("");
@@ -79,30 +74,21 @@ class CmsStzefContractsController extends Controller
                 $cmsStzefArticle->setIdCategory($category);
                 $cmsStzefArticle->setCreatorUser($user);
                 $cmsStzefArticle->setIdTypeAccess($typeAccess);
-
                 $em->persist($cmsStzefArticle);
                 $em->flush($cmsStzefArticle);
-
-
-
-
-
-
-
-
-            return $this->redirectToRoute('admstzef_contratcs_show', array('id' => $cmsStzefContract->getId()));
+            return $this->redirectToRoute('admstzef_contracts_show', array('id' => $cmsStzefContract->getId()));
         }
-
         return $this->render('cmsstzefcontracts/new.html.twig', array(
             'cmsStzefContract' => $cmsStzefContract,
             'form' => $form->createView(),
         ));
     }
 
+
     /**
      * Finds and displays a cmsStzefContract entity.
      *
-     * @Route("/{id}", name="admstzef_contratcs_show")
+     * @Route("/{id}", name="admstzef_contracts_show")
      * @Method("GET")
      */
     public function showAction(CmsStzefContracts $cmsStzefContract)
@@ -118,7 +104,7 @@ class CmsStzefContractsController extends Controller
     /**
      * Displays a form to edit an existing cmsStzefContract entity.
      *
-     * @Route("/{id}/edit", name="admstzef_contratcs_edit")
+     * @Route("/{id}/edit", name="admstzef_contracts_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, CmsStzefContracts $cmsStzefContract)
@@ -130,7 +116,7 @@ class CmsStzefContractsController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admstzef_contratcs_edit', array('id' => $cmsStzefContract->getId()));
+            return $this->redirectToRoute('admstzef_contracts_edit', array('id' => $cmsStzefContract->getId()));
         }
 
         return $this->render('cmsstzefcontracts/edit.html.twig', array(
@@ -143,7 +129,7 @@ class CmsStzefContractsController extends Controller
     /**
      * Deletes a cmsStzefContract entity.
      *
-     * @Route("/{id}", name="admstzef_contratcs_delete")
+     * @Route("/{id}", name="admstzef_contracts_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, CmsStzefContracts $cmsStzefContract)
@@ -157,7 +143,7 @@ class CmsStzefContractsController extends Controller
             $em->flush($cmsStzefContract);
         }
 
-        return $this->redirectToRoute('admstzef_contratcs_index');
+        return $this->redirectToRoute('admstzef_contracts_index');
     }
 
     /**
@@ -170,7 +156,7 @@ class CmsStzefContractsController extends Controller
     private function createDeleteForm(CmsStzefContracts $cmsStzefContract)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admstzef_contratcs_delete', array('id' => $cmsStzefContract->getId())))
+            ->setAction($this->generateUrl('admstzef_contracts_delete', array('id' => $cmsStzefContract->getId())))
             ->setMethod('DELETE')
             ->getForm()
         ;

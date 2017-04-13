@@ -242,4 +242,200 @@ class CmsStzefContracts
     {
         return $this->id;
     }
+    /**
+     * @var string
+     */
+    private $proccess;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $path;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateApertura;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateAclaracion;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateCierre;
+
+    /**
+     * @var \DateTime
+     */
+    private $dateAdjudicion;
+
+
+    /**
+     * Set proccess
+     *
+     * @param string $proccess
+     * @return CmsStzefContracts
+     */
+    public function setProccess($proccess)
+    {
+        $this->proccess = $proccess;
+
+        return $this;
+    }
+
+    /**
+     * Get proccess
+     *
+     * @return string 
+     */
+    public function getProccess()
+    {
+        return $this->proccess;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return CmsStzefContracts
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return CmsStzefContracts
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set dateApertura
+     *
+     * @param \DateTime $dateApertura
+     * @return CmsStzefContracts
+     */
+    public function setDateApertura($dateApertura)
+    {
+        $this->dateApertura = $dateApertura;
+
+        return $this;
+    }
+
+    /**
+     * Get dateApertura
+     *
+     * @return \DateTime 
+     */
+    public function getDateApertura()
+    {
+        return $this->dateApertura;
+    }
+
+    /**
+     * Set dateAclaracion
+     *
+     * @param \DateTime $dateAclaracion
+     * @return CmsStzefContracts
+     */
+    public function setDateAclaracion($dateAclaracion)
+    {
+        $this->dateAclaracion = $dateAclaracion;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAclaracion
+     *
+     * @return \DateTime 
+     */
+    public function getDateAclaracion()
+    {
+        return $this->dateAclaracion;
+    }
+
+    /**
+     * Set dateCierre
+     *
+     * @param \DateTime $dateCierre
+     * @return CmsStzefContracts
+     */
+    public function setDateCierre($dateCierre)
+    {
+        $this->dateCierre = $dateCierre;
+
+        return $this;
+    }
+
+    /**
+     * Get dateCierre
+     *
+     * @return \DateTime 
+     */
+    public function getDateCierre()
+    {
+        return $this->dateCierre;
+    }
+
+    /**
+     * Set dateAdjudicion
+     *
+     * @param \DateTime $dateAdjudicion
+     * @return CmsStzefContracts
+     */
+    public function setDateAdjudicion($dateAdjudicion)
+    {
+        $this->dateAdjudicion = $dateAdjudicion;
+
+        return $this;
+    }
+
+    /**
+     * Get dateAdjudicion
+     *
+     * @return \DateTime 
+     */
+    public function getDateAdjudicion()
+    {
+        return $this->dateAdjudicion;
+    }
 }

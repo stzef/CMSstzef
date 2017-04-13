@@ -13,9 +13,16 @@ class CmsStzefContractsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('proceso')->add('descripcion')->add('objeto')->add('apertura')->add('aclaracion')->add('cierre')->add('adjudicion')        ;
+        $builder->add('proccess')
+        ->add('description')
+        //->add('path')
+        ->add('path',"elfinder",array('label' => 'Imagen','instance'=>'form', 'enable'=>true,'attr' =>  array('placeholder' => 'Doble click para seleccionar Archivo','class' => 'form-control')))
+        ->add('dateApertura')
+        ->add('dateAclaracion')
+        ->add('dateCierre')
+        ->add('dateAdjudicion')        ;
     }
-    
+
     /**
      * {@inheritdoc}
      */
