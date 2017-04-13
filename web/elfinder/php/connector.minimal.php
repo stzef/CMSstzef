@@ -105,7 +105,8 @@ $opts = array(
 			'uploadDeny'    => array('all'),                // All Mimetypes not allowed to upload
 			'uploadAllow'   => array('application/msword','application/vnd.ms-word','application/vnd.ms-excel','application/vnd.ms-powerpoint','application/vnd.ms-powerpoint','application/vnd.oasis.opendocument.text','application/zip','application/x-rar','application/x-tar','application/x-7z-compressed','application/pdf','image', 'text/plain'),// Mimetype `image` and `text/plain` allowed to upload
 			'uploadOrder'   => array('deny', 'allow'),      // allowed Mimetype `image` and `text/plain` only
-			'accessControl' => 'access'                     // disable and hide dot starting files (OPTIONAL)
+			'accessControl' => 'access',                     // disable and hide dot starting files (OPTIONAL)
+			'uploadMaxSize' => '20M',
 		)
 	)
 );
