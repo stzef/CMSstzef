@@ -98,7 +98,7 @@ fm_elfinder:
                         url: uploads
                         upload_allow: ['application/msword','application/vnd.ms-word','application/vnd.ms-excel','application/vnd.ms-powerpoint','application/vnd.ms-powerpoint','application/vnd.oasis.opendocument.text','application/zip','application/x-rar','application/x-tar','application/x-7z-compressed','application/pdf','image', 'text/plain']
                         upload_deny: ['all']
-                        upload_max_size: 2M # also file upload sizes restricted in php.ini
+                        upload_max_size: 20M # also file upload sizes restricted in php.ini
                         #attributes: example of setting attributes permission
                         #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
         form:
@@ -117,7 +117,7 @@ fm_elfinder:
                         url: uploads
                         upload_allow: ['application/msword','application/vnd.ms-word','application/vnd.ms-excel','application/vnd.ms-powerpoint','application/vnd.ms-powerpoint','application/vnd.oasis.opendocument.text','application/zip','application/x-rar','application/x-tar','application/x-7z-compressed','application/pdf','image', 'text/plain']
                         upload_deny: ['all']
-                        upload_max_size: 2M
+                        upload_max_size: 20M
 
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
