@@ -10,14 +10,14 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="45" nullable="false"/>
-    <field name="description" type="string" column="description" length="200" nullable="false"/>
+    <field name="name" type="string" column="name" length="255" nullable="false"/>
+    <field name="description" type="string" column="description" length="500" nullable="false"/>
     <field name="contentHtml" type="text" column="content_html" length="65535" nullable="false"/>
-    <field name="imageMain" type="string" column="image_main" length="45" nullable="true"/>
+    <field name="imageMain" type="string" column="image_main" length="500" nullable="true"/>
     <field name="ifDistinguished" type="boolean" column="if_distinguished" nullable="false"/>
     <field name="dateCreation" type="datetime" column="date_creation" nullable="false"/>
     <field name="modified" type="datetime" column="modified" nullable="true"/>
-    <field name="params" type="string" column="params" length="200" nullable="true"/>
+    <field name="params" type="string" column="params" length="1000" nullable="true"/>
     <many-to-one field="idStatePublication" target-entity="CmsStzefStatesPublication">
       <join-columns>
         <join-column name="id_state_publication" referenced-column-name="id"/>

@@ -7,7 +7,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="45" nullable="false"/>
+    <field name="name" type="string" column="name" length="255" nullable="false"/>
     <field name="ifMain" type="boolean" column="if_main" nullable="false"/>
     <many-to-one field="idSectionTheme" target-entity="CmsStzefSections">
       <join-columns>

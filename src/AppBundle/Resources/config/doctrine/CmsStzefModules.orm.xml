@@ -11,11 +11,11 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="name" type="string" column="name" length="45" nullable="false"/>
+    <field name="name" type="string" column="name" length="255" nullable="false"/>
     <field name="contentHtml" type="text" column="content_html" length="65535" nullable="true"/>
     <field name="dateCreation" type="datetime" column="date_creation" nullable="false"/>
     <field name="modified" type="datetime" column="modified" nullable="true"/>
-    <field name="params" type="string" column="params" length="200" nullable="true"/>
+    <field name="params" type="string" column="params" length="1000" nullable="true"/>
     <many-to-one field="creatorUser" target-entity="CmsStzefUsers">
       <join-columns>
         <join-column name="creator_user" referenced-column-name="id"/>

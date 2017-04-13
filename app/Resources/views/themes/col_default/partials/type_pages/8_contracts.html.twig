@@ -1,0 +1,46 @@
+
+    <h1>Contratación</h1>
+
+    <table class="table" id="CMSstzef_list">
+        <thead>
+            <tr>
+                <th>Proceso</th>
+                <th>Descripcion</th>
+                <th>Objeto</th>
+                <th>Apertura</th>
+                <th>Aclaracion</th>
+                <th>Cierre</th>
+                <th>Adjudicion</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for articulo in articles%}
+            <tr>
+                <td>{{ articulo.contrato.proceso}}</td>
+                <td>{{ articulo.contrato.descripcion|raw }}</td>
+                <td>{{ articulo.contrato.objeto }}</td>
+                <td>{% if articulo.contrato.apertura %}{{ articulo.contrato.apertura|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if articulo.contrato.aclaracion %}{{ articulo.contrato.aclaracion|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if articulo.contrato.cierre %}{{ articulo.contrato.cierre|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if articulo.contrato.adjudicion %}{{ articulo.contrato.adjudicion|date('Y-m-d') }}{% endif %}</td>
+                 <!--<td>{#{{ articulo_contract.id }}#}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="btn btn-" href="{#{{ path('admstzef_contracts_show', { 'id': articulo_contract.id }) }}#}">Mostrar</a>
+                        </li>
+                        <li>
+                            <a class="btn btn-" href="{#{{ path('admstzef_contratcs_edit', { 'id': articulo_contract.id }) }}#}">Editar</a>
+                        </li>
+                    </ul>
+                </td>-->
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <!--<ul class="list-unstyled">
+        <li>
+            <a class="btn btn-success"  href="{#{{ path('admstzef_contratcs_new') }}#}">Nueva Contratación</a>
+        </li>
+    </ul>-->

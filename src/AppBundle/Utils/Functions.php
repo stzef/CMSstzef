@@ -44,6 +44,15 @@ class Functions
 
             //dump($contentPage);exit();
         }
+        if($page->getIdTypePage()->getId()== 8){
+            $repositoryArticles = $em->getRepository("AppBundle:CmsStzefArticles");
+            $repositoryContract = $em->getRepository("AppBundle:CmsStzefContracts");
+            $contentPage = $repositoryArticles->findByIdCategory($page->getCategoryToShow());
+            foreach ($contentPage as $article) {
+                $idcontract = json_decode($article->getParams())->contract;
+                $article->contrato = $repositoryContract->findOneById($idcontract);
+            }
+        }
         return $contentPage;
     }
 

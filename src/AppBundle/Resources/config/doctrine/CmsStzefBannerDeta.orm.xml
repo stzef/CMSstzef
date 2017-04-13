@@ -7,7 +7,7 @@
     <id name="id" type="integer" column="id">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="image" type="string" column="image" length="45" nullable="false"/>
+    <field name="image" type="string" column="image" length="500" nullable="false"/>
     <field name="contentHtml" type="text" column="content_html" length="65535" nullable="false"/>
     <many-to-one field="cmsStzefBanners" target-entity="CmsStzefBanners">
       <join-columns>

@@ -11,7 +11,7 @@
     <field name="cgroup" type="integer" column="cgroup" nullable="true"/>
     <field name="ngroup" type="string" column="ngroup" length="45" nullable="true"/>
     <field name="type" type="string" column="type" length="45" nullable="false"/>
-    <field name="name" type="string" column="name" length="45" nullable="false"/>
+    <field name="name" type="string" column="name" length="255" nullable="false"/>
     <field name="valueText" type="text" column="value_text" length="65535" nullable="true"/>
     <field name="valueBool" type="boolean" column="value_bool" nullable="true"/>
     <field name="valueInt" type="integer" column="value_int" nullable="true"/>

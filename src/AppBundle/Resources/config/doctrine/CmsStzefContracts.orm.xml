@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="AppBundle\Entity\CmsStzefContracts" table="cms_stzef_contracts">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="proceso" type="string" column="proceso" length="45" nullable="false"/>
+    <field name="descripcion" type="text" column="descripcion" length="65535" nullable="true"/>
+    <field name="objeto" type="integer" column="objeto" nullable="false"/>
+    <field name="apertura" type="date" column="apertura" nullable="false"/>
+    <field name="aclaracion" type="date" column="aclaracion" nullable="false"/>
+    <field name="cierre" type="date" column="cierre" nullable="false"/>
+    <field name="adjudicion" type="date" column="adjudicion" nullable="false"/>
+  </entity>
+</doctrine-mapping>
