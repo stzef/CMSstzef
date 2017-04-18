@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cmsstzefcontract</h1>
+    <h1>Contrato Nuevo</h1>
 
     <table>
         <tbody>
@@ -41,7 +41,7 @@
     </table>
     <ul class="list-unstyled" >
         <li>
-            <a class="btn btn-primary" role="button" href=href="{{ path('admstzef_contracts_index') }}">Listado</a>
+            <a class="btn btn-primary" role="button" href="{{ path('admstzef_contracts_index') }}">Listado</a>
         </li>
         <li>
             <a class="btn btn-info" role="button" href="{{ path('admstzef_contracts_edit', { 'id': cmsStzefContract.id }) }}">Editar</a>
