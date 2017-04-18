@@ -1,16 +1,16 @@
 
-    <h1>Contratación</h1>
+    <h1>Contrataciónes</h1>
 
     <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
                 <th>Proceso</th>
                 <th>Descripcion</th>
-                <th>Objeto</th>
                 <th>Apertura</th>
                 <th>Aclaracion</th>
                 <th>Cierre</th>
                 <th>Adjudicion</th>
+                <th>Archivo</th>
             </tr>
         </thead>
         <tbody>
@@ -18,11 +18,11 @@
             <tr>
                 <td>{{ articulo.contrato.proccess}}</td>
                 <td>{{ articulo.contrato.description|raw }}</td>
-                <td><a href="{{ articulo.contrato.path }}"><img src="" alt=""></a></td>
                 <td>{% if articulo.contrato.dateApertura %}{{ articulo.contrato.dateApertura|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if articulo.contrato.dateAclaracion %}{{ articulo.contrato.dateAclaracion|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if articulo.contrato.dateCierre %}{{ articulo.contrato.dateCierre|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if articulo.contrato.dateAdjudicion %}{{ articulo.contrato.dateAdjudicion|date('Y-m-d') }}{% endif %}</td>
+                <td><a href="{{ articulo.contrato.path }}"><img src="{{parameters.image_pdf.path}}" alt="pdf"></a></td>
                  <!--<td>{#{{ articulo_contract.id }}#}</td>
                 <td>
                     <ul class="list-unstyled">

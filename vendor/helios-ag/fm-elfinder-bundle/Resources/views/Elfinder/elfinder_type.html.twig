@@ -10,16 +10,14 @@
     {{ include("FMElfinderBundle:Elfinder:helper/assets_js.html.twig") }}
 {% endif %}
 <script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
+    $().ready(function() {
         var $f = $('.elfinder').elfinder({
             url : '{{path('ef_connect', { 'instance': instance, 'homeFolder': homeFolder } )}}',
             lang : '{{locale}}',
             onlyMimes: {{ onlyMimes|raw }},
             getFileCallback: function(file) {
-                console.log(file)
-
                 {% if relative_path %}
-                    window.opener.setValue('{{ pathPrefix }}'+file.path.replace("{{ app.request.schemeAndHttpHost }}/", ""), "{{ id }}");
+                    window.opener.setValue('{{ pathPrefix }}'+file.url.replace("{{ app.request.schemeAndHttpHost }}/", ""), "{{ id }}");
                 {% else %}
                     window.opener.setValue(file.url, "{{ id }}");
                 {% endif %}

@@ -161,7 +161,17 @@
                 <li class=""><a href="{{ path('admstzef_categories_index') }}"><i class="fa fa-list"></i> Categorias</a></li>
               </ul>
             </li>
-
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-file"></i> <span>Contrataciones</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li class=""><a href="{{ path('admstzef_contracts_index') }}"><i class="fa fa-file"></i> Contratos </a></li>
+              </ul>
+            </li>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-bars"></i> <span>Menu</span>
@@ -224,6 +234,7 @@
                 </ul>
               </li>
             {% endif %}
+
             <!--<li class="treeview">
               <a href="#">
                 <i class="fa fa-archive"></i> <span>Modulos</span>
@@ -246,17 +257,6 @@
               <ul class="treeview-menu">
                 <li class=""><a href="{{ path('admstzef_banners_index') }}"><i class="fa fa-folder-open"></i> Galerias </a></li>
                 <li class=""><a href="{{ path('admstzef_banner_deta_index') }}"><i class="fa fa-image"></i> Imagenes </a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-folder-open"></i> <span>Contrataciones</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu">
-                <li class=""><a href="{{ path('admstzef_contracts_index') }}"><i class="fa fa-folder-open"></i> Contratos </a></li>
               </ul>
             </li>
             {% if is_granted('ROLE_ADMIN') %}

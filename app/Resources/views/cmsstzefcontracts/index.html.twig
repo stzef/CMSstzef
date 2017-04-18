@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Cmsstzefcontracts list</h1>
 
-    <table>
+    <table class="table" id="CMSstzef_list">
         <thead>
             <tr>
                 <th>Proccess</th>
@@ -29,12 +29,9 @@
                 <td>{% if cmsStzefContract.dateAdjudicion %}{{ cmsStzefContract.dateAdjudicion|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ cmsStzefContract.id }}</td>
                 <td>
-                    <ul>
+                    <ul class="list-unstyled">
                         <li>
-                            <a href="{{ path('admstzef_contracts_show', { 'id': cmsStzefContract.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admstzef_contracts_edit', { 'id': cmsStzefContract.id }) }}">edit</a>
+                            <a class="btn btn-info" role="button" href="{{ path('admstzef_contracts_edit', { 'id': cmsStzefContract.id }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>
@@ -43,9 +40,10 @@
         </tbody>
     </table>
 
-    <ul>
+
+    <ul class="list-unstyled">
         <li>
-            <a href="{{ path('admstzef_contracts_new') }}">Create a new cmsStzefContract</a>
+            <a class="btn btn-success" role="button" href="{{ path('admstzef_contracts_new') }}">Nuevo Articulo</a>
         </li>
     </ul>
 {% endblock %}
