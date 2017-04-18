@@ -6,15 +6,15 @@
     <table>
         <tbody>
             <tr>
-                <th>Proccess</th>
+                <th>Proceso</th>
                 <td>{{ cmsStzefContract.proccess }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <th>Descripcion</th>
                 <td>{{ cmsStzefContract.description }}</td>
             </tr>
             <tr>
-                <th>Path</th>
+                <th>Archivo</th>
                 <td>{{ cmsStzefContract.path }}</td>
             </tr>
             <tr>
@@ -39,17 +39,16 @@
             </tr>
         </tbody>
     </table>
-
-    <ul>
+    <ul class="list-unstyled" >
         <li>
-            <a href="{{ path('admstzef_contracts_index') }}">Back to the list</a>
+            <a class="btn btn-primary" role="button" href=href="{{ path('admstzef_contracts_index') }}">Listado</a>
         </li>
         <li>
-            <a href="{{ path('admstzef_contracts_edit', { 'id': cmsStzefContract.id }) }}">Edit</a>
+            <a class="btn btn-info" role="button" href="{{ path('admstzef_contracts_edit', { 'id': cmsStzefContract.id }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" class="btn btn-danger" value="Borrar">
             {{ form_end(delete_form) }}
         </li>
     </ul>
