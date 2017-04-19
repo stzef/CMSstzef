@@ -5,10 +5,12 @@
 
 {% block body %}
                 <div class="col-md-12 col-lg-12 col-sm-12" style="padding-right: 0px;padding-left: 0px;">
-
+                    {% if current_page.idTypePage.id == 1 %}
                     <div class="row carousel-holder" style="padding-left: 40px;padding-right: 40px;">
                         {% include 'themes/' ~ theme.slug ~ '/partials/banner_main.html.twig' with {'cmsStzefMenuses': cmsStzefMenuses} %}
                     </div>
+                    {% endif %}
+
 
                     {% if messages is defined %}
                         <div class="row">
@@ -48,7 +50,7 @@
                     <br>
                         <div class="barra-nombre">
                             <div class="col-md-12 col-lg-12 col-sm-12 barra-luz">
-                                <p>Articulos</p>
+                                <p>Actividades</p>
                             </div>
                         </div>
                         

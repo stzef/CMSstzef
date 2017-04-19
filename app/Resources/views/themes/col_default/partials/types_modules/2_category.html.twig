@@ -2,9 +2,17 @@
 
 <div>
 		{% for article in category.articles %}
-		<div class="article article-notice col-md-3">
-				<h5 class=""><a href="articles/{{article.id}}">{{ article.name|slice(0, 15) }}...</a></h5>
+		<div class="row">
+			<div class="article article-notice col-md-4">
 				<img class="img-responsive" src="{{ article.imageMain }}" alt="">
+			</div>
+			<div class="article article-notice col-md-6">
+				
+				
+				<h5 class=""><a href="articles/{{article.id}}">{{ article.name|slice(0, 15) }}...</a></h5>
+			</div>
 		</div>
+		
+
 		{% endfor %}
 </div>
