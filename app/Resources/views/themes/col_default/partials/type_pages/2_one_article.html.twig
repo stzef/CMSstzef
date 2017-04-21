@@ -1,14 +1,14 @@
 <div class="block-1 {{ current_page.idDisplayType.cssClass }}">
     <div class="col-sm-12 col-lg-12 col-md-12">
         <div class="col-sm-12 col-lg-12 col-md-12 box-noticia">
-            <div class="col-sm-2 col-lg-2 col-md-2">
-                <img class="img-responsive" src="{{ articles.imageMain }}" alt="">
+            <div class="col-sm-12 col-lg-12 col-md-12">
+                <center><img class="img-responsive" src="{{ articles.imageMain }}" alt=""></center>
             </div>
             <h4 class="text-center"><a href="{{ path('view_article_generic',{'id_article' : articles.id }) }}">{{ articles.name }}</a>
             </h4>
             <p>{{ articles.description }}</p>
             <p>{{ articles.contentHTML|raw }}</p>
-            <a class="btn btn-primary pull-right" href="{{ path('view_article_generic',{'id_article' : articles.id }) }}">Ver más</a>
+            <!--<a class="btn btn-primary pull-right" href="{{ path('view_article_generic',{'id_article' : articles.id }) }}">Ver más</a>-->
         </div>
     </div>
 </div>
