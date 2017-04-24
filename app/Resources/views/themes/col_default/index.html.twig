@@ -55,13 +55,7 @@
                         </div>
                         
                         <div id="actividad" class="col-md-12 col-lg-12 col-sm-12">
-                            <br>
-                            {% if articles is defined %}
-                                {% if current_page.idTypePage.id == 1 %}
-                                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/1_for_category.html.twig' with {'articles': articles,'current_page': current_page} %}
-                                {% endif %}
-                            {% endif %}
-                            <br><br><br>
+
                         </div>
                     </div>  
 
@@ -85,9 +79,7 @@
                             </div>
                         </div>
                         <div id="" class="col-md-12 col-lg-12 well">
-                            <div class="col-sm-7 col-lg-7 col-md-7">
-                                <section id="section_agreements"></section>
-                            </div>
+                                <section id="section_conventions"></section>
                         </div>
                         <div class="col-md-12 col-lg-12 col-sm-12"><br></div>
                         <div class="col-md-12 col-lg-12 col-sm-12 barra-nombre"
