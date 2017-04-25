@@ -84,7 +84,6 @@ class PagesController extends Controller
 
         $current_article = $repositoryArticles->find($id_article);
 
-
         $path_template = "themes/" . $theme->getSlug();
         if($current_article){
             $path_template .= "/article_detail.html.twig";
