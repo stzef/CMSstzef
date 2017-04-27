@@ -6,14 +6,16 @@
 {% endblock %}
 {% block body %}
     <h1>Nuevo Contrato</h1>
-
+    <label>Año de la convocatoria</label>
     {{ form_start(form) }}
+        <select id="ano" name="category_article" required>
+            <option value="">Seleccione el año...</option>
+            <option value="18">2017</option>
+            <option value="23">2016</option>
+        </select>
         {{ form_widget(form) }}
         <input type="submit" class="btn btn-success" value="Crear" />
+                <a class="btn btn-primary" role="button" href="{{ path('admstzef_contracts_index') }}">Listado</a>
     {{ form_end(form) }}
-    <ul class="list-unstyled" >
-        <li>
-            <a class="btn btn-primary" role="button" href="{{ path('admstzef_contracts_index') }}">Listado</a>
-        </li>
-    </ul>
+
 {% endblock %}

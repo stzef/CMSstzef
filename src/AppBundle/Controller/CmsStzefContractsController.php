@@ -39,7 +39,8 @@ class CmsStzefContractsController extends Controller
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
-    {
+    {   
+
         $cmsStzefContract = new CmsstzefContracts();
         $cmsStzefArticle = new CmsStzefArticles();
         $em = $this->getDoctrine()->getManager();
@@ -49,9 +50,10 @@ class CmsStzefContractsController extends Controller
         $access = $em->getRepository("AppBundle:CmsStzefTypesAccess");
         $form = $this->createForm('AppBundle\Form\CmsStzefContractsType', $cmsStzefContract);
         $form->handleRequest($request);
+        $category_article = $request->request->get("category_article");
         $param_id = $parametros->findOneByCparam("contract_category");
         $idStatePublication = $publicado->findOneById(1);
-        $category = $categorias->findOneById($param_id->getValueInt());
+        $category = $categorias->findOneById($category_article);
         $typeAccess = $access->findOneById(1);
         $fecha = date('Y-m-d');
         //$stamp = date_timestamp_get($fecha);
