@@ -25,7 +25,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins  -  folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{ asset('css/template/skins/_all-skins.min.css') }}">
 
-    <link rel="icon" type="image/x-icon" href="{#{{ asset(parameters.favicon_site) }}}#}" />
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
 
     <link rel="stylesheet" href="{{ asset('css/data_table/jquery.dataTables.min.css')}}">
 
@@ -99,7 +99,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="{% if app.user %} {{ app.user.photo }} {% endif %}" class="user-image" alt="User Image">
+                  <img src="{{ asset('images/users/default.png') }}{#{% if app.user %} {{ app.user.photo }} {% endif %}#}" class="user-image" alt="User Image">
                   <span class="hidden-xs">{% if app.user %} {{ app.user.username }} {% endif %}</span>
                 </a>
                 <ul class="dropdown-menu">
@@ -137,7 +137,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              <img src="{% if app.user %} {{ app.user.photo }} {% endif %}" class="img-circle" alt="User Image">
+              <img src="{{ asset('images/users/default.png') }}{#{% if app.user %} {{ app.user.photo }} {% endif %}#}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
               <p>{% if app.user %} {{ app.user.username }} {% endif %}</p>
