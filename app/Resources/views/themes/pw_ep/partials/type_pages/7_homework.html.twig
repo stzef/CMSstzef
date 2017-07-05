@@ -1,0 +1,68 @@
+{% if articles|length > 0 %}
+    <div class="block-1 {{ current_page.idDisplayType.cssClass }}">
+
+            <div class="">
+                <h2>Tareas</h2>
+                <p><strong>Bienvenido</strong> Selecciona tu grupo y mira tus tareas </p>
+                <div class="panel-group" id="accordion">
+                    {% for grupo in articles %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse_group_{{grupo.id}}">{{ grupo.name }}</a>
+                                </h4>
+                            </div>
+                            <div id="collapse_group_{{grupo.id}}" class="panel-collapse collapse {% if loop.first %} in {% endif %}">
+                                <div class="panel-group" id="accordion">
+                                    <div class="panel-group" id="accordion_tareas">
+                                        {% for materia in grupo.materias %}
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                      <a data-toggle="collapse" data-parent="#accordion_tareas" href="#collapse_materia_{{materia.id}}">{{ materia.name }}</a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapse_materia_{{materia.id}}" class="panel-collapse collapse ">
+                                                    <div class="panel-group" id="accordion_tareas">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Fecha</th>
+                                                                    <th>Nombre</th>
+                                                                    <th></th>
+                                                                </tr>
+                                                            </thead>
+                                                            {% for tarea in materia.tareas %}
+                                                                <tr>
+                                                                    <td>{{ tarea.dateCreation|date("m/d/Y") }} </td>
+                                                                    <td>{{ tarea.name }} </td>
+                                                                    <td> <a href="{{ path('view_article_generic',{'id_article' : tarea.id }) }}" class="btn btn-primary"> VER </a> </td>
+                                                                </tr>
+                                                            {% endfor %}
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {# <div class="col-sm-6 col-lg-6 col-md-6">
+                            <div class="col-sm-12 col-lg-12 col-md-12 box-noticia">
+                                <h4 class="text-center">{{ article.name }}</h4>
+                                <p>{{ article.contentHTML|raw }}</p>
+                            </div>
+                        </div> #}
+                    {% endfor %}
+                </div>
+            </div>
+
+
+
+
+
+    </div>
+{% else %}
+    <h2>No hay Articulos Hola</h2>
+{% endif %}

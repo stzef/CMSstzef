@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Colegio Santa Maria</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('themes/' ~ theme.slug ~ '/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('themes/' ~ theme.slug ~ '/css/font-awesome.min') }}.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('themes/' ~ theme.slug ~ '/css/shop-homepage.css') }}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+<div class="container-fluid error404" >
+    <div class="row" style="background-color: #fff;padding-right: 15px;padding-left: 15px;">
+        <div class="col-md-12 col-lg-12 col-sm-12 text-center">
+            <strong><p style="font-size: 58px;color: #3a3990;margin-top: 8%">Error 404<br>Página no encontrada</p></strong>
+            <br><br>
+        </div>
+    </div>
+    <div class="col-md-12 pie-top"></div>
+    <br><br><br>
+    <div class="col-md-12 col-lg-12 col-sm-12">
+        <div class="col-md-3 col-lg-3 col-sm-3"></div>
+        <div class="col-md-5">
+            <center><img class="img-responsive" src="img/smaria.png" alt="logo" width="70%" /></center>
+        </div>
+        <div class="col-md-3 col-lg-3 col-sm-3"></div>
+    </div>
+</div>
+    <!-- jQuery -->
+    <script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.js') }}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{{ asset('themes/' ~ theme.slug ~ '/js/bootstrap.min.js') }}"></script>
+
+</body>
+
+</html>

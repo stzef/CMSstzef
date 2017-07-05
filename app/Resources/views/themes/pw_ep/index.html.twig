@@ -1,0 +1,166 @@
+{% extends 'themes/' ~ theme.slug ~ '/template.html.twig' %}
+
+{% block title %}{% endblock %}
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+                <div class="col-md-12 col-lg-12 col-sm-12" style="padding-right: 0px;padding-left: 0px;">
+                    {% if current_page.idTypePage.id == 1 %}
+                    <div class="row carousel-holder" style="padding-left: 40px;padding-right: 40px;">
+                        {% include 'themes/' ~ theme.slug ~ '/partials/banner_main.html.twig' with {'cmsStzefMenuses': cmsStzefMenuses} %}
+                    </div>
+                    {% endif %}
+
+
+                    {% if messages is defined %}
+                        <div class="row">
+                            {% for message in messages %}
+                                <div class="alert alert-{{message.type}}">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                    {{message.text}}.
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <br><br>
+                    <div class="row">
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div id="noticia" class=" col-md-12 col-lg-12 col-sm-12">
+                            {% if articles is defined %}
+                                {% if current_page.idTypePage.id == 1 %}
+                                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/1_for_category.html.twig' with {'articles': articles,'current_page': current_page} %}
+                                {% elseif current_page.idTypePage.id == 2 %}
+                                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/2_one_article.html.twig' with {'articles': articles,'current_page': current_page} %}
+                                {% elseif current_page.idTypePage.id == 4 %}
+                                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/4_gallery.html.twig' with {'articles': articles,'current_page': current_page} %}
+                                {% elseif current_page.idTypePage.id == 5 %}
+                                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/5_form_contact.html.twig' %}
+                                {% elseif current_page.idTypePage.id == 6 %}
+                                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/6_staff.html.twig' %}
+                                {% elseif current_page.idTypePage.id == 7 %}
+                                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/7_homework.html.twig' %}
+                                {% elseif current_page.idTypePage.id == 8 %}
+                                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/8_contracts.html.twig' %}
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="col-md-12 col-lg-12 col-sm-12">
+                    <br>
+                        <div class="barra-nombre">
+                            <div class="col-md-12 col-lg-12 col-sm-12 barra-luz">
+                                <p>Actividades</p>
+                            </div>
+                        </div>
+                        
+                        <div id="actividad" class="col-md-12 col-lg-12 col-sm-12 well">
+                            <section id="section_activities"></section>
+                        </div>
+                    </div>  
+
+                    <div class="col-md-7 col-lg-7 col-sm-7">
+                        <br>
+                        <div class="barra-nombre">
+                            <div class="col-md-12 col-lg-12 col-sm-12 barra-luz">
+                                <p>Noticias</p>
+                            </div>
+                        </div>
+                        <div id="noticia" class="col-md-12 col-lg-12 col-sm-12">
+                            <section id="section_agreements"></section>
+                        </div>
+                    </div>  
+
+                    <div class="col-md-5 col-lg-5 col-sm-5">
+                    <br>
+                        <div class="barra-nombre">
+                            <div class="col-md-12 col-lg-12 col-sm-12 barra-luz">
+                                <p>Convenios</p>
+                            </div>
+                        </div>
+                        <div id="" class="col-md-12 col-lg-12 well">
+                                <section id="section_conventions"></section>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-sm-12"><br></div>
+                        <div class="col-md-12 col-lg-12 col-sm-12 barra-nombre"
+                        style="padding: 0px;">
+                            <div class="col-md-12 col-lg-12 col-sm-12 barra-luz">
+                                <p>Calendario</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-12 col-sm-12" style="padding: 0px;">   
+                            <iframe src="https://calendar.google.com/calendar/embed?src={{parameters.email_googlecalendar}}&ctz=America/Bogota" style="border: 0" width="100%" height="300" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                        <br>
+                    </div>  
+
+                    <div class="col-md-12 col-lg-12 col-sm-12"><br></div>
+                    <div id="otros" class="col-md-12 col-lg-12 col-sm-12">
+                    <br>
+                        <div class="col-md-5 col-lg-5 col-sm-5">
+                            <section id="section_theme_footer_a"></section>
+                            <div class="col-md-12 col-lg-12 col-sm-12">
+                                {% if app.user %}
+                                        <a role="button" class="btn btn-primary" href="{{ path('homepage_admin') }}">Ir a Administracion</a>
+                                        <a role="button" class="btn btn-danger"  href="{{ path('fos_user_security_logout') }}"> Salir </a>
+                                    {% else %}
+                                        <a role="button" class="btn btn-success" href="{{ path('fos_user_security_login') }}"> Iniciar Sesión</a>
+                                        {# <a role="button" class="btn btn-info" href="{{ path('fos_user_registration_register') }}"> Registrarse </a> #}
+                                    {% endif %}
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-7 col-lg-7 col-sm-7">
+                            <h2>Ubicación</h2>
+                            <div id="mapa" class="col-md-12 col-lg-12"></div>
+                        </div>
+                    </div>          
+
+                    </div>
+
+                </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+
+            var jssor_1_options = {
+              $AutoPlay: true,
+              $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$
+              },
+              $ThumbnailNavigatorOptions: {
+                $Class: $JssorThumbnailNavigator$,
+                $Cols: 4,
+                $SpacingX: 4,
+                $SpacingY: 4,
+                $Orientation: 2,
+                $Align: 0
+              }
+            };
+
+            var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+            /*responsive code begin*/
+            /*remove responsive code if you don't want the slider scales while window resizing*/
+            function ScaleSlider() {
+                var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                if (refSize) {
+                    refSize = Math.min(refSize, 810);
+                    jssor_1_slider.$ScaleWidth(refSize);
+                }
+                else {
+                    window.setTimeout(ScaleSlider, 30);
+                }
+            }
+            ScaleSlider();
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            /*responsive code end*/
+        });
+    </script>
+
+{% endblock %}

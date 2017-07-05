@@ -1,0 +1,203 @@
+@font-face {
+  font-family: 'English Towne' ;
+  src: url('../fonts/ENGLISHTOWNE.TTF') format('truetype');
+}
+
+/*!
+ * Start Bootstrap - Shop Homepage (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+*{
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-default{
+  background: initial;
+  border: initial;
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  background-repeat: repeat-x;
+  background-color: #fff;
+}
+.row {
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.pie-top{
+  background-image: url(../img/barra.png);
+  height: 52px;
+}
+.pie-down{
+  background-image: url(../img/barra-v.png);
+  height: 52px;
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    /*margin-bottom: 30px;*/
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu > .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+}
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+.dropdown-submenu:hover > a:after {
+  border-left-color: #fff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+}
+
+footer {
+    margin: 0;
+}
+
+.is-center {
+    text-align: center;
+}
+
+.box-mensaje{
+  font-size: 25px;
+  color: #3d3f94;
+  border: 1px solid #e7e7e7;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+}
+
+.article{
+  padding: 2px;
+  margin: 1px;
+  border-bottom: 1px solid gray;
+}
+.article:hover{
+  background: rgba(0,0,0,0.1);
+}
+  .article-simple{}
+  .article-notice{}
+  .article-detail{}
+  .article-staff{}
+
+.row-background{
+  background-image: url("/uploads/CMS_stzef/backgrounds/school.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+#noticia{
+  margin-top: 18px;
+  background: rgba(255,255,255,0.5);
+  /*background-image: url(../img/paper.png);*/
+  /*background-color: #98cee6;*/
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px 10px 0px 0px;
+}
+#convenio-cronologia{
+  background: rgba(255,255,255,0.5);
+  /*background-image: url(../img/texture.png);
+  background-color: #63b934;*/
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.content-mapa{
+  background: rgba(255,255,255,0.5);
+  /*background-image: url(../img/background-map.jpg);*/
+}
+
+.box-noticia{
+  background-color: #fff;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  border: 1px solid rgba(46, 109, 164, 0.26);
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px rgba(136, 136, 136, 0.42);
+}
+
+.subtitulos{
+  font-size: 27px;
+  color: #fff;
+}
+
+.texto-blanco{
+  color: #fff;
+}
+
+
+
+#mapa{
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+#pie{
+  font-size: 18px;
+}
+.iconos-redes{
+  margin-top: 10px;
+  font-size: 25px;
+}
+
+#articulo{
+  margin-top: 18px;
+  background-image: url(../img/paper.png);
+  background-color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.error404{
+  background-image: url(../img/texture.png);
+  background-color: #aeecff;
+  padding-right: 0px;
+  padding-left: 0px;
+  height: 990px;
+}
