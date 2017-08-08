@@ -48,7 +48,7 @@
 		}
 	</style>
 
-	
+
 	{% block stylesheets %}{% endblock %}
 
 </head>
@@ -58,7 +58,7 @@
 		<div class="container">
 
 			<div>
-				<div class="col-md-8 col-sm-8 col-lg-8">    
+				<div class="col-md-8 col-sm-8 col-lg-8">
 				    <img class="img-responsive" src="{{ asset(parameters.logo_site) }}" alt="logo" height="85%" width="50%" />
 				</div>
 				<!--<div class="col-md-4 col-sm-4 col-lg-4 subtitulo">
@@ -91,7 +91,7 @@
 			<div class="container-fluid">
 
 				{% block body %}
-				        
+
                 {% endblock %}
 
 			</div>
@@ -126,6 +126,7 @@
 				</div>
 			</footer>
 		</div>
+		<script src="{{ asset('js/polyfill-foreach.js') }}"></script>
 
 		<!-- jQuery -->
 		<script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.js') }}"></script>
