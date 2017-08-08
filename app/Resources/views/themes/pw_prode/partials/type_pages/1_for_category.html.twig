@@ -1,0 +1,23 @@
+{% if articles|length > 0 %}
+    <div class="{{ current_page.idDisplayType.cssClass }}">
+        {% for article in articles %}
+            <div class="col-md-6">
+                <h2 class="text-center">
+                    <a class="text-primary" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">{{ article.name }}</a>
+                </h2>
+                <div class="media wow fadeInRight">
+                    <img class="img-responsive center-block" src="{{ article.imageMain }}" alt="">
+                    <hr>
+                    <p class="text-center">{{ article.description }}</p>
+                    <center>
+                        <a class="btn btn-primary" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">Ver Mas <span class="glyphicon glyphicon-chevron-right"></span></a>
+                    </center>
+                    <hr>
+                    <p class="text-faded"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> Posteado en {{ article.dateCreation|date("F jS \\a\\t g:ia","America/Bogota")}} Por <a class="text-primary" href="#">{{ article.creatorUser.name }}</a></p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <h1 class="text-center text-primary">No hay Articulos </h1>
+{% endif %}

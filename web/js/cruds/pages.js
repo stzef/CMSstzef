@@ -22,6 +22,14 @@ $("#appbundle_cmsstzefpages_idTypePage").change(function (event) {
 	if ( $(this).val() == 5 ){
 		/*Formulario de Contacto*/
 	}
+	if ( $(this).val() == 9 ){
+		/*Galeria*/
+		$("#form_idBanner").prop('disabled', false).closest(".form-group").show()
+	}
+	if ( $(this).val() == 10 ){
+		/*Galeria*/
+		$("#form_idBanner").prop('disabled', false).closest(".form-group").show()
+	}
 })
 $( document ).ready(function(event){
 	$("#appbundle_cmsstzefpages_idTypePage").trigger("change")

@@ -1,0 +1,18 @@
+<div class="container-fluid">
+    <div class="row no-gutter">
+        {% for image in gallery.deta %}
+            <div class="col-lg-4 col-sm-6">
+                <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="{{image.image}}">
+                    <img src="{{image.image}}" class="img-responsive" alt="Image 1">
+                    <div class="gallery-box-caption">
+                        <div class="gallery-box-content">
+                            <div>
+                                <i class="icon-lg ion-ios-search"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>

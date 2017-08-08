@@ -1,0 +1,14 @@
+<div class="col-lg-12">
+    <h1 class="text-center text-primary">{{ articles.name }}</h1>
+    <p>&nbsp;</p>
+    <img class="img-responsive center-block" src="{{ articles.imageMain }}" alt="">
+    <p>&nbsp;</p>
+    <div class="container-content-html-tinymce">
+        <p class="text-faded">{{ articles.contentHTML|raw }}</p>
+    </div>
+    <p>&nbsp;</p>
+    <!--<p class="text-primary"><span class="glyphicon glyphicon-time"></span> Posteado en {{ articles.dateCreation|date("F jS \\a\\t g:ia","America/Bogota")}}</p>
+    <p class="text-primary">
+        Por <a class="text-primary" href="#">{{ articles.creatorUser }}</a>
+    </p>-->
+</div>

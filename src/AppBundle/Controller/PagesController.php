@@ -85,6 +85,7 @@ class PagesController extends Controller
         $current_article = $repositoryArticles->find($id_article);
 
         $path_template = "themes/" . $theme->getSlug();
+
         if($current_article){
             $path_template .= "/article_detail.html.twig";
 
@@ -96,13 +97,12 @@ class PagesController extends Controller
         }else{
             $path_template .= "/404.html.twig";
         }
-
-
         return $this->render($path_template, array(
             "cmsStzefMenuses" => $cmsStzefMenuses,
             "current_article" => $current_article,
             "parameters" => $parameters,
             "sectionsTheme" => $sectionsTheme,
+            "main_banner" => $this->get('app.fns')->getMainBanner($em),
             "theme" => $theme,
         ));
     }
@@ -139,7 +139,7 @@ class PagesController extends Controller
             $path_template .= "/index.html.twig";
             $articles = $this->get('app.fns')->getContentPage($current_page,$em);
 
-            if($current_page->getIdTypePage()->getId() == 4){
+            if($current_page->getIdTypePage()->getId() == 4 or $current_page->getIdTypePage()->getId() == 9 or $current_page->getIdTypePage()->getId() == 10 ){
                 $gallery = $this->get('app.fns')->getBanner($em,$current_page->parameters->idBanner);
             }
             if($current_page->getIdStatePublication()->getId() != 1){

@@ -1,0 +1,18 @@
+<div class="container demo-4">
+    <h3 class="wide-space text-center text-primary">NUESTROS PROYECTOS</h3>
+    <p>&nbsp;</p>
+    <div class="gallery">
+        <!-- Elastislide Carousel -->
+        <ul id="carousel" class="elastislide-list">
+            {% for image in gallery.deta %}
+                <li data-preview="{{image.image}}">
+                    <a href="#"><img src="{{image.image}}" alt="" /></a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="image-preview">
+            <img id="preview" src="images/large/4.jpg" />
+        </div>
+        <!-- End Elastislide Carousel -->
+    </div>
+</div>
