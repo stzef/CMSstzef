@@ -1,0 +1,21 @@
+{% if current_page is defined %}
+    {% if current_page.ifMain %}
+        <div class="{{ current_page.idDisplayType.cssClass }}">
+            <h2 class="text-center">Destacados</h2>
+            {% if articles_distinguished is defined %}
+                {% for article_distinguished in articles_distinguished %}
+                    <div class="col-sm-1 col-lg-2 col-md-2 alert alert-info">
+                        <div class="thumbnail">
+                            <img src="{{ article_distinguished.imageMain }}" alt="">
+                        </div>
+                        <div class="caption">
+                            <h4 class="text-center">
+                                <a href="{{ path('view_article_generic',{'id_article' : article_distinguished.id }) }}">{{ article_distinguished.name }}</a>
+                            </h4>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endif %}
+{% endif %}

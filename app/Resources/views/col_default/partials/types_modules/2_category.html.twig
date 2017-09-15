@@ -1,0 +1,10 @@
+<h4 class="subtitulos">{{ category.name|slice(0, 40) }}</h4>
+
+<div>
+	{% for article in category.articles %}
+		<div class="article article-notice col-md-3">
+			<h5 class="text-center"><a href="articles/{{article.id}}">{{ article.name|slice(0, 15) }}...</a></h5>
+			<img class="img-responsive" src="{{ article.imageMain }}" alt="">
+		</div>
+	{% endfor %}
+</div>
