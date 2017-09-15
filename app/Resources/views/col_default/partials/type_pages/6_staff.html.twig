@@ -1,0 +1,14 @@
+{% if articles|length > 0 %}
+    <div class="{{ current_page.idDisplayType.cssClass }}">
+        {% for article in articles %}
+            <div class="article-staff col-sm-6 col-lg-6 col-md-6">
+                <div class="col-sm-12 col-lg-12 col-md-12 ">
+                    <h4 class="text-center">{{ article.name }}</h4>
+                    <p>{{ article.contentHTML|raw }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <h2>No hay Articulos </h2>
+{% endif %}
