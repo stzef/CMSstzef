@@ -1,0 +1,25 @@
+{% extends 'themes/' ~ theme.slug ~ '/template.html.twig' %}
+
+{% block title %} Articulo - {{ current_article.name }}{% endblock %}
+{% block stylesheets %}{% endblock %}
+
+{% block body %}
+  <section id="about" class="section-padding wow fadeIn delay-05s">
+    <div class="container-fluid">
+      <div class="row">
+        <center><h1><br><span class="deco">{{ current_article.name }}</span></h1></center>
+        <div class="col-md-12 text-justify">
+          <div class="about-text">
+            <p class="text-faded">{{ current_article.contentHTML|raw }}</p>
+            <img class="img-responsive center-block" src="{{ current_article.imageMain }}" alt="">
+            <p>&nbsp;</p>
+            <p class="text-primary"><span class="glyphicon glyphicon-time"></span> Posteado en {{ current_article.dateCreation|date("F jS \\a\\t g:ia","America/Bogota")}}</p>
+            <p class="text-primary">
+                Por <a class="text-primary" href="#">{{ current_article.creatorUser }}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>     
+{% endblock %}

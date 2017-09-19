@@ -1,0 +1,13 @@
+<?php
+{% for service in main_banner.deta%}
+  <div style="display: inline-block;">
+    <div class="contenedor">
+      <div class="item m {% if loop.first %} active {% endif %}">
+          <img  src="{{ service.image }}" alt="" style="width:100%;">
+      </div>
+    </div>
+  </div>
+
+{% endfor %}
+
+?>
