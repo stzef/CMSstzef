@@ -68,7 +68,7 @@ public function __toString()
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -91,7 +91,7 @@ public function __toString()
     /**
      * Get ifMain
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getIfMain()
     {
@@ -101,7 +101,7 @@ public function __toString()
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -124,7 +124,7 @@ public function __toString()
     /**
      * Get idSectionTheme
      *
-     * @return \AppBundle\Entity\CmsStzefSections 
+     * @return \AppBundle\Entity\CmsStzefSections
      */
     public function getIdSectionTheme()
     {

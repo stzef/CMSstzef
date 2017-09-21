@@ -4,32 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hotel Don Rafa y Doña Leo</title>
-    
+
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
 
-    <!<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('themes/' ~ theme.slug ~ '/css/font-awesome.min.css') }}">
 
-
-    <! <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('themes/' ~ theme.slug ~ '/css/bootstrap.min.css') }}">
 
-    <! <link rel="stylesheet" type="text/css" href="css/animate.css">
     <link rel="stylesheet" href="{{ asset('themes/' ~ theme.slug ~ '/css/animate.css') }}">
 
-    <! <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="{{ asset('themes/' ~ theme.slug ~ '/css/style.css') }}">
-
-
-    <!<link rel="stylesheet" type="text/css" href="css/style2.css">
-
-    
-    <!-- =======================================================
-        Theme Name: Laura
-        Theme URL: https://bootstrapmade.com/laura-free-creative-bootstrap-theme/
-        Author: BootstrapMade.com
-        Author URL: https://bootstrapmade.com
-    ======================================================= -->
   </head>
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" ><!--onload="myFunction()"-->
   <div class="header">
@@ -111,13 +95,13 @@
         </div>-->
       </div>
     </div>
-  
+
   <section id="about" class="section-padding wow fadeIn delay-05s">
     <div class="container">
       <div class="row">
         <div class="col-md-6 text-right">
           <h2 class="title-text">
-            <br><span class="deco">Don Rafa y Doña Leo</span> 
+            <br><span class="deco">Don Rafa y Doña Leo</span>
           </h2>
         </div>
         <div class="col-md-6 text-left">
@@ -152,11 +136,11 @@
                     <a href="#gallery1" class="col-md-6 col-sm-4 ">
                       <span class="glyphicon glyphicon-zoom-in icon-zoom"></span>
                       <!--img src="img/h1a.jpg" itemprop="thumbnail" alt="Image description" class="img-responsive" />-->
-                      <img src="{{ asset('themes/' ~ theme.slug ~ '/img/h1a.jpg') }}" itemprop="thumbnail" alt="Image description" class="img-responsive"> 
+                      <img src="{{ asset('themes/' ~ theme.slug ~ '/img/h1a.jpg') }}" itemprop="thumbnail" alt="Image description" class="img-responsive">
                       </img>
                     </a>
                   </div>
-                  <div class="col-md-6"> <h3>Description </h3> 
+                  <div class="col-md-6"> <h3>Description </h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
@@ -171,7 +155,7 @@
                       <img src="{{ asset('themes/' ~ theme.slug ~ '/img/h2a.jpg') }}" itemprop="thumbnail" alt="Image description" class="img-responsive" />
                     </a>
                   </div>
-                  <div class="col-md-6"> <h3>Description </h3> 
+                  <div class="col-md-6"> <h3>Description </h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
@@ -187,7 +171,7 @@
 
                     </a>
                   </div>
-                  <div class="col-md-6"> <h3>Description </h3> 
+                  <div class="col-md-6"> <h3>Description </h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
@@ -202,7 +186,7 @@
                       <img src="{{ asset('themes/' ~ theme.slug ~ '/img/h41.jpg') }}" itemprop="thumbnail" alt="Image description" class="img-responsive" />
                     </a>
                   </div>
-                  <div class="col-md-6"> <h3>Description </h3> 
+                  <div class="col-md-6"> <h3>Description </h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.
@@ -252,29 +236,29 @@
       <a href="#gallery1">></a>
     </div>
   </div>
-  
+
   <div class="modal" id="gallery2">
     <a class="cerrar" href="#portfolio">X</a>
     <h3>Gallery 2</h3>
     <div class="imagen">
       <a href="gallery2b">&#60;</a>
      <!-- <a href="#"><img src="img/h2a.jpg"></a>-->
-      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h2a.jpg') }}"></a>      
+      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h2a.jpg') }}"></a>
       <a href="#gallery2a">></a>
     </div>
   </div>
-  
+
   <div class="modal" id="gallery2a">
     <a class="cerrar" href="#portfolio">X</a>
     <h3>Gallery 2</h3>
     <div class="imagen">
       <a href="#gallery2">&#60;</a>
       <!--<a href="#"><img src="img/h2b.jpg"></a>-->
-      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h2b.jpg') }}"></a>      
+      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h2b.jpg') }}"></a>
       <a href="#gallery2b">></a>
     </div>
   </div>
-  
+
   <div class="modal" id="gallery2b">
     <a class="cerrar" href="#portfolio">X</a>
     <h3>Gallery 2</h3>
@@ -348,7 +332,7 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
           </div>
         </div>
-        
+
         <div class="col-md-6 ">
             <div id="sendmessage">Your message has been sent. Thank you!</div>
             <div id="errormessage"></div>
@@ -369,7 +353,7 @@
                     <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
                     <div class="validation"></div>
                 </div>
-                
+
                 <div class="text-center"><button type="submit" class="btn btn-primary btn-lg">Enviar</button></div>
             </form>
         </div>
@@ -377,9 +361,9 @@
           <h2 class="text-center" style="color:#fff;">Ubicacion</h2>
 
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6773189378498!2d-74.77366980875607!3d4.276615893062593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28fa970c8117%3A0x8162cdc9b0fbf45a!2sHotel+Don+Rafa+y+Do%C3%B1a+Leo!5e0!3m2!1ses!2ses!4v1505427914961" width="500" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-          
+
         </div>
-        
+
       </div>
     </div>
   </section>
@@ -392,8 +376,8 @@
                   © Copyright SistematizarEF Ltd. All Rights Reserved
                   2017
                     <div class="credits">
-                        <!-- 
-                            All the links in the footer should remain intact. 
+                        <!--
+                            All the links in the footer should remain intact.
                             You can delete the links only if you purchased the pro version.
                             Licensing information: https://bootstrapmade.com/license/
                             Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Laura
@@ -426,12 +410,12 @@
                   </li>
               </ul>
           </div>
-          
+
       </div>
       <!--end row-->
     </div>
   </footer>
-  
+
   <!--<script src="js/jquery.min.js"></script>-->
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.min.js') }}"></script>
 
@@ -456,6 +440,6 @@
 
 
   <!--<script src="contactform/contactform.js"></script>-->
-    
+
   </body>
 </html>

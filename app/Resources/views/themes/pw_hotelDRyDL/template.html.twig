@@ -5,12 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ parameters.name_site}}-{% block title %} {% endblock %}</title>
 
-    {% block stylesheet %} 
+    {% block stylesheet %}
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
       <link rel="stylesheet" href="{{ asset('themes/' ~ theme.slug ~ '/css/font-awesome.min.css') }}">
       <link rel="stylesheet" href="{{ asset('themes/' ~ theme.slug ~ '/css/bootstrap.min.css') }}">
       <link rel="stylesheet" href="{{ asset('themes/' ~ theme.slug ~ '/css/animate.css') }}">
       <link rel="stylesheet" href="{{ asset('themes/' ~ theme.slug ~ '/css/style.css') }}">
+      <style>
+          .row > .column {
+            padding: 0 8px;
+          }
+
+          .row:after {
+            content: "";
+            display: table;
+            clear: both;
+          }
+
+          .column {
+            float: left;
+            width: 25%;
+          }
+
+          /* The Modal (background) */
+          .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: black;
+          }
+
+          /* Modal Content */
+          .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            width: 90%;
+            max-width: 1200px;
+          }
+
+          /* The Close Button */
+          .close {
+            color: white;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+            font-size: 35px;
+            font-weight: bold;
+          }
+
+          .close:hover,
+          .close:focus {
+            color: #999;
+            text-decoration: none;
+            cursor: pointer;
+          }
+
+          .mySlides {
+            display: none;
+          }
+
+          /* Next & previous buttons */
+          .prev,
+          .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+          }
+
+          /* Position the "next button" to the right */
+          .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+          }
+
+          /* On hover, add a black background color with a little bit see-through */
+          .prev:hover,
+          .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+          }
+
+          /* Number text (1/3 etc) */
+          .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+          }
+
+          .caption-container {
+            text-align: center;
+            background-color: black;
+            padding: 2px 16px;
+            color: white;
+          }
+
+          img.demo {
+            opacity: 0.6;
+          }
+
+          .active,
+          .demo:hover {
+            opacity: 1;
+          }
+
+          img.hover-shadow {
+            transition: 0.3s
+          }
+
+          .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+          }
+      </style>
     {% endblock %}
 
   </head>
@@ -54,7 +178,7 @@
                         </ul>
                       </li>
                     {% endif %}
-                  {% endfor %}   
+                  {% endfor %}
                 </ul>
               </div>
             </div>
@@ -62,7 +186,6 @@
         </header>
 
         {% if main_banner is defined %}
-
           <div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
          <!-- Indicators -->
             <ol class="carousel-indicators">
@@ -79,7 +202,7 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner">
                    {% for image in main_banner.deta %}
-                        
+
                       <div class="item m {% if loop.first %} active {% endif %}">
                         <img  src="{{ image.image }}" alt="" style="width:100%;">
                       </div>
@@ -100,7 +223,7 @@
       </div>
     </div>
     <!-- Sections -->
-    
+
     <template>
         {% if sectionsTheme is defined %}
             {% for sectionTheme in sectionsTheme %}
@@ -131,155 +254,57 @@
                     {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/9_brands.html.twig' %}
                 {% elseif current_page.idTypePage.id == 10 %}
                     {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/10_proyects.html.twig' %}
+                {% elseif current_page.idTypePage.id == 11 %}
+                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/11_rooms.html.twig' %}
                 {% endif %}
             {% endif %}
             {% block body %}
             {% endblock %}
         </div>
     </section>
-
-  <!--<section id="portfolio" class="section-padding wow fadeInUp delay-05s">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <h2 class="title text-center"> Servicios <span class="deco"> </span> </h2>
-        </div>
-        <div class="col-md-9">
-          <div id="myGrid" class="grid-padding">
-            <div class="padding-right-zero">
-              <div class="my-gallery">
-
-
-              </div>
-            </div>
-          </div>
-          </div>
-          <div class="col-md-3 ">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diamsed commodo nibh ante facilisis bibendum dolor feugiat at
-            </p>
-          </div>
-        </div>
-    </div>
-  </section>-->
-  <div class="modal" id="gallery1">
-    <a class="cerrar" href="#portfolio">X</a>
-    <h3>Gallery 1</h3>
-    <div class="imagen">
-      <a href="#gallery1">&#60;</a>
-      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h1a.jpg') }}"></a>
-      <a href="#gallery1a">></a>
-    </div>
-  </div>
-
-  <div class="modal" id="gallery1a">
-    <a class="cerrar" href="#portfolio">X</a>
-    <h3>Gallery 1</h3>
-    <div class="imagen">
-      <a href="#gallery1">&#60;</a>
-      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h1b.jpg') }}"></a>
-      <a href="#gallery1b">></a>
-    </div>
-  </div>
-
-  <div class="modal" id="gallery1b">
-    <a class="cerrar" href="#portfolio">X</a>
-    <h3>Gallery 1</h3>
-    <div class="imagen">
-      <a href="#gallery1a">&#60;</a>
-      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h1c.jpg') }}"></a>
-      <a href="#gallery1">></a>
-    </div>
-  </div>
-  
-  <div class="modal" id="gallery2">
-    <a class="cerrar" href="#portfolio">X</a>
-    <h3>Gallery 2</h3>
-    <div class="imagen">
-      <a href="gallery2b">&#60;</a>
-      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h2a.jpg') }}"></a>      
-      <a href="#gallery2a">></a>
-    </div>
-  </div>
-  
-  <div class="modal" id="gallery2a">
-    <a class="cerrar" href="#portfolio">X</a>
-    <h3>Gallery 2</h3>
-    <div class="imagen">
-      <a href="#gallery2">&#60;</a>
-      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h2b.jpg') }}"></a>      
-      <a href="#gallery2b">></a>
-    </div>
-  </div>
-  
-  <div class="modal" id="gallery2b">
-    <a class="cerrar" href="#portfolio">X</a>
-    <h3>Gallery 2</h3>
-    <div class="imagen">
-      <a href="#gallery2a">&#60;</a>
-      <a href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/h2c.jpg') }}"></a>
-      <a href="#gallery2">></a>
-    </div>
-  </div>
-  <div class="modal" id="gallery3">
-    <a class="cerrar" href="#portfolio">X</a>
-    <h3>Gallery 3</h3>
-    <div class="imagen">
-      <a> <img src="{{ asset('themes/' ~ theme.slug ~ '/img/h3a.jpg') }}"></a>
-    </div>
-  </div>
-  <div class="modal" id="gallery4">
-    <a class="cerrar" href="#portfolio">X</a>
-    <h3>Gallery 4</h3>
-    <div class="imagen">
-      <a> <img src="{{ asset('themes/' ~ theme.slug ~ '/img/h41.jpg') }}"></a>
-    </div>
-  </div>
   <section id="contact" class="section-padding wow fadeIn delay-05s">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="contact-sec text-center">
-            <h2> Quieres Saber Mas <span class="deco"> Contactanos</span></h2>
+            <h2> Quieres Saber Mas <span class="deco"> Visitanos</span></h2>
           </div>
         </div>
-        <div class="col-sm-6 col-md-6 column">
-            <ul class="list-inline">
-                <li>
-                    <h4 class="text-center" style="color:white;">Visitas:{% for number in parameters.number_visit|split('') %} <span class="label label-default">{{number}}</span> {% endfor %}</h4>
-                    {% if app.user %}
-                    <a role="button" class="btn btn-primary" href="{{ path('homepage_admin') }}">Ir a Administracion</a>
-                    <a role="button" class="btn btn-danger"  href="{{ path('fos_user_security_logout') }}"> Salir </a>
-                    {% else %}
-                    <a role="button" class="btn btn-success" href="{{ path('fos_user_security_login') }}"> Iniciar Sesión</a>
-                    {# <a role="button" class="btn btn-info" href="{{ path('fos_user_registration_register') }}"> Registrarse </a> #}
-                    {% endif %}
-                </li>
-            </ul>
-        </div>        
-        <div class="col-md-6">
+        <div class="col-md-12">
           <h2 class="text-center" style="color:#fff;">Ubicacion</h2>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6773189378498!2d-74.77366980875607!3d4.276615893062593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28fa970c8117%3A0x8162cdc9b0fbf45a!2sHotel+Don+Rafa+y+Do%C3%B1a+Leo!5e0!3m2!1ses!2ses!4v1505427914961" width="1150" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
 
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6773189378498!2d-74.77366980875607!3d4.276615893062593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28fa970c8117%3A0x8162cdc9b0fbf45a!2sHotel+Don+Rafa+y+Do%C3%B1a+Leo!5e0!3m2!1ses!2ses!4v1505427914961" width="500" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
-          
-        </div>        
+        </div>
       </div>
     </div>
   </section>
   <footer class="footer-2 text-center-xs bg--white">
     <div class="container">
       <div class="row">
-          <div class="col-md-6">
-              <div id="section_theme_footer_a"></div>
-              <div id="section_theme_social_network"></div>
+          <div class="col-sm-4 col-md-4 column">
+          <ul class="list-inline">
+          <li>
+              <h4 class="text-center">Visitas:{% for number in parameters.number_visit|split('') %} <span class="label label-default">{{number}}</span> {% endfor %}</h4>
+              {% if app.user %}
+              <a role="button" class="btn btn-primary" href="{{ path('homepage_admin') }}">Ir a Administracion</a>
+              <a role="button" class="btn btn-danger"  href="{{ path('fos_user_security_logout') }}"> Salir </a>
+              {% else %}
+              <a role="button" class="btn btn-success" href="{{ path('fos_user_security_login') }}"> Iniciar Sesión</a>
+              {# <a role="button" class="btn btn-info" href="{{ path('fos_user_registration_register') }}"> Registrarse </a> #}
+              {% endif %}
+          </li>
+          </ul>
+          </div>
+          <div class="col-md-4">
               <div class="footer">
-                  © Copyright SistematizarEF Ltd. All Rights Reserved
-                  2017
+                  <center><p>© Copyright SistematizarEF Ltd. All Rights Reserved
+                  2017</p></center>
                     <div class="credits">
-                        Designed by <a href="https://http://sistematizar.co/">SistematizarEF.com</a>
+                        <center>Designed by <a href="https://http://sistematizar.co/">SistematizarEF.com</a></center>
                     </div>
               </div>
           </div>
-          <div class="col-md-6 text-right">
+          <div class="col-md-4 text-right">
               <ul class="social-list">
                   <li>
                       <a href="#">
@@ -306,7 +331,7 @@
       </div>
     </div>
   </footer>
-  
+
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.min.js') }}"></script>
 
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.easing.min.js') }}"></script>
@@ -316,6 +341,44 @@
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/wow.js') }}"></script>
 
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/custom.js') }}"></script>
-    
+  <script>
+  function openModal() {
+    document.getElementById('').style.display = "block";
+  }
+
+  function closeModal() {
+    document.getElementById('').style.display = "none";
+  }
+
+  var slideIndex = 1;
+  showSlides(slideIndex);
+
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    captionText.innerHTML = dots[slideIndex-1].alt;
+  }
+  </script>
+
   </body>
 </html>

@@ -9,8 +9,8 @@
                         <img class="img-responsive center-block" src="{{ article.imageMain }}" alt="" width="50%">
                     <!--</div>-->
                     </h4>
-                    <p>{{ article.description }}</p>
-                    <a class="btn btn-primary pull-right" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">Ver más</a>
+                    <center><p>{{ article.description }}</p></center>
+                    <center><a class="btn btn-primary" href="{{ path('view_article_generic',{'id_article' : article.id }) }}">Ver más</a></center>
                 </div>
             </div>
         {% endfor %}

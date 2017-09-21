@@ -116,6 +116,7 @@ class PagesController extends Controller
         $this->get('app.fns')->newVisitPage($em);
 
         $gallery = null;
+        $banners = null;
         $slug_page = $this->get('app.fns')->clean_string($slug_page);
         $cmsStzefMenuses = $this->get('app.fns')->getMenu($em);
         $sectionsTheme = $this->get('app.fns')->getSectionsTheme($em);
@@ -138,9 +139,12 @@ class PagesController extends Controller
         if($current_page){
             $path_template .= "/index.html.twig";
             $articles = $this->get('app.fns')->getContentPage($current_page,$em);
-
             if($current_page->getIdTypePage()->getId() == 4 or $current_page->getIdTypePage()->getId() == 9 or $current_page->getIdTypePage()->getId() == 10 ){
                 $gallery = $this->get('app.fns')->getBanner($em,$current_page->parameters->idBanner);
+            }else if($current_page->getIdTypePage()->getId() == 11){
+                $gallery = $this->get('app.fns')->getBanner($em,$current_page->parameters->idBanner);
+                $section = $gallery->getIdSectionTheme()->getId();
+                $banners = $this->get('app.fns')->getBanForSection($em,$section);
             }
             if($current_page->getIdStatePublication()->getId() != 1){
                 $path_template = "themes/" . $theme->getSlug() . "/despublicado.html.twig";
@@ -151,8 +155,6 @@ class PagesController extends Controller
         }else{
             $path_template .= "/404.html.twig";
         }
-
-
         return $this->render($path_template, array(
             "cmsStzefMenuses" => $cmsStzefMenuses,
             "current_page" => $current_page,
@@ -161,6 +163,7 @@ class PagesController extends Controller
             "parameters" => $parameters,
             "theme" => $theme,
             "gallery" => $gallery,
+            "habitaciones" => $banners,
             "articles_distinguished" => $this->get('app.fns')->getArticlesDistinguished($em),
             "main_banner" => $main_banner,
         ));

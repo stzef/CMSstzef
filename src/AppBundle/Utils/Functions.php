@@ -192,6 +192,16 @@ class Functions
         return $banner;
     }
 
+    public function getBanForSection($em,$idSectionTheme){
+        $repositoryBanners = $em->getRepository("AppBundle:CmsStzefBanners");
+        $repositoryBannerDeta = $em->getRepository("AppBundle:CmsStzefBannerDeta");
+        $banners = $repositoryBanners->findByIdSectionTheme($idSectionTheme);
+        foreach ($banners as $index => $banner) {
+            $banners[$index]->deta = $repositoryBannerDeta->findByCmsStzefBanners($banner->getId());
+        }
+        return $banners;
+    }
+
     public function getParameters($em,$only_editable=false){
         #$em = $this->getDoctrine()->getManager();
         $repositoryParameters = $em->getRepository("AppBundle:CmsStzefParameters");
