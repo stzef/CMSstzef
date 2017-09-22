@@ -10,24 +10,24 @@
         </div>
         <div class="row">
           {% for habitaciondeta in habitacion.deta %}
-                  <div class="col-md-6">
+                  <div class="col-md-12">
                     {% if loop.first %}
                     <div class="row">
-                      <div style="display: inline-block;">
-                        <div class="contenedor">
-                          <a href="#{{habitaciondeta.id}}" class="col-md-6 col-sm-4" onclick="(function(){
-                            document..header
-                          })">
-                            <span class="glyphicon glyphicon-zoom-in icon-zoom"></span>
-                            <img src="{{habitaciondeta.image}}" itemprop="thumbnail" alt="Image description" class="img-responsive" />
-                          </a>
-                        </div>
+                    <div style="display: inline-block;">
+                      <div class="contenedor" style="width: 100%">
+                        <a href="#{{habitaciondeta.id}}" class="col-md-6 col-sm-4" onclick="(function(){
+                          document..header
+                        })">
+                          <span class="glyphicon glyphicon-zoom-in icon-zoom"></span>
+                          <img src="{{habitaciondeta.image}}" itemprop="thumbnail" alt="Image description" class="img-responsive" />
+                        </a>
                       </div>
-                    
-                    </div>
                     <div class="col-md-6">
                       <h2>Descripción</h2>
                         {{habitaciondeta.contenthtml}}
+                    </div>
+                    </div>
+
                     </div>
                     {% endif %}
                   </div>
@@ -59,20 +59,30 @@
     {% endfor %}
   </div>
   <div class="col-md-3">
+            <center><h1><span class="deco">Hello</span></h1></center>
   </div>
 </section>
 {% for habitacion in habitaciones %}
     {% for habitaciondeta in habitacion.deta %}
+    {% set i = habitaciondeta.id %}
       <div class="modal" id="{{habitaciondeta.id}}" >
-        <a class="cerrar" href="#">X</a>
-        <h3>{{ habitaciondeta.id }} </h3>
-        {% set i = habitaciondeta.id %}
+        <a class="cerrar" href="#portfolio">X</a>
+        <h3>{{ habitacion.name }} </h3>
         <div class="imagen">
-          <a class="prev" href="#{{i-1}}">&#10094;</a>
+          {% if loop.first %}
+              <a class="prev" href="#{{i}}">&#10094;</a>
+          {% else %}
+              <a class="prev" href="#{{i-1}}">&#10094;</a>
+          {% endif %}
           <a href="#"><img src="{{habitaciondeta.image}}"></a>
-          <a class="next" href="#{{i+1}}">&#10095;</a>
+          {% if loop.last %}
+              <a class="next" href="#{{i}}">&#10095;</a>
+          {% else %}
+              <a class="next" href="#{{i+1}}">&#10095;</a>
+          {% endif %}
         </div>
       </div>
+    {% set i = 0 %}
     {% endfor %}
 {% endfor %}
 <!--Modal Galeria-->
