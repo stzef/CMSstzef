@@ -150,13 +150,21 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Logo</a>
+              </div>
+              <div class="col-md-3 left" style="height:85px; padding:0; top:-15px;">
+                <a class="navbar-brand" href="#"><img src="{{ asset('themes/' ~ theme.slug ~ '/img/LogoHotelDonRafaYDoñaLeo.png') }}" style="width:30%;">
+                </a>
               </div>
               <div class="collapse navbar-collapse" id="lauraMenu">
                 <ul class="nav navbar-nav navbar-right navbar-border">
                   {% for itemMenu in cmsStzefMenuses %}
                     {% if itemMenu.subMenus|length == 0 %}
-                      <li><a class="page-scroll" href="{{ path('page_generic',{'slug_page' : itemMenu.page.slug }) }} "><b>{{ itemMenu.name }}</b></a></li>
+                      {% if itemMenu.id == 5  %}
+                        <li><a class="page-scroll" href="#contacto"><b>{{ itemMenu.name }}</b></a></li>
+                      {% else %}
+                        <li><a class="page-scroll" href="{{ path('page_generic',{'slug_page' : itemMenu.page.slug }) }} "><b>{{ itemMenu.name }}</b></a></li>
+                      {% endif %}
+                      
                     {% else %}
                       <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><b>{{ itemMenu.name }}</b> <span class="caret"></span></a>
@@ -189,9 +197,16 @@
           <div id="carouselExampleIndicators" class="carousel" data-ride="carousel">
          <!-- Indicators -->
             <ol class="carousel-indicators">
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              {% set i = 0 %}
+              {% for image in main_banner.deta %}
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ i }}" class="{% if loop.first %} active {% endif %}"></li>
+                {% set i = i + 1 %}
+              {% endfor %}
+              <!--<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
               <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="4"></li> -->
             </ol>
 
             <div class="carousel-caption">
@@ -239,8 +254,9 @@
     </template>
 
     <!-- Sections -->
-    <section id="portfolio" class="section-padding wow fadeInUp delay-05s">
-        <div class="container-fluid">
+    <section id="portfolio" class="section-padding wow fadeInUp delay-05s" style="display:inline-block">
+      <div class="col-md-9">
+        <div class="container-fluid" style="";>
             {% if articles is defined %}
                 {% if current_page.idTypePage.id == 1 %}
                     {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/1_for_category.html.twig' with {'articles': articles,'current_page': current_page} %}
@@ -249,7 +265,7 @@
                 {% elseif current_page.idTypePage.id == 4 %}
                     {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/4_gallery.html.twig' %}
                 {% elseif current_page.idTypePage.id == 5 %}
-                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/5_form_contact.html.twig' %}
+                    {#% include 'themes/' ~ theme.slug ~ '/partials/type_pages/5_form_contact.html.twig' %#}
                 {% elseif current_page.idTypePage.id == 9 %}
                     {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/9_brands.html.twig' %}
                 {% elseif current_page.idTypePage.id == 10 %}
@@ -260,40 +276,61 @@
             {% endif %}
             {% block body %}
             {% endblock %}
-        </div>
-    </section>
-  <section id="contact" class="section-padding wow fadeIn delay-05s">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="contact-sec text-center">
-            <h2> Quieres Saber Mas <span class="deco"> Visitanos</span></h2>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <h2 class="text-center" style="color:#fff;">Ubicacion</h2>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6773189378498!2d-74.77366980875607!3d4.276615893062593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28fa970c8117%3A0x8162cdc9b0fbf45a!2sHotel+Don+Rafa+y+Do%C3%B1a+Leo!5e0!3m2!1ses!2ses!4v1505427914961" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
 
         </div>
       </div>
-    </div>
-  </section>
+      <div class="col-md-3">
+        <center><h3>Servicios</h3></center>
+          <p><img src="{{ asset('themes/' ~ theme.slug ~ '/img/icon.png') }}" style=" width:40px; "> Wifi </p>
+          <p><img src="{{ asset('themes/' ~ theme.slug ~ '/img/room-service.png') }}" style=" width:40px; "> Servicio al cuarto </p>  
+          <p><img src="{{ asset('themes/' ~ theme.slug ~ '/img/parking.png') }}" style=" width:40px; "> Parqueadero </p>
+          <p><img src="{{ asset('themes/' ~ theme.slug ~ '/img/food.png') }}" style=" width:40px; "> Restaurante </p>
+          <p><img src="{{ asset('themes/' ~ theme.slug ~ '/img/pool.png') }}" style=" width:40px; "> Piscina </p>
+          <p><img src="{{ asset('themes/' ~ theme.slug ~ '/img/pub.png') }}" style=" width:40px; "> Bar </p>
+
+      </div>  
+    </section>
+    <section id="contact" class="section-padding wow fadeIn delay-05s" style="color:#fff;">
+      <div class="container" id="contacto">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="contact-sec text-center">
+              <h2 class="deco"> Quiere saber más, </h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+             {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/5_form_contact.html.twig' %}
+          </div>
+          <div class="col-md-6">
+              <h3> Ubicanos </h3>
+               <div>
+                <p>Cra. 15 # 4-29, </p>  
+                <P> Ricaurte, Cundinamarca, Colombia </P>
+                <p> cel: 3123776313 </p>
+              </div>
+            <h3 class="text-center" style="color:#fff;">Google Maps</h3>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6773189378498!2d-74.77366980875607!3d4.276615893062593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28fa970c8117%3A0x8162cdc9b0fbf45a!2sHotel+Don+Rafa+y+Do%C3%B1a+Leo!5e0!3m2!1ses!2ses!4v1505427914961" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+          </div>
+        </div>
+      </div>
+    </section>
   <footer class="footer-2 text-center-xs bg--white">
     <div class="container">
       <div class="row">
           <div class="col-sm-4 col-md-4 column">
-          <ul class="list-inline">
-          <li>
-              <h4 class="text-center">Visitas:{% for number in parameters.number_visit|split('') %} <span class="label label-default">{{number}}</span> {% endfor %}</h4>
-              {% if app.user %}
-              <a role="button" class="btn btn-primary" href="{{ path('homepage_admin') }}">Ir a Administracion</a>
-              <a role="button" class="btn btn-danger"  href="{{ path('fos_user_security_logout') }}"> Salir </a>
-              {% else %}
-              <a role="button" class="btn btn-success" href="{{ path('fos_user_security_login') }}"> Iniciar Sesión</a>
-              {# <a role="button" class="btn btn-info" href="{{ path('fos_user_registration_register') }}"> Registrarse </a> #}
-              {% endif %}
-          </li>
-          </ul>
+            <ul class="list-inline">
+              <li>
+                  <h4 class="text-center">Visitas:{% for number in parameters.number_visit|split('') %} <span class="label label-default">{{number}}</span> {% endfor %}</h4>
+                  {% if app.user %}
+                  <a role="button" class="btn btn-primary" href="{{ path('homepage_admin') }}">Ir a Administracion</a>
+                  <a role="button" class="btn btn-danger"  href="{{ path('fos_user_security_logout') }}"> Salir </a>
+                  {% else %}
+                  <a role="button" class="btn btn-success" href="{{ path('fos_user_security_login') }}"> Iniciar Sesión</a>
+                  {# <a role="button" class="btn btn-info" href="{{ path('fos_user_registration_register') }}"> Registrarse </a> #}
+                  {% endif %}
+              </li>
+            </ul>
           </div>
           <div class="col-md-4">
               <div class="footer">
@@ -306,6 +343,11 @@
           </div>
           <div class="col-md-4 text-right">
               <ul class="social-list">
+                  <li>
+                      <a href="https://www.facebook.com/hoteldonrafa">
+                          <i class="fa fa-facebook"></i>
+                      </a>
+                  </li>
                   <li>
                       <a href="#">
                           <i class="fa fa-twitter"></i>

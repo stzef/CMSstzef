@@ -177,6 +177,10 @@ div > .item > img{
 .top-nav-collapse {
     padding: 0; 
     background: rgba(50,60,70, 0.9);
+
+}
+div > .top-nav-collapse > div > img {
+    width: 75px;
 }
 
 .bg-color{
