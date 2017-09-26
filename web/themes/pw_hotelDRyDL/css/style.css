@@ -176,11 +176,21 @@ div > .item > img{
 
 .top-nav-collapse {
     padding: 0; 
-    background: rgba(50,60,70, 0.9);
+    background: rgba(50,60,70, 0.6);
 
 }
+
+.img-logo{
+    width: 50%;
+}
+
+.img-logo-scroll{
+    width: 35%;
+}
+
+
 div > .top-nav-collapse > div > img {
-    width: 75px;
+    width: 65px;
 }
 
 .bg-color{
@@ -223,9 +233,10 @@ div > .top-nav-collapse > div > img {
 
 }
 #about{
-	background: url('../img/about-banner.jpg') no-repeat;
+	/*background: url('../img/banner2.jpg') no-repeat;*/
 	background-size: cover;
 	margin-bottom: -3px;
+
 }
 .section-padding{
 	padding: 60px 0px;
@@ -573,6 +584,9 @@ Responsive media queries
 
     div > iframe {
         display: none;
+    }
+    #logo {
+        width: 100px;
     }
 }
 @media (min-width: 389px) and (max-width: 550px) {

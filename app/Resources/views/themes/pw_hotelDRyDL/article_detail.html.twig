@@ -11,7 +11,7 @@
         <div class="col-md-12 text-justify">
           <div class="about-text">
             <p class="text-faded">{{ current_article.contentHTML|raw }}</p>
-            <img class="img-responsive center-block" src="{{ current_article.imageMain }}" alt="">
+            <img class="img-responsive center-block" src="{{ current_article.imageMain }}" alt="" style="width:200px;">
             <p>&nbsp;</p>
             <p class="text-primary"><span class="glyphicon glyphicon-time"></span> Posteado en {{ current_article.dateCreation|date("F jS \\a\\t g:ia","America/Bogota")}}</p>
             <p class="text-primary">

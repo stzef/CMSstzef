@@ -33,6 +33,39 @@
   animation-duration: .75s;
 }
 
+
+@keyframes widthlogscroll {
+  from {
+    width: 50%
+  }
+
+  to {
+    width: 35%;
+  }
+}
+
+.img-logo-scroll{
+  animation-duration: 1s;
+  animation-name: widthlogscroll;
+}
+
+/*--//--*/
+@keyframes widthlog {
+  from {
+    width: 35%
+  }
+
+  to {
+    width: 50%;
+  }
+}
+
+.img-logo{
+  animation-duration: 1s;
+  animation-name: widthlog;
+}
+
+
 @-webkit-keyframes bounce {
   from, 20%, 53%, 80%, to {
     -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);

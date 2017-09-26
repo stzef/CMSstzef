@@ -3,28 +3,31 @@
     {% for habitacion in habitaciones %}
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-9">
             <center><h1><span class="deco">{{habitacion.name}}</span></h1></center>
             <br><br>
           </div>
         </div>
         <div class="row">
           {% for habitaciondeta in habitacion.deta %}
-                  <div class="col-md-12">
+                  <div class="col-md-9">
                     {% if loop.first %}
                     <div class="row">
-                    <div style="display: inline-block;">
-                      <div class="contenedor" style="width: 100%">
-                        <a href="#{{habitaciondeta.id}}" class="col-md-6 col-sm-4" onclick="(function(){
+                    <div>
+                      <div class="contenedor" style="width: 90%">
+                        <a href="#{{habitaciondeta.id}}" class="col-md-6" onclick="(function(){
                           document..header
                         })">
                           <span class="glyphicon glyphicon-zoom-in icon-zoom"></span>
                           <img src="{{habitaciondeta.image}}" itemprop="thumbnail" alt="Image description" class="img-responsive" />
                         </a>
                       </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6" >
                       <h2>Descripción</h2>
+                      <justify>
                         {{habitaciondeta.contenthtml}}
+                        <h6> Clic en la imagen </h6>
+                      </justify>
                     </div>
                     </div>
 
