@@ -132,17 +132,17 @@ Responsive media queries
     background-size: cover;
     min-height: 430px;
     position: relative;
-    height: 570px;
+    height: 750px;
 }
 #about{
     height: 600px;
 }
 
 #carouselExampleIndicators{
-    height: 570px;
+    height: 750px;
 }
 div > .item > img{
-    height: 400px;
+    height: 600px;
 }
 
 .navbar-default {
