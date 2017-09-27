@@ -35,7 +35,9 @@ class PagesController extends Controller
         $current_page = $repositoryPages->findOneByIfMain(1);
         $params = $current_page->getParams();
         $current_page->parameters = json_decode($params);
-
+        $gallery = $this->get('app.fns')->getBanner($em,0);
+        $section = $gallery->getIdSectionTheme()->getId();
+        $banners = $this->get('app.fns')->getBanForSection($em,$section);
         $path_template = "themes/" . $theme->getSlug();
 
         $articles = [];
@@ -59,6 +61,7 @@ class PagesController extends Controller
             "articles_distinguished" => $this->get('app.fns')->getArticlesDistinguished($em),
             "current_page" => $current_page,
             "articles" => $articles,
+            "habitaciones" => $banners,
             "main_banner" => $this->get('app.fns')->getMainBanner($em),
             "messages" => $messages,
             ));

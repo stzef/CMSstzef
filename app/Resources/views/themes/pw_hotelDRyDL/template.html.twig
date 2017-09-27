@@ -265,6 +265,7 @@
             {% if articles is defined %}
                 {% if current_page.idTypePage.id == 1 %}
                     {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/1_for_category.html.twig' with {'articles': articles,'current_page': current_page} %}
+                    {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/11_rooms.html.twig' %}                    
                 {% elseif current_page.idTypePage.id == 2 %}
                     {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/2_one_article.html.twig' with {'articles': articles,'current_page': current_page} %}
                 {% elseif current_page.idTypePage.id == 4 %}
