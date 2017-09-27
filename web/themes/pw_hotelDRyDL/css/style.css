@@ -181,12 +181,17 @@ div > .item > img{
 }
 
 .img-logo{
-    width: 50%;
+    width: 35%;
 }
 
 .img-logo-scroll{
-    width: 35%;
+    width: 15%;
 }
+.plogo{
+    display: none;
+
+}
+
 
 
 div > .top-nav-collapse > div > img {

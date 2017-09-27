@@ -36,11 +36,12 @@
 
 @keyframes widthlogscroll {
   from {
-    width: 50%
+    width: 35%
   }
 
   to {
-    width: 35%;
+    width: 15%;
+    display: inline-block;
   }
 }
 
@@ -52,17 +53,36 @@
 /*--//--*/
 @keyframes widthlog {
   from {
-    width: 35%
+    width: 15%
   }
 
   to {
-    width: 50%;
+    width: 35%;
   }
 }
 
 .img-logo{
   animation-duration: 1s;
   animation-name: widthlog;
+}
+
+
+@keyframes displayblock {
+  from {
+    font-size: 10px;
+    display: none;
+  }
+
+  to {
+    font-size: 35px;
+    display: inline-block;
+  }
+}
+
+.plogodisplay-block{
+  animation-duration: 0.15s;
+  animation-name: displayblock;
+  animation-timing-function:ease-in-out;
 }
 
 

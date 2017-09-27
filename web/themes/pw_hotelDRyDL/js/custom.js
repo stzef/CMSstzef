@@ -39,10 +39,14 @@
             $(".navbar-fixed-top").addClass("top-nav-collapse");
             $("#logo").removeClass("img-logo");
             $("#logo").addClass("img-logo-scroll");
+            $("#nlogo").addClass("plogodisplay-block");
+            $("#nlogo").removeClass("plogo");
         } else {
             $(".navbar-fixed-top").removeClass("top-nav-collapse");
             $("#logo").addClass("img-logo");
             $("#logo").removeClass("img-logo-scroll");
+            $("#nlogo").addClass("plogo");
+            $("#nlogo").removeClass("plogodisplay-block");
         }
     });
     

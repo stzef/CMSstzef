@@ -155,8 +155,9 @@
                   <span class="icon-bar"></span>
                 </button>
               </div>
-              <div class="col-md-3 left" style="height:85px; padding:0; top:-15px;">
-                <a class="navbar-brand" href="#"><img id="logo"class="img-logo" src="{{ asset('themes/' ~ theme.slug ~ '/img/LogoHotelDonRafaYDoñaLeo.png') }}">
+              <div class="col-md-6 left" style="height:85px; padding:0; top:-15px;">
+                <a class="navbar-brand" href="#"><img id="logo"class="img-logo" src="{{ asset('themes/' ~ theme.slug ~ '/img/LogoHotelDonRafaYDoñaLeo.png') }}" style="block; display:inline-block;">
+                  <span id="nlogo"class="deco plogo" style="">Hotel don Rafa y doña Leo</span>
                 </a>
               </div>
               <div class="collapse navbar-collapse" id="lauraMenu">
@@ -306,11 +307,11 @@
               <h2 class="deco"> Quiere saber más, </h2>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" style="top:0;margin-top:0px;">
             {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/5_form_contact.html.twig' %}        
           </div>
           <div class="col-md-6">
-              <h3> Ubicanos </h3>
+              <h2 style="margin-top:0px; margin-bottom:15px;"> Ubicanos </h2>
                <div>
                <h5><p>Cra. 15 # 4-29, Ricaurte, Cundinamarca, Colombia  </P>
                 <p> cel: 3123776313 - 3102668710</p></h5>
