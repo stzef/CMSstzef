@@ -298,6 +298,23 @@
             <p><img src="{{ asset('themes/' ~ theme.slug ~ '/img/jacuzzi.png') }}" style=" width:40px; "> Jacuzzi </p>
             <p><img src="{{ asset('themes/' ~ theme.slug ~ '/img/screen.png') }}" style=" width:40px; "> Pantalla gigante </p>
         </div>
+        <div style="border-style:solid;border-width:1px; ">
+          <center><h4 style="margin-top:6px;">Reservas</h4></center>    
+          <script type="text/javascript">
+            var _ubDat = [{
+              'collection':'14525',// ID of your booking engine 
+              'lang':'es'// ISO language of the plugin (es,en,de,fr,it,..)
+            }]; 
+            (function() {
+              var ub = document.createElement('script'); 
+              ub.type = 'text/javascript'; 
+              ub.async = true;
+              ub.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.upbooking.com/plugins/sfPlug.php';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ub, s);
+            })();
+          </script>
+          <div id="UBEngine" style="margin:4px;"></div>
+        </div>
       </div>  
     </section>
     <section id="contact" class="section-padding wow fadeIn delay-05s" style="color:#fff;">
