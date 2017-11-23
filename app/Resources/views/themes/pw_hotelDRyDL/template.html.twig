@@ -32,21 +32,14 @@
           }
 
           /* The Modal (background) */
-          .modal {
+          .modal1{
             display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: black;
+            z-index: 10;
           }
+          
 
           /* Modal Content */
-          .modal-content {
+          .modal-content1 {
             position: relative;
             background-color: #fefefe;
             margin: auto;
@@ -54,9 +47,10 @@
             width: 90%;
             max-width: 1200px;
           }
+          
 
           /* The Close Button */
-          .close {
+          .close1 {
             color: white;
             position: absolute;
             top: 10px;
@@ -156,7 +150,7 @@
                 </button>
               </div>
               <div class="col-md-6 left" style="height:85px; padding:0; top:-15px;">
-                <a class="navbar-brand" href="#"><img id="logo"class="img-logo" src="{{ asset('themes/' ~ theme.slug ~ '/img/LogoHotelDonRafaYDoñaLeo.png') }}" style="block; display:inline-block;">
+                <a class="navbar-brand" href="www.hoteldonrafaydoñaleo.com"><img id="logo"class="img-logo" src="{{ asset('themes/' ~ theme.slug ~ '/img/LogoHotelDonRafaYDoñaLeo.png') }}" style="block; display:inline-block;">
                   <span id="nlogo"class="deco plogo" style="">Hotel don Rafa y doña Leo</span>
                 </a>
               </div>
@@ -258,6 +252,33 @@
         {% endif %}
     </template>
 
+    <!-- section modal tarifas -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+          <!-- Modal content-->
+        <div class="modal-content" >
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Tarifas 2017</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Tarifas en temporada Baja. <span class="glyphicon glyphicon-arrow-down" style="color: #F9AB5C"></span></h4>
+            <p>50.000 cop  por persona,</p>
+            <p>Niños mayores de 3 años pagan tarifa</p>
+          </div>
+          <div class="modal-body">
+            <h4>Tarifas en temporada Alta. <span class="glyphicon glyphicon-arrow-up" style="color: #55D303"></span></h4>
+            <p>60.000 cop  por persona,</p>
+            <p>Niños mayores de 3 años pagan tarifa</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  ####### -->
+
     <!-- Sections -->
     <section id="portfolio" style="display:inline-block; width:100%" class="section-padding wow fadeInUp delay-05s" >
       <div class="col-md-9">
@@ -302,7 +323,7 @@
           <center><h4 style="margin-top:6px;">Reservas</h4></center>    
           <script type="text/javascript">
             var _ubDat = [{
-              'collection':'14525',// ID of your booking engine 
+              'collection':'15044',// ID of your booking engine 
               'lang':'es'// ISO language of the plugin (es,en,de,fr,it,..)
             }]; 
             (function() {
@@ -313,6 +334,7 @@
               var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ub, s);
             })();
           </script>
+
           <div id="UBEngine" style="margin:4px;"></div>
         </div>
       </div>  
@@ -391,16 +413,10 @@
   </footer>
 
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.min.js') }}"></script>
-
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/jquery.easing.min.js') }}"></script>
-
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/bootstrap.min.js') }}"></script>
-
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/wow.js') }}"></script>
-
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/custom.js') }}"></script>
-  <script>
-  </script>
 
   </body>
 </html>
