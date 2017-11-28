@@ -150,18 +150,20 @@
                 </button>
               </div>
               <div class="col-md-6 left" style="height:85px; padding:0; top:-15px;">
-                <a class="navbar-brand" href="www.hoteldonrafaydoñaleo.com"><img id="logo"class="img-logo" src="{{ asset('themes/' ~ theme.slug ~ '/img/LogoHotelDonRafaYDoñaLeo.png') }}" style="block; display:inline-block;">
-                  <span id="nlogo"class="deco plogo" style="">Hotel don Rafa y doña Leo</span>
+                <a class="navbar-brand" href="/"><img id="logo"class="img-logo" src="{{ asset('themes/' ~ theme.slug ~ '/img/LogoHotelDonRafaYDoñaLeo.png') }}" style="block; display:inline-block;">
+                  <span id="nlogo" class="deco plogo" style="">Hotel don Rafa y doña Leo</span>
                 </a>
               </div>
               <div class="collapse navbar-collapse" id="lauraMenu">
                 <ul class="nav navbar-nav navbar-right navbar-border">
                   {% for itemMenu in cmsStzefMenuses %}
                     {% if itemMenu.subMenus|length == 0 %}
-                      {% if itemMenu.id == 5  %}
-                        <li><a class="page-scroll" href="#contacto"><b>{{ itemMenu.name }}</b></a></li>
-                      {% else %}
+                      {% if itemMenu.id == 8  %}
                         <li><a class="page-scroll" href="{{ path('page_generic',{'slug_page' : itemMenu.page.slug }) }} "><b>{{ itemMenu.name }}</b></a></li>
+                      {% elseif itemMenu.id == 5  %}
+                        <li><a class="page-scroll" href="#contact"><b>{{ itemMenu.name }}</b></a></li>
+                        {% else %}
+                        <li><a class="page-scroll" href="/#{{ itemMenu.alias }}"><b>{{ itemMenu.name }}</b></a></li>
                       {% endif %}
                       
                     {% else %}
@@ -263,13 +265,13 @@
           </div>
           <div class="modal-body">
             <h4>Tarifas en temporada Baja. <span class="glyphicon glyphicon-arrow-down" style="color: #F9AB5C"></span></h4>
-            <p>50.000 cop  por persona,</p>
-            <p>Niños mayores de 3 años pagan tarifa</p>
+            <p style="margin-left: 20px;">50.000 cop  por persona,</p>
+            <p style="margin-left: 20px;">Niños mayores de 3 años pagan tarifa</p>
           </div>
           <div class="modal-body">
             <h4>Tarifas en temporada Alta. <span class="glyphicon glyphicon-arrow-up" style="color: #55D303"></span></h4>
-            <p>60.000 cop  por persona,</p>
-            <p>Niños mayores de 3 años pagan tarifa</p>
+            <p style="margin-left: 20px;">60.000 cop  por persona,</p>
+            <p style="margin-left: 20px;">Niños mayores de 3 años pagan tarifa</p>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -282,6 +284,7 @@
     <!-- Sections -->
     <section id="portfolio" style="display:inline-block; width:100%" class="section-padding wow fadeInUp delay-05s" >
       <div class="col-md-9">
+        <button class="btn btn-info" data-toggle="modal" data-target="#myModal"> <span class=" glyphicon glyphicon-eye-open"></span> Ver Tarifas. </button>   
         <div class="container-fluid";>
             {% if articles is defined %}
                 {% if current_page.idTypePage.id == 1 %}
@@ -321,21 +324,10 @@
         </div>
         <div style="border-style:solid;border-width:1px; ">
           <center><h4 style="margin-top:6px;">Reservas</h4></center>    
-          <script type="text/javascript">
-            var _ubDat = [{
-              'collection':'15044',// ID of your booking engine 
-              'lang':'es'// ISO language of the plugin (es,en,de,fr,it,..)
-            }]; 
-            (function() {
-              var ub = document.createElement('script'); 
-              ub.type = 'text/javascript'; 
-              ub.async = true;
-              ub.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.upbooking.com/plugins/sfPlug.php';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ub, s);
-            })();
-          </script>
-
+          
           <div id="UBEngine" style="margin:4px;"></div>
+
+
         </div>
       </div>  
     </section>
@@ -351,15 +343,19 @@
             {% include 'themes/' ~ theme.slug ~ '/partials/type_pages/5_form_contact.html.twig' %}        
           </div>
           <div class="col-md-6">
+            <div>
               <h2 style="margin-top:0px; margin-bottom:15px;"> Ubicanos </h2>
-               <div>
-               <h5><p>Cra. 15 # 4-29, Ricaurte, Cundinamarca, Colombia  </P>
+                <h5><p>Cra. 15 # 4-29, Ricaurte, Cundinamarca, Colombia  </P>
                 <p> cel: 3123776313 - 3102668710</p></h5>
-              </div>
+            </div>
             <h6 class="text-center" style="color:#fff;">Google Maps</h6>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6773189378498!2d-74.77366980875607!3d4.276615893062593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28fa970c8117%3A0x8162cdc9b0fbf45a!2sHotel+Don+Rafa+y+Do%C3%B1a+Leo!5e0!3m2!1ses!2ses!4v1505427914961" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
-
           </div>
+          <div class="col-md-6 col-md-offset-4" style="margin-top: 55px;">
+              <img src="http://www.codigos-qr.com/qr/php/qr_img.php?d=http%3A%2F%2Fwww.xn--hoteldonrafaydoaleo-93b.com%2F&s=8&e=m" alt="Generador de Códigos QR Codes" width="220px;"/>
+              <a role="button" class="btn btn-info" href="{{ asset('themes/' ~ theme.slug ~ '/document/pdfHotelDR2.pdf') }}" target="_blanck" style="margin-top: 10px;">Descargar QR</a>
+              
+            </div>
         </div>
       </div>
     </section>
@@ -417,6 +413,21 @@
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/wow.js') }}"></script>
   <script src="{{ asset('themes/' ~ theme.slug ~ '/js/custom.js') }}"></script>
+  <script type="text/javascript">
+    var _ubDat = [{
+      'collection':'15044',// ID of your booking engine 
+      'lang':'es'// ISO language of the plugin (es,en,de,fr,it,..)
+    }]; 
+    (function() {
+      var ub = document.createElement('script'); 
+      ub.type = 'text/javascript'; 
+      ub.async = true;
+      ub.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.upbooking.com/plugins/sfPlug.php';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ub, s);
+    })();
+
+
+  </script>
 
   </body>
 </html>
