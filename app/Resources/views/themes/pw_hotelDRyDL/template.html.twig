@@ -149,7 +149,7 @@
                   <span class="icon-bar"></span>
                 </button>
               </div>
-              <div class="col-md-6 left" style="height:85px; padding:0; top:-15px;">
+              <div class="col-md-5 left" style="height:85px; padding:0; top:-15px;">
                 <a class="navbar-brand" href="/"><img id="logo"class="img-logo" src="{{ asset('themes/' ~ theme.slug ~ '/img/LogoHotelDonRafaYDoñaLeo.png') }}" style="block; display:inline-block;">
                   <span id="nlogo" class="deco plogo" style="">Hotel don Rafa y doña Leo</span>
                 </a>
@@ -158,11 +158,11 @@
                 <ul class="nav navbar-nav navbar-right navbar-border">
                   {% for itemMenu in cmsStzefMenuses %}
                     {% if itemMenu.subMenus|length == 0 %}
-                      {% if itemMenu.id == 8  %}
+                      {% if itemMenu.name == "ESCNNA" or itemMenu.name == "¿Quienes Somos?" or itemMenu.name == "Sostenibilidad"  %}
                         <li><a class="page-scroll" href="{{ path('page_generic',{'slug_page' : itemMenu.page.slug }) }} "><b>{{ itemMenu.name }}</b></a></li>
                       {% elseif itemMenu.id == 5  %}
                         <li><a class="page-scroll" href="#contact"><b>{{ itemMenu.name }}</b></a></li>
-                        {% else %}
+                      {% else %}
                         <li><a class="page-scroll" href="/#{{ itemMenu.alias }}"><b>{{ itemMenu.name }}</b></a></li>
                       {% endif %}
                       
@@ -335,8 +335,17 @@
       <div class="container" id="contacto">
         <div class="row">
           <div class="col-md-12">
-            <div class="contact-sec text-center">
+            <div class="contact-sec text-right col-md-7">
               <h2 class="deco"> Quiere saber más, </h2>
+            </div>
+            <div class="col-md-3 col-md-offset-2" style="margin-top: 0px;">
+              <div class="col-md-12">
+                <a role="button" class="btn btn-info" href="{{ asset('themes/' ~ theme.slug ~ '/document/pdfHotelDR2.pdf') }}" target="_blanck" style="margin-top:0px; font-size:14px;">Descargar QR</a>
+              </div>
+              <div class="col-md-12" style="margin-top: 4px;">
+                <img src="http://www.codigos-qr.com/qr/php/qr_img.php?d=http%3A%2F%2Fwww.xn--hoteldonrafaydoaleo-93b.com%2F&s=8&e=m" alt="Generador de Códigos QR Codes" width="120px;"/>
+              </div>
+              
             </div>
           </div>
           <div class="col-md-6" style="top:0;margin-top:0px;">
@@ -351,11 +360,7 @@
             <h6 class="text-center" style="color:#fff;">Google Maps</h6>
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d994.6773189378498!2d-74.77366980875607!3d4.276615893062593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f28fa970c8117%3A0x8162cdc9b0fbf45a!2sHotel+Don+Rafa+y+Do%C3%B1a+Leo!5e0!3m2!1ses!2ses!4v1505427914961" width="100%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
           </div>
-          <div class="col-md-6 col-md-offset-4" style="margin-top: 55px;">
-              <img src="http://www.codigos-qr.com/qr/php/qr_img.php?d=http%3A%2F%2Fwww.xn--hoteldonrafaydoaleo-93b.com%2F&s=8&e=m" alt="Generador de Códigos QR Codes" width="220px;"/>
-              <a role="button" class="btn btn-info" href="{{ asset('themes/' ~ theme.slug ~ '/document/pdfHotelDR2.pdf') }}" target="_blanck" style="margin-top: 10px;">Descargar QR</a>
-              
-            </div>
+
         </div>
       </div>
     </section>

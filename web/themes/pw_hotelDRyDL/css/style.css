@@ -146,7 +146,7 @@ div > .item > img{
 }
 
 .navbar-default {
-    background-color: transparent;
+    background-color: #0808083d;
     border: 0px;
     padding: 20px 0;
     transition: all 0.3s;
@@ -177,6 +177,7 @@ div > .item > img{
 .top-nav-collapse {
     padding: 0; 
     background: rgba(50,60,70, 0.6);
+    color:#ffffff;
 
 }
 
